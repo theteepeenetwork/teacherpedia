@@ -1,0 +1,36 @@
+CRITICAL - 2022-04-27 01:14:40 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../../..//index...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../..//index', Array, true)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(93): view('../../..//index', Array)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load('resources', '2020', '11-06-110', '09-58-00', '59')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-27 14:06:44 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../../..//index...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../..//index', Array, true)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(93): view('../../..//index', Array)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load('MissingNumberMu...', 'index')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-27 19:54:26 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../../..//index...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../..//index', Array, true)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(93): view('../../..//index', Array)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load('multiplication', 'index')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-27 20:01:07 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../../..//index...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../..//index', Array, true)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(93): view('../../..//index', Array)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load('resources', '2020', '24-03', '09-52-49-000', '3')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}

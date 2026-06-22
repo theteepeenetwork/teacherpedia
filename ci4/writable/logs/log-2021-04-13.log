@@ -1,0 +1,21 @@
+CRITICAL - 2021-04-13 11:28:10 --> Column 'resource_author' cannot be null
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/Database/MySQLi/Connection.php(331): mysqli->query('INSERT INTO `te...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `te...')
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/Database/BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `te...')
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/Database/BaseBuilder.php(2234): CodeIgniter\Database\BaseConnection->query('INSERT INTO `te...', Array, false)
+#4 /home/sites/2a/f/fae78d7b9a/ci4/app/Models/ResourcesModel.php(161): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Admin/Resources.php(1045): App\Models\ResourcesModel->upload_test_resource(Array)
+#6 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Resources->create_test()
+#7 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Resources))
+#8 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2021-04-13 15:30:23 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('resources/all_r...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('resources/all_r...', Array, true)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(22): view('resources/all_r...', Array)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->view('all_resources')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}

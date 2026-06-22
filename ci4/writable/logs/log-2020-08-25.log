@@ -1,0 +1,340 @@
+CRITICAL - 2020-08-25 04:05:39 --> Unable to determine what should be displayed. A default route has not been specified in the routing file.
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Router/Router.php(697): CodeIgniter\Router\Exceptions\RouterException::forMissingDefaultRoute()
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Router/Router.php(524): CodeIgniter\Router\Router->setDefaultController()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Router/Router.php(192): CodeIgniter\Router\Router->autoRoute('/')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(789): CodeIgniter\Router\Router->handle('/')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(360): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 04:05:40 --> Unable to determine what should be displayed. A default route has not been specified in the routing file.
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Router/Router.php(697): CodeIgniter\Router\Exceptions\RouterException::forMissingDefaultRoute()
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Router/Router.php(524): CodeIgniter\Router\Router->setDefaultController()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Router/Router.php(192): CodeIgniter\Router\Router->autoRoute('/')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(789): CodeIgniter\Router\Router->handle('/')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(360): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:12:13 --> Invalid file: .php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(23): view('', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index()
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:12:49 --> syntax error, unexpected 'if' (T_IF), expecting function (T_FUNCTION) or const (T_CONST)
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Router/Router.php(192): CodeIgniter\Router\Router->autoRoute('home')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(789): CodeIgniter\Router\Router->handle('home')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(360): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-08-25 05:15:11 --> Invalid file: vision.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('vision.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('vision', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(28): view('vision', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('vision')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:15:39 --> Invalid file: vision.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('vision.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('vision', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(28): view('vision', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('vision')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:15:40 --> Invalid file: vision.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('vision.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('vision', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(28): view('vision', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('vision')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:15:47 --> Invalid file: pages.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(28): view('pages', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages', 'vision')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:16:03 --> Invalid file: pages.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(28): view('pages', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages', 'vision')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:17:59 --> Invalid file: pages/keystage.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/keystage....')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages/keystage', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(30): view('pages/keystage', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages/keystage')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:18:12 --> Invalid file: pages/keystage.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/keystage....')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages/keystage', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(30): view('pages/keystage', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages/keystage')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:21:30 --> Invalid file: pages/keystage.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/keystage....')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages/keystage', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(30): view('pages/keystage', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages/keystage')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:21:32 --> Invalid file: pages/keystage.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/keystage....')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages/keystage', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(30): view('pages/keystage', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages/keystage')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:22:10 --> Invalid file: pages/keystage.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/keystage....')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages/keystage', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(30): view('pages/keystage', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages/keystage')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:22:27 --> Invalid file: pages/keystage.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/keystage....')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages/keystage', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(30): view('pages/keystage', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages/keystage')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:22:58 --> Invalid file: pages/keystage.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/keystage....')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages/keystage', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(30): view('pages/keystage', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages/keystage')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:23:08 --> Invalid file: pages/keystage.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/keystage....')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages/keystage', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(30): view('pages/keystage', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages/keystage')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:23:19 --> Invalid file: pages/keystage.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/keystage....')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('pages/keystage', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(30): view('pages/keystage', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('pages/keystage')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 05:29:34 --> include(year5table.html): failed to open stream: No such file or directory
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year5ta...', '/Users/markpear...', 18, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): include()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Resources.php(82): view('../../../resour...', Array)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-08-25 05:34:37 --> include(year5table.html): failed to open stream: No such file or directory
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year5ta...', '/Users/markpear...', 18, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): include()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Resources.php(82): view('../../../resour...', Array)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-08-25 06:06:35 --> Request URI segment is our of range: 3
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/HTTP/URI.php(485): CodeIgniter\HTTP\Exceptions\HTTPException::forURISegmentOutOfRange(3)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Filters/Auth.php(26): CodeIgniter\HTTP\URI->getSegment(3)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(173): App\Filters\Auth->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(378): CodeIgniter\Filters\Filters->run('account', 'before')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-08-25 06:10:57 --> Invalid file: /login.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/login.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('/login', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/User/Users.php(56): view('/login', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\User\Users->index('login')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Users))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 08:22:05 --> Undefined variable: session
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Filters/Auth.php(55): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 55, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('login', 'after')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-08-25 08:22:14 --> Undefined variable: session
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Filters/Auth.php(55): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 55, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('login', 'after')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-08-25 08:22:15 --> Undefined variable: session
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Filters/Auth.php(55): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 55, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('login', 'after')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-08-25 08:22:16 --> Undefined variable: session
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Filters/Auth.php(55): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 55, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('login', 'after')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-08-25 08:22:17 --> Undefined variable: session
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Filters/Auth.php(55): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 55, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('login', 'after')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-08-25 08:22:18 --> Undefined variable: session
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Filters/Auth.php(55): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 55, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('login', 'after')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-08-25 08:22:18 --> Undefined variable: session
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Filters/Auth.php(55): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 55, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('login', 'after')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-08-25 08:22:19 --> Undefined variable: session
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Filters/Auth.php(55): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 55, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('login', 'after')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-08-25 08:36:34 --> Invalid file: user/.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('user/.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('user/', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/User/Users.php(20): view('user/', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\User\Users->index()
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\Users))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 10:03:54 --> syntax error, unexpected '||' (T_BOOLEAN_OR)
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Autoloader/Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('/Users/markpear...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Autoloader/Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Filters\\Aut...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Filters\\Aut...')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Filters/Filters.php(164): spl_autoload_call('App\\Filters\\Aut...')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(378): CodeIgniter\Filters\Filters->run('admin', 'before')
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 11:45:16 --> Invalid file: admin/admin_users/main.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/admin_use...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('admin/admin_use...', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Admin.php(34): view('admin/admin_use...', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Admin->index()
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Admin))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 11:49:34 --> Invalid file: admin/admin.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/admin.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('admin/admin', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Admin_users.php(57): view('admin/admin', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Admin_users->index('login')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Admin_users))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 11:49:36 --> Invalid file: admin/admin.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/admin.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('admin/admin', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Admin_users.php(57): view('admin/admin', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Admin_users->index('login')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Admin_users))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-25 11:50:12 --> Undefined variable: main_content
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Views/admin/login.php(99): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 99, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('/admin/login', Array, true)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Admin_users.php(55): view('/admin/login', Array)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Admin_users->index('login')
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Admin_users))
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-08-25 11:50:21 --> Undefined variable: main_content
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Views/admin/login.php(99): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 99, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('/admin/login', Array, true)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Admin_users.php(55): view('/admin/login', Array)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Admin_users->index('login')
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Admin_users))
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-08-25 11:50:22 --> Undefined variable: main_content
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Views/admin/login.php(99): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 99, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('/admin/login', Array, true)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Admin_users.php(55): view('/admin/login', Array)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Admin_users->index('login')
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Admin_users))
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-08-25 11:50:35 --> Undefined variable: main_content
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Views/admin/login.php(99): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 99, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('/admin/login', Array, true)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Admin_users.php(55): view('/admin/login', Array)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Admin_users->index('login')
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Admin_users))
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

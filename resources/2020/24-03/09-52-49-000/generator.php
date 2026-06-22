@@ -1,0 +1,225 @@
+<?php
+
+$_SESSION['topNumber'] = $_POST['topNumber'];
+$_SESSION['bottomNumber'] = $_POST['bottomNumber'];
+$_SESSION['$remove'] = $_POST['remove'];
+
+  $questions = array();
+  $question = array();
+  $answers = array();
+  $calculation = "addition";
+  $noOfQuestions = 32; 
+   //placeholder for user choice
+   //placeholder for user choice
+
+
+
+  function createNumberString($array) {
+    $questionString = "";
+      foreach($array as $a) {
+        $questionString .= '<div class="digit">' . $a . '</div>';
+      }
+      return $questionString;
+    }
+
+
+    function createQuestion($calculation, $counter) { 
+      $numberOfDigitsTop = $_SESSION['topNumber'];
+      $numberOfDigitsBottom = $_SESSION['bottomNumber'];
+  
+      switch($numberOfDigitsTop) {
+        case 1:
+        $a = rand(1,9);
+        break;
+        case 2:
+        $a = rand(9,99);
+        break;
+        case 3:
+        $a = rand(99,999);
+        break;
+        case 4:
+        $a = rand(99,9999);
+        break;
+        case 5:
+        $a = rand(9999,99999);
+        break;
+        case 6:
+        $a = rand(99999,999999);
+        break;
+        case 7:
+        $a = rand(999999,9999999);
+        break;
+  
+      }
+  
+      switch($numberOfDigitsBottom) {
+        case 1:
+        $b = rand(1,9);
+        break;
+        case 2:
+        $b = rand(9,99);
+        break;
+        case 3:
+        $b = rand(99,999);
+        break;
+        case 4:
+        $b = rand(999,9999);
+        break;
+        case 5:
+        $b = rand(9999,99999);
+        break;
+        case 6:
+        $b = rand(99999,999999);
+        break;
+        case 7:
+        $b = rand(999999,9999999);
+        break;
+  
+      }
+  
+      while($b > $a) {
+        $b = $b - floor($a / 2);
+      }
+  
+
+
+    $answer;
+    $symbol;
+
+    switch($calculation) {
+      case "addition": 
+      $answer = $a + $b;
+      $symbol = "+";
+      break;
+      case "subtraction": 
+      $answer = $a - $b;
+      $symbol = "-";
+      break;
+      case "multiplication": 
+      $answer = $a * $b;
+      $symbol = "x";
+      break;
+    }
+
+    $arrayA = array_reverse(str_split($a));
+    $answerArrayA = array_reverse(str_split($a));
+    $arrayB = array_reverse(str_split($b));
+    $answerArrayB = array_reverse(str_split($b));
+    $arrayAnswer = array_reverse(str_split($answer));
+    $calculationArray = array();
+
+    $toRemove = $_SESSION['$remove'];
+    $storedNumbers = array();
+    while ($toRemove > 0) {
+      $remove1 = rand(0, count($arrayA) - 1);
+      
+      if(!in_array($remove1, $storedNumbers)) {
+        array_push($storedNumbers, $remove1);
+        $arrayA[$remove1] = "_";
+        $toRemove--;
+      }
+      if($toRemove > 1) {
+        $remove2 = rand(0, count($arrayB) - 1);
+        if(!in_array($remove2, $storedNumbers)) {
+          array_push($storedNumbers, $remove2);
+          $arrayB[$remove2] = "_";
+          $toRemove--;
+        }
+      }
+    }
+
+    $calculationArray[0] = '<div class="questionContainer">'. $counter . ") " . createNumberString($arrayA) . "<br />";
+    $calculationArray[1] = $symbol . createNumberString($arrayB) . "<br /><div class='line'></div>";
+    $calculationArray[2] = createNumberString($arrayAnswer) . "<br /></div>";
+
+    $calculationArray[3] = '<div class="questionContainer">'. $counter . ") " . createNumberString($answerArrayA) . "<br />";
+    $calculationArray[4] = $symbol . createNumberString($answerArrayB) . "<br /><div class='line'></div>";
+    $calculationArray[5] = createNumberString($arrayAnswer) . "<br /></div>";
+
+    
+
+    return $calculationArray;
+    }
+
+//run program. Create question generates numnbers and build string by calling function createNumberString
+    for($i = 0; $i < $noOfQuestions; $i++) {
+      $question = createQuestion($calculation, $i+1);
+      $question2 = array_splice($question, 3, 3);
+      foreach($question as $line) {
+        array_push($questions, $line);
+      }
+      foreach($question2 as $line) {
+      array_push($answers, $line);
+      }
+  }
+    
+
+
+?>
+
+<head>
+  <style>
+
+    #infobox {
+      text-align: center;
+      margin: 0;
+      font-size: 1.2em;
+    }
+
+    .outerContainer {
+      position: inherit;
+      
+    }
+
+    .questionContainer {
+      
+      display: inline-block;
+      width: 140px;
+      height: 80px;
+      margin: 20px;
+    }
+
+    .digit {
+      width: 12px;
+      float: right;
+
+    }
+
+    .line {
+      border: 2px solid black;
+      width: 100%;
+    }
+
+</style>
+
+</head>
+
+<body>
+    <page class="page-break-within" size="A4">
+      
+        <h1> <?php echo "Missing " . ucfirst($calculation) . " Problems" ?></h1>
+      
+      <div class=outerContainer>
+
+      <?php 
+                foreach($questions as $question) {
+                  echo $question;
+                }
+                ?>
+        
+              </div>
+              <?php echo $footer; ?>
+            <page class="page-break-within" size="A4">
+
+        <h1> <?php echo ucfirst($calculation) . " Answers" ?></h1>
+
+              <?php 
+                foreach($answers as $answer) {
+                  echo $answer;
+                }
+                ?>
+                <?php echo $footer; ?>
+               
+            </page>
+</body>
+</html>

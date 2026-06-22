@@ -1,0 +1,200 @@
+CRITICAL - 2020-09-01 15:27:49 --> Invalid file: home/contact.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('home/contact.ph...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('home/contact', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(31): view('home/contact', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('home/contact', 'contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 15:28:31 --> Invalid file: home/contact.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('home/contact.ph...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('home/contact', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(31): view('home/contact', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('home/contact', 'contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 15:28:32 --> Invalid file: home/contact.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('home/contact.ph...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('home/contact', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(31): view('home/contact', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->index('home/contact', 'contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 15:32:14 --> Invalid file: contact/contact.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('contact/contact...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('contact/contact', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(57): view('contact/contact', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 15:33:16 --> Invalid file: contact/.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('contact/.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('contact/', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(57): view('contact/', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 15:33:18 --> Invalid file: contact/.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('contact/.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('contact/', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(57): view('contact/', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 15:33:21 --> Invalid file: contact/contact.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('contact/contact...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('contact/contact', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(57): view('contact/contact', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 15:33:26 --> Invalid file: contact.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('contact.php')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('contact', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(57): view('contact', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 15:33:37 --> Invalid file: contact/contact.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('contact/contact...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('contact/contact', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(57): view('contact/contact', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 16:01:16 --> Call to undefined function set_value()
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include()
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('home/contact/co...', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(57): view('home/contact/co...', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-01 16:23:38 --> syntax error, unexpected '->' (T_OBJECT_OPERATOR)
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Router/Router.php(192): CodeIgniter\Router\Router->autoRoute('home/contact/co...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(789): CodeIgniter\Router\Router->handle('home/contact/co...')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(360): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-01 16:23:51 --> strpos() expects parameter 1 to be string, object given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'strpos() expect...', '/Users/markpear...', 709, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Email/Email.php(709): strpos(Object(CodeIgniter\Email\Email), ',')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Email/Email.php(519): CodeIgniter\Email\Email->stringToArray(Object(CodeIgniter\Email\Email))
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(65): CodeIgniter\Email\Email->setTo(Object(CodeIgniter\Email\Email))
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-01 16:23:53 --> strpos() expects parameter 1 to be string, object given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'strpos() expect...', '/Users/markpear...', 709, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Email/Email.php(709): strpos(Object(CodeIgniter\Email\Email), ',')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Email/Email.php(519): CodeIgniter\Email\Email->stringToArray(Object(CodeIgniter\Email\Email))
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(65): CodeIgniter\Email\Email->setTo(Object(CodeIgniter\Email\Email))
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-01 16:24:30 --> strpos() expects parameter 1 to be string, object given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'strpos() expect...', '/Users/markpear...', 709, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Email/Email.php(709): strpos(Object(CodeIgniter\Email\Email), ',')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Email/Email.php(519): CodeIgniter\Email\Email->stringToArray(Object(CodeIgniter\Email\Email))
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(65): CodeIgniter\Email\Email->setTo(Object(CodeIgniter\Email\Email))
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact('contact')
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-01 16:37:42 --> Undefined variable: name
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(68): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/Users/markpear...', 68, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->contact()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-01 18:09:20 --> include(year5table.html): failed to open stream: No such file or directory
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year5ta...', '/Users/markpear...', 18, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): include()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Resources.php(93): view('../../../resour...', Array)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-01 18:09:22 --> include(year5table.html): failed to open stream: No such file or directory
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year5ta...', '/Users/markpear...', 18, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): include()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Resources.php(93): view('../../../resour...', Array)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-01 18:19:47 --> include(year5table.html): failed to open stream: No such file or directory
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year5ta...', '/Users/markpear...', 18, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): include()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Resources.php(93): view('../../../resour...', Array)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-01 18:42:55 --> include(year5table.html): failed to open stream: No such file or directory
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year5ta...', '/Users/markpear...', 18, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): include()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Resources.php(93): view('../../../resour...', Array)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-01 18:42:56 --> include(year5table.html): failed to open stream: No such file or directory
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year5ta...', '/Users/markpear...', 18, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): include()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Resources.php(93): view('../../../resour...', Array)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-01 18:44:32 --> include(year5table.html): failed to open stream: No such file or directory
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year5ta...', '/Users/markpear...', 18, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/resources/2020/06-07-90/07-13-44/index.php(18): include()
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(246): include('/Users/markpear...')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Resources.php(93): view('../../../resour...', Array)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}

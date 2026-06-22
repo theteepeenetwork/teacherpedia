@@ -1,0 +1,20 @@
+CRITICAL - 2021-03-09 13:43:51 --> count(): Parameter must be an array or an object that implements Countable
+#0 /home/sites/2a/f/fae78d7b9a/resources/2020/05-09/14-40-04/generator.php(3): CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parame...', '/home/sites/2a/...', 3, Array)
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(246): include('/home/sites/2a/...')
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(112): view('../../../resour...', Array)
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->loadSheet('62')
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#6 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-03-09 13:43:58 --> count(): Parameter must be an array or an object that implements Countable
+#0 /home/sites/2a/f/fae78d7b9a/resources/2020/05-09/14-40-04/generator.php(3): CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parame...', '/home/sites/2a/...', 3, Array)
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(246): include('/home/sites/2a/...')
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(112): view('../../../resour...', Array)
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->loadSheet('62')
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#6 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

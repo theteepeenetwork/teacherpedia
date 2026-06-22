@@ -1,0 +1,146 @@
+body {
+  background: rgb(204, 204, 204);
+  font-family: "Kite One", sans-serif;
+  font-size: 1.1em;
+  overflow: visible;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+page[size="A4"] {
+  font-size: 0.75em;
+  position: relative;
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+  width: 21cm;
+  height: 29.7cm;
+}
+
+@media print {
+  body,
+  page[size="A4"] {
+    margin: 0;
+    box-shadow: 0 0 0cm rgba(0, 0, 0, 0);
+    page-break-after: always;
+    height: 0;
+  }
+
+
+  .container {
+    padding: 0 !important;
+    margin:0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: unset !important;
+  }
+
+  #infobox {
+    display: none;
+  }
+
+  div.footer {
+    display: none;
+  }
+
+  .break-before {
+    break-before: page;
+  }
+
+
+  nav {
+    display: none;
+  }
+}
+
+h1 {
+  text-align: center;
+}
+
+ul li {
+  list-style: none;
+}
+
+#infobox {
+  text-align: center;
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.button {
+  background-color: #4caf50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 50px;
+}
+
+div.date {
+  position: absolute;
+  bottom: 10px;
+  right: 100px;
+}
+
+div ul {
+  line-height: 2;
+}
+
+div.image {
+  position: absolute;
+  right: 50px;
+  top: 10px;
+}
+
+#logo {
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  max-width: 100px;
+}
+
+.logo {
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  max-width: 100px;
+}
+
+#char {
+  float: right;
+
+  right: 10px;
+  top: 10px;
+  max-width: 150px;
+}
+
+.answer_array th,
+td {
+  border: 1px black solid;
+  margin: 20px;
+  padding: 5px;
+}
+
+.answer_array table {
+  width: 80%;
+  font-size: 0.8rem;
+
+  max-width: 80%;
+}
+
+.answer_array td {
+  width: 25%;
+}
+
+.question_box {
+}

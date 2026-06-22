@@ -1,0 +1,22 @@
+CRITICAL - 2021-01-27 17:11:51 --> include(year4collapsetable.php): failed to open stream: No such file or directory
+#0 /home/sites/2a/f/fae78d7b9a/resources/2021/19-01/12-34-24/index.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year4co...', '/home/sites/2a/...', 25, Array)
+#1 /home/sites/2a/f/fae78d7b9a/resources/2021/19-01/12-34-24/index.php(25): include()
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(246): include('/home/sites/2a/...')
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(93): view('../../../resour...', Array)
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2021-01-27 17:11:53 --> include(year4collapsetable.php): failed to open stream: No such file or directory
+#0 /home/sites/2a/f/fae78d7b9a/resources/2021/19-01/12-34-24/index.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(year4co...', '/home/sites/2a/...', 25, Array)
+#1 /home/sites/2a/f/fae78d7b9a/resources/2021/19-01/12-34-24/index.php(25): include()
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(246): include('/home/sites/2a/...')
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
+#4 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(93): view('../../../resour...', Array)
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
+#6 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#7 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}

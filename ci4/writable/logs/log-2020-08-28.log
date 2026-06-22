@@ -1,0 +1,18 @@
+CRITICAL - 2020-08-28 06:04:31 --> Invalid file: notices/coming-soon.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('notices/coming-...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('notices/coming-...', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(43): view('notices/coming-...', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->notice()
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-08-28 06:05:27 --> Invalid file: notices/notices.php
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('notices/notices...')
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/Common.php(1087): CodeIgniter\View\View->render('notices/notices', Array, true)
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Home.php(44): view('notices/notices', Array)
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Home->notice()
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}

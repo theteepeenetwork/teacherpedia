@@ -1,0 +1,12 @@
+CRITICAL - 2021-02-02 03:51:30 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../../..//index...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../..//index', Array, true)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(93): view('../../..//index', Array)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load('resources', '2020', '20-03', '07-10-51-000', '1')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-02-02 13:32:50 --> Maximum execution time of 300 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}

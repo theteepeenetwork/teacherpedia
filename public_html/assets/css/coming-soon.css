@@ -1,0 +1,239 @@
+:root {
+  --theme-1: #04c9a8;
+  --theme-2: #ffe66c;
+  --theme-3: #f53342;
+  --theme-4: #ff9442;
+}
+
+.header {
+  position: relative;
+  margin: auto;
+  width: 100%;
+}
+
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  max-width: 300px;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  max-width: 1024px;
+  margin: auto;
+  border: 4px solid black;
+  padding: 5px;
+}
+
+section .slide {
+  position: relative;
+  background: #0f0;
+  flex: 1;
+
+  overflow: hidden;
+  transition: 0.5s ease-in-out;
+}
+
+section .slide:last-child {
+  border-right: none;
+}
+
+section .slide:hover {
+  flex-grow: 5;
+}
+
+section .slide:nth-child(1) {
+  background: url("/assets/img/gallery/boy1_940_108.png");
+  background-position: center center;
+  background-size: auto;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+section .slide:nth-child(2) {
+  background: url("/assets/img/gallery/girl2.png");
+  background-position: center center;
+  background-size: auto;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  border-right: 4px black solid;
+  border-left: 4px black solid;
+}
+section .slide:nth-child(3) {
+  background: url("/assets/img/gallery/boy2.png");
+  background-position: center center;
+  background-size: auto;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  border-right: 4px black solid;
+  border-left: 4px black solid;
+}
+section .slide:nth-child(4) {
+  background: url("/assets/img/gallery/girl1.png");
+  background-position: center center;
+  background-size: auto;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+
+section .slide .content {
+  position: absolute;
+  bottom: 0;
+  margin: 40px;
+  padding: 30px;
+  background: #000;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0 s;
+  transform: translateY(100px);
+}
+
+section .slide:hover .content {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  transform: translateY(0);
+}
+
+.content img {
+  position: absolute;
+  top: 0;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+}
+
+.footer h1,
+h2,
+p {
+  text-align: center;
+}
+
+/* Social media icons */
+.social-icons {
+  width: 100%;
+  position: absolute;
+  margin: auto;
+  text-align: center;
+}
+.fa {
+  padding: 20px;
+  font-size: 70px;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  animation: createBox 0.25s;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55acee;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa:hover {
+  opacity: 0.7;
+  transform: scale(1);
+  animation: createBox 0.25s;
+}
+@keyframes createBox {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/*
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
+
+#search-bar-home {
+  width: 90%;
+  max-width: 700px;
+  margin: auto;
+}
+
+#search-button-home {
+  width: 150px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.featurette-divider {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.carousel {
+  min-height: 500px;
+  max-height: 500px;
+}
+
+.carousel a {
+  color: white;
+}
+
+.background {
+  min-height: 500px;
+  max-height: 500px;
+  height: 100vw;
+  width: 100vw;
+}
+
+.background img {
+  width: 50vw;
+  max-width: 300px;
+  margin: auto;
+}
+
+#slide1 {
+  background-color: var(--theme-3);
+}
+
+#slide2 {
+  background-color: var(--theme-1);
+}
+
+#slide3 {
+  background-color: var(--theme-2);
+}
+*/

@@ -1,0 +1,21 @@
+CRITICAL - 2021-06-09 14:05:48 --> Too few arguments to function App\Controllers\Resources::subjects(), 1 passed in /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php on line 914 and exactly 2 expected
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->subjects('results')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-06-09 14:25:49 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('resources/all_r...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('resources/all_r...', Array, true)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(22): view('resources/all_r...', Array)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->view('all_resources')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-06-09 16:58:50 --> Too few arguments to function App\Controllers\Resources::subjects(), 0 passed in /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php on line 914 and exactly 2 expected
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->subjects()
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}

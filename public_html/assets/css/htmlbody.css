@@ -1,0 +1,96 @@
+:root {
+  --theme-1: #00bcad;
+  --theme-2: #fcbd01;
+  --theme-3: #f53342;
+  --theme-4: #04c9a8;
+}
+
+.header-footer {
+  background-color: var(--theme-1);
+}
+
+#search-input {
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: 1px solid #ddd;
+  margin-left: 10px;
+}
+
+#search-input:focus {
+  outline: 3px solid #ddd;
+}
+
+#navbar-button {
+  margin: none;
+  width: 85%;
+}
+
+.my-btn {
+  border-color: var(--theme-2);
+  background: var(--theme-2);
+}
+.my-btn:hover {
+  border-color: var(--theme-3);
+  background-color: var(--theme-3);
+  color: white;
+}
+
+html {
+  position: absolute;
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+}
+
+body {
+  padding-top: 0px;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* responsive text */
+@media screen and (min-width: 601px) {
+  .subjects {
+  }
+}
+@media screen and (max-width: 600px) {
+  .subjects {
+    font-size: 60%;
+  }
+}
+
+.thumbnail {
+  float: left;
+  padding: 0px;
+  margin-bottom: 20px;
+}
+
+.container {
+  min-height: 65vh;
+}
+
+#footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background: var(--header-bg-color);
+}
+
+h3 {
+  vertical-align: top;
+}
+
+.card-columns {
+  column-gap: 0.25rem;
+}
+
+#link {
+  font-size: 1rem;
+}
+
+.doitdifferent {
+  max-width: 60vw;
+  display: block;
+  margin: 0 auto;
+}

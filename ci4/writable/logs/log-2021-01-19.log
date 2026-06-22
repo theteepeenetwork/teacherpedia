@@ -1,0 +1,7 @@
+CRITICAL - 2021-01-19 12:34:25 --> Argument 1 passed to url_title() must be of the type string, null given, called in /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Admin/Resources.php on line 257
+#0 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Admin/Resources.php(257): url_title(NULL, 'dash', true)
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Resources->do_uploads()
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Resources))
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}

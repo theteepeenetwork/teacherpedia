@@ -1,0 +1,34 @@
+CRITICAL - 2020-12-14 11:00:45 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/HTTP/URI.php(485): CodeIgniter\HTTP\Exceptions\HTTPException::forURISegmentOutOfRange(3)
+#1 /home/sites/2a/f/fae78d7b9a/ci4/app/Filters/Auth.php(32): CodeIgniter\HTTP\URI->getSegment(3)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('user', 'after')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-12-14 11:00:46 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/HTTP/URI.php(485): CodeIgniter\HTTP\Exceptions\HTTPException::forURISegmentOutOfRange(3)
+#1 /home/sites/2a/f/fae78d7b9a/ci4/app/Filters/Auth.php(32): CodeIgniter\HTTP\URI->getSegment(3)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/system/Filters/Filters.php(199): App\Filters\Auth->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response))
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(418): CodeIgniter\Filters\Filters->run('user/login', 'after')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-12-14 20:16:56 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('resources/all_r...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('resources/all_r...', Array, true)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(22): view('resources/all_r...', Array)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->view('all_resources')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-12-14 22:29:39 --> 
+#0 /home/sites/2a/f/fae78d7b9a/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('resources/all_r...')
+#1 /home/sites/2a/f/fae78d7b9a/ci4/system/Common.php(1087): CodeIgniter\View\View->render('resources/all_r...', Array, true)
+#2 /home/sites/2a/f/fae78d7b9a/ci4/app/Controllers/Resources.php(22): view('resources/all_r...', Array)
+#3 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->view('all_resources')
+#4 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
+#5 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
