@@ -1,9 +1,0 @@
-CRITICAL - 2023-08-15 10:48:47 --> 
-#0 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia - downloaded 15.8.23/ci4/system/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../../../resour...')
-#1 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia - downloaded 15.8.23/ci4/system/Common.php(1087): CodeIgniter\View\View->render('../../../resour...', Array, true)
-#2 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia - downloaded 15.8.23/ci4/app/Controllers/Resources.php(93): view('../../../resour...', Array)
-#3 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia - downloaded 15.8.23/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->load()
-#4 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia - downloaded 15.8.23/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
-#5 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia - downloaded 15.8.23/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#6 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia - downloaded 15.8.23/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
-#7 {main}

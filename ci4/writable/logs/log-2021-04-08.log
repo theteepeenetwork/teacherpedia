@@ -1,6 +1,0 @@
-CRITICAL - 2021-04-08 03:14:28 --> Too few arguments to function App\Controllers\Resources::subjects(), 0 passed in /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php on line 914 and exactly 2 expected
-#0 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(914): App\Controllers\Resources->subjects()
-#1 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Resources))
-#2 /home/sites/2a/f/fae78d7b9a/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#3 /home/sites/2a/f/fae78d7b9a/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
-#4 {main}

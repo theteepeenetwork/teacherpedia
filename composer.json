@@ -1,7 +1,0 @@
-{
-  "minimum-stability": "dev",
-  "require": {
-    "codeigniter4/framework": "^4.0",
-    "myth/auth": "^1.0@beta"
-  }
-}
