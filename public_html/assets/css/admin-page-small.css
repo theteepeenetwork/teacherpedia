@@ -1,0 +1,42 @@
+@media (min-width:360px) {
+  body {
+    
+  }
+
+  
+}
+
+#header1 {
+  font-size: 2em;
+}
+
+.sidebar-logo {
+  display: none;
+}
+
+.sidebar-container .header {
+  background-color: var(--theme-2);
+}
+
+.sidebar-container {
+  margin-top: 10px;
+  width: 100%;
+  background-color: var(--theme-1);
+  color: white;
+}
+
+.sidebar-container a {
+  color: white;
+}
+
+#menu {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.sidebar-navigation li {
+  list-style: none;
+  text-align: center;
+  width: 100%;
+  margin-left: -40;
+} 

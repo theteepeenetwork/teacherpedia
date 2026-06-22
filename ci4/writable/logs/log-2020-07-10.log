@@ -1,0 +1,48 @@
+CRITICAL - 2020-07-10 09:12:26 --> Trying to get property 'link' of non-object
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Models/Image.php(125): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/Users/markpear...', 125, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Manage_gallery.php(244): App\Models\Image->image_delete('assets')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Manage_Gallery->image_delete('assets', 'css', 'dashboard', 'css', 'js.js')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manage_Gallery))
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-07-10 09:12:26 --> Trying to get property 'link' of non-object
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Models/Image.php(125): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/Users/markpear...', 125, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Manage_gallery.php(244): App\Models\Image->image_delete('70')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Manage_Gallery->image_delete('70')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manage_Gallery))
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-07-10 09:12:28 --> Trying to get property 'link' of non-object
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Models/Image.php(125): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/Users/markpear...', 125, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Manage_gallery.php(244): App\Models\Image->image_delete('assets')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Manage_Gallery->image_delete('assets', 'css', 'dashboard', 'css', 'js.js')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manage_Gallery))
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-07-10 09:12:29 --> Trying to get property 'link' of non-object
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Models/Image.php(125): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/Users/markpear...', 125, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Manage_gallery.php(244): App\Models\Image->image_delete('71')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Manage_Gallery->image_delete('71')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manage_Gallery))
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-07-10 09:12:30 --> Trying to get property 'link' of non-object
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Models/Image.php(125): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/Users/markpear...', 125, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Manage_gallery.php(244): App\Models\Image->image_delete('assets')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Manage_Gallery->image_delete('assets', 'css', 'dashboard', 'css', 'js.js')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manage_Gallery))
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-07-10 09:12:30 --> Trying to get property 'link' of non-object
+#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Models/Image.php(125): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/Users/markpear...', 125, Array)
+#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Manage_gallery.php(244): App\Models\Image->image_delete('72')
+#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Manage_Gallery->image_delete('72')
+#3 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Manage_Gallery))
+#4 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}

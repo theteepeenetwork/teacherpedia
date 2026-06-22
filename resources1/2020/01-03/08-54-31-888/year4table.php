@@ -1,0 +1,1049 @@
+<div id="year4">
+        <table class="table table-bordered" border="1" width="982" cellspacing="0" cellpadding="0">
+            <tbody>
+                <td colspan="9">You can select up to 25 questions.</td>
+                <tr>
+                    <td colspan="2" rowspan="2" width="215">
+                        <p>Assessment Focus</p>
+                    </td>
+                    <td colspan="6" width="767">
+                        <p>Year 4 Long Term Planning</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="" width="257">
+                        <p>Below</p>
+                    </td>
+                    <td colspan="" width="20">
+                        <p>No. of questions</p>
+                    </td>
+                    <td colspan="" width="246">
+                        <p>Meeting</p>
+                    </td>
+                    <td colspan="" width="20">
+                        <p>No. of questions</p>
+                    </td>
+                    <td colspan="" width="265">
+                        <p>Exceeding</p>
+                    </td>
+                    <td colspan="" width="20">
+                        <p>No. of questions</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="24" width="103">
+                        <p>Number</p>
+                    </td>
+                    <td rowspan="4" width="113">
+                        <p>Counting</p>
+                    </td>
+                    <td width="202">
+                        <p>I can count in multiples of 25, 1000 and 11</p>
+                    </td>
+                    <td>
+                        <select name="id[random_25_50_11][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p> I can count in multiples of 7 and 9</p>
+                    </td>
+                    <td>
+                        <select name="id[random_7_9][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td rowspan="4" width="227">
+                        <p>I can count in multiples of 6, 7, 9, 11, 12, 25 and 1000 <strong>(Children should know all tables by this point)</strong></p>
+                    </td>
+                    <td rowspan="4">
+                        <select name="id[random_count_x][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="202">
+                        <p>I can find 1000 more than any given number</p>
+                    </td>
+                    <td>
+                        <select name="id[thousand_more][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>I can find 1000 less than any given number</p>
+                    </td>
+                    <td>
+                        <select name="id[thousand_less][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" width="202">
+                        <p>I can count backwards through to zero</p>
+                    </td>
+                    <td>
+                        <select name="id[count_through_zero][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td width="202">
+                        <p>I can say how many more is needed to make 100 from a given number</p>
+                    </td>
+                    <td>
+                        <select name="id[number_bond_100][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>I can say how many more is needed to make 1000 from a given number</p>
+                    </td>
+                    <td>
+                        <select name="id[number_bond_1000][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2" width="113">
+                        <p>Comparing numbers</p>
+                    </td>
+                    <td width="202" colspan="3">
+                        <p>I can order and compare numbers beyond 1000</p>
+                    </td>
+                    <td>
+                        <select name="id[_order_size_order][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td rowspan="2" width="227">
+                        <p>I can compare numbers with the same number to decimal places up to 2 decimal places (copied from fractions)</p>
+                    </td>
+                    <td rowspan="2">
+                        <select name="id[decimals_size_order][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="202" colspan="3">
+                        <p>I can use the symbols < and > to state inequalities</p>
+                    </td>
+                    <td>
+                        <select name="id[more_or_less_than][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="113">
+                        <p>Identifying, representing & estimating numbers</p>
+                    </td>
+                    <td width="202" colspan="5">
+                        <p>I can identify, represent and estimate numbers using different representations; including measures</p>
+                    </td>
+                    <td>
+                        <select name="id[none][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                <tr>
+                    <td rowspan="2" width="113">
+                        <p>Reading & writing numbers</p>
+                    </td>
+                    <td width="202">
+                        <p>I can read numbers in words and write as digits to 1000.</p>
+                    </td>
+                    <td>
+                        <select name="id[words_write_in_numerals_below][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>I can read numbers in words and write in digits to at least 10,000 and vice versa.</p>
+                    </td>
+                    <td>
+                        <select name="id[rand_nums_words][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td rowspan="1" width="227">
+                        <p>I can read, write, order and compare numbers to 100,000</p>
+                    </td>
+                    <td rowspan="1">
+                        <select name="id[d_exceeding_rand_nums_words][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="202" colspan="3">
+                        <p>I can read Roman numerals to 100 (I to C)</p>
+                    </td>
+                    <td>
+                        <select name="id[read_roman_numerals][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>I can read Roman numerals to 500. </p>
+                    </td>
+                    <td>
+                        <select name="id[roman_numerals_exceeding][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3" width="113">
+                        <p>Understanding place value</p>
+                    </td>
+                    <td width="202">
+                        <p>I can recognise the place value of each digit in 4-digit numbers (ThHTU)</p>
+                    </td>
+                    <td>
+                        <select name="id[place_value_below][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>I can recognise the place value of each digit in 5-digit numbers</p>
+                    </td>
+                    <td>
+                        <select name="id[place_value][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="227">
+                        <p>I can recognise the place value of each digit in 6-digit numbers</p>
+                    </td>
+                    <td>
+                        <select name="id[place_value_exceeding][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="202">
+                        <p>I can double numbers beyond 100 (e.g. 200, 300, 400 etc)</p>
+                    </td>
+                    <td>
+                        <select name="id[double_number_multiplesof100][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>I can double numbers beyond 100 involving tens (e.g. 120, 140 etc)</p>
+                    </td>
+                    <td>
+                        <select name="id[double_number_multiplesof_10][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="227">
+                        <p>I can double numbers beyond 100 involving tens and units (e.g 115)</p>
+                    </td>
+                    <td>
+                        <select name="id[_double_number_1000][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="202">
+                        <p>I can halve numbers above 100 (e.g. 200, 300, 400 etc)</p>
+                    </td>
+                    <td>
+                        <select name="id[halve_number_multipleof100][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>I can halve numbers above 100 (e.g. 120, 140 etc)</p>
+                    </td>
+                    <td>
+                        <select name="id[_halve_number_answerendingzero][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="227">
+                        <p>I can halve numbers above 100 involving tens that will end in 5 (e.g 110)</p>
+                    </td>
+                    <td>
+                        <select name="id[halve_number_answermultiple5][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="113">
+                        <p>Rounding</p>
+                    </td>
+                    <td width="202">
+                        <p>I can round any number to the nearest 10</p>
+                    </td>
+                    <td>
+                        <select name="id[ten_round_numbers][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>I can round any number to the nearest 100</p>
+                    </td>
+                    <td>
+                        <select name="id[round_numbers_hundred][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="227">
+                        <p>I can round any number to the nearest <strong>10, 100 or 1000</strong></p>
+                    </td>
+                    <td>
+                        <select name="id[round_ten_and_hundred_thousand][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="1" width="113">
+                        <p>Addition and subtraction</p>
+                    </td>
+                    <td width="202" colspan="5">
+                        <p>I can estimate and use inverse operations to check answers</p>
+                    </td>
+                    <td>
+                        <select name="id[rand_rounding][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="113" rowspan="2">
+                        <p>Written methods</p>
+                        <p>(+ and -)</p>
+                    </td>
+                    <td width="202">
+                        <p>I can add HTU and HTU</p>
+                    </td>
+                    <td>
+                        <select name="id[HTO_HTO_addition][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td>
+                        <p>I can add HTU and HTU (bridging 1000)</p>
+                    </td>
+                    <td>
+                        <select name="id[bridge1000_addition_HTO_HTO][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="227" rowspan="2">
+                        <p>I can add and subtract numbers up to 4-digits</p>
+                    </td>
+                    <td rowspan="2">
+                        <select name="id[add_or_subtract_4_digit][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>I can subtract TU from HTU (HTU - TU)</p>
+                    </td>
+                    <td>
+                        <select name="id[subtraction_HTO_TO][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>I can subtract HTU from HTU</p>
+                    </td>
+                    <td>
+                        <select name="id[subtraction_HTO_HTO][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="4" width="113">
+                        <p>Multiplication and division</p>
+                    </td>
+                    <td width="202" colspan="1">
+                        <p>I can recall multiplication facts for all the multiplication tables up to 12 x 12.</p>
+                    </td>
+                    <td>
+                        <select name="id[all_rand][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="202">
+                        <p>I can recall inverse multiplication facts for all the multiplication tables up to 12 x 12.</p>
+                    </td>
+                    <td>
+                        <select name="id[rand_inverse][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td rowspan="2" width="227">
+                        <p>I can multiply up to 12x12 and recall inverse facts.</p>
+                    </td>
+                    <td rowspan="2">
+                        <select name="id[multiply_inverse_rand][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="208" colspan="1">
+                        <p>I can use factor pairs in mental calculations.</p>
+                    </td>
+                    <td>
+                        <select name="id[factor_pairs][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208" colspan="1">
+                        <p>I can multiply 3 numnbers.</p>
+                    </td>
+                    <td>
+                        <select name="id[_3_number_multiply][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2" width="202" colspan="5">
+                        <p>I can recognise and use factor pairs and commutatively in mental calculations</p>
+                    </td>
+                    <td rowspan="2">
+                        <select name="id[commutativity][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+                    <td rowspan="4" width="113">
+                        <p>Written methods (x and ÷)</p>
+                    </td>
+                    <td width="202">
+                        <p>TU x U</p>
+                    </td>
+                    <td>
+                        <select name="id[TO_O_multiply][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td rowspan="4" width="208"> </td>
+                    <td rowspan="4" width="38"> </td>
+                    <td rowspan="4" width="227">
+                        <p>* I can Calculate TU x TU</p>
+                    </td>
+                    <td rowspan="4">
+                        <select name="id[x_multiply_TO_TO][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    
+                 </tr>
+                 <tr>
+                    <td width="202">
+                        <p>HTU x U</p>
+                    </td>
+                    <td>
+                        <select name="id[multiply_HTO_O][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                 </tr>
+                 <tr>
+                    <td width="202">
+                        <p>I can divide TU by U</p>
+                    </td>
+                    <td>
+                        <select name="id[TO_O_divide][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                <!--<tr>
+                    <td width="113">
+                        <p>Fractions (including decimals and %)</p>
+                    </td>
+                    <td width="202">
+                        <p>* I can recognise and show, using diagrams, families of common equivalent fractions</p>
+                        <p>* I can count up and down in hundredths; recognising that hundredths happen when dividing by 100 and dividing tenths by 10.</p>
+                        <p>* I can find the effect of dividing a one or two digit number by 10 and 100, identifying the value of the digits in the answer as units, tenths and hundredths.</p>
+                        <p>* I can recognise and write decimal equivalents to 1/2, 1/4 and 3/4.</p>
+                        <p>* I can recognise and write decimal equivalents of any number of tenths</p>
+                    </td>
+                    <td>
+                        <select name="id[none][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="208">
+                        <p>* I can add and subtract fractions where the denominator is the same number.</p>
+                        <p>* I can find the effect of dividing a one or two digit number by 10 and 100, identifying the value of the digits in the answer as units, tenths and hundredths.</p>
+                        <p>*I can round decimals with one decimal place to the nearest whole number.</p>
+                        <p>* I can recognise and write decimal equivalents of any number of hundredths</p>
+                        <p>* I can solve problems involving increasingly harder fractions to find quantities where the answer is a whole number.</p>
+                    </td>
+                    <td>
+                        <select name="id[none][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td width="227">
+                        <p>* I can compare numbers with the same number to decimal places up to 2 decimal places</p>
+                        <p>* I can solve simple measure and money problems involving fractions and decimals to two decimal places.</p>
+                        <p>* I can recognise and write decimal equivalents of any number of tenths or hundredths</p>
+                        <p>* I can solve problems involving increasingly harder fractions to find quantities where the answer is a whole number.</p>
+                    </td>
+                    <td>
+                        <select name="id[none][]">
+                            <option disabled selected value>-</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>-->
+            </tbody>
+        </table>
+</div>

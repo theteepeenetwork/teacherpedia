@@ -1,0 +1,73 @@
+.listItem {
+position: relative;
+  height:200px;
+  
+  border-radius: 25px;
+  max-width:200px;
+  height:200px;
+  text-align: center;
+  font-size: 1em;
+  margin: 10px;
+  color: white;
+
+}
+
+.colour0 {
+	background: #d389ff;
+}
+
+.colour1 {
+	background: #56bae4;
+}
+
+.colour2 {
+	background: #ff4242;
+}
+
+.colour3 {
+	background: #6edd6e;
+}
+
+.colour4 {
+	background: #806cd8;
+}
+
+.row {
+  margin: 10px;
+}
+
+.item {
+	position: relative;
+	top: 40px;
+	padding: 10px;
+}
+
+
+#searchResults {
+  position: relative;
+  
+  width: 100%;
+}
+
+.outer {
+  border: solid grey 1px;
+  border-radius: 25px;
+  position: inherit;
+  width:  95%;
+  margin: auto;
+  padding: 15px;
+  margin-bottom: 5px;
+}
+
+.resultsTable {
+  width: 100%;
+  
+}
+
+.thumbnail {
+  width: 150px;
+}
+
+p {
+  padding: 10px;
+}
