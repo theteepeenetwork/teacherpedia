@@ -37,9 +37,9 @@ class Admin_Controller extends Controller
 	{
 		// Do Not Edit This Line
 		parent::initController($request, $response, $logger);
-		$this->response->CSP->setDefaultSrc('http://localhost:8888/');
+		$this->response->CSP->setDefaultSrc(base_url());
 		$styleSrc = [
-			'http://localhost:8888/',
+			base_url(),
 			'https://stackpath.bootstrapcdn.com/',
 			'https://fonts.googleapis.com/',
 			'https://fonts.googleapis.com/',
@@ -47,7 +47,7 @@ class Admin_Controller extends Controller
 
 		];
 		$scriptSrc = [
-			'http://localhost:8888/',
+			base_url(),
 			'https://pagead2.googlesyndication.com/',
 			'https://ajax.googleapis.com/',
 			'https://cdnjs.cloudflare.com/',
@@ -60,7 +60,7 @@ class Admin_Controller extends Controller
 
 		];
 		$fontSrc = [
-			'http://localhost:8888/',
+			base_url(),
 			'https://stackpath.bootstrapcdn.com/',
 			'https://fonts.gstatic.com/',
 			'https://fonts.googleapis.com/',
@@ -70,7 +70,7 @@ class Admin_Controller extends Controller
 		$this->response->CSP->addStyleSrc($styleSrc);
 		$this->response->CSP->addFontSrc($fontSrc);
 		$this->response->CSP->addScriptSrc($scriptSrc);
-		$this->response->CSP->addObjectSrc('http://localhost:8888/');
+		$this->response->CSP->addObjectSrc(base_url());
 
 
 

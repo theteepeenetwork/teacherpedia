@@ -32,13 +32,13 @@ class Database extends \CodeIgniter\Database\Config
 	 * @var array
 	 */
 	public $development = [
-		'hostname' => 'localhost:8889',
-		'username' => 'root',
-		'password' => 'root',
+		'hostname' => 'localhost',
+		'username' => 'teacherpedia',
+		'password' => 'teacherpedia',
 		'database' => 'teacherpedia',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
-		'     ' => TRUE,
+		'pConnect' => FALSE,
 		'DBDebug'  => TRUE,
 		'cacheOn'  => FALSE,
 		'cacheDir' => '',
@@ -51,10 +51,10 @@ class Database extends \CodeIgniter\Database\Config
 	];
 
 	public $tests = [
-		'hostname' => 'shareddb1d.hosting.stackcp.net',
-		'username' => 'testuser-d583',
-		'password' => 'pianodawG1',
-		'database' => 'development-testing-36353d1f',
+		'hostname' => '',
+		'username' => '',
+		'password' => '',
+		'database' => '',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => TRUE,
@@ -70,10 +70,10 @@ class Database extends \CodeIgniter\Database\Config
 	];
 
 	public $production = [
-		'hostname' => 'shareddb-f.hosting.stackcp.net',
-		'username' => 'higher',
-		'password' => 'pianodawG1',
-		'database' => 'teacherpedia-36393d77',
+		'hostname' => '',
+		'username' => '',
+		'password' => '',
+		'database' => '',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => TRUE,
@@ -124,6 +124,24 @@ class Database extends \CodeIgniter\Database\Config
 	public function __construct()
 	{
 		parent::__construct();
+
+		// Read connection credentials from the environment (ci4/.env) so
+		// that no secrets are stored in this file. Safe non-secret
+		// defaults are used as fallbacks when the env vars are not set.
+		$this->production['hostname'] = env('database.production.hostname', '');
+		$this->production['username'] = env('database.production.username', '');
+		$this->production['password'] = env('database.production.password', '');
+		$this->production['database'] = env('database.production.database', '');
+
+		$this->tests['hostname'] = env('database.tests.hostname', '');
+		$this->tests['username'] = env('database.tests.username', '');
+		$this->tests['password'] = env('database.tests.password', '');
+		$this->tests['database'] = env('database.tests.database', '');
+
+		$this->development['hostname'] = env('database.development.hostname', 'localhost');
+		$this->development['username'] = env('database.development.username', 'teacherpedia');
+		$this->development['password'] = env('database.development.password', 'teacherpedia');
+		$this->development['database'] = env('database.development.database', 'teacherpedia');
 
 		// Ensure that we always set the database group to 'tests' if
 		// we are currently running an automated test suite, so that

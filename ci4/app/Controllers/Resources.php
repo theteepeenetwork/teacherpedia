@@ -82,6 +82,12 @@ class Resources extends BaseController
 
         $resources = new ResourcesModel();
         $row = $resources->load_resource($slug);
+
+        // No resource matches this slug - show a proper 404 instead of fataling.
+        if (empty($row)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException($slug);
+        }
+
         // Capitalize the first letter
         $data['title']       = ucfirst($row->resource_name);
         $data['banner']      = $row->resource_banner;
@@ -90,7 +96,16 @@ class Resources extends BaseController
         $data['level']       = $row->level;
         $data['dir']         = "resources/" . $row->link;
         $data['action']      = '/resources/loadSheet/' . $row->id;
-        $data['form']        = view('../../../' . $row->link . '/index', $data);
+
+        // The interactive worksheet form is a generated file stored alongside the
+        // resource. Some legacy resources are missing/broken, so render the page
+        // gracefully rather than letting a missing include take down the request.
+        try {
+            $data['form'] = view('../../../' . $row->link . '/index', $data);
+        } catch (\Throwable $e) {
+            log_message('error', 'Resource form failed to load for "' . $slug . '": ' . $e->getMessage());
+            $data['form'] = '<p>This interactive resource is currently unavailable.</p>';
+        }
 
 
         $data['main'] = view('templates/resource', $data);

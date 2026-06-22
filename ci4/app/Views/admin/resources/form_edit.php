@@ -84,7 +84,7 @@
                                 <div class="form-group">
                                     <label class="control-label" for="submit">View Test</label>
                                     <div class="">
-                                        <button class="btn btn-primary"><?php echo '<a style="color: white" target="_blank" href=' . base_url("resources/load/") . $row->link . '/' . $row->id . '>' . "View" . '</a>' ?></button>
+                                        <button class="btn btn-primary"><?php echo '<a style="color: white" target="_blank" href="' . base_url("resources/load/") . $row->link . '/' . $row->id . '">' . "View" . '</a>' ?></button>
 
                                     </div>
                                 </div>

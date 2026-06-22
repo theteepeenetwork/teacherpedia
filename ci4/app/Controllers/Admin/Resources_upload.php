@@ -68,7 +68,7 @@ function do_uploads($page = "")
         if ($this->create_code_files($dirLoc, '/' . $supporting_code1_name, $_POST['supporting_code1']) && $this->create_code_files($dirLoc, '/' . $supporting_code2_name, $_POST['supporting_code2']) && $this->create_code_files($dirLoc, '/' . $supporting_code3_name, $_POST['supporting_code3'])) {
             $supporting_code_created = 'Supporting code created';
         } else {
-            $supporting_code_created = 'Supprting code failed';
+            $supporting_code_created = 'Supporting code failed';
         }
     }
 

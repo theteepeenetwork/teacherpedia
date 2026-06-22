@@ -29,8 +29,8 @@ if (substr(php_sapi_name(), 0, 3) === 'cgi')
 	die("The cli tool is not supported when running php-cgi. It needs php-cli to function!\n\n");
 }
 
-// Path to the front controller
-define('FCPATH', __DIR__ . '/public' . DIRECTORY_SEPARATOR);
+// Path to the front controller (the public web root lives alongside ci4/)
+define('FCPATH', dirname(__DIR__) . '/public_html' . DIRECTORY_SEPARATOR);
 
 // Load our paths config file
 require 'app/Config/Paths.php';
@@ -47,8 +47,14 @@ $app = require rtrim($paths->systemDirectory, '/ ') . '/bootstrap.php';
 $console = new \CodeIgniter\CLI\Console($app);
 
 // We want errors to be shown when using it from the CLI.
-error_reporting(-1);
+// E_DEPRECATED is excluded so PHP 8.4 deprecation notices from the bundled
+// CodeIgniter 4.0.3 framework are not converted into fatal exceptions.
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 ini_set('display_errors', 1);
+// Restore pre-8.1 mysqli behaviour (return false on error instead of throwing).
+if (function_exists('mysqli_report')) {
+	mysqli_report(MYSQLI_REPORT_OFF);
+}
 
 // Show basic information before we do anything else.
 $console->showHeader();

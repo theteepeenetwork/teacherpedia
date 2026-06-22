@@ -162,19 +162,19 @@ class Resources extends Admin_Controller
 
 
         //move resources to /deleted folder
-        if (!$this->dir_is_empty('application/views/' . $row->link)) {
-            $dir_contents = array_diff(scandir('application/views/' . $row->link), array(
+        if (!$this->dir_is_empty(APPPATH . 'Views/' . $row->link)) {
+            $dir_contents = array_diff(scandir(APPPATH . 'Views/' . $row->link), array(
                 '.',
                 '..'
             ));
             foreach ($dir_contents as $file) {
-                rename('application/views/' . $row->link . '/' . $file, 'deleted/' . $row->link . '/' . $file);
-                if (file_exists('application/views' . $row->link . $file)) {
-                    unlink('application/views' . $row->link . $file);
+                rename(APPPATH . 'Views/' . $row->link . '/' . $file, 'deleted/' . $row->link . '/' . $file);
+                if (file_exists(APPPATH . 'Views/' . $row->link . '/' . $file)) {
+                    unlink(APPPATH . 'Views/' . $row->link . '/' . $file);
                 }
             }
-            if (file_exists('application/views/' . $row->link)) {
-                rmdir('application/views/' . $row->link);
+            if (file_exists(APPPATH . 'Views/' . $row->link)) {
+                rmdir(APPPATH . 'Views/' . $row->link);
             }
         }
 
@@ -307,14 +307,14 @@ class Resources extends Admin_Controller
 
         //write code files to created diretory
         if ($this->create_code_files($dirLoc, "/index.php", $_POST['form_code'])) {
-            $index_created = 'index.php failed';
-        } else {
             $index_created = 'index.php created';
+        } else {
+            $index_created = 'index.php failed';
         }
         if ($this->create_code_files($dirLoc, '/' . $action_name, $_POST['generator'])) {
-            $action_created = $action_name . ' failed';
-        } else {
             $action_created = $action_name . ' created';
+        } else {
+            $action_created = $action_name . ' failed';
         }
         if (!empty($_POST['supporting_code1']) || !empty($_POST['supporting_code2']) || !empty($_POST['supporting_code3'])) {
             if (!empty($_POST['supporting_code1'])) {
@@ -331,7 +331,7 @@ class Resources extends Admin_Controller
             /*if ($this->create_code_files($dirLoc, '/' . $supporting_code1_name, $_POST['supporting_code1']) && $this->create_code_files($dirLoc, '/' . $supporting_code2_name, $_POST['supporting_code2']) && $this->create_code_files($dirLoc, '/' . $supporting_code3_name, $_POST['supporting_code3'])) {
                 $supporting_code_created = 'Supporting code failed';
             } else {
-                $supporting_code_created = 'Supprting code created';
+                $supporting_code_created = 'Supporting code created';
             }*/
         }
 
@@ -1114,10 +1114,14 @@ class Resources extends Admin_Controller
 
     function create_code_files($dir, $file_name, $form_code)
     {
-        $theFile = fopen($dir . $file_name, "w") or die("Unable to open file!");
+        $theFile = fopen($dir . $file_name, "w");
+        if ($theFile === false) {
+            return false;
+        }
         $txt = $form_code;
         fwrite($theFile, $txt);
         fclose($theFile);
+        return true;
     }
 
     function clean_file_names($name)

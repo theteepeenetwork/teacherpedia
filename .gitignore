@@ -1,0 +1,19 @@
+# CodeIgniter writable runtime artifacts (logs, sessions, cache, debugbar)
+ci4/writable/logs/*
+!ci4/writable/logs/.gitkeep
+ci4/writable/session/*
+!ci4/writable/session/.gitkeep
+ci4/writable/cache/*
+!ci4/writable/cache/.gitkeep
+ci4/writable/debugbar/*
+ci4/writable/uploads/*
+
+# Local secrets — keep real credentials out of version control.
+# (ci4/.env in this repo holds throwaway LOCAL dev values only.)
+.env.local
+*.env.local
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp

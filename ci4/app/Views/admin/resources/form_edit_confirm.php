@@ -19,6 +19,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">First</th>
                             </tr>
+                            <tr>
                             <td>
                                 Author:
                             </td>
@@ -26,7 +27,7 @@
                                 <?php echo $row->resource_author; ?>
                             </td>
                             </tr>
-                            <row>
+                            <tr>
                                 <td>
                                     Resource Name:
                                 </td>
@@ -34,7 +35,7 @@
                                     <?php echo $row->resource_name; ?>
                                 </td>
                                 </tr>
-                                <row>
+                                <tr>
                                     <td>
                                         Slug:
                                     </td>
