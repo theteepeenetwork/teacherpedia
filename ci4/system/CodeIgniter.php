@@ -867,11 +867,41 @@ class CodeIgniter
 			throw PageNotFoundException::forControllerNotFound($this->controller, $this->method);
 		}
 		else if (! method_exists($this->controller, '_remap') &&
-				! is_callable([$this->controller, $this->method], false)
+				! $this->isPublicControllerMethod($this->controller, $this->method)
 		)
 		{
 			throw PageNotFoundException::forMethodNotFound($this->method);
 		}
+	}
+
+	//--------------------------------------------------------------------
+
+	/**
+	 * Determines whether the routed method is a public, callable method on
+	 * the controller.
+	 *
+	 * PHP 8 removed support for calling non-static methods statically, so the
+	 * original is_callable([$classString, $method], false) check returns false
+	 * for ordinary (non-static) controller methods. We resolve this with
+	 * Reflection, which works regardless of PHP version.
+	 *
+	 * @param string $controller Fully-qualified controller class name.
+	 * @param string $method     Method name to invoke.
+	 *
+	 * @return boolean
+	 */
+	protected function isPublicControllerMethod($controller, string $method): bool
+	{
+		try
+		{
+			$reflection = new \ReflectionMethod($controller, $method);
+		}
+		catch (\ReflectionException $e)
+		{
+			return false;
+		}
+
+		return $reflection->isPublic() && ! $reflection->isStatic();
 	}
 
 	//--------------------------------------------------------------------

@@ -37,11 +37,11 @@ class BaseController extends Controller
 	{
 		// Do Not Edit This Line
 		parent::initController($request, $response, $logger);
-		$this->response->CSP->setDefaultSrc('http://localhost:8888/');
+		$this->response->CSP->setDefaultSrc(base_url());
 		$styleSrc = [
 			'http://teacherpedia.co.uk/',
 			'http://test.teacherpedia.co.uk/',
-			'http://localhost:8888/',
+			base_url(),
 			'https://stackpath.bootstrapcdn.com/',
 			'https://fonts.googleapis.com/',
 			'https://cdnjs.cloudflare.com/',
@@ -62,7 +62,7 @@ class BaseController extends Controller
 		$scriptSrc = [
 			'http://teacherpedia.co.uk/',
 			'http://test.teacherpedia.co.uk/',
-			'http://localhost:8888/',
+			base_url(),
 			'https://pagead2.googlesyndication.com/',
 			'https://ajax.googleapis.com/',
 			'https://cdnjs.cloudflare.com/',
@@ -84,7 +84,7 @@ class BaseController extends Controller
 		$fontSrc = [
 			'http://teacherpedia.co.uk/',
 			'http://test.teacherpedia.co.uk/',
-			'http://localhost:8888/',
+			base_url(),
 			'https://stackpath.bootstrapcdn.com/',
 			'https://fonts.gstatic.com/',
 			'https://cdnjs.cloudflare.com/',
@@ -96,7 +96,7 @@ class BaseController extends Controller
 			'http://test.teacherpedia.co.uk/',
 			'http://www.w3.org/',
 			'https://www.paypalobjects.com/',
-			'http://localhost:8888',
+			base_url(),
 			'www.googletagmanager.com',
 			'https://www.google-analytics.com/',
 			'http://www.w3.org/2000/svg/ data:',
@@ -116,7 +116,7 @@ class BaseController extends Controller
 		$this->response->CSP->addScriptSrc($scriptSrc);
 		$this->response->CSP->addImageSrc($imageSrc);
 		$this->response->CSP->addConnectSrc($connectSource);
-		$this->response->CSP->addObjectSrc('http://localhost:8888/');
+		$this->response->CSP->addObjectSrc(base_url());
 		$this->response->CSP->addObjectSrc('http://test.teacherpedia.co.uk:8888/');
 		$this->response->CSP->addObjectSrc('http://teacherpedia.co.uk:8888/');
 

@@ -7,8 +7,15 @@
   | make sure they don't make it to production. And save us hours of
   | painful debugging.
  */
-error_reporting(1);
+// E_DEPRECATED/E_USER_DEPRECATED are excluded so PHP 8.4 deprecation notices
+// from the bundled CodeIgniter 4.0.3 framework are not promoted to fatal
+// exceptions by the framework error handler.
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 ini_set('display_errors', '1');
+// Restore pre-8.1 mysqli behaviour (return false on error instead of throwing).
+if (function_exists('mysqli_report')) {
+	mysqli_report(MYSQLI_REPORT_OFF);
+}
 
 /*
   |--------------------------------------------------------------------------

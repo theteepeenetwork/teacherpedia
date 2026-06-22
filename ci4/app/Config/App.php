@@ -23,8 +23,9 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost:8888/';
-	//public $baseURL = 'http://teacherpedia.co.uk/';
+	// Sensible local default; override per-environment via `app.baseURL` in ci4/.env
+	// (CodeIgniter reads that env var into this property automatically).
+	public $baseURL = 'http://localhost:8080/';
 
 	/*
 	|--------------------------------------------------------------------------
