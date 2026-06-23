@@ -9,6 +9,74 @@ class ResourcesModel extends Model
     protected $table = 'resources';
     protected $primaryKey = 'id';
 
+    /**
+     * Canonical home for generated resource code.
+     * Stored DB links are relative to app/Views, e.g.
+     * "resources_generated/2025/07-01/17-02-09".
+     */
+    public const VIEW_BASE = 'resources_generated';
+
+    /**
+     * Normalise a stored resource "link" to a view path under app/Views.
+     *
+     * New resources are stored under "resources_generated/...". Legacy rows
+     * were stored under "resources/..."; rewrite that prefix so the app keeps
+     * working whether or not the DB migration has been run yet.
+     */
+    public static function viewBase(?string $link): string
+    {
+        $link = trim((string) $link, '/');
+
+        if ($link === '' || str_starts_with($link, self::VIEW_BASE . '/')) {
+            return $link;
+        }
+
+        if (str_starts_with($link, 'resources/')) {
+            return self::VIEW_BASE . '/' . substr($link, strlen('resources/'));
+        }
+
+        return $link;
+    }
+
+    /**
+     * Insert a keyword or, if it already exists, bump its usage count.
+     * Returns the keyword id.
+     */
+    public function upsert_keyword(string $word): int
+    {
+        $word = strtolower(trim($word));
+        if ($word === '') {
+            return 0;
+        }
+
+        $builder  = $this->db->table('keywords');
+        $existing = $builder->where('word', $word)->get()->getRow();
+
+        if ($existing !== null) {
+            $this->db->table('keywords')
+                ->where('word', $word)
+                ->set('count', 'count + 1', false)
+                ->update();
+
+            return (int) $existing->id;
+        }
+
+        $this->db->table('keywords')->insert(['word' => $word, 'count' => 1]);
+
+        return (int) $this->db->insertID();
+    }
+
+    /**
+     * Archive a resource into deleted_resources and remove it from the live
+     * resources table (which removes it from the website).
+     */
+    public function delete_resource(array $archive, $id)
+    {
+        $this->db->table('deleted_resources')->insert($archive);
+
+        return $this->db->table('resources')->delete(['id' => $id]);
+    }
+
 
     public function load_latest_resources($slug = false)
     {
@@ -57,33 +125,12 @@ class ResourcesModel extends Model
 
         return $array;
     }
-    public function load_test_resource($id)
-    {
-        $db = db_connect();
-        $builder = $db->table('test_resources');
-        $builder = $builder->getWhere(['id' => $id]);
-        $array = $builder->getRow();
-
-        return $array;
-    }
 
     public function get_resources()
     {
 
         $db = db_connect();
         $builder = $db->table('resources');
-        //$builder->where('keywords');
-        $builder = $builder->get();
-        $query = $builder->getResult();
-
-        return $query;
-    }
-
-    public function get_test_resources()
-    {
-
-        $db = db_connect();
-        $builder = $db->table('test_resources');
         //$builder->where('keywords');
         $builder = $builder->get();
         $query = $builder->getResult();
@@ -145,183 +192,7 @@ class ResourcesModel extends Model
         return $builder->update($data, ["id" => $id]);
         //$query = $this-db->query("SELECT * FROM resources_numeracy ORDER BY id DESC LIMIT 20");
     }
-
-    public function update_test_resource($data, $id)
-    {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('test_resources');
-        return $builder->update($data, ["id" => $id]);
-        //$query = $this-db->query("SELECT * FROM resources_numeracy ORDER BY id DESC LIMIT 20");
-    }
-
-    public function upload_test_resource($data)
-    {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('test_resources');
-        $query = $builder->insert($data);
-        return $query;
-
-        //$query = $this-db->query("SELECT * FROM resources_numeracy ORDER BY id DESC LIMIT 20");
-    }
 }
 
 
 
-/*
-class Tpresources extends CI_Model
-{
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    public function load_database()
-    { {
-            //Query the data table for every record and row
-            $DB2   = $this->load->database('default', TRUE);
-            $query = $DB2->query("SELECT * FROM resources");
-            return $query;
-        }
-    }
-
-    public function load_test_database()
-    { {
-            //Query the data table for every record and row
-            $DB2   = $this->load->database('default', TRUE);
-            $query = $DB2->query("SELECT * FROM test_resources");
-            return $query;
-        }
-    }
-
-    public function get_resources($per_page, $subject)
-    {
-
-        $data = array();
-        switch ($subject) {
-            case 'numeracy':
-                $category = 23;
-                break;
-            case 'English':
-                $category = 22;
-                break;
-            default:
-                $category = 0;
-                break;
-        }
-
-        $query = $this->db->like('category', $category)->get('resources', $per_page, $this->uri->segment(4));
-
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $row) {
-                $data[] = $row;
-            }
-
-            return $data;
-        }
-
-        return false;
-    }
-
-    public function get_test_resources($per_page)
-    {
-
-        $query = $this->db->select('id, resource_thumb, resource_name, year, resource_excerpt, link')->get('test_resources', $per_page, $this->uri->segment(4));
-
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $row) {
-                $data[] = $row;
-            }
-
-            return $data;
-        }
-
-        return false;
-    }
-
-    public function load_latest_resources()
-    {
-        //Query the data table for every record and row
-        $DB2   = $this->load->database('default', TRUE);
-        $query = $DB2->query("SELECT * FROM resources ORDER BY id DESC LIMIT 20");
-        return $query;
-    }
-
-    public function upload_resource($data)
-    {
-        $this->db->insert('resources', $data);
-        //$query = $this-db->query("SELECT * FROM resources_numeracy ORDER BY id DESC LIMIT 20");
-    }
-
-    public function upload_test_resource($data)
-    {
-        $this->db->insert('test_resources', $data);
-        //$query = $this-db->query("SELECT * FROM resources_numeracy ORDER BY id DESC LIMIT 20");
-    }
-
-
-    public function delete_resource($data, $id)
-    {
-        $this->db->insert('deleted_resources', $data);
-        $this->db->delete('resources', array(
-            'id' => $id
-        ));
-    }
-
-    public function delete_test_resource($data, $id)
-    {
-        $this->db->insert('deleted_resources', $data);
-        $this->db->delete('test_resources', array(
-            'id' => $id
-        ));
-    }
-
-    function get_random_feature()
-    {
-        $query = $this->db->query('SELECT * FROM resources ORDER BY RAND() LIMIT 1');
-        return $query;
-    }
-
-
-
-    public function load_keystage()
-    { {
-            //Query the data table for every record and row
-            $query = $this->db->query("SELECT * FROM category WHERE parent_id = 1");
-            return $query;
-        }
-    }
-
-
-
-    public function load_subject($arg_keystage = null)
-    {
-        //Query the data table for every record and row
-        if (isset($arg_keystage)) {
-
-            $string = "SELECT * FROM category WHERE parent_id = ?";
-            $query  = $this->db->query($string, $arg_keystage);
-            return $query;
-        }
-    }
-
-    //working
-
-    public function load_topics($arg_subject = null)
-    {
-        if (isset($arg_subject)) {
-            //fetch data with parent id of keystage and subject title
-            $topic = $this->db->get_where('category', array(
-                'parent_id' => $arg_subject
-            ));
-
-            return $topic;
-        }
-    }
-
-    public function search($keyword)
-    {
-        return $data = array(
-            '1' => "Hello",
-        );
-    }
-}*/

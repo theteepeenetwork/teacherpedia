@@ -18,7 +18,7 @@ class Resources extends BaseController
 
         //pass database result to view as array
         $data['title']   = ucfirst($page);
-        $data['breadcrumbs'] = $this->request->uri->getSegments();;
+        $data['breadcrumbs'] = $this->request->getUri()->getSegments();
         $data['main']    = view('resources/' . $page, $data);
 
         return view('index', $data);
@@ -52,7 +52,7 @@ class Resources extends BaseController
         return view('index', $data);
     }
 
-    public function subjects($page = '', $subject)
+    public function subjects($page = '', $subject = '')
     {
         $data['title'] = $page;
 
@@ -68,7 +68,7 @@ class Resources extends BaseController
         }
 
         $data['table'] = $results;
-        $data['breadcrumbs'] = $this->request->uri->getSegments();
+        $data['breadcrumbs'] = $this->request->getUri()->getSegments();
         $data['main'] = view('resources/results', $data);
         return view('index', $data);
     }
@@ -76,74 +76,57 @@ class Resources extends BaseController
     public function load($page = '')
     {
         //Get resource details from database
-        //slug is last segment of the URI. Get total to get last. 
-        $segment = $this->request->uri->getTotalSegments();
-        $slug = $this->request->uri->getSegment($segment);
+        //slug is last segment of the URI. Get total to get last.
+        $uri     = $this->request->getUri();
+        $segment = $uri->getTotalSegments();
+        $slug    = $uri->getSegment($segment);
 
         $resources = new ResourcesModel();
         $row = $resources->load_resource($slug);
+
+        if ($row === null) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Resource not found: ' . $slug);
+        }
+
+        // Resource code now lives under app/Views/resources_generated/...
+        // and is rendered through the view layer (no longer web-served).
+        $base = ResourcesModel::viewBase($row->link);
+
         // Capitalize the first letter
         $data['title']       = ucfirst($row->resource_name);
         $data['banner']      = $row->resource_banner;
         $data['thumbnail']   = $row->resource_thumb;
         $data['description'] = $row->resource_description;
         $data['level']       = $row->level;
-        $data['dir']         = "resources/" . $row->link;
-        $data['action']      = '/resources/loadSheet/' . $row->id;
-        $data['form'] = view(base_url( $row->link . '/index'), $data);
-
-
+        $data['dir']         = $base;
+        $data['action']      = '/resource/loadSheet/' . $row->id;
+        $data['form']        = view($base . '/index', $data);
 
         $data['main'] = view('templates/resource', $data);
         return view('index', $data);
     }
 
-    public function loadSheet($id)
+    public function loadSheet($id = null)
     {
-        $session = \Config\Services::session();
         $data['title'] = ucfirst('Resource'); // Capitalize the first letter
-        $segment = $this->request->uri->getTotalSegments();
-        $id = $this->request->uri->getSegment($segment);
-
+        $uri     = $this->request->getUri();
+        $segment = $uri->getTotalSegments();
+        $id      = $uri->getSegment($segment);
 
         $resources = new ResourcesModel();
         $row = $resources->load_action($id);
-        $urlstring        = '../../../' . $row->link . '/' . $row->action;
 
-        return view($urlstring, $data);
+        if ($row === null) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Resource not found: ' . $id);
+        }
+
+        // Render the generator (action) file as a view; strip any .php so the
+        // view finder does not double-append the extension.
+        $base   = ResourcesModel::viewBase($row->link);
+        $action = pathinfo((string) $row->action, PATHINFO_FILENAME);
+
+        return view($base . '/' . $action, $data);
     }
-
-    public function load_test_resources($page = '')
-    {
-        $data['title'] = ucfirst($page); // Capitalize the first letter
-        //call Tpresources class to load resources database
-        $db = new ResourcesModel();
-
-        //pagination
-        $data['base_url']   = "/resources/load_test_resources/numeracy";
-        $data['total_rows'] = $db->num_rows();
-        $data['per_page']   = 12;
-        $data['num_links']  = 5;
-        $resources          = $db->get_test_resources($data['per_page']);
-
-        // call function to create array from database results. 
-        $results = $this->create_list_table($resources);
-
-        //save results to table and pass to view
-        $data['resources'] = $results;
-
-
-        $this->pagination->initialize($data);
-
-
-
-        $data['links'] = $this->pagination->create_links();
-
-        //pass database result to view as array
-        $data['main'] = $this->load->view('resources/' . $page, $data, TRUE);
-        $this->load->view('index', $data);
-    }
-
 
 
     public function create_list_table($array)

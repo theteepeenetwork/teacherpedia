@@ -81,25 +81,7 @@
 
                         </ul>
                     </li>
-                    <li>
-                        <div class="navList__subheading row row--align-v-center">
-                            <span class="navList__subheading-icon"><i class="fas fa-briefcase-medical"></i></span>
-                            <span class="navList__subheading-title">Edit Test Resources</span>
-                        </div>
-                        <ul class="subList subList">
-                            <a href="/admin/resources/test_resource">
-                                <li class=" subList__item">
-                                    Add Test Resource
-                                </li>
-                            </a>
-                            <a href="admin/resources/list_test_resources">
-                                <li class=" subList__item">
-                                    Edit Test Resource
-                                </li>
-                            </a>
-                        </ul>
-                    </li>
-                    <!-- 
+                    <!--
                     ***************************************************
                     ***************************************************
                     ***************************************************
