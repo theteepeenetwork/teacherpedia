@@ -41,47 +41,14 @@ spark, composer.json     project root
   prefix; `ResourcesModel::viewBase()` also normalises legacy paths at runtime.
 
 ## Running locally (MAMP)
-
-**Requirements:** PHP **8.2+** (CodeIgniter 4.7 will not run on PHP 7.x/8.0/8.1).
-In MAMP, set Preferences → PHP → Standard version to 8.2 or newer, and point the
-Apache document root at this project's `public_html/` folder.
-
-### 1. Install the framework (one time, and after every `git pull`)
-`vendor/` is intentionally **not** committed, so the framework must be installed
-with Composer or you will get:
-`Failed to open stream: .../vendor/codeigniter4/framework/system/Boot.php`.
-
-If you have a global `composer`:
-```bash
-cd /path/to/teacherpedia
-composer install
-```
-
-If you don't, use MAMP's PHP with a local `composer.phar` (adjust the php8.2.0
-folder to match your installed MAMP PHP version):
-```bash
-cd /path/to/teacherpedia
-PHP=/Applications/MAMP/bin/php/php8.2.0/bin/php
-"$PHP" -r "copy('https://getcomposer.org/installer','composer-setup.php');"
-"$PHP" composer-setup.php && rm composer-setup.php
-"$PHP" composer.phar install
-```
-Tip: if `php` on your shell PATH is not 8.2+, prefix spark/composer commands with the
-full MAMP PHP path above (e.g. `"$PHP" spark routes`).
-
-### 2. Configure
-- `.env` (repo root) should contain `CI_ENVIRONMENT = development`.
-- The `development` DB group in `app/Config/Database.php` targets MySQL at
-  `localhost:8889` (`root`/`root`, db `teacherpedia`) — adjust to match your MAMP.
-- Base URL is `http://localhost:8888/` (`app/Config/App.php`).
-
-### 3. Migrate & smoke test
-```bash
-php spark migrate    # normalise the resource `link` column (one time)
-php spark routes     # should print the routes table with no fatal
-```
-Then browse `/`, open a resource at `/resource/<slug>`, and submit a worksheet form
-to confirm it auto-generates.
+1. `composer install` (installs the framework into `vendor/`).
+2. Ensure `.env` has `CI_ENVIRONMENT = development`. The `development` DB group in
+   `app/Config/Database.php` targets MySQL at `localhost:8889` (`root`/`root`, db
+   `teacherpedia`). Point MAMP's Apache docroot at `public_html/`.
+3. App base URL is `http://localhost:8888/` (`app/Config/App.php`).
+4. Apply the link migration once: `php spark migrate`.
+5. Smoke test: `php spark routes`, then browse `/`, `/resource/<slug>`, and submit a
+   worksheet form to confirm it generates.
 
 ## Recommended follow-ups (not yet done)
 1. **Enable CSRF protection.** It is currently off because the existing forms (login,
