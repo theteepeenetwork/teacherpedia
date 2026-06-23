@@ -1,0 +1,27 @@
+{
+    "name": "teacherpedia/app",
+    "description": "Teacherpedia - printable worksheet generator (CodeIgniter 4)",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.1",
+        "codeigniter4/framework": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": false
+    },
+    "scripts": {
+        "post-update-cmd": [],
+        "post-autoload-dump": []
+    }
+}
