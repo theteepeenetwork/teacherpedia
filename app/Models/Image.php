@@ -6,127 +6,101 @@ use CodeIgniter\Model;
 
 class Image extends Model
 {
+    protected $table      = 'images';
+    protected $primaryKey = 'id';
 
-    function __construct()
-    {
-        $this->table = 'images';
-    }
+    protected $allowedFields = [
+        'title',
+        'file_name',
+        'alt',
+        'created',
+        'html_link',
+        'link',
+        'status',
+    ];
 
-    /* 
-     * Returns rows from the database based on the conditions 
-     * @param array filter data based on the passed parameters 
+    /*
+     * Returns rows from the database based on the conditions
+     * @param array filter data based on the passed parameters
      */
     public function getRows($params = array())
     {
-        $db = db_connect();
+        $db      = \Config\Database::connect();
         $builder = $db->table('images');
         $builder->select('*');
-        $query = $builder->get();
-        $rowArray = $query->getResultArray();
-        return $rowArray;
 
-        if (array_key_exists("where", $params)) {
+        if (array_key_exists('where', $params)) {
             foreach ($params['where'] as $key => $val) {
-                $builder->getWhere($key, $val);
+                $builder->where($key, $val);
             }
         }
 
-        if (array_key_exists("returnType", $params) && $params['returnType'] == 'count') {
-            $result = $this->db->count_all_results();
-        } else {
-            if (array_key_exists("id", $params)) {
-                $builder->getWhere('id', $params['id']);
-                $query = $builder->get();
-                $result = $query->getRowArray();
-            } else {
-                $builder->orderBy('created', 'desc');
-                if (array_key_exists("start", $params) && array_key_exists("limit", $params)) {
-                    $this->db->limit($params['limit'], $params['start']);
-                } elseif (!array_key_exists("start", $params) && array_key_exists("limit", $params)) {
-                    $this->db->limit($params['limit']);
-                }
-
-                $query = $builder->get();
-                $result = ($query->getFieldCount() > 0) ? $query->getResultArray() : FALSE;
-            }
+        if (array_key_exists('returnType', $params) && $params['returnType'] == 'count') {
+            return $builder->countAllResults();
         }
 
-        // Return fetched data 
-        return $result;
+        if (array_key_exists('id', $params)) {
+            $query = $builder->where('id', $params['id'])->get();
+
+            return $query->getRowArray();
+        }
+
+        $builder->orderBy('created', 'desc');
+        if (array_key_exists('start', $params) && array_key_exists('limit', $params)) {
+            $builder->limit($params['limit'], $params['start']);
+        } elseif (! array_key_exists('start', $params) && array_key_exists('limit', $params)) {
+            $builder->limit($params['limit']);
+        }
+
+        $query = $builder->get();
+
+        return $query->getResultArray();
     }
 
     public function view($id)
     {
-        $db = db_connect();
+        $db      = \Config\Database::connect();
         $builder = $db->table('images');
-        $query = $builder->getWhere(['id' => $id]);
-        $result = $query->getRow();
+        $query   = $builder->getWhere(['id' => $id]);
 
-        return $result;
+        return $query->getRow();
     }
 
     public function upload_images($data)
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('images');
-        $builder->insert($data);
-        //$query = $this-db->query("SELECT * FROM resources_numeracy ORDER BY id DESC LIMIT 20");
+
+        return $builder->insert($data);
     }
 
-    /* 
-     * Insert image data into the database 
-     * @param $data data to be insert based on the passed parameters 
-     */
-    /*public function insert($data = array())
-    {
-        if (!empty($data)) {
-            // Add created and modified date if not included 
-            if (!array_key_exists("created", $data)) {
-                $data['created'] = date("Y-m-d H:i:s");
-            }
-            if (!array_key_exists("modified", $data)) {
-                $data['modified'] = date("Y-m-d H:i:s");
-            }
-
-            // Insert member data 
-            $insert = $this->db->insert($this->table, $data);
-
-            // Return the status 
-            return $insert ? $this->db->insert_id() : false;
-        }
-        return false;
-    }
-
-    /* 
-     * Update image data into the database 
-     * @param $data array to be update based on the passed parameters 
-     * @param $id num filter data 
+    /*
+     * Update image data into the database
+     * @param $data array to be update based on the passed parameters
+     * @param $id num filter data
      */
     public function update_image($data, $id)
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('images');
-        $row = $builder->where(['id' => $id]);
-        $result = $row->update($data);
-        return $result;
+
+        return $builder->where('id', $id)->update($data);
     }
 
-    /* 
-     * Delete image data from the database 
-     * @param num filter data based on the passed parameter 
+    /*
+     * Delete image data from the database
+     * @param num filter data based on the passed parameter
+     * @return string the link of the deleted row (so the file can be unlinked)
      */
     public function image_delete($id)
     {
-        // Delete member data 
-        $db = db_connect();
+        $db      = \Config\Database::connect();
         $builder = $db->table('images');
-        $query = $builder->getWhere(['id' => $id]);
-        $row = $query->getRow();
-        $link = $row->link;
 
-        $query = $builder->where('id', $id)->delete();
+        $row  = $builder->getWhere(['id' => $id])->getRow();
+        $link = $row !== null ? $row->link : '';
 
-        // Return the status 
+        $builder->where('id', $id)->delete();
 
         return $link;
     }
