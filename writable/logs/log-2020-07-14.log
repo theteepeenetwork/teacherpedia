@@ -1,5 +1,0 @@
-CRITICAL - 2020-07-14 04:28:04 --> syntax error, unexpected '*', expecting end of file
-#0 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(360): CodeIgniter\CodeIgniter->tryToRouteIt(NULL)
-#1 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#2 /Users/markpearson/Google Drive/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
-#3 {main}

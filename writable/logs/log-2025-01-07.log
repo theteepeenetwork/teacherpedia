@@ -1,7 +1,0 @@
-CRITICAL - 2025-01-07 16:59:17 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Users/markpearson/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Resources.php on line 257
-#0 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/app/Controllers/Admin/Resources.php(257): url_title(NULL, 'dash', true)
-#1 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(914): App\Controllers\Admin\Resources->do_uploads()
-#2 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Resources))
-#3 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/ci4/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#4 /Users/markpearson/Documents/Projects/My Websites/Teacherpedia/4.0 CI teacherpedia 1.1/Teacherpedia/public_html/index.php(45): CodeIgniter\CodeIgniter->run()
-#5 {main}
