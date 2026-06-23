@@ -1,5 +1,5 @@
 
- <form class="needs-validation" id="questionsform" action="<?php echo base_url();?>resources/loadSheet/generator" method="post" name="form">
+ <form class="needs-validation" id="questionsform" action="<?php echo $action?>" method="post" name="form">
         Choose the maximum number of digits for the top number.<br />
         <table style="width:100%">
           <tr>

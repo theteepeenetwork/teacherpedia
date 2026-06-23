@@ -3,7 +3,7 @@
 </head>
 <div class="container">
     <h1>Arithmetic questions</h1>
-    <form class="needs-validation" id="questionsform" action="<?php echo base_url();?>resources/loadSheet/y6WorksheetGenerator/generator" method="post" name="form">
+    <form class="needs-validation" id="questionsform" action="<?php echo $action?>" method="post" name="form">
     <div class="form-group" style="margin: auto">
         <p>Select the year group and add questions. To add questions from another year, just change year and add more.</p>
         <div style="width: 100%;">
