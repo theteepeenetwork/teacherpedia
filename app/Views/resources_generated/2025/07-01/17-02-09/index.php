@@ -24,7 +24,7 @@
             <?php @include "year5table.html"; ?>
         </div>
         <div id="year6" style="">
-            <?php @include "year6table.html"; ?>
+            <?php @include "y6table.php"; ?>
         </div>
         <br/>
         <button type="submit">Submit</button>
