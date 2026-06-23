@@ -5,7 +5,7 @@ namespace App\Controllers\Admin;
 use App\Models\Image;
 use RuntimeException;
 
-class Manage_Gallery extends Admin_Controller
+class Manage_gallery extends Admin_Controller
 {
     protected $helpers = ['url', 'text', 'filesystem'];
 
