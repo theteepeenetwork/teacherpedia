@@ -15,16 +15,16 @@
         <div id="year2" style="display:none">
         </div>
         <div id="year3" style="display:none">
-            <?php include "year3table.html"; ?>
+            <?php @include "year3table.html"; ?>
         </div>
         <div id="year4" style="display:none">
-            <?php include "year4table.html"; ?>
+            <?php @include "year4table.html"; ?>
         </div>
         <div id="year5" style="display:none">
-            <?php include "year5table.html"; ?>
+            <?php @include "year5table.html"; ?>
         </div>
         <div id="year6" style="">
-            <?php include "year6table.html"; ?>
+            <?php @include "year6table.html"; ?>
         </div>
         <br/>
         <button type="submit">Submit</button>

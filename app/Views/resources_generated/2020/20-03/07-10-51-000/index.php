@@ -12,7 +12,7 @@
         </div>
 
         <div id="year5" style="">
-            <?php include "year5table.php"; ?>
+            <?php @include "year5table.php"; ?>
         </div>
 
         <br/>

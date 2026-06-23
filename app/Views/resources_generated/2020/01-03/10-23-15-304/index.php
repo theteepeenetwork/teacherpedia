@@ -5,7 +5,7 @@
             <br />
         </div>
         <div id="year3" style="">
-            <?php include "year3table.php"; ?>
+            <?php @include "year3table.php"; ?>
         </div>
         <br/>
         <button type="submit">Submit</button>
