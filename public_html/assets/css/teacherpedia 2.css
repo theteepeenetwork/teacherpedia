@@ -1,0 +1,787 @@
+/* =============================================================================
+   teacherpedia.css — SHARED foundation stylesheet
+   -----------------------------------------------------------------------------
+   The single stylesheet loaded by both layouts (public.php + app.php).
+   Feature pages should reuse the component classes below instead of inline
+   styles. Colours / radii / spacing are taken verbatim from the design mockups
+   (Home.dc.html, Multi-Generator.dc.html, Worksheet Builder.dc.html, etc.).
+
+   SECTIONS
+     1. Design tokens (:root)
+     2. Base / reset / typography
+     3. Layout helpers (.wrap, .stack, .row)
+     4. Buttons (.btn, .btn-primary, .btn-ghost, .btn-dark)
+     5. Chips / pills / tags / badges
+     6. Cards
+     7. Form fields (.fld, .field, .switch)
+     8. Public site header (.site-header / .nav / .navlink)
+     9. Public dark footer (.site-footer)
+    10. Tool-page chrome (.app-*, panels, difficulty selector, segmented)
+    11. Worksheet "paper" / sheet styles (.sheet)
+    12. Utilities & misc
+   ========================================================================== */
+
+
+/* =============================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+:root {
+  /* Surfaces */
+  --bg:           #f3ede1;   /* page cream */
+  --card:         #ffffff;   /* default card */
+  --card-warm:    #fffdf7;   /* warm paper card */
+  --panel:        #ffffff;   /* tool-page side panels */
+
+  /* Ink / text */
+  --ink:          #1c2420;   /* primary text */
+  --muted:        #5c6159;   /* secondary text */
+  --muted2:       #9a9f95;   /* tertiary / labels */
+  --faint:        #a8a294;   /* faintest hints on paper */
+
+  /* Brand greens (accent is themable per tool page via --accent) */
+  --green:        #1f8a4d;
+  --green-dark:   #206e40;
+  --green-light:  #6cc78e;
+  --green-tint:   #e7f5ed;   /* light green chip background */
+  --accent:       var(--green);
+
+  /* Dark surfaces */
+  --dark:         #1a1f1c;
+  --dark-2:       #1c2420;   /* footer / dark sections */
+  --dark-3:       #26302a;   /* dark card */
+  --on-dark:      #c3c8be;   /* body text on dark */
+  --on-dark-mut:  #a7ad9f;   /* muted text on dark */
+
+  /* Accent colours used by strand dots / activity tiles */
+  --blue:         #2a6fdb;
+  --purple:       #7a4fbf;
+  --teal:         #0f9b9b;
+  --terracotta:   #c0563a;
+  --amber:        #b8742e;
+
+  /* Hairlines & shadows */
+  --line:         rgba(28,36,32,.09);
+  --line-2:       rgba(28,36,32,.16);
+  --shadow-sm:    0 1px 2px rgba(28,36,32,.04);
+  --shadow-card:  0 1px 2px rgba(28,36,32,.04);
+  --shadow-lift:  0 18px 36px -18px rgba(28,36,32,.34);
+  --shadow-btn:   0 8px 18px -6px rgba(31,138,77,.55);
+
+  /* Radii */
+  --r-sm:   8px;
+  --r-md:   11px;
+  --r-lg:   16px;
+  --r-xl:   22px;
+  --r-pill: 999px;
+
+  /* Layout */
+  --wrap:   1200px;
+  --gutter: 32px;
+
+  /* Type families */
+  --font-head: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Hanken Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+
+/* =============================================================================
+   2. BASE / RESET / TYPOGRAPHY
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: #bfe6cd; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.05;
+  margin: 0;
+  color: var(--ink);
+}
+
+code, kbd, pre, samp { font-family: var(--font-mono); }
+
+img { max-width: 100%; display: block; }
+
+button { font-family: inherit; }
+
+input, select, textarea { font-family: inherit; }
+
+p { margin: 0; }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+
+/* =============================================================================
+   3. LAYOUT HELPERS
+   ========================================================================== */
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.row    { display: flex; align-items: center; gap: 12px; }
+.row.wrap-row { flex-wrap: wrap; }
+.stack  { display: flex; flex-direction: column; gap: 12px; }
+.spacer { flex: 1; }
+
+.grid    { display: grid; gap: 20px; }
+.grid-2  { grid-template-columns: repeat(2, 1fr); }
+.grid-3  { grid-template-columns: repeat(3, 1fr); }
+.grid-4  { grid-template-columns: repeat(4, 1fr); }
+
+/* Section eyebrow label (small uppercase green kicker above headings) */
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+
+/* =============================================================================
+   4. BUTTONS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  padding: 12px 22px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn:disabled { opacity: .55; cursor: default; transform: none; }
+
+/* Primary green CTA */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 12px 26px -8px rgba(31,138,77,.6);
+}
+.btn-primary:hover { background: var(--green-dark); }
+
+/* Ghost / white outline button */
+.btn-ghost {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--line-2);
+}
+.btn-ghost:hover { background: #fff; }
+
+/* Dark button (used in hero "Regenerate" etc.) */
+.btn-dark {
+  background: var(--dark-2);
+  color: #fff;
+  box-shadow: 0 12px 26px -8px rgba(28,36,32,.6);
+}
+
+/* Small button for tool chrome */
+.btn-sm  { padding: 9px 14px; font-size: 13.5px; border-radius: var(--r-md); }
+.btn-lg  { padding: 16px 34px; font-size: 16px; }
+
+/* Inline text link with animated green underline (nav style) */
+.linkline {
+  position: relative;
+  font-weight: 700;
+  color: var(--green);
+}
+
+
+/* =============================================================================
+   5. CHIPS / PILLS / TAGS / BADGES
+   ========================================================================== */
+
+/* Toggle chip — used for year filters (off state) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line-2);
+  background: #fff;
+  color: var(--muted);
+  border-radius: var(--r-pill);
+  padding: 5px 13px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .12s, color .12s, border-color .12s;
+}
+.chip:hover { border-color: rgba(28,36,32,.3); }
+
+/* Active / selected chip */
+.chip-on {
+  border-color: transparent;
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Soft green pill (status / eyebrow badge) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 13px;
+  border-radius: var(--r-pill);
+  background: #fff;
+  border: 1px solid rgba(28,36,32,.1);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+.pill .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Tag — small rectangular label (e.g. "Live", "Coming soon") */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  background: var(--green-tint);
+  padding: 4px 9px;
+  border-radius: 6px;
+}
+.tag-muted { color: #a8a294; background: #f0ede5; }
+.tag-soon  { color: #bcae7a; background: #fbf3d6; }
+
+/* Generic strand colour dot */
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 3px; }
+
+
+/* =============================================================================
+   6. CARDS
+   ========================================================================== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+}
+.card-warm { background: var(--card-warm); }
+
+/* Interactive card / tile (activity tiles on Home + Browse) */
+.card-link {
+  display: block;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card-link:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* Square icon badge inside cards (e.g. step number / activity glyph) */
+.card-icon {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  background: var(--green-tint);
+  color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  font-family: var(--font-head);
+  font-weight: 800;
+}
+
+
+/* =============================================================================
+   7. FORM FIELDS
+   ========================================================================== */
+
+/* Field label (uppercase small caps) */
+.fld-label {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 8px;
+}
+
+/* Text input / select / textarea */
+.fld {
+  width: 100%;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  padding: 11px 13px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  background: #fff;
+  transition: border-color .15s, box-shadow .15s;
+}
+.fld::placeholder { color: var(--muted2); font-weight: 500; }
+.fld:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 16%, transparent);
+}
+.fld-soft { background: #fbfaf6; font-weight: 500; }
+
+/* Search field with leading icon: wrap input in .fld-search */
+.fld-search { position: relative; }
+.fld-search .fld { padding-left: 32px; }
+.fld-search .fld-icon {
+  position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+  color: var(--faint); font-size: 14px; pointer-events: none;
+}
+
+/* iOS-style toggle switch — apply class to a checkbox input */
+.switch {
+  -webkit-appearance: none; appearance: none;
+  width: 44px; height: 25px;
+  border-radius: var(--r-pill);
+  background: rgba(28,36,32,.18);
+  position: relative; cursor: pointer; margin: 0;
+  transition: background .18s; flex-shrink: 0;
+}
+.switch:checked { background: var(--accent); }
+.switch::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 19px; height: 19px; border-radius: 50%;
+  background: #fff; transition: left .18s;
+  box-shadow: 0 1px 3px rgba(0,0,0,.28);
+}
+.switch:checked::after { left: 22px; }
+
+
+/* =============================================================================
+   8. PUBLIC SITE HEADER  (sticky, blurred cream)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(243,237,225,.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Wordmark logo with green dot */
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 23px;
+  letter-spacing: -.025em;
+  color: var(--ink);
+}
+.brand .dot-mark { color: var(--green); font-size: 28px; line-height: 0; }
+
+/* Primary nav */
+.nav {
+  display: flex;
+  gap: 26px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #3a423b;
+}
+.navlink {
+  position: relative;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #3a423b;
+}
+.navlink::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: -4px;
+  height: 2px; background: var(--green);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .2s;
+}
+.navlink:hover::after,
+.navlink.is-active::after { transform: scaleX(1); }
+.navlink.is-active { color: var(--ink); }
+
+
+/* =============================================================================
+   9. PUBLIC DARK FOOTER  (4-column grid)
+   ========================================================================== */
+.site-footer {
+  background: var(--dark-2);
+  color: var(--on-dark);
+}
+.site-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 36px;
+  padding-top: 54px;
+  padding-bottom: 30px;
+}
+.site-footer .brand { color: #fff; font-size: 21px; }
+.site-footer .brand .dot-mark { color: var(--green-light); font-size: 26px; }
+.site-footer p { margin-top: 14px; font-size: 14px; line-height: 1.55; max-width: 280px; color: var(--on-dark-mut); }
+.footer-col-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.footer-social { display: flex; gap: 12px; margin-top: 18px; font-size: 13px; font-weight: 700; color: var(--green-light); }
+.footer-bar { border-top: 1px solid rgba(255,255,255,.1); }
+.footer-bar .wrap {
+  display: flex; justify-content: space-between;
+  padding-top: 18px; padding-bottom: 18px;
+  font-size: 12.5px; color: #878d80;
+}
+/* Footer links use a lighter underline accent */
+.site-footer .navlink::after { background: var(--green-light); }
+
+
+/* =============================================================================
+   10. TOOL-PAGE CHROME  (used by app.php layout: /build, /code-breaker, studio)
+   ========================================================================== */
+
+/* Full-viewport tool shell — host element for the whole app screen */
+.app-shell {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(1200px 760px at 72% -12%, #f4efe4, #e9e2d3 58%, #e1d8c7);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+/* Slim top bar */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 22px;
+  height: 60px;
+  background: rgba(255,255,255,.74);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(28,36,32,.1);
+  flex-shrink: 0;
+  z-index: 5;
+}
+.app-header .brand { font-size: 21px; }
+.app-header .brand .dot-mark { color: var(--accent); font-size: 26px; }
+
+/* Tool title + crumb text in the app header */
+.app-title { font-family: var(--font-head); font-weight: 700; font-size: 15px; }
+.app-crumb { font-size: 13px; font-weight: 600; color: var(--muted); }
+.app-divider { width: 1px; height: 22px; background: rgba(28,36,32,.14); }
+
+/* Subject context pill in the tool header */
+.app-context {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 12px; border-radius: var(--r-pill);
+  background: color-mix(in oklab, var(--accent) 11%, #fff);
+  color: color-mix(in oklab, var(--accent) 55%, var(--ink));
+  font-size: 12.5px; font-weight: 700;
+}
+.app-context .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+/* Round user avatar */
+.avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(140deg, #3a4a3f, var(--dark-2));
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px; font-family: var(--font-head);
+}
+
+/* Body region below the header */
+.app-body { flex: 1; display: flex; min-height: 0; }
+.app-main { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+
+/* Left side panel (objective library / controls) */
+.app-panel {
+  flex-shrink: 0;
+  background: var(--panel);
+  border-right: 1px solid rgba(28,36,32,.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Toolbar strip inside the main area (difficulty row, action row) */
+.app-toolbar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 22px;
+  border-bottom: 1px solid rgba(28,36,32,.1);
+  background: rgba(255,255,255,.5);
+  backdrop-filter: blur(8px);
+}
+
+/* Scroll containers in the tool with styled scrollbars */
+.app-scroll { overflow: auto; min-height: 0; }
+.app-scroll::-webkit-scrollbar { width: 12px; height: 12px; }
+.app-scroll::-webkit-scrollbar-thumb {
+  background: rgba(28,36,32,.16);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Segmented control (Worksheet / Answer key, Sign in / Create account) */
+.segmented {
+  position: relative;
+  display: flex;
+  background: rgba(28,36,32,.06);
+  border-radius: var(--r-md);
+  padding: 3px;
+}
+.segmented button {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  border: none; background: none; cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 7px 18px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.segmented .seg-thumb {
+  position: absolute; top: 3px; bottom: 3px;
+  background: #fff; border-radius: 9px;
+  box-shadow: 0 1px 4px rgba(28,36,32,.13);
+  transition: left .18s ease;
+}
+
+/* Difficulty selector (1..5 buttons with sliding highlight) */
+.difficulty {
+  position: relative;
+  display: flex;
+  background: rgba(28,36,32,.06);
+  border-radius: var(--r-md);
+  padding: 4px;
+  height: 48px;
+}
+.difficulty button {
+  flex: 1; position: relative; z-index: 1;
+  border: none; background: none; cursor: pointer;
+  font-family: var(--font-head);
+  font-weight: 700; font-size: 15px;
+  color: var(--ink);
+}
+.difficulty .diff-thumb {
+  position: absolute; top: 4px; bottom: 4px;
+  background: #fff;
+  border: 2px solid var(--accent);
+  border-radius: 9px;
+  box-shadow: 0 2px 8px rgba(28,36,32,.13);
+  box-sizing: border-box;
+  transition: left .18s ease;
+}
+
+/* Objective row in the library list */
+.orow {
+  position: relative;
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 11px;
+  border-radius: var(--r-md);
+  transition: background .12s;
+}
+.orow:hover { background: #faf8f3; }
+
+/* Stepper (− qty +) */
+.stepper {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.stepper button {
+  width: 28px; height: 30px; border: none; background: #fff;
+  cursor: pointer; font-size: 16px; color: var(--muted); line-height: 1;
+}
+.stepper .qty { min-width: 24px; text-align: center; font-weight: 700; font-size: 13.5px; }
+
+/* Toast (saved confirmation) */
+.toast {
+  position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
+  background: var(--dark-2); color: #fff;
+  padding: 12px 20px; border-radius: 12px;
+  font-size: 13.5px; font-weight: 600;
+  box-shadow: 0 12px 30px rgba(0,0,0,.3);
+  z-index: 20;
+}
+
+
+/* =============================================================================
+   11. WORKSHEET "PAPER" / SHEET STYLES  (A4 preview look)
+   -----------------------------------------------------------------------------
+   The .sheet element is the printable worksheet. tp-print.css isolates it for
+   printing. Paper appearance is themable via --paper-bg / --paper-img.
+   ========================================================================== */
+:root {
+  --paper-bg:  #fffdf7;
+  --paper-img: none;
+}
+
+.sheet {
+  position: relative;
+  width: 620px;
+  min-height: 876px;       /* ~ A4 aspect at 620px width */
+  flex-shrink: 0;
+  background-color: var(--paper-bg);
+  background-image: var(--paper-img);
+  background-size: 23px 23px;
+  border: 1px solid rgba(28,36,32,.08);
+  border-radius: 5px;
+  box-shadow: 0 1px 1px rgba(28,36,32,.05), 0 22px 50px -18px rgba(28,36,32,.32);
+  padding: 56px 54px 88px;
+  color: var(--ink);
+}
+
+/* Sheet header (eyebrow + title + name/date block) */
+.sheet-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 7px;
+}
+.sheet-title {
+  font-family: var(--font-head);
+  font-weight: 800; font-size: 30px; line-height: 1.04;
+  letter-spacing: -.02em; color: var(--ink);
+  word-break: break-word; margin: 0;
+}
+.sheet-meta { text-align: right; font-size: 12px; color: #6c716a; line-height: 2; }
+.sheet-meta .line {
+  display: inline-block; width: 96px;
+  border-bottom: 1.5px dotted #bcc0b8;
+}
+.sheet-rule {
+  height: 2px; width: 46px;
+  background: var(--accent); border-radius: 2px;
+  margin: 18px 0 26px;
+}
+
+/* Answer-key badge shown on the answers view */
+.sheet-keybadge {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 20px; padding: 6px 13px; border-radius: var(--r-pill);
+  background: color-mix(in oklab, var(--accent) 12%, #fff);
+  color: color-mix(in oklab, var(--accent) 60%, var(--ink));
+  font-size: 12px; font-weight: 700;
+}
+.sheet-keybadge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* Question list */
+.sheet-qlist {
+  list-style: none; margin: 0; padding: 0;
+  transition: opacity .28s ease;
+}
+.sheet-qlist.two-col { column-count: 2; column-gap: 44px; }
+.sheet-qlist li {
+  break-inside: avoid;
+  padding: 7px 0;
+  display: flex; align-items: baseline; gap: 10px;
+  font-size: 14.5px; line-height: 1.5; color: var(--ink);
+}
+.sheet-qnum {
+  font-weight: 700; color: var(--accent);
+  min-width: 26px; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.sheet-qtext { flex: 1; min-width: 0; font-variant-numeric: tabular-nums; }
+/* Dotted answer blank */
+.sheet-blank {
+  display: inline-block; width: 50px;
+  border-bottom: 1.6px dotted #c2c6bd;
+  margin-left: 4px; transform: translateY(-3px);
+}
+/* Printed answer (answer key) */
+.sheet-answer {
+  font-weight: 800; color: var(--accent);
+  margin-left: 4px; font-variant-numeric: tabular-nums;
+}
+
+/* Empty / placeholder state */
+.sheet-empty {
+  text-align: center; color: #b0b4ab;
+  padding: 80px 30px; font-size: 15px; line-height: 1.6;
+}
+
+/* Sheet footer (brand + meta) pinned to bottom of the page */
+.sheet-foot {
+  position: absolute; left: 54px; right: 54px; bottom: 30px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 14px; border-top: 1px solid rgba(28,36,32,.1);
+  font-size: 11px; color: var(--muted2);
+}
+.sheet-foot .brand {
+  font-family: var(--font-head); font-weight: 700;
+  letter-spacing: -.01em; color: #6c716a; font-size: inherit;
+}
+.sheet-foot .brand .dot-mark { color: var(--accent); font-size: inherit; }
+
+
+/* =============================================================================
+   12. UTILITIES & MISC
+   ========================================================================== */
+.muted   { color: var(--muted); }
+.muted2  { color: var(--muted2); }
+.center  { text-align: center; }
+.hide    { display: none !important; }
+
+/* Floating animation reused by hero/login decorative sheets */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.floaty { animation: floaty 6s ease-in-out infinite; }
+
+/* Responsive: collapse multi-column grids and nav on small screens */
+@media (max-width: 880px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .site-footer .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav { display: none; }
+  :root { --gutter: 20px; }
+}
+@media (max-width: 520px) {
+  .site-footer .footer-grid { grid-template-columns: 1fr; }
+  .sheet { width: 100%; padding: 32px 24px 72px; }
+  .sheet-qlist.two-col { column-count: 1; }
+}
