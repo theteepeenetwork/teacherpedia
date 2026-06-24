@@ -20,6 +20,12 @@ writable/debugbar/*
 writable/uploads/*
 !writable/uploads/index.html
 
+# Local SQLite database files (keep the directory via .gitkeep)
+writable/db/*.db
+writable/db/*.sqlite
+writable/db/*.sqlite3
+!writable/db/.gitkeep
+
 # Build/test artifacts
 /phpunit.xml
 .phpunit.*.cache
