@@ -44,6 +44,26 @@ Default seeded admin: `admin@teacherpedia.test` / `changeme123`
 (override with `ADMIN_SEED_EMAIL` / `ADMIN_SEED_PASSWORD` env vars — **change in
 production**).
 
+### Running the app (and the `/browse` 404 gotcha)
+
+The document root is **`public_html/`** (not CI4's default `public/`), and clean URLs
+like `/browse`, `/build`, `/pricing` only work if the web server rewrites unknown paths
+to `public_html/index.php`. If `/` loads but `/browse` returns **404**, rewriting isn't
+reaching the front controller. Use one of:
+
+- **`php spark serve --port 8888`** — recommended for local dev. Its built‑in router
+  rewrites correctly, so all routes work out of the box. (Pass `--port` to match your
+  `app.baseURL`.)
+- **Apache** — point the vhost at `public_html/`; requires `mod_rewrite` enabled and
+  `AllowOverride All` so `public_html/.htaccess` (already included) is honoured.
+- **nginx** — has no `.htaccess`; use the provided `deploy/nginx.conf.sample` (its
+  `try_files $uri $uri/ /index.php?$query_string;` is what fixes the 404).
+- **`php -S`** — must target the docroot: `php -S localhost:8888 -t public_html`.
+
+> The rebuilt site (Browse and the other new pages) lives on the rebuild branch. If you
+> see `/browse` 404 on an older checkout, `git checkout` that branch (or merge the PR) —
+> `main` predates these routes.
+
 ### Configuration / secrets
 
 - The dev `default` database group is SQLite at `writable/db/teacherpedia.db`.
