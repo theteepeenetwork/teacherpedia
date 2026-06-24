@@ -8,17 +8,16 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Config\Services;
 
 /**
- * Requires a logged-in user (session 'id'). Used for /account.
- * Redirects to /login, remembering where the user was headed.
+ * Requires a logged-in admin (session 'id' and admin === 'yes').
+ * Used for the /admin group. Redirects to /admin/login.
  */
-class Auth implements FilterInterface
+class AdminAuth implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
         $session = Services::session();
-        if (! $session->has('id')) {
-            $session->setFlashdata('redirect_url', current_url());
-            return redirect()->to('/login');
+        if (! $session->has('id') || $session->get('admin') !== 'yes') {
+            return redirect()->to('/admin/login');
         }
     }
 
