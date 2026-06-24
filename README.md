@@ -1,57 +1,68 @@
-# CodeIgniter 4 Framework
+# Teacherpedia
 
-## What is CodeIgniter?
+Teacherpedia is a UK primary‑school **printable worksheet generator**. Teachers pick
+curriculum objectives (Years 3–6), and the app builds self‑marking, curriculum‑aligned
+worksheets that **regenerate fresh questions on demand** — plus other activities like a
+Code Breaker. Built on **CodeIgniter 4** (PHP 8.1+).
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible, and secure. 
-More information can be found at the [official site](http://codeigniter.com).
+This is a ground‑up rebuild implementing the claude.ai/design system. The product model
+is a **curriculum library of objectives**, each optionally backed by a JavaScript
+**generator** that returns `{ question, answer }`; activities compose objectives into
+printable sheets with a live preview, difficulty control, and one‑click regenerate.
 
-This repository holds the distributable version of the framework,
-including the user guide. It has been built from the 
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Features / routes
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+| Area | Route | Notes |
+|------|-------|-------|
+| Home | `/` | Marketing landing |
+| Browse | `/browse` | Activity directory (from DB) |
+| Pricing / Our vision / Privacy | `/pricing` `/vision` `/privacy` | |
+| Contact | `/contact` | |
+| Login / Register | `/login` `/register` | Teacher accounts |
+| Worksheet builder | `/build` | Primary tool; objective library, regenerate, print, save |
+| Code Breaker | `/code-breaker` | Cipher puzzle activity |
+| My saved sheets | `/account` | *requires login* |
+| Admin dashboard | `/admin` | *admin only* — coverage stats, submission queue |
+| Admin Studio | `/admin/studio` | *admin only* — author/validate JS generators |
+| Admin sign‑in | `/admin/login` | |
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/). 
+## Local setup
 
+Requires PHP 8.1+ (tested on 8.4) with `intl` and `mbstring`. Local dev uses **SQLite**
+(no MySQL needed).
 
-## Important Change with index.php
+```bash
+composer install
+cp env .env            # if you don't already have one; see notes below
+php spark migrate
+php spark db:seed DatabaseSeeder     # 217 objectives + 6 activities
+php spark db:seed AdminUserSeeder    # first admin account
+php spark serve                      # http://localhost:8080
+```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Default seeded admin: `admin@teacherpedia.test` / `changeme123`
+(override with `ADMIN_SEED_EMAIL` / `ADMIN_SEED_PASSWORD` env vars — **change in
+production**).
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### Configuration / secrets
 
-**Please** read the user guide for a better explanation of how CI4 works!
-The user guide updating and deployment is a bit awkward at the moment, but we are working on it!
+- The dev `default` database group is SQLite at `writable/db/teacherpedia.db`.
+- **Production/test MySQL credentials live in `.env`** (`database.production.*` /
+  `database.tests.*`) — they are **no longer committed** in `app/Config/Database.php`.
+  Set `CI_ENVIRONMENT = production` and the `database.production.*` keys to deploy.
+- `.env` is gitignored.
 
-## Repository Management
+## Architecture
 
-We use Github issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+- **Controllers** `app/Controllers` — `Home`, `Browse`, `Pages`, `Contact`, `Auth`,
+  `Build`, `CodeBreaker`, `Account`, `Admin\Admin`, `Admin\Studio`.
+- **Models** `app/Models` — `ObjectiveModel`, `ActivityModel`, `SavedSheetModel`,
+  `SubmissionModel`, plus `Login_model` / `Admin_login_model` (auth).
+- **Layouts** `app/Views/layouts/{public,app}.php`; pages under `app/Views/*`.
+- **Assets** `public_html/assets/css/teacherpedia.css` (design tokens + components),
+  `tp-print.css`, and `assets/js/` (`tp-generators.js` = 160 question generators +
+  `TP_generate(key, difficulty)`, plus per‑page scripts).
+- **Routing** is explicit (auto‑routing disabled). `/account` is gated by the `auth`
+  filter, `/admin/*` by the `admin` filter.
 
-This repository is a "distribution" one, built by our release preparation script. 
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Contributing
-
-We welcome contributions from the community.
-
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/contributing.md) section in the development repository.
-
-## Server Requirements
-
-PHP version 7.2 or higher is required, with the following extensions installed: 
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+The web server document root is `public_html/`.
