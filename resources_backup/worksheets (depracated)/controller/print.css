@@ -1,0 +1,9 @@
+
+@media print {
+  page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+
+#infobox, .noprint {display:none}
