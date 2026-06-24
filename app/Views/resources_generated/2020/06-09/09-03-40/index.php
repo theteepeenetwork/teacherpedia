@@ -23,7 +23,7 @@
     <br />
     <label>3. Select Year 5 objectives</label>
     <div id="year5">
-        <?php include "year5table.php"; ?>
+        <?php @include "year5table.php"; ?>
     </div>
     <br />
     <button type="submit">Submit</button>

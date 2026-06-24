@@ -92,6 +92,10 @@ class Resources extends BaseController
         // and is rendered through the view layer (no longer web-served).
         $base = ResourcesModel::viewBase($row->link);
 
+        if (! is_file(APPPATH . 'Views/' . $base . '/index.php')) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Resource files missing for: ' . $slug);
+        }
+
         // Capitalize the first letter
         $data['title']       = ucfirst($row->resource_name);
         $data['banner']      = $row->resource_banner;
@@ -124,6 +128,10 @@ class Resources extends BaseController
         // view finder does not double-append the extension.
         $base   = ResourcesModel::viewBase($row->link);
         $action = pathinfo((string) $row->action, PATHINFO_FILENAME);
+
+        if (! is_file(APPPATH . 'Views/' . $base . '/' . $action . '.php')) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Generator missing for resource: ' . $id);
+        }
 
         return view($base . '/' . $action, $data);
     }

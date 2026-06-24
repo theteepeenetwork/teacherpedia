@@ -24,3 +24,6 @@ writable/uploads/*
 /phpunit.xml
 .phpunit.*.cache
 /coverage*
+
+# Local resource backup (not part of the app)
+/resources_backup/

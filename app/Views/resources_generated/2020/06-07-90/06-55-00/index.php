@@ -3,7 +3,7 @@
 </head>
 <div class="container">
     <h1>Arithmetic questions</h1>
-    <form class="needs-validation" id="questionsform" action="<?php echo base_url();?>resources/loadSheet/<?php echo $dir; ?>/generator" method="post" name="form">
+    <form class="needs-validation" id="questionsform" action="<?php echo $action?>" method="post" name="form">
     <div class="form-group" style="margin: auto">
         <p>The form below contains all number and place value objectives. Select up to 25 questions from the dropdown buttons next to each objective. Submit at the bottom to generate a worksheet with infinitely renewable quesitons.  </p>
         <div style="width: 100%;">
@@ -15,7 +15,7 @@
         <div id="year2" style="display:none">
         </div>
         <div id="year5" style="">
-            <?php include "year5table.html"; ?>
+            <?php @include "year5table.php"; ?>
         </div>
         <br/>
         <button type="submit">Submit</button>

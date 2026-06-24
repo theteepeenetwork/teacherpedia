@@ -41,7 +41,10 @@ $routes->get('/admin/(:any)', 'Admin\Admin::index', ['filter' => 'auth']);
 $routes->get('/admin', 'Admin\Admin::index', ['filter' => 'auth']);
 
 // Resources controller (public)
-$routes->get('/resource/loadSheet/(:any)', 'Resources::loadSheet');
+// loadSheet receives the generator form submission (POST) and also works via GET.
+// Accept both the singular and plural prefixes used by the resource form templates.
+$routes->match(['get', 'post'], 'resource/loadSheet/(:any)', 'Resources::loadSheet/$1');
+$routes->match(['get', 'post'], 'resources/loadSheet/(:any)', 'Resources::loadSheet/$1');
 $routes->get('/resource/(:any)', 'Resources::load');
 
 // Subjects / keystages

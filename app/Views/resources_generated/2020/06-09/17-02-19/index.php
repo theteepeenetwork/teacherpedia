@@ -23,8 +23,8 @@
   <br />
   <label>3. Select Year 3 objectives</label>
   <div id="year3">
-    <?php include "year3table.php"; ?>
-    <?php include "year3collapsetable.php"; ?>
+    <?php @include "year3table.php"; ?>
+    <?php @include "year3collapsetable.php"; ?>
   </div>
   <br />
   <button type="submit">Submit</button>
