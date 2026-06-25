@@ -42,9 +42,10 @@
     border-radius: 0 !important;
     box-shadow: none !important;
     padding: 0 !important;
-    /* Ensure paper background / squared grid prints if chosen */
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    /* No background fill: print as plain black ink on white paper (saves
+       toner and avoids a coloured page background printing). */
+    background: transparent !important;
+    background-image: none !important;
   }
 
   /* Sheet footer flows naturally at the end rather than absolutely pinned */

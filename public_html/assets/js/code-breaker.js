@@ -241,9 +241,14 @@
       c.classList.toggle('chip-on', on);
     });
 
-    // difficulty thumb + labels
-    var diffLeft = [3, 37, 71, 105, 139][state.difficulty - 1];
-    els.diffThumb.style.left = diffLeft + 'px';
+    // difficulty thumb + labels — measure the active button so the thumb lines
+    // up exactly with the equal-width (flex:1) number buttons at any size.
+    var diffWrap = $('cb-difficulty');
+    var active = diffWrap ? diffWrap.querySelectorAll('[data-d]')[state.difficulty - 1] : null;
+    if (els.diffThumb && active) {
+      els.diffThumb.style.left = active.offsetLeft + 'px';
+      els.diffThumb.style.width = active.offsetWidth + 'px';
+    }
     var label = DIFF_LABELS[state.difficulty - 1];
     els.diffLabel.textContent = label;
     els.eyebrowDiff.textContent = label;
