@@ -100,7 +100,7 @@
   <?= view('partials/tool_toolbar', [
         'prefix'         => 'mm',
         'tabs'           => [['key' => 'puzzle', 'label' => 'Puzzle'], ['key' => 'answers', 'label' => 'Answer key']],
-        'diff_label'     => 'Expected',
+        'diff_label'     => 'Set C',
         'regen_label'    => 'New maze',
         'settings_extra' => $settings_extra,
       ]) ?>
@@ -111,7 +111,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
         <div style="min-width:0;">
-          <div class="sheet-eyebrow">KS2 Numeracy &middot; Maths Maze &middot; <span id="mm-eyebrow-diff">Expected</span></div>
+          <div class="sheet-eyebrow">KS2 Numeracy &middot; Maths Maze &middot; <span id="mm-eyebrow-diff">Set C</span></div>
           <h1 class="sheet-title">Find the Path</h1>
         </div>
         <div class="sheet-meta">

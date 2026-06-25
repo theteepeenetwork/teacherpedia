@@ -19,7 +19,12 @@
     'SUPERSTAR', 'CHAMPION'
   ];
 
-  var DIFF_LABELS = ['Foundation', 'Emerging', 'Expected', 'Greater depth', 'Challenge'];
+  // Difficulty is shown as an obfuscated "set" code rather than the attainment
+  // band names. Teachers read it off the 1-5 slider: A = easiest … E = hardest.
+  var SET_CODES = ['A', 'B', 'C', 'D', 'E'];
+  function setLabel(d) { return 'Set ' + SET_CODES[d - 1]; }
+  // Short per-sheet id so two sheets of the same set are still distinguishable.
+  function randCode() { return Math.random().toString(36).slice(2, 5).toUpperCase(); }
   // Difficulty-scaled value ranges for the letter cipher (index = difficulty-1).
   var RANGES = [[2, 20], [5, 40], [10, 99], [20, 300], [50, 900]];
 
@@ -29,6 +34,7 @@
     ops: ['+', '-', '×'],   // +  -  ×   (default selection)
     tab: 'active',
     word: '',               // teacher's custom message ('' = pick a random word)
+    code: '',               // per-sheet id (set on each build)
     puzzle: null
   };
 
@@ -96,6 +102,7 @@
 
   // Build a complete puzzle from the current difficulty + operations.
   function build() {
+    state.code = randCode(); // fresh per-sheet id for each generated puzzle
     var d = state.difficulty;
     // Use the teacher's custom message when set, otherwise pick a random word.
     var word = state.word ? cleanWord(state.word) : pick(WORDS);
@@ -249,9 +256,8 @@
       els.diffThumb.style.left = active.offsetLeft + 'px';
       els.diffThumb.style.width = active.offsetWidth + 'px';
     }
-    var label = DIFF_LABELS[state.difficulty - 1];
-    els.diffLabel.textContent = label;
-    els.eyebrowDiff.textContent = label;
+    els.diffLabel.textContent = setLabel(state.difficulty);
+    els.eyebrowDiff.textContent = setLabel(state.difficulty) + '-' + (state.code || '');
 
     // tab thumb — measure the active segment (same approach as the difficulty
     // thumb) so it lines up regardless of label widths.

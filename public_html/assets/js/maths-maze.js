@@ -17,7 +17,12 @@
 (function () {
   'use strict';
 
-  var DIFF_LABELS = ['Foundation', 'Emerging', 'Expected', 'Greater depth', 'Challenge'];
+  // Difficulty is shown as an obfuscated "set" code rather than the attainment
+  // band names. Teachers read it off the 1-5 slider: A = easiest … E = hardest.
+  var SET_CODES = ['A', 'B', 'C', 'D', 'E'];
+  function setLabel(d) { return 'Set ' + SET_CODES[d - 1]; }
+  // Short per-sheet id so two sheets of the same set are still distinguishable.
+  function randCode() { return Math.random().toString(36).slice(2, 5).toUpperCase(); }
   // Answer magnitude range per difficulty (index = difficulty - 1).
   var RANGES = [[3, 12], [4, 20], [6, 40], [10, 80], [15, 150]];
 
@@ -27,6 +32,7 @@
     size: 5,
     rule: 'even',          // 'even' | 'odd'  (decided per puzzle)
     tab: 'puzzle',         // 'puzzle' | 'answers'
+    code: '',              // per-sheet id (set on each build)
     puzzle: null,
     current: null,         // {r,c} the student has correctly reached
     reached: {}            // "r,c" -> true for correctly stepped cells
@@ -89,6 +95,7 @@
   }
 
   function build() {
+    state.code = randCode(); // fresh per-sheet id for each generated maze
     var d = state.difficulty;
     var n = state.size;
     var ops = state.ops.length ? state.ops : ['+'];
@@ -192,9 +199,8 @@
       els.diffThumb.style.left = active.offsetLeft + 'px';
       els.diffThumb.style.width = active.offsetWidth + 'px';
     }
-    var label = DIFF_LABELS[state.difficulty - 1];
-    if (els.diffLabel) { els.diffLabel.textContent = label; }
-    if (els.eyebrowDiff) { els.eyebrowDiff.textContent = label; }
+    if (els.diffLabel) { els.diffLabel.textContent = setLabel(state.difficulty); }
+    if (els.eyebrowDiff) { els.eyebrowDiff.textContent = setLabel(state.difficulty) + '-' + (state.code || ''); }
     // tab thumb (measure the active segment)
     var tabsWrap = $('mm-tabs');
     var activeTab = tabsWrap ? tabsWrap.querySelectorAll('[data-tab]')[state.tab === 'answers' ? 1 : 0] : null;

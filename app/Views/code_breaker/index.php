@@ -44,7 +44,7 @@
   <?= view('partials/tool_toolbar', [
         'prefix'         => 'cb',
         'tabs'           => [['key' => 'active', 'label' => 'Activity'], ['key' => 'answers', 'label' => 'Answer key']],
-        'diff_label'     => 'Emerging',
+        'diff_label'     => 'Set B',
         'regen_label'    => 'New puzzle',
         'settings_extra' => $settings_extra,
       ]) ?>
@@ -55,7 +55,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
         <div style="min-width:0;">
-          <div class="sheet-eyebrow">KS2 Numeracy &middot; Code Breaker &middot; <span id="cb-eyebrow-diff">Emerging</span></div>
+          <div class="sheet-eyebrow">KS2 Numeracy &middot; Code Breaker &middot; <span id="cb-eyebrow-diff">Set B</span></div>
           <h1 class="sheet-title">Crack the Secret Code</h1>
         </div>
         <div class="sheet-meta">

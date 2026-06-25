@@ -17,14 +17,14 @@
  * Params:
  *   $prefix          string  id prefix the page JS binds to (e.g. 'build','cb')
  *   $tabs            array   exactly two: [['key'=>…,'label'=>…], …]
- *   $diff_label      string  initial difficulty label (e.g. 'Expected')
+ *   $diff_label      string  initial difficulty label (e.g. 'Set C')
  *   $regen_label     string  primary action label (e.g. 'Regenerate','New puzzle')
  *   $settings_extra  string  raw HTML for resource-specific settings (optional)
  *   $show_difficulty bool    default true
  */
 $prefix          = $prefix          ?? 'tool';
 $tabs            = $tabs            ?? [['key' => 'worksheet', 'label' => 'Worksheet'], ['key' => 'answerkey', 'label' => 'Answer key']];
-$diff_label      = $diff_label      ?? 'Expected';
+$diff_label      = $diff_label      ?? 'Set C';
 $regen_label     = $regen_label     ?? 'Regenerate';
 $settings_extra  = $settings_extra  ?? '';
 $show_difficulty = $show_difficulty ?? true;

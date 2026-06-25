@@ -161,7 +161,7 @@
       <?= view('partials/tool_toolbar', [
             'prefix'         => 'build',
             'tabs'           => [['key' => 'worksheet', 'label' => 'Worksheet'], ['key' => 'answerkey', 'label' => 'Answer key']],
-            'diff_label'     => 'Expected',
+            'diff_label'     => 'Set C',
             'regen_label'    => 'Regenerate',
             'settings_extra' => $settings_extra,
           ]) ?>
@@ -172,7 +172,7 @@
 
           <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
             <div style="min-width:0;">
-              <div class="sheet-eyebrow" id="build-sheet-eyebrow">Year 6 · Numeracy · Expected</div>
+              <div class="sheet-eyebrow" id="build-sheet-eyebrow">Year 6 · Numeracy · Set C</div>
               <h1 class="sheet-title" id="build-sheet-title">Mixed Maths Practice</h1>
             </div>
             <div class="sheet-meta">

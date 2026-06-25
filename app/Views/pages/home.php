@@ -110,7 +110,7 @@
     </div>
     <a class="navlink" href="<?= base_url('browse') ?>" style="font-size:15px; font-weight:700; color:#1f8a4d;">See all activities &rarr;</a>
   </div>
-  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
     <a href="<?= base_url('build') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07); box-shadow:0 1px 2px rgba(28,36,32,.04);">
       <div style="display:flex; justify-content:space-between; align-items:flex-start;">
         <div style="width:46px; height:46px; border-radius:12px; background:#e7f5ed; display:flex; align-items:center; justify-content:center; font-size:23px;">&#128221;</div>
@@ -129,13 +129,22 @@
       <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Solve calculations to crack a cipher and reveal a hidden message. A self-marking puzzle.</p>
       <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">Open &rarr;</div>
     </a>
+    <a href="<?= base_url('maths-maze') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07); box-shadow:0 1px 2px rgba(28,36,32,.04);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="width:46px; height:46px; border-radius:12px; background:#e3f3f3; display:flex; align-items:center; justify-content:center; font-size:23px;">&#129513;</div>
+        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#206e40; background:#e7f5ed; padding:4px 9px; border-radius:6px;">Live</span>
+      </div>
+      <h3 style="margin:18px 0 5px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:21px;">Maths Maze</h3>
+      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Solve a calculation to unlock each step through the grid &mdash; a wrong turn is a dead end. Self-marking.</p>
+      <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">Open &rarr;</div>
+    </a>
     <a href="<?= base_url('browse') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07);">
       <div style="display:flex; justify-content:space-between; align-items:flex-start;">
         <div style="width:46px; height:46px; border-radius:12px; background:#f0ede5; color:#a8a294; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:800; font-family:'Bricolage Grotesque',sans-serif;">&#65291;</div>
-        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#a8a294; background:#f0ede5; padding:4px 9px; border-radius:6px;">4 soon</span>
+        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#a8a294; background:#f0ede5; padding:4px 9px; border-radius:6px;">3 soon</span>
       </div>
       <h3 style="margin:18px 0 5px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:21px;">More activities</h3>
-      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Times-table grids, maze races, bingo and true-or-false cards are on the way.</p>
+      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Times-table grids, bingo and true-or-false cards are on the way.</p>
       <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">See all &rarr;</div>
     </a>
   </div>

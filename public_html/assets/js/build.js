@@ -34,7 +34,13 @@
   };
   function colorFor(s) { return STRAND_COLOR[s] || '#1f8a4d'; }
 
-  var DIFF_LABELS = ['Foundation', 'Emerging', 'Expected', 'Greater depth', 'Challenge'];
+  // Difficulty is shown as an obfuscated "set" code rather than the attainment
+  // band names, so the level isn't obvious to pupils/parents on the sheet.
+  // Teachers read it off the 1-5 slider: A = easiest … E = hardest.
+  var SET_CODES = ['A', 'B', 'C', 'D', 'E'];
+  function setLabel(d) { return 'Set ' + SET_CODES[d - 1]; }
+  // Short per-sheet id so two sheets of the same set are still distinguishable.
+  function randCode() { return Math.random().toString(36).slice(2, 5).toUpperCase(); }
 
   // ----- state -----
   var state = {
@@ -77,6 +83,8 @@
   // already-generated questions where the qty is unchanged (so adding one
   // objective doesn't re-roll the others).
   function rebuild(force) {
+    // Fresh per-sheet code each time the worksheet is (re)generated.
+    state.code = randCode();
     var existing = {};
     if (!force) {
       state.questions.forEach(function (q) {
@@ -329,10 +337,10 @@
 
   function renderSheet() {
     var answersOn = state.tab === 'answerkey';
-    var diffLabel = DIFF_LABELS[state.difficulty - 1];
+    var sheetCode = setLabel(state.difficulty) + '-' + (state.code || '');
 
     if (els.sheetEyebrow) {
-      els.sheetEyebrow.textContent = yearSpanLabel() + ' · Numeracy · ' + diffLabel;
+      els.sheetEyebrow.textContent = yearSpanLabel() + ' · Numeracy · ' + sheetCode;
     }
     if (els.sheetTitle) { els.sheetTitle.textContent = displayTitle(); }
     if (els.keybadge) { els.keybadge.style.display = answersOn ? 'inline-flex' : 'none'; }
@@ -406,7 +414,7 @@
       thumb.style.left = active.offsetLeft + 'px';
       thumb.style.width = active.offsetWidth + 'px';
     }
-    if (els.diffLabel) { els.diffLabel.textContent = DIFF_LABELS[state.difficulty - 1]; }
+    if (els.diffLabel) { els.diffLabel.textContent = setLabel(state.difficulty); }
   }
 
   function renderTabs() {
