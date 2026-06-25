@@ -28,6 +28,7 @@
     difficulty: 2,
     ops: ['+', '-', '×'],   // +  -  ×   (default selection)
     tab: 'active',
+    word: '',               // teacher's custom message ('' = pick a random word)
     puzzle: null
   };
 
@@ -35,6 +36,33 @@
   function ri(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
   function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
   function fmt(n) { return n.toLocaleString('en-GB'); }
+
+  // Keep only A–Z and spaces, upper-case, collapse runs of spaces, and trim to
+  // a sane length so a custom message always fits the sheet.
+  function cleanWord(s) {
+    return String(s || '')
+      .toUpperCase()
+      .replace(/[^A-Z ]+/g, '')
+      .replace(/ {2,}/g, ' ')
+      .replace(/^ +/, '')
+      .slice(0, 24);
+  }
+
+  // Assign each distinct letter a unique value. The difficulty range may hold
+  // fewer integers than there are distinct letters (e.g. a long custom message
+  // on difficulty 1), so widen the upper bound until there's comfortably room.
+  function assignValues(letters, range) {
+    var lo = range[0], hi = range[1];
+    while (hi - lo + 1 < letters.length * 2) { hi += (hi - lo + 1); }
+    var used = {}, map = {};
+    letters.forEach(function (L) {
+      var v, guard = 0;
+      do { v = ri(lo, hi); guard++; } while (used[v] && guard < 200);
+      used[v] = true;
+      map[L] = v;
+    });
+    return map;
+  }
 
   // Build a calculation string that evaluates to `target`, for op + difficulty.
   function calcFor(target, op, d) {
@@ -69,7 +97,9 @@
   // Build a complete puzzle from the current difficulty + operations.
   function build() {
     var d = state.difficulty;
-    var word = pick(WORDS);
+    // Use the teacher's custom message when set, otherwise pick a random word.
+    var word = state.word ? cleanWord(state.word) : pick(WORDS);
+    if (!word.replace(/ /g, '')) { word = pick(WORDS); } // guard all-spaces input
 
     // distinct letters (ignore spaces)
     var seen = {};
@@ -80,14 +110,7 @@
 
     // assign each distinct letter a unique difficulty-scaled value
     var range = RANGES[d - 1];
-    var used = {};
-    var map = {};
-    letters.forEach(function (L) {
-      var v, guard = 0;
-      do { v = ri(range[0], range[1]); guard++; } while (used[v] && guard < 60);
-      used[v] = true;
-      map[L] = v;
-    });
+    var map = assignValues(letters, range);
 
     // code key, sorted by value ascending
     var cipher = letters.map(function (L) {
@@ -258,6 +281,19 @@
 
   function setTab(tab) { state.tab = tab; render(); }
 
+  // Teacher typed their own message: re-derive the puzzle from it live.
+  function setWord(raw) {
+    state.word = cleanWord(raw);
+    rebuild();
+  }
+
+  // Clear the custom message and roll a fresh random word.
+  function randomWord() {
+    state.word = '';
+    if (els.word) { els.word.value = ''; }
+    rebuild();
+  }
+
   var spinT;
   function regen() {
     els.spin.style.transform = 'rotate(360deg)';
@@ -324,6 +360,8 @@
     els.message = $('cb-message');
     els.spin = $('cb-spin');
     els.toast = $('cb-toast');
+    els.word = $('cb-word');
+    els.random = $('cb-random');
 
     var yearEl = $('cb-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -342,6 +380,13 @@
     Array.prototype.forEach.call($('cb-tabs').querySelectorAll('[data-tab]'), function (b) {
       b.addEventListener('click', function () { setTab(b.getAttribute('data-tab')); });
     });
+
+    // custom secret message: rebuild live as the teacher types; tidy on blur
+    if (els.word) {
+      els.word.addEventListener('input', function () { setWord(els.word.value); });
+      els.word.addEventListener('blur', function () { els.word.value = state.word; });
+    }
+    if (els.random) { els.random.addEventListener('click', randomWord); }
 
     $('cb-save').addEventListener('click', onSave);
     $('cb-print').addEventListener('click', function () { window.print(); });

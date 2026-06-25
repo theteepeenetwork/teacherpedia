@@ -656,7 +656,7 @@ p { margin: 0; }
    printing. Paper appearance is themable via --paper-bg / --paper-img.
    ========================================================================== */
 :root {
-  --paper-bg:  #fffdf7;
+  --paper-bg:  #ffffff;   /* plain white A4 paper for the print preview */
   --paper-img: none;
 }
 

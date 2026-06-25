@@ -42,6 +42,12 @@
       <button type="button" data-d="5">5</button>
     </div>
     <span id="cb-diff-label" style="font-size:12.5px; font-weight:700; color:var(--ink);">Emerging</span>
+    <div class="app-divider"></div>
+    <span style="font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#9a9f95;">Secret message</span>
+    <input id="cb-word" type="text" maxlength="24" autocomplete="off" spellcheck="false"
+           placeholder="e.g. WELL DONE"
+           style="text-transform:uppercase; width:170px; padding:7px 11px; border:1px solid rgba(28,36,32,.16); border-radius:8px; background:#fff; font-family:var(--font-head); font-weight:700; letter-spacing:.04em; font-size:13px; color:var(--ink);" />
+    <button type="button" id="cb-random" class="btn btn-ghost btn-sm" title="Pick a random message">&#127922; Random</button>
   </div>
 
   <!-- TOOLBAR -->
