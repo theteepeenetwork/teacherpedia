@@ -17,18 +17,20 @@
  * Params:
  *   $prefix          string  id prefix the page JS binds to (e.g. 'build','cb')
  *   $tabs            array   exactly two: [['key'=>…,'label'=>…], …]
- *   $diff_label      string  initial difficulty label (e.g. 'Set C')
+ *   $diff            int     initial difficulty 1-5 (rendered as a circle meter)
  *   $regen_label     string  primary action label (e.g. 'Regenerate','New puzzle')
  *   $settings_extra  string  raw HTML for resource-specific settings (optional)
  *   $show_difficulty bool    default true
  */
 $prefix          = $prefix          ?? 'tool';
 $tabs            = $tabs            ?? [['key' => 'worksheet', 'label' => 'Worksheet'], ['key' => 'answerkey', 'label' => 'Answer key']];
-$diff_label      = $diff_label      ?? 'Set C';
+$diff            = isset($diff) ? max(1, min(5, (int) $diff)) : 3;
 $regen_label     = $regen_label     ?? 'Regenerate';
 $settings_extra  = $settings_extra  ?? '';
 $show_difficulty = $show_difficulty ?? true;
 $p = esc($prefix, 'attr');
+// Difficulty shown as a filled/empty circle meter (●●●○○) — see tp-tool.js.
+$diffDots = str_repeat('●', $diff) . str_repeat('○', 5 - $diff);
 ?>
 <!-- Settings row: difficulty + resource-specific controls -->
 <div class="app-toolbar tool-settings" style="border-bottom:1px solid rgba(28,36,32,.07); background:rgba(255,255,255,.4); flex-wrap:wrap; gap:14px;">
@@ -40,7 +42,7 @@ $p = esc($prefix, 'attr');
         <button type="button" data-diff="<?= $i ?>"><?= $i ?></button>
       <?php endfor; ?>
     </div>
-    <span id="<?= $p ?>-diff-label" class="build-diff-label"><?= esc($diff_label) ?></span>
+    <span id="<?= $p ?>-diff-label" class="build-diff-label"><?= $diffDots ?></span>
   <?php endif; ?>
   <?= $settings_extra ?>
 </div>

@@ -44,7 +44,7 @@
   <?= view('partials/tool_toolbar', [
         'prefix'         => 'cb',
         'tabs'           => [['key' => 'active', 'label' => 'Activity'], ['key' => 'answers', 'label' => 'Answer key']],
-        'diff_label'     => 'Set B',
+        'diff'           => 2,
         'regen_label'    => 'New puzzle',
         'settings_extra' => $settings_extra,
       ]) ?>
@@ -55,7 +55,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
         <div style="min-width:0;">
-          <div class="sheet-eyebrow">KS2 Numeracy &middot; Code Breaker &middot; <span id="cb-eyebrow-diff">Set B</span></div>
+          <div class="sheet-eyebrow">KS2 Numeracy &middot; Code Breaker &middot; <span id="cb-eyebrow-diff">●●○○○</span></div>
           <h1 class="sheet-title">Crack the Secret Code</h1>
         </div>
         <div class="sheet-meta">
@@ -91,5 +91,6 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('pageScripts') ?>
+  <script src="<?= base_url('assets/js/tp-tool.js') ?>"></script>
   <script src="<?= base_url('assets/js/code-breaker.js') ?>"></script>
 <?= $this->endSection() ?>

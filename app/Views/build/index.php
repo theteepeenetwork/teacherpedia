@@ -161,7 +161,7 @@
       <?= view('partials/tool_toolbar', [
             'prefix'         => 'build',
             'tabs'           => [['key' => 'worksheet', 'label' => 'Worksheet'], ['key' => 'answerkey', 'label' => 'Answer key']],
-            'diff_label'     => 'Set C',
+            'diff'           => 3,
             'regen_label'    => 'Regenerate',
             'settings_extra' => $settings_extra,
           ]) ?>
@@ -172,7 +172,7 @@
 
           <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
             <div style="min-width:0;">
-              <div class="sheet-eyebrow" id="build-sheet-eyebrow">Year 6 · Numeracy · Set C</div>
+              <div class="sheet-eyebrow" id="build-sheet-eyebrow">Year 6 · Numeracy · ●●●○○</div>
               <h1 class="sheet-title" id="build-sheet-title">Mixed Maths Practice</h1>
             </div>
             <div class="sheet-meta">
@@ -216,6 +216,7 @@
     window.TP_LOGIN_URL = <?= json_encode(base_url('login')) ?>;
     window.TP_YEAR = <?= (int) date('Y') ?>;
   </script>
+  <script src="<?= base_url('assets/js/tp-tool.js') ?>"></script>
   <script src="<?= base_url('assets/js/tp-generators.js') ?>"></script>
   <script src="<?= base_url('assets/js/build.js') ?>"></script>
 <?= $this->endSection() ?>

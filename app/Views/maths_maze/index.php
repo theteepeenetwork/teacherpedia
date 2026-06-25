@@ -100,7 +100,7 @@
   <?= view('partials/tool_toolbar', [
         'prefix'         => 'mm',
         'tabs'           => [['key' => 'puzzle', 'label' => 'Puzzle'], ['key' => 'answers', 'label' => 'Answer key']],
-        'diff_label'     => 'Set C',
+        'diff'           => 3,
         'regen_label'    => 'New maze',
         'settings_extra' => $settings_extra,
       ]) ?>
@@ -111,7 +111,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
         <div style="min-width:0;">
-          <div class="sheet-eyebrow">KS2 Numeracy &middot; Maths Maze &middot; <span id="mm-eyebrow-diff">Set C</span></div>
+          <div class="sheet-eyebrow">KS2 Numeracy &middot; Maths Maze &middot; <span id="mm-eyebrow-diff">●●●○○</span></div>
           <h1 class="sheet-title">Find the Path</h1>
         </div>
         <div class="sheet-meta">
@@ -147,5 +147,6 @@
     window.TP_SAVE_URL  = <?= json_encode(base_url('account/save')) ?>;
     window.TP_LOGIN_URL = <?= json_encode(base_url('login')) ?>;
   </script>
+  <script src="<?= base_url('assets/js/tp-tool.js') ?>"></script>
   <script src="<?= base_url('assets/js/maths-maze.js') ?>"></script>
 <?= $this->endSection() ?>

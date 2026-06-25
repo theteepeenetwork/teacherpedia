@@ -34,13 +34,8 @@
   };
   function colorFor(s) { return STRAND_COLOR[s] || '#1f8a4d'; }
 
-  // Difficulty is shown as an obfuscated "set" code rather than the attainment
-  // band names, so the level isn't obvious to pupils/parents on the sheet.
-  // Teachers read it off the 1-5 slider: A = easiest … E = hardest.
-  var SET_CODES = ['A', 'B', 'C', 'D', 'E'];
-  function setLabel(d) { return 'Set ' + SET_CODES[d - 1]; }
-  // Short per-sheet id so two sheets of the same set are still distinguishable.
-  function randCode() { return Math.random().toString(36).slice(2, 5).toUpperCase(); }
+  // Difficulty is shown as a circle meter (●●●○○) via the shared TP_diffDots
+  // helper (tp-tool.js), so the level isn't spelled out for pupils/parents.
 
   // ----- state -----
   var state = {
@@ -83,8 +78,6 @@
   // already-generated questions where the qty is unchanged (so adding one
   // objective doesn't re-roll the others).
   function rebuild(force) {
-    // Fresh per-sheet code each time the worksheet is (re)generated.
-    state.code = randCode();
     var existing = {};
     if (!force) {
       state.questions.forEach(function (q) {
@@ -337,10 +330,9 @@
 
   function renderSheet() {
     var answersOn = state.tab === 'answerkey';
-    var sheetCode = setLabel(state.difficulty) + '-' + (state.code || '');
 
     if (els.sheetEyebrow) {
-      els.sheetEyebrow.textContent = yearSpanLabel() + ' · Numeracy · ' + sheetCode;
+      els.sheetEyebrow.textContent = yearSpanLabel() + ' · Numeracy · ' + window.TP_diffDots(state.difficulty);
     }
     if (els.sheetTitle) { els.sheetTitle.textContent = displayTitle(); }
     if (els.keybadge) { els.keybadge.style.display = answersOn ? 'inline-flex' : 'none'; }
@@ -414,7 +406,7 @@
       thumb.style.left = active.offsetLeft + 'px';
       thumb.style.width = active.offsetWidth + 'px';
     }
-    if (els.diffLabel) { els.diffLabel.textContent = setLabel(state.difficulty); }
+    if (els.diffLabel) { els.diffLabel.textContent = window.TP_diffDots(state.difficulty); }
   }
 
   function renderTabs() {
