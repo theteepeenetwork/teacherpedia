@@ -26,11 +26,7 @@ class LoopCards extends BaseController
         // Pull the whole library, ordered by strand then id. Project to the lean
         // shape the JS expects ({id,year,strand,key}); only objectives whose key
         // exists in TP_GEN are auto-generating and therefore usable as a deck.
-        $rows = $objectiveModel
-            ->select('id, year, strand, generator_key, auto_generating')
-            ->orderBy('strand', 'ASC')
-            ->orderBy('id', 'ASC')
-            ->findAll();
+        $rows = $objectiveModel->library();
 
         $objectives = [];
         foreach ($rows as $row) {

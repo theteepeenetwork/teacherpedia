@@ -124,7 +124,7 @@
         'tabs'           => [['key' => 'cards', 'label' => 'Cards'], ['key' => 'answers', 'label' => 'Answer key']],
         'diff'           => 3,
         'year'           => 4,
-        'year_min'       => 3,
+        'year_min'       => 1,
         'year_max'       => 6,
         'regen_label'    => 'New deck',
         'settings_extra' => $settings_extra,

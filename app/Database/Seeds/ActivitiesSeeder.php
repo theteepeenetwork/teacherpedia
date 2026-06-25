@@ -106,7 +106,7 @@ class ActivitiesSeeder extends Seeder
             // the KS2 objective library (Years 3-6); coming-soon tools have no
             // coverage yet. (When Year 1-2 content lands, widen these.)
             if (! array_key_exists('min_year', $a)) {
-                $a['min_year'] = $a['status'] === 'live' ? 3 : null;
+                $a['min_year'] = $a['status'] === 'live' ? 1 : null;
                 $a['max_year'] = $a['status'] === 'live' ? 6 : null;
             }
         }

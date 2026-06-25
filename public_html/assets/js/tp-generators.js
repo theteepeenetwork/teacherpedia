@@ -247,6 +247,49 @@
   G.decimals_size_order = () => { const set = Array.from({ length: 4 }, () => ri(10, 999) / 100); const sorted = [...set].sort((a, b) => a - b); return { qtn: `Order smallest first: ${set.map(fmt).join(', ')}`, ans: sorted.map(fmt).join(', ') }; };
   G.rand_write_exceeding = () => { const n = ri(1000000, 9999999); return { qtn: `Write in words: ${fmt(n)}`, ans: words(n) }; };
 
+  // ---------- Year 1 & Year 2 (KS1) ----------
+  // Grounded in National Curriculum / White Rose 'Ready to progress' KS1
+  // expectations. YEAR drives the level here; difficulty arg is ignored.
+
+  // --- Year 1 ---
+  const ks1seq = (step, max) => () => { const start = pick([0, step]); const last = start + step * 3; const next = last + step; return { qtn: `Continue: ${start}, ${start + step}, ${start + step * 2}, ${last}, ___`, ans: fmt(next) }; };
+  G.y1_count_2s = ks1seq(2, 20);
+  G.y1_count_5s = ks1seq(5, 50);
+  G.y1_count_10s = ks1seq(10, 100);
+  G.y1_one_more_less = () => { const n = ri(1, 99); const more = Math.random() < .5; return { qtn: `1 ${more ? 'more' : 'less'} than ${fmt(n)} =`, ans: fmt(more ? n + 1 : n - 1) }; };
+  G.y1_compare_20 = () => { const a = ri(0, 20), b = ri(0, 20); return { qtn: `Insert < > or = :  ${a} ___ ${b}`, ans: a < b ? '<' : a > b ? '>' : '=' }; };
+  G.y1_add_10 = () => { const a = ri(1, 9), b = ri(1, 10 - a); return { qtn: `${a} + ${b} =`, ans: fmt(a + b) }; };
+  G.y1_sub_10 = () => { const a = ri(2, 10), b = ri(1, a); return { qtn: `${a} − ${b} =`, ans: fmt(a - b) }; };
+  G.y1_add_20 = () => { const a = ri(1, 19), b = ri(1, 20 - a); return { qtn: `${a} + ${b} =`, ans: fmt(a + b) }; };
+  G.y1_sub_20 = () => { const a = ri(2, 20), b = ri(1, a); return { qtn: `${a} − ${b} =`, ans: fmt(a - b) }; };
+  G.y1_bonds_10 = () => { const n = ri(0, 10); return { qtn: `${n} + ___ = 10`, ans: fmt(10 - n) }; };
+  G.y1_bonds_20 = () => { const n = ri(0, 20); return { qtn: `${n} + ___ = 20`, ans: fmt(20 - n) }; };
+  G.y1_double_10 = () => { const n = ri(1, 10); return { qtn: `Double ${n} =`, ans: fmt(n * 2) }; };
+  G.y1_halve_20 = () => { const n = 2 * ri(1, 10); return { qtn: `Half of ${n} =`, ans: fmt(n / 2) }; };
+  G.y1_half_amount = () => { const n = 2 * ri(1, 10); return { qtn: `1/2 of ${n} =`, ans: fmt(n / 2) }; };
+  G.y1_quarter_amount = () => { const n = 4 * ri(1, 6); return { qtn: `1/4 of ${n} =`, ans: fmt(n / 4) }; };
+
+  // --- Year 2 ---
+  G.y2_tens_ones = () => { const n = ri(11, 99); const t = Math.floor(n / 10) * 10, o = n % 10; return { qtn: `Partition ${n} into tens and ones`, ans: `${t} + ${o}` }; };
+  G.y2_ten_more_less = () => { const n = ri(10, 89); const more = Math.random() < .5; return { qtn: `10 ${more ? 'more' : 'less'} than ${fmt(n)} =`, ans: fmt(more ? n + 10 : n - 10) }; };
+  G.y2_compare_100 = () => { const a = ri(0, 100), b = ri(0, 100); return { qtn: `Insert < > or = :  ${a} ___ ${b}`, ans: a < b ? '<' : a > b ? '>' : '=' }; };
+  G.y2_add_ones = () => { let t = ri(11, 89), o = ri(1, 9); while (t + o > 99) { t = ri(11, 89); o = ri(1, 9); } return { qtn: `${t} + ${o} =`, ans: fmt(t + o) }; };
+  G.y2_add_tens = () => { const t = ri(11, 79); const maxMult = Math.max(1, Math.floor((90 - t) / 10)); const tens = 10 * ri(1, maxMult); return { qtn: `${t} + ${tens} =`, ans: fmt(t + tens) }; };
+  G.y2_add_2digit = () => { const a = ri(11, 80); const b = ri(11, 99 - a); return { qtn: `${a} + ${b} =`, ans: fmt(a + b) }; };
+  G.y2_sub_100 = () => { const a = ri(20, 99), b = ri(1, a); return { qtn: `${a} − ${b} =`, ans: fmt(a - b) }; };
+  G.y2_bonds_20 = () => { const n = ri(0, 20); return { qtn: `${n} + ___ = 20`, ans: fmt(20 - n) }; };
+  G.y2_bonds_100_tens = () => { const n = 10 * ri(0, 10); return { qtn: `${fmt(n)} + ___ = 100`, ans: fmt(100 - n) }; };
+  G.y2_mult_2 = () => { const n = ri(1, 12); return { qtn: `2 × ${n} =`, ans: fmt(2 * n) }; };
+  G.y2_mult_5 = () => { const n = ri(1, 12); return { qtn: `5 × ${n} =`, ans: fmt(5 * n) }; };
+  G.y2_mult_10 = () => { const n = ri(1, 12); return { qtn: `10 × ${n} =`, ans: fmt(10 * n) }; };
+  G.y2_div_2 = () => { const n = ri(1, 12); return { qtn: `${2 * n} ÷ 2 =`, ans: fmt(n) }; };
+  G.y2_div_5 = () => { const n = ri(1, 12); return { qtn: `${5 * n} ÷ 5 =`, ans: fmt(n) }; };
+  G.y2_div_10 = () => { const n = ri(1, 12); return { qtn: `${10 * n} ÷ 10 =`, ans: fmt(n) }; };
+  G.y2_half_amount = () => { const n = 2 * ri(2, 20); return { qtn: `1/2 of ${n} =`, ans: fmt(n / 2) }; };
+  G.y2_third_amount = () => { const n = 3 * ri(2, 12); return { qtn: `1/3 of ${n} =`, ans: fmt(n / 3) }; };
+  G.y2_quarter_amount = () => { const n = 4 * ri(2, 9); return { qtn: `1/4 of ${n} =`, ans: fmt(n / 4) }; };
+  G.y2_threequarter_amount = () => { const n = 4 * ri(2, 9); return { qtn: `3/4 of ${n} =`, ans: fmt(3 * (n / 4)) }; };
+
   window.TP_GEN = G;
 })();
 

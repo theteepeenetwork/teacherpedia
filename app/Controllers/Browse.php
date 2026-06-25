@@ -34,7 +34,7 @@ class Browse extends BaseController
             // default so the feature works with no migration/seed step required:
             // every current live tool draws on the KS2 library (Years 3-6).
             if (empty($a['min_year'])) {
-                $a['min_year'] = ($a['status'] ?? '') === 'live' ? 3 : null;
+                $a['min_year'] = ($a['status'] ?? '') === 'live' ? 1 : null;
                 $a['max_year'] = ($a['status'] ?? '') === 'live' ? 6 : null;
             }
         }

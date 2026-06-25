@@ -26,11 +26,7 @@ class TreasureHunt extends BaseController
         // Pull the whole library, ordered by strand then id, and project to the
         // lean shape the JS trail builder needs (it only cares about the
         // generator key + strand grouping).
-        $rows = $objectiveModel
-            ->select('id, year, strand, generator_key')
-            ->orderBy('strand', 'ASC')
-            ->orderBy('id', 'ASC')
-            ->findAll();
+        $rows = $objectiveModel->library();
 
         $objectives = [];
         foreach ($rows as $row) {

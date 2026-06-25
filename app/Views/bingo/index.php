@@ -117,7 +117,7 @@
         'tabs'           => [['key' => 'cards', 'label' => 'Bingo cards'], ['key' => 'caller', 'label' => 'Caller']],
         'diff'           => 3,
         'year'           => 4,
-        'year_min'       => 3,
+        'year_min'       => 1,
         'year_max'       => 6,
         'regen_label'    => 'New game',
         'settings_extra' => $settings_extra,

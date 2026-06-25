@@ -24,11 +24,7 @@ class Bingo extends BaseController
 
         // Pull the whole library and project to the lean shape the JS builder
         // expects (matches Build.php so window.TP_OBJECTIVES is identical).
-        $rows = $objectiveModel
-            ->select('id, year, strand, text, generator_key, auto_generating')
-            ->orderBy('strand', 'ASC')
-            ->orderBy('id', 'ASC')
-            ->findAll();
+        $rows = $objectiveModel->library();
 
         $objectives = [];
         foreach ($rows as $row) {

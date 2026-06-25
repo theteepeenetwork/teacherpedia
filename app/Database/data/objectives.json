@@ -1300,5 +1300,209 @@
   "strand": "Mastery / missing number",
   "text": "Identify the missing numbers in an HTO x TO multiplication calculation.",
   "key": "missing_HTO_TO_multiplication"
+ },
+ {
+  "year": 1,
+  "strand": "Counting",
+  "text": "Count in 2s",
+  "key": "y1_count_2s"
+ },
+ {
+  "year": 1,
+  "strand": "Counting",
+  "text": "Count in 5s",
+  "key": "y1_count_5s"
+ },
+ {
+  "year": 1,
+  "strand": "Counting",
+  "text": "Count in 10s",
+  "key": "y1_count_10s"
+ },
+ {
+  "year": 1,
+  "strand": "Place value",
+  "text": "One more or one less",
+  "key": "y1_one_more_less"
+ },
+ {
+  "year": 1,
+  "strand": "Comparing & ordering",
+  "text": "Compare numbers to 20",
+  "key": "y1_compare_20"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Add within 10",
+  "key": "y1_add_10"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Subtract within 10",
+  "key": "y1_sub_10"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Add within 20",
+  "key": "y1_add_20"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Subtract within 20",
+  "key": "y1_sub_20"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Number bonds to 10",
+  "key": "y1_bonds_10"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Number bonds to 20",
+  "key": "y1_bonds_20"
+ },
+ {
+  "year": 1,
+  "strand": "Multiplication & division",
+  "text": "Double a number to 10",
+  "key": "y1_double_10"
+ },
+ {
+  "year": 1,
+  "strand": "Multiplication & division",
+  "text": "Halve an even number to 20",
+  "key": "y1_halve_20"
+ },
+ {
+  "year": 1,
+  "strand": "Fractions, decimals & %",
+  "text": "Find half of a quantity",
+  "key": "y1_half_amount"
+ },
+ {
+  "year": 1,
+  "strand": "Fractions, decimals & %",
+  "text": "Find a quarter of a quantity",
+  "key": "y1_quarter_amount"
+ },
+ {
+  "year": 2,
+  "strand": "Place value",
+  "text": "Tens and ones in a 2-digit number",
+  "key": "y2_tens_ones"
+ },
+ {
+  "year": 2,
+  "strand": "Place value",
+  "text": "Ten more or ten less",
+  "key": "y2_ten_more_less"
+ },
+ {
+  "year": 2,
+  "strand": "Comparing & ordering",
+  "text": "Compare numbers to 100",
+  "key": "y2_compare_100"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Add ones to a 2-digit number",
+  "key": "y2_add_ones"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Add tens to a 2-digit number",
+  "key": "y2_add_tens"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Add two 2-digit numbers",
+  "key": "y2_add_2digit"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Subtract within 100",
+  "key": "y2_sub_100"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Number bonds to 20",
+  "key": "y2_bonds_20"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Number bonds to 100 (tens)",
+  "key": "y2_bonds_100_tens"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "2 times table",
+  "key": "y2_mult_2"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "5 times table",
+  "key": "y2_mult_5"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "10 times table",
+  "key": "y2_mult_10"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "Divide by 2",
+  "key": "y2_div_2"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "Divide by 5",
+  "key": "y2_div_5"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "Divide by 10",
+  "key": "y2_div_10"
+ },
+ {
+  "year": 2,
+  "strand": "Fractions, decimals & %",
+  "text": "Find half of a quantity",
+  "key": "y2_half_amount"
+ },
+ {
+  "year": 2,
+  "strand": "Fractions, decimals & %",
+  "text": "Find a third of a quantity",
+  "key": "y2_third_amount"
+ },
+ {
+  "year": 2,
+  "strand": "Fractions, decimals & %",
+  "text": "Find a quarter of a quantity",
+  "key": "y2_quarter_amount"
+ },
+ {
+  "year": 2,
+  "strand": "Fractions, decimals & %",
+  "text": "Find three quarters of a quantity",
+  "key": "y2_threequarter_amount"
  }
 ]

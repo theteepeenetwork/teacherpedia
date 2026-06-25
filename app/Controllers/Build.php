@@ -19,13 +19,10 @@ class Build extends BaseController
     {
         $objectiveModel = new ObjectiveModel();
 
-        // Pull the whole library, ordered by strand then id (matches the design's
-        // strand grouping). Project to the lean shape the JS builder expects.
-        $rows = $objectiveModel
-            ->select('id, year, strand, text, generator_key, auto_generating')
-            ->orderBy('strand', 'ASC')
-            ->orderBy('id', 'ASC')
-            ->findAll();
+        // The objective library is sourced from the content file (no re-seed
+        // needed to add curriculum content). Project to the lean shape the JS
+        // builder expects.
+        $rows = $objectiveModel->library();
 
         $objectives = [];
         foreach ($rows as $row) {

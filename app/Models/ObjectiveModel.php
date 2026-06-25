@@ -27,6 +27,42 @@ class ObjectiveModel extends Model
     }
 
     /**
+     * The full objective library for the tools, sourced from the canonical
+     * content file (app/Database/data/objectives.json) rather than the DB, so
+     * adding curriculum content is a code change (a git pull) with no migration
+     * or re-seed step. Ids are the 1-based file position (stable while existing
+     * entries keep their order, matching the DB seed order). Falls back to the
+     * DB if the file is missing. Row shape matches what the controllers project
+     * from: id, year, strand, text, generator_key, auto_generating.
+     */
+    public function library(): array
+    {
+        $path = APPPATH . 'Database/data/objectives.json';
+        if (is_file($path)) {
+            $records = json_decode((string) file_get_contents($path), true);
+            if (is_array($records)) {
+                $rows = [];
+                foreach ($records as $i => $r) {
+                    $key = isset($r['key']) && $r['key'] !== '' ? (string) $r['key'] : null;
+                    $rows[] = [
+                        'id'              => $i + 1,
+                        'year'            => (int) ($r['year'] ?? 0),
+                        'strand'          => (string) ($r['strand'] ?? ''),
+                        'text'            => (string) ($r['text'] ?? ''),
+                        'generator_key'   => $key,
+                        'auto_generating' => $key !== null ? 1 : 0,
+                    ];
+                }
+                usort($rows, static function ($a, $b) {
+                    return [$a['strand'], $a['id']] <=> [$b['strand'], $b['id']];
+                });
+                return $rows;
+            }
+        }
+        return $this->orderBy('strand', 'ASC')->orderBy('id', 'ASC')->findAll();
+    }
+
+    /**
      * All objectives for a given strand.
      */
     public function byStrand(string $strand): array
