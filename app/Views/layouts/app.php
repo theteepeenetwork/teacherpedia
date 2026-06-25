@@ -58,8 +58,19 @@ $accent = $accent ?? '';
 
   <link rel="stylesheet" href="<?= base_url('assets/css/teacherpedia.css') ?>">
 
-  <?php if ($accent !== ''): ?>
-  <style>:root{ --accent: <?= esc($accent, 'css') ?>; }</style>
+  <?php
+    // Emit the per-tool accent as a CSS custom property. We must NOT run a hex
+    // colour through esc(..,'css') — that escaper turns the leading '#' into the
+    // CSS escape sequence "\23 ", producing an invalid colour. var(--accent)
+    // then resolves to nothing, so accent backgrounds (e.g. selected chips)
+    // collapse to transparent and white text vanishes. Instead, hard-validate
+    // the value as a #RGB/#RRGGBB hex colour and emit it literally.
+    $accentHex = is_string($accent) && preg_match('/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/', $accent)
+        ? $accent
+        : '';
+  ?>
+  <?php if ($accentHex !== ''): ?>
+  <style>:root{ --accent: <?= $accentHex ?>; }</style>
   <?php endif; ?>
 
   <?= $this->renderSection('pageHead') ?>
