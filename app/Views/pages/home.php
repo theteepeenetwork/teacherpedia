@@ -138,13 +138,49 @@
       <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Solve a calculation to unlock each step through the grid &mdash; a wrong turn is a dead end. Self-marking.</p>
       <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">Open &rarr;</div>
     </a>
+    <a href="<?= base_url('beat-the-clock') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07); box-shadow:0 1px 2px rgba(28,36,32,.04);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="width:46px; height:46px; border-radius:12px; background:#f6e7e1; display:flex; align-items:center; justify-content:center; font-size:23px;">&#9201;</div>
+        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#206e40; background:#e7f5ed; padding:4px 9px; border-radius:6px;">Live</span>
+      </div>
+      <h3 style="margin:18px 0 5px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:21px;">Beat the Clock</h3>
+      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">A timed fluency sprint &mdash; answer as many questions as you can before the clock runs out. Self-marking.</p>
+      <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">Open &rarr;</div>
+    </a>
+    <a href="<?= base_url('treasure-hunt') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07); box-shadow:0 1px 2px rgba(28,36,32,.04);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="width:46px; height:46px; border-radius:12px; background:#f6ecdd; display:flex; align-items:center; justify-content:center; font-size:23px;">&#128506;</div>
+        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#206e40; background:#e7f5ed; padding:4px 9px; border-radius:6px;">Live</span>
+      </div>
+      <h3 style="margin:18px 0 5px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:21px;">Treasure Hunt</h3>
+      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Place clue cards around the room and follow the loop &mdash; solve each question to find the next card. Self-marking.</p>
+      <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">Open &rarr;</div>
+    </a>
+    <a href="<?= base_url('loop-cards') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07); box-shadow:0 1px 2px rgba(28,36,32,.04);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="width:46px; height:46px; border-radius:12px; background:#e8eefb; display:flex; align-items:center; justify-content:center; font-size:23px;">&#128279;</div>
+        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#206e40; background:#e7f5ed; padding:4px 9px; border-radius:6px;">Live</span>
+      </div>
+      <h3 style="margin:18px 0 5px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:21px;">Loop Cards</h3>
+      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Domino-style cards that link answer to question into one continuous loop. Self-marking, perfect for pairs.</p>
+      <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">Open &rarr;</div>
+    </a>
+    <a href="<?= base_url('bingo') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07); box-shadow:0 1px 2px rgba(28,36,32,.04);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="width:46px; height:46px; border-radius:12px; background:#efe9f7; display:flex; align-items:center; justify-content:center; font-size:23px;">&#9673;</div>
+        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#206e40; background:#e7f5ed; padding:4px 9px; border-radius:6px;">Live</span>
+      </div>
+      <h3 style="margin:18px 0 5px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:21px;">Bingo</h3>
+      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Auto-filled bingo cards plus a caller sheet &mdash; read questions aloud, children dab the answer. Whole-class fluency.</p>
+      <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">Open &rarr;</div>
+    </a>
     <a href="<?= base_url('browse') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07);">
       <div style="display:flex; justify-content:space-between; align-items:flex-start;">
         <div style="width:46px; height:46px; border-radius:12px; background:#f0ede5; color:#a8a294; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:800; font-family:'Bricolage Grotesque',sans-serif;">&#65291;</div>
-        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#a8a294; background:#f0ede5; padding:4px 9px; border-radius:6px;">3 soon</span>
+        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#a8a294; background:#f0ede5; padding:4px 9px; border-radius:6px;">2 soon</span>
       </div>
       <h3 style="margin:18px 0 5px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:21px;">More activities</h3>
-      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Times-table grids, bingo and true-or-false cards are on the way.</p>
+      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Times-table grids and true-or-false cards are on the way.</p>
       <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">See all &rarr;</div>
     </a>
   </div>
