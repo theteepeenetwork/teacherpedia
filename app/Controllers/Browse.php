@@ -16,13 +16,22 @@ class Browse extends BaseController
 
         $live = 0;
         $soon = 0;
-        foreach ($activities as $a) {
+        foreach ($activities as &$a) {
             if (($a['status'] ?? '') === 'live') {
                 $live++;
             } else {
                 $soon++;
             }
+            // Year coverage for the Browse year filter. Prefer the DB columns
+            // if present (migration applied); otherwise fall back to a sensible
+            // default so the feature works with no migration/seed step required:
+            // every current live tool draws on the KS2 library (Years 3-6).
+            if (empty($a['min_year'])) {
+                $a['min_year'] = ($a['status'] ?? '') === 'live' ? 3 : null;
+                $a['max_year'] = ($a['status'] ?? '') === 'live' ? 6 : null;
+            }
         }
+        unset($a);
 
         return view('pages/browse', [
             'activeNav'  => 'browse',
