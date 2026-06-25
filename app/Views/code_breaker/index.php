@@ -22,8 +22,11 @@
     <div class="avatar">MP</div>
   </header>
 
-  <!-- SETTINGS STRIP -->
-  <div class="app-toolbar" style="flex-wrap:wrap; background:rgba(255,255,255,.42); gap:18px;">
+  <!-- Standard resource toolbar (difficulty + tabs + Save/Print/New).
+       Code-Breaker-specific settings (operations + secret message) are passed
+       in as the settings_extra slot. -->
+  <?php ob_start(); ?>
+    <div class="app-divider"></div>
     <span style="font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#9a9f95;">Operations</span>
     <div id="cb-ops" style="display:flex; gap:7px;">
       <button type="button" class="chip" data-op="+">+ Add</button>
@@ -32,38 +35,19 @@
       <button type="button" class="chip" data-op="&divide;">&divide; Divide</button>
     </div>
     <div class="app-divider"></div>
-    <span style="font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#9a9f95;">Difficulty</span>
-    <div id="cb-difficulty" class="difficulty" style="width:200px; height:38px; padding:3px;">
-      <div class="diff-thumb" id="cb-diff-thumb" style="top:3px; bottom:3px; width:34px;"></div>
-      <button type="button" data-d="1">1</button>
-      <button type="button" data-d="2">2</button>
-      <button type="button" data-d="3">3</button>
-      <button type="button" data-d="4">4</button>
-      <button type="button" data-d="5">5</button>
-    </div>
-    <span id="cb-diff-label" style="font-size:12.5px; font-weight:700; color:var(--ink);">Emerging</span>
-    <div class="app-divider"></div>
     <span style="font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#9a9f95;">Secret message</span>
     <input id="cb-word" type="text" maxlength="24" autocomplete="off" spellcheck="false"
            placeholder="e.g. WELL DONE"
            style="text-transform:uppercase; width:170px; padding:7px 11px; border:1px solid rgba(28,36,32,.16); border-radius:8px; background:#fff; font-family:var(--font-head); font-weight:700; letter-spacing:.04em; font-size:13px; color:var(--ink);" />
     <button type="button" id="cb-random" class="btn btn-ghost btn-sm" title="Pick a random message">&#127922; Random</button>
-  </div>
-
-  <!-- TOOLBAR -->
-  <div class="app-toolbar">
-    <div id="cb-tabs" class="segmented">
-      <div class="seg-thumb" id="cb-tab-thumb"></div>
-      <button type="button" data-tab="active">Activity</button>
-      <button type="button" data-tab="answers">Answer key</button>
-    </div>
-    <div style="flex:1;"></div>
-    <button type="button" id="cb-save" class="btn btn-ghost btn-sm">&hearts; Save</button>
-    <button type="button" id="cb-print" class="btn btn-ghost btn-sm">&#9113; Print / PDF</button>
-    <button type="button" id="cb-regen" class="btn btn-primary btn-sm">
-      <span id="cb-spin" style="display:inline-block; transition:transform .5s ease;">&#10227;</span> New puzzle
-    </button>
-  </div>
+  <?php $settings_extra = ob_get_clean(); ?>
+  <?= view('partials/tool_toolbar', [
+        'prefix'         => 'cb',
+        'tabs'           => [['key' => 'active', 'label' => 'Activity'], ['key' => 'answers', 'label' => 'Answer key']],
+        'diff_label'     => 'Emerging',
+        'regen_label'    => 'New puzzle',
+        'settings_extra' => $settings_extra,
+      ]) ?>
 
   <!-- DESK -->
   <div class="app-scroll" style="flex:1; padding:38px 44px 80px; display:flex; justify-content:center; align-items:flex-start;">

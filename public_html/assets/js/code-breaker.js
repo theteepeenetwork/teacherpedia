@@ -244,7 +244,7 @@
     // difficulty thumb + labels — measure the active button so the thumb lines
     // up exactly with the equal-width (flex:1) number buttons at any size.
     var diffWrap = $('cb-difficulty');
-    var active = diffWrap ? diffWrap.querySelectorAll('[data-d]')[state.difficulty - 1] : null;
+    var active = diffWrap ? diffWrap.querySelectorAll('[data-diff]')[state.difficulty - 1] : null;
     if (els.diffThumb && active) {
       els.diffThumb.style.left = active.offsetLeft + 'px';
       els.diffThumb.style.width = active.offsetWidth + 'px';
@@ -253,10 +253,14 @@
     els.diffLabel.textContent = label;
     els.eyebrowDiff.textContent = label;
 
-    // tab thumb
-    var answersOn = state.tab === 'answers';
-    els.tabThumb.style.left = answersOn ? 'calc(50% + 1.5px)' : '3px';
-    els.tabThumb.style.width = 'calc(50% - 4.5px)';
+    // tab thumb — measure the active segment (same approach as the difficulty
+    // thumb) so it lines up regardless of label widths.
+    var tabsWrap = $('cb-tabs');
+    var activeTab = tabsWrap ? tabsWrap.querySelectorAll('[data-tab]')[state.tab === 'answers' ? 1 : 0] : null;
+    if (els.tabThumb && activeTab) {
+      els.tabThumb.style.left = activeTab.offsetLeft + 'px';
+      els.tabThumb.style.width = activeTab.offsetWidth + 'px';
+    }
   }
 
   function render() {
@@ -356,14 +360,17 @@
   // ---- Wire up --------------------------------------------------------------
   function init() {
     els.ops = $('cb-ops');
-    els.diffThumb = $('cb-diff-thumb');
+    // Standard toolbar hooks (shared partials/tool_toolbar): thumbs are class
+    // elements inside the prefixed containers; the spinner is the regen icon.
+    els.diffThumb = $('cb-difficulty') ? $('cb-difficulty').querySelector('.diff-thumb') : null;
     els.diffLabel = $('cb-diff-label');
     els.eyebrowDiff = $('cb-eyebrow-diff');
-    els.tabThumb = $('cb-tab-thumb');
+    els.tabThumb = $('cb-tabs') ? $('cb-tabs').querySelector('.seg-thumb') : null;
     els.cipher = $('cb-cipher');
     els.questions = $('cb-questions');
     els.message = $('cb-message');
-    els.spin = $('cb-spin');
+    els.spin = $('cb-regen-icon');
+    if (els.spin) { els.spin.style.transition = 'transform .5s ease'; }
     els.toast = $('cb-toast');
     els.word = $('cb-word');
     els.random = $('cb-random');
@@ -377,8 +384,8 @@
     });
 
     // difficulty buttons
-    Array.prototype.forEach.call($('cb-difficulty').querySelectorAll('[data-d]'), function (b) {
-      b.addEventListener('click', function () { setDiff(parseInt(b.getAttribute('data-d'), 10)); });
+    Array.prototype.forEach.call($('cb-difficulty').querySelectorAll('[data-diff]'), function (b) {
+      b.addEventListener('click', function () { setDiff(parseInt(b.getAttribute('data-diff'), 10)); });
     });
 
     // tabs

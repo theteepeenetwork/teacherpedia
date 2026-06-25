@@ -52,8 +52,8 @@
     .build-total-q { font-family: var(--font-head); font-weight: 700; font-size: 15px; line-height: 1; }
     .build-total-sub { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
 
-    .build-diff-label { font-size: 12.5px; font-weight: 700; color: var(--ink); }
-    .build-eyebrow-lbl { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted2); }
+    /* .build-diff-label / .build-eyebrow-lbl now live in the shared stylesheet
+       (standardised toolbar labels used by every resource). */
 
     .build-sheet-wrap { flex: 1; padding: 42px 44px 80px; display: flex; justify-content: center; align-items: flex-start; }
     .build-empty-lib { text-align: center; color: #a8a294; font-size: 13px; padding: 40px 20px; line-height: 1.5; }
@@ -150,37 +150,21 @@
     <!-- ===== RIGHT : PREVIEW ===== -->
     <main class="app-main">
 
-      <!-- Difficulty + sheet options -->
-      <div class="app-toolbar" style="border-bottom:1px solid rgba(28,36,32,.07); background:rgba(255,255,255,.4);">
-        <span class="build-eyebrow-lbl">Difficulty</span>
-        <div id="build-difficulty" class="difficulty" style="width:200px;">
-          <div class="diff-thumb"></div>
-          <button type="button" data-diff="1">1</button>
-          <button type="button" data-diff="2">2</button>
-          <button type="button" data-diff="3">3</button>
-          <button type="button" data-diff="4">4</button>
-          <button type="button" data-diff="5">5</button>
-        </div>
-        <span id="build-diff-label" class="build-diff-label">Expected</span>
+      <!-- Standard resource toolbar (difficulty + tabs + Save/Print/New).
+           Builder-specific settings (column + answer-space toggles) are passed
+           in as the settings_extra slot, right-aligned. -->
+      <?php ob_start(); ?>
         <div style="flex:1;"></div>
         <button type="button" id="build-twocol" class="chip">&#9638; Two columns</button>
         <button type="button" id="build-answerspace" class="chip">&#9135; Answer space</button>
-      </div>
-
-      <!-- Tabs + actions -->
-      <div class="app-toolbar">
-        <div id="build-tabs" class="segmented">
-          <div class="seg-thumb"></div>
-          <button type="button" data-tab="worksheet">Worksheet</button>
-          <button type="button" data-tab="answerkey">Answer key</button>
-        </div>
-        <div style="flex:1;"></div>
-        <button type="button" id="build-save" class="btn btn-ghost btn-sm">&#9829; Save</button>
-        <button type="button" id="build-print" class="btn btn-ghost btn-sm">&#9113; Print / PDF</button>
-        <button type="button" id="build-regen" class="btn btn-primary btn-sm">
-          <span id="build-regen-icon" style="display:inline-block; font-size:16px;">&#10227;</span> Regenerate
-        </button>
-      </div>
+      <?php $settings_extra = ob_get_clean(); ?>
+      <?= view('partials/tool_toolbar', [
+            'prefix'         => 'build',
+            'tabs'           => [['key' => 'worksheet', 'label' => 'Worksheet'], ['key' => 'answerkey', 'label' => 'Answer key']],
+            'diff_label'     => 'Expected',
+            'regen_label'    => 'Regenerate',
+            'settings_extra' => $settings_extra,
+          ]) ?>
 
       <!-- A4 sheet preview -->
       <div class="app-scroll build-sheet-wrap">
