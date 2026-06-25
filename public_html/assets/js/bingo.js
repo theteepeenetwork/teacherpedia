@@ -24,7 +24,7 @@
     difficulty: 3,
     year: 4,
     size: 4,              // 3 | 4 | 5  (5 has a FREE centre)
-    cardsN: 4,            // how many unique printed cards
+    cardsN: 30,           // how many unique printed cards (default = a class set)
     strands: {},          // strand name -> true (selected)
     tab: 'cards',         // 'cards' | 'caller'
     game: null            // { cards: [...], caller: [...], warn: '' }

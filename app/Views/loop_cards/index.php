@@ -113,8 +113,10 @@
     <span class="build-eyebrow-lbl">Deck</span>
     <div id="lc-count" style="display:flex; gap:7px;">
       <button type="button" class="chip" data-count="8">8</button>
-      <button type="button" class="chip" data-count="12">12</button>
       <button type="button" class="chip" data-count="16">16</button>
+      <button type="button" class="chip" data-count="24">24</button>
+      <button type="button" class="chip" data-count="30">30</button>
+      <button type="button" class="chip" data-count="35">35</button>
     </div>
   <?php $settings_extra = ob_get_clean(); ?>
   <?= view('partials/tool_toolbar', [

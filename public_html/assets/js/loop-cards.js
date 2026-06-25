@@ -26,7 +26,7 @@
     difficulty: 3,
     year: 4,
     strands: [],           // selected strand names
-    count: 12,             // requested deck size
+    count: 30,             // requested deck size (default = a class set)
     tab: 'cards',          // 'cards' | 'answers'
     cards: null,           // loop cards (logical order, by index)
     order: null,           // physical (shuffled) display order

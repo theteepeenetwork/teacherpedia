@@ -24,7 +24,7 @@
   var state = {
     difficulty: 3,
     year: 4,
-    count: 16,
+    count: 20,
     tab: 'cards',          // 'cards' | 'answers'
     strands: {},           // strand name -> true when selected
     cards: null,           // logical loop (by card.index)

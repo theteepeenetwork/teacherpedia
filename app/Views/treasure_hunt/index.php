@@ -109,8 +109,9 @@
     <span class="build-eyebrow-lbl">Cards</span>
     <div id="th-count" style="display:flex; gap:7px;">
       <button type="button" class="chip" data-count="12">12</button>
-      <button type="button" class="chip" data-count="16">16</button>
       <button type="button" class="chip" data-count="20">20</button>
+      <button type="button" class="chip" data-count="30">30</button>
+      <button type="button" class="chip" data-count="35">35</button>
     </div>
   <?php $settings_extra = ob_get_clean(); ?>
   <?= view('partials/tool_toolbar', [

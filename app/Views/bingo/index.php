@@ -106,9 +106,10 @@
     <div class="app-divider"></div>
     <span class="build-eyebrow-lbl">Cards</span>
     <div id="bingo-cards-n" style="display:flex; gap:7px;">
-      <button type="button" class="chip" data-n="2">2</button>
-      <button type="button" class="chip" data-n="4">4</button>
-      <button type="button" class="chip" data-n="6">6</button>
+      <button type="button" class="chip" data-n="10">10</button>
+      <button type="button" class="chip" data-n="20">20</button>
+      <button type="button" class="chip" data-n="30">30</button>
+      <button type="button" class="chip" data-n="35">35</button>
     </div>
   <?php $settings_extra = ob_get_clean(); ?>
   <?= view('partials/tool_toolbar', [
