@@ -55,6 +55,12 @@
   var BY_ID = {};
   OBJ.forEach(function (o) { BY_ID[o.id] = o; });
 
+  // All distinct years present in the library (sorted). Used so the year filter
+  // can fall back to "show everything" instead of an empty list.
+  var ALL_YEARS = [];
+  OBJ.forEach(function (o) { if (ALL_YEARS.indexOf(o.year) === -1) { ALL_YEARS.push(o.year); } });
+  ALL_YEARS.sort(function (a, b) { return a - b; });
+
   // An objective is generatable iff it has a key present in TP_GEN.
   function canGenerate(o) {
     return !!(o && o.key && window.TP_GEN && window.TP_GEN[o.key]);
@@ -445,8 +451,16 @@
 
   function toggleYear(y) {
     var i = state.years.indexOf(y);
-    if (i === -1) { state.years.push(y); state.years.sort(); }
-    else { state.years.splice(i, 1); }
+    if (i === -1) {
+      state.years.push(y);
+      state.years.sort(function (a, b) { return a - b; });
+    } else if (state.years.length > 1) {
+      state.years.splice(i, 1);
+    } else {
+      // Deselecting the only active year would empty the library; instead fall
+      // back to showing every year so objectives are never hidden entirely.
+      state.years = ALL_YEARS.slice();
+    }
     renderChips();
     renderLibrary();
   }
