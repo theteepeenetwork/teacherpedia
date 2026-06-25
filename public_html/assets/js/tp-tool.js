@@ -27,6 +27,19 @@ window.TP_effDifficulty = function (year, meter) {
   return Math.max(1, Math.min(5, band + nudge));
 };
 
+/* ---- Curriculum: multiplication tables introduced by year -------------------
+ * Per the National Curriculum / White Rose RtP mapping:
+ *   Y1-2: ×2, ×5, ×10   |   Y3: + ×3, ×4, ×8   |   Y4+: all tables to 12×12.
+ * Self-generating tools (Code Breaker, Maths Maze) use this so they never put an
+ * off-curriculum fact (e.g. 4×4 below Year 4) on a sheet.
+ * ------------------------------------------------------------------------- */
+window.TP_yearTables = function (year) {
+  year = year | 0;
+  if (year <= 2) { return [2, 5, 10]; }
+  if (year === 3) { return [2, 3, 4, 5, 8, 10]; }
+  return [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // Year 4 and above
+};
+
 /* ---- Year selector wiring ---------------------------------------------------
  * Wires the shared #<prefix>-years chip row (rendered by partials/tool_toolbar).
  * Manages the .chip-on state and calls onChange(year) when an enabled chip is

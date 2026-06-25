@@ -67,33 +67,47 @@
   }
 
   // Build a calculation string that evaluates to `target`, for op + difficulty.
-  function calcFor(target, op, d) {
-    if (op === '+') {
-      var a = ri(Math.max(1, Math.floor(target * 0.2)), Math.max(1, target - 1));
+  // Build a calculation equal to `target`, using ONLY a selected operation and
+  // (for ×/÷) only the multiplication tables appropriate to the year. Each
+  // builder returns null if it can't represent this target.
+  function calcFor(target, ops, d, year) {
+    var tables = window.TP_yearTables ? window.TP_yearTables(year) : [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    function add() {
+      if (target < 2) { return null; }
+      var a = ri(Math.max(1, Math.floor(target * 0.2)), target - 1);
       return fmt(a) + ' + ' + fmt(target - a) + ' =';
     }
-    if (op === '-') {
+    function sub() {
+      if (target < 1) { return null; }
       var extra = ri(target + 1, target + (d <= 2 ? 30 : d <= 4 ? 200 : 900));
       return fmt(extra) + ' − ' + fmt(extra - target) + ' =';
     }
-    if (op === '×') { // ×
-      var factors = [];
-      for (var i = 2; i <= Math.min(12, target); i++) {
-        if (target % i === 0) factors.push(i);
+    function mul() {
+      // A real table fact: f (a year table) × m, with the multiplier m ≤ 12.
+      var fs = [];
+      for (var i = 0; i < tables.length; i++) {
+        if (tables[i] <= target && target % tables[i] === 0 && (target / tables[i]) <= 12) { fs.push(tables[i]); }
       }
-      if (factors.length) {
-        var f = pick(factors);
-        return f + ' × ' + fmt(target / f) + ' =';
-      }
-      var ax = ri(1, target - 1);
-      return fmt(ax) + ' + ' + fmt(target - ax) + ' =';
+      if (!fs.length) { return null; }
+      var f = pick(fs);
+      return f + ' × ' + fmt(target / f) + ' =';
     }
-    if (op === '÷') { // ÷
-      var b = ri(2, 9);
+    function div() {
+      // A real division fact: (target × b) ÷ b, quotient (= target) ≤ 12.
+      if (target < 1 || target > 12) { return null; }
+      var b = pick(tables);
       return fmt(target * b) + ' ÷ ' + b + ' =';
     }
-    var af = ri(1, target - 1);
-    return fmt(af) + ' + ' + fmt(target - af) + ' =';
+    var make = { '+': add, '-': sub, '×': mul, '÷': div };
+    var order = window.TP_shuffle ? window.TP_shuffle(ops) : ops.slice();
+    for (var i = 0; i < order.length; i++) {
+      var s = make[order[i]] ? make[order[i]]() : null;
+      if (s) { return s; }
+    }
+    // Last resort (only when the lone selected op can't represent this value,
+    // i.e. × selected and the value isn't a table product): subtraction works
+    // for any value and keeps the number magnitude year-appropriate.
+    return sub() || div() || add();
   }
 
   // Build a complete puzzle from the current difficulty + operations.
@@ -134,10 +148,9 @@
         return;
       }
       qn++;
-      var op = pick(ops);
       questions.push({
         num: qn,
-        qtn: calcFor(map[ch], op, d),
+        qtn: calcFor(map[ch], ops, d, state.year),
         value: map[ch],
         letter: ch
       });

@@ -50,29 +50,44 @@
   }
 
   // Build a calculation string that evaluates to `target` for op + difficulty.
-  function calcFor(target, op, d) {
-    if (op === '+') {
+  // Build a calculation equal to `target`, using ONLY a selected operation and
+  // (for ×/÷) only the year-appropriate multiplication tables. Each builder
+  // returns null when it can't represent this target.
+  function calcFor(target, ops, d, year) {
+    var tables = window.TP_yearTables ? window.TP_yearTables(year) : [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    function add() {
+      if (target < 2) { return null; }
       var a = ri(1, target - 1);
       return fmt(a) + ' + ' + fmt(target - a);
     }
-    if (op === '-') {
+    function sub() {
+      if (target < 1) { return null; }
       var span = d <= 2 ? 20 : d <= 4 ? 80 : 300;
       var extra = target + ri(1, span);
       return fmt(extra) + ' − ' + fmt(extra - target);
     }
-    if (op === '×') {
-      var factors = [];
-      for (var i = 2; i <= Math.min(12, target); i++) { if (target % i === 0) { factors.push(i); } }
-      if (factors.length) { var f = pick(factors); return f + ' × ' + fmt(target / f); }
-      var ax = ri(1, target - 1);
-      return fmt(ax) + ' + ' + fmt(target - ax); // fallback when prime
+    function mul() {
+      // A real table fact: f (a year table) × m, with the multiplier m ≤ 12.
+      var fs = [];
+      for (var i = 0; i < tables.length; i++) {
+        if (tables[i] <= target && target % tables[i] === 0 && (target / tables[i]) <= 12) { fs.push(tables[i]); }
+      }
+      if (!fs.length) { return null; }
+      var f = pick(fs);
+      return f + ' × ' + fmt(target / f);
     }
-    if (op === '÷') {
-      var b = ri(2, d <= 2 ? 5 : 9);
+    function div() {
+      if (target < 1 || target > 12) { return null; }
+      var b = pick(tables);
       return fmt(target * b) + ' ÷ ' + b;
     }
-    var af = ri(1, target - 1);
-    return fmt(af) + ' + ' + fmt(target - af);
+    var make = { '+': add, '-': sub, '×': mul, '÷': div };
+    var order = window.TP_shuffle ? window.TP_shuffle(ops) : ops.slice();
+    for (var i = 0; i < order.length; i++) {
+      var s = make[order[i]] ? make[order[i]]() : null;
+      if (s) { return s; }
+    }
+    return sub() || div() || add(); // last resort (only-× selected + non-product value)
   }
 
   // Monotone lattice path (right/down only) from (0,0) to (n-1,n-1).
@@ -118,7 +133,7 @@
           // Path cells obey the rule; off-path cells break it (dead ends).
           var target = targetWithParity(d, isPath ? wantEven : !wantEven);
           cell.answer = target;
-          cell.q = calcFor(target, pick(ops), d);
+          cell.q = calcFor(target, ops, d, state.year);
         }
         cells.push(cell);
       }
