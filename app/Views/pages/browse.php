@@ -50,6 +50,15 @@
   <div style="font-size:13.5px; font-weight:600; color:#8a8f86;"><?= (int) $liveCount ?> live &middot; <?= (int) $soonCount ?> coming soon</div>
 </section>
 
+<!-- YEAR FILTER CHIPS -->
+<section style="max-width:1200px; margin:0 auto; width:100%; padding:6px 32px 0; display:flex; align-items:center; gap:9px; flex-wrap:wrap;">
+  <span style="font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#9a9f95;">Year</span>
+  <button type="button" class="chip chip-on year-chip" data-year="" aria-pressed="true">All years</button>
+  <?php for ($y = 1; $y <= 6; $y++): ?>
+    <button type="button" class="chip year-chip" data-year="<?= $y ?>" aria-pressed="false">Year <?= $y ?></button>
+  <?php endfor; ?>
+</section>
+
 <!-- ACTIVITY GRID -->
 <section style="max-width:1200px; margin:0 auto; width:100%; padding:20px 32px 70px; flex:1;">
   <div id="activityGrid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
@@ -68,8 +77,15 @@
         : 'font-size:10.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#a8a294; background:#f0ede5; padding:4px 9px; border-radius:6px;';
       // searchable haystack for browse.js
       $haystack = strtolower(trim(($a['name'] ?? '') . ' ' . ($a['description'] ?? '') . ' ' . ($a['tags'] ?? '')));
+      // year coverage (inclusive); null = unspecified / coming-soon
+      $minYear  = isset($a['min_year']) && $a['min_year'] !== null ? (int) $a['min_year'] : null;
+      $maxYear  = isset($a['max_year']) && $a['max_year'] !== null ? (int) $a['max_year'] : null;
+      $coverage = '';
+      if ($minYear !== null && $maxYear !== null) {
+        $coverage = $minYear === $maxYear ? 'Year ' . $minYear : 'Years ' . $minYear . '&ndash;' . $maxYear;
+      }
     ?>
-    <a class="rcard activity-card" data-search="<?= esc($haystack, 'attr') ?>" href="<?= esc($href, 'attr') ?>" style="display:block; background:#fff; border-radius:18px; padding:24px; border:1px solid rgba(28,36,32,.08); box-shadow:0 1px 2px rgba(28,36,32,.04); <?= $cardOpacity ?>">
+    <a class="rcard activity-card" data-search="<?= esc($haystack, 'attr') ?>" data-min-year="<?= $minYear !== null ? $minYear : '' ?>" data-max-year="<?= $maxYear !== null ? $maxYear : '' ?>" href="<?= esc($href, 'attr') ?>" style="display:block; background:#fff; border-radius:18px; padding:24px; border:1px solid rgba(28,36,32,.08); box-shadow:0 1px 2px rgba(28,36,32,.04); <?= $cardOpacity ?>">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:18px;">
         <div style="width:50px; height:50px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:24px; background:<?= $iconBg ?>;"><?= esc($a['icon'] ?? '') ?></div>
         <span style="<?= $badgeStyle ?>"><?= $live ? 'Live' : 'Soon' ?></span>
@@ -77,6 +93,9 @@
       <h3 style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:21px; line-height:1.1; letter-spacing:-.015em; color:<?= $titleCol ?>;"><?= esc($a['name'] ?? '') ?></h3>
       <p style="margin:9px 0 0; font-size:13.5px; color:<?= $descCol ?>; line-height:1.5;"><?= esc($a['description'] ?? '') ?></p>
       <div style="display:flex; align-items:center; gap:7px; margin-top:16px; flex-wrap:wrap;">
+        <?php if ($coverage !== ''): ?>
+          <span style="font-size:11px; font-weight:700; color:#206e40; background:#e7f5ed; border-radius:6px; padding:3px 8px;"><?= $coverage ?></span>
+        <?php endif; ?>
         <?php foreach ($tags as $t): ?>
           <span style="font-size:11px; font-weight:700; color:#6c716a; background:rgba(28,36,32,.05); border-radius:6px; padding:3px 8px;"><?= esc($t) ?></span>
         <?php endforeach; ?>
@@ -95,4 +114,71 @@
 
 <?= $this->section('pageScripts') ?>
 <script src="<?= base_url('assets/js/browse.js') ?>"></script>
+<script>
+/* Combined text-search + year filter for the activity grid.
+ * Self-contained: owns the final card visibility so it stays consistent with
+ * the external browse.js text search (both run on the same 'input' event). */
+(function () {
+  'use strict';
+  function init() {
+    var input = document.getElementById('activitySearch');
+    var grid  = document.getElementById('activityGrid');
+    var empty = document.getElementById('noResults');
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.year-chip'));
+    if (!grid) { return; }
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.activity-card'));
+    var selectedYear = ''; // '' = All years
+
+    function apply() {
+      var q = input ? input.value.trim().toLowerCase() : '';
+      var visible = 0;
+
+      cards.forEach(function (card) {
+        var hay = card.getAttribute('data-search') || '';
+        var textMatch = q === '' || hay.indexOf(q) !== -1;
+
+        var yearMatch = true;
+        if (selectedYear !== '') {
+          var minAttr = card.getAttribute('data-min-year');
+          var maxAttr = card.getAttribute('data-max-year');
+          if (minAttr === '' || maxAttr === '' || minAttr === null || maxAttr === null) {
+            yearMatch = false; // unknown coverage hidden when a year is picked
+          } else {
+            var y = parseInt(selectedYear, 10);
+            yearMatch = parseInt(minAttr, 10) <= y && y <= parseInt(maxAttr, 10);
+          }
+        }
+
+        var show = textMatch && yearMatch;
+        card.style.display = show ? '' : 'none';
+        if (show) { visible++; }
+      });
+
+      if (empty) { empty.style.display = visible === 0 ? 'block' : 'none'; }
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        selectedYear = chip.getAttribute('data-year') || '';
+        chips.forEach(function (c) {
+          var on = c === chip;
+          c.classList.toggle('chip-on', on);
+          c.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        apply();
+      });
+    });
+
+    if (input) { input.addEventListener('input', apply); }
+    apply();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 <?= $this->endSection() ?>

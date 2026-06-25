@@ -16,6 +16,17 @@ window.TP_diffDots = function (d) {
   return '●●●●●'.slice(0, d) + '○○○○○'.slice(0, 5 - d);
 };
 
+/* ---- Year-aware difficulty --------------------------------------------------
+ * The school YEAR sets the difficulty band; the 1-5 circle meter fine-tunes
+ * within it. Returns an effective 1-5 difficulty to pass to TP_generate.
+ *   year 1-2 -> band 1, 3 -> 2, 4 -> 3, 5 -> 4, 6 -> 5 ; meter nudges by (meter-3).
+ * ------------------------------------------------------------------------- */
+window.TP_effDifficulty = function (year, meter) {
+  var band = [1, 1, 1, 2, 3, 4, 5][Math.max(1, Math.min(6, year | 0))]; // index by year
+  var nudge = (Math.max(1, Math.min(5, meter | 0)) - 3);
+  return Math.max(1, Math.min(5, band + nudge));
+};
+
 /* ---- Question batching ------------------------------------------------------
  * TP_batch(keys, difficulty, n, opts) -> array of up to n de-duplicated
  * { question, answer, key } pairs drawn at random from the given generator

@@ -58,6 +58,15 @@
     .build-sheet-wrap { flex: 1; padding: 42px 44px 80px; display: flex; justify-content: center; align-items: flex-start; }
     .build-empty-lib { text-align: center; color: #a8a294; font-size: 13px; padding: 40px 20px; line-height: 1.5; }
 
+    /* Objectives outside the selected year(s): shown but greyed / not selectable */
+    .orow.orow-offyear { opacity: .45; }
+    .orow.orow-offyear:hover { background: transparent; }
+    /* Banner shown above the library when the selected year has no content yet */
+    .build-year-banner {
+      margin: 2px 6px 10px; padding: 9px 11px; border-radius: 9px;
+      background: #fbf3d6; color: #8a6d2b; font-size: 12px; font-weight: 600; line-height: 1.4;
+    }
+
     /* Regenerate spin polish */
     @keyframes build-spin { to { transform: rotate(360deg); } }
     .build-spinning { animation: build-spin .5s linear; }
@@ -103,6 +112,8 @@
 
         <div style="display:flex; align-items:center; gap:7px;">
           <span class="build-eyebrow-lbl" style="margin-right:2px;">Year</span>
+          <button type="button" class="chip" data-year="1">Y1</button>
+          <button type="button" class="chip" data-year="2">Y2</button>
           <button type="button" class="chip" data-year="3">Y3</button>
           <button type="button" class="chip" data-year="4">Y4</button>
           <button type="button" class="chip" data-year="5">Y5</button>

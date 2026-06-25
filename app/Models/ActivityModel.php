@@ -12,7 +12,7 @@ class ActivityModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = [
         'slug', 'name', 'description', 'icon', 'tags',
-        'status', 'route', 'sort_order',
+        'status', 'route', 'sort_order', 'min_year', 'max_year',
     ];
 
     /**
