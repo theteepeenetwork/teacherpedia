@@ -38,6 +38,7 @@ $routes->post('admin/login', 'Auth::attemptAdminLogin');
 $routes->get('build', 'Build::index');
 $routes->get('build/(:num)', 'Build::index/$1');            // open a saved sheet
 $routes->get('code-breaker', 'CodeBreaker::index');
+$routes->get('maths-maze', 'MathsMaze::index');
 
 // ---- Account (logged-in teachers) ----
 $routes->group('account', ['filter' => 'auth'], static function (RouteCollection $routes): void {
