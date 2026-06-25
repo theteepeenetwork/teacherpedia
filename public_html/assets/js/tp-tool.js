@@ -40,6 +40,35 @@ window.TP_yearTables = function (year) {
   return [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // Year 4 and above
 };
 
+/* ---- Achievable target values for a set of operations -----------------------
+ * Returns the set of answer-values (within [lo,hi]) that can be represented by
+ * at least one of the SELECTED ops at the given year, so a tool can assign
+ * cipher/answer values the chosen ops can actually make — e.g. with only '×'
+ * selected, every value is a real table product, so no question ever falls back
+ * to another operation.
+ *   +  : any value (>= 2)            -  : any value (>= 1)
+ *   ×  : products f×m, f a year table, multiplier m = 1..12
+ *   ÷  : table quotients 1..12 (shown as (q×b)÷b)
+ * ------------------------------------------------------------------------- */
+window.TP_achievableValues = function (ops, year, lo, hi) {
+  var tables = window.TP_yearTables(year);
+  var set = {};
+  var v, m, i;
+  for (var oi = 0; oi < ops.length; oi++) {
+    var op = ops[oi];
+    if (op === '+') { for (v = Math.max(2, lo); v <= hi; v++) { set[v] = 1; } }
+    else if (op === '-') { for (v = Math.max(1, lo); v <= hi; v++) { set[v] = 1; } }
+    else if (op === '×') {
+      for (i = 0; i < tables.length; i++) {
+        for (m = 1; m <= 12; m++) { v = tables[i] * m; if (v >= lo && v <= hi) { set[v] = 1; } }
+      }
+    } else if (op === '÷') {
+      for (v = 1; v <= 12; v++) { if (v >= lo && v <= hi) { set[v] = 1; } }
+    }
+  }
+  return Object.keys(set).map(Number);
+};
+
 /* ---- Year selector wiring ---------------------------------------------------
  * Wires the shared #<prefix>-years chip row (rendered by partials/tool_toolbar).
  * Manages the .chip-on state and calls onChange(year) when an enabled chip is

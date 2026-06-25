@@ -121,6 +121,18 @@
     var startK = key(0, 0);
     var finishK = key(n - 1, n - 1);
 
+    // Pick answer values the selected ops can actually represent, split by
+    // parity (the maze rule), so e.g. a ×-only maze stays all multiplication.
+    var range = RANGES[d - 1];
+    var pool = window.TP_achievableValues ? window.TP_achievableValues(ops, state.year, range[0], range[1]) : [];
+    var evens = pool.filter(function (v) { return v % 2 === 0; });
+    var odds  = pool.filter(function (v) { return v % 2 === 1; });
+    function pickVal(wantE) {
+      var list = wantE ? evens : odds;
+      if (list.length) { return list[ri(0, list.length - 1)]; }
+      return targetWithParity(d, wantE); // fallback when a parity is unavailable
+    }
+
     var cells = [];
     for (var r = 0; r < n; r++) {
       for (var c = 0; c < n; c++) {
@@ -131,7 +143,7 @@
         var cell = { r: r, c: c, onPath: isPath, start: isStart, finish: isFinish, q: '', answer: null };
         if (!isStart) {
           // Path cells obey the rule; off-path cells break it (dead ends).
-          var target = targetWithParity(d, isPath ? wantEven : !wantEven);
+          var target = pickVal(isPath ? wantEven : !wantEven);
           cell.answer = target;
           cell.q = calcFor(target, ops, d, state.year);
         }

@@ -53,16 +53,27 @@
   // Assign each distinct letter a unique value. The difficulty range may hold
   // fewer integers than there are distinct letters (e.g. a long custom message
   // on difficulty 1), so widen the upper bound until there's comfortably room.
-  function assignValues(letters, range) {
+  // Assign each distinct letter a UNIQUE value that the selected ops can
+  // actually represent (so e.g. ×-only puzzles never fall back to another op).
+  function assignValues(letters, ops, year, range) {
     var lo = range[0], hi = range[1];
-    while (hi - lo + 1 < letters.length * 2) { hi += (hi - lo + 1); }
-    var used = {}, map = {};
-    letters.forEach(function (L) {
-      var v, guard = 0;
-      do { v = ri(lo, hi); guard++; } while (used[v] && guard < 200);
-      used[v] = true;
-      map[L] = v;
-    });
+    var pool = window.TP_achievableValues ? window.TP_achievableValues(ops, year, lo, hi) : [];
+    // Widen the value window until there are enough distinct achievable values.
+    var guard = 0;
+    while (pool.length < letters.length && guard < 8) {
+      hi += (hi - lo + 1);
+      if (ops.indexOf('÷') !== -1 || ops.indexOf('×') !== -1) { lo = 1; }
+      pool = window.TP_achievableValues ? window.TP_achievableValues(ops, year, lo, hi) : [];
+      guard++;
+    }
+    // Absolute fallback (shouldn't happen): plain unique integers.
+    if (pool.length < letters.length) {
+      pool = [];
+      for (var v = Math.max(2, range[0]); pool.length < letters.length + 4; v++) { pool.push(v); }
+    }
+    pool = window.TP_shuffle ? window.TP_shuffle(pool) : pool;
+    var map = {};
+    letters.forEach(function (L, i) { map[L] = pool[i]; });
     return map;
   }
 
@@ -125,17 +136,17 @@
       if (!seen[ch]) { seen[ch] = true; letters.push(ch); }
     });
 
-    // assign each distinct letter a unique difficulty-scaled value
+    // one question per letter position in the word (spaces split the message)
+    var ops = state.ops.length ? state.ops : ['+'];
+
+    // assign each distinct letter a unique value the selected ops can represent
     var range = RANGES[d - 1];
-    var map = assignValues(letters, range);
+    var map = assignValues(letters, ops, state.year, range);
 
     // code key, sorted by value ascending
     var cipher = letters.map(function (L) {
       return { letter: L, value: map[L] };
     }).sort(function (a, b) { return a.value - b.value; });
-
-    // one question per letter position in the word (spaces split the message)
-    var ops = state.ops.length ? state.ops : ['+'];
     var questions = [];
     var wordsOut = [];
     var curWord = { letters: [] };
