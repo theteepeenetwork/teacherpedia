@@ -238,6 +238,8 @@ p { margin: 0; }
   transition: background .12s, color .12s, border-color .12s;
 }
 .chip:hover { border-color: rgba(28,36,32,.3); }
+.chip:disabled { opacity: .4; cursor: not-allowed; }
+.chip:disabled:hover { border-color: var(--line-2); }
 
 /* Active / selected chip */
 .chip-on {

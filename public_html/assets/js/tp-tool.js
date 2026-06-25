@@ -27,6 +27,30 @@ window.TP_effDifficulty = function (year, meter) {
   return Math.max(1, Math.min(5, band + nudge));
 };
 
+/* ---- Year selector wiring ---------------------------------------------------
+ * Wires the shared #<prefix>-years chip row (rendered by partials/tool_toolbar).
+ * Manages the .chip-on state and calls onChange(year) when an enabled chip is
+ * clicked. Returns the initially-selected year (the server-rendered .chip-on),
+ * or null if there's no year row.
+ * ------------------------------------------------------------------------- */
+window.TP_wireYears = function (prefix, onChange) {
+  var wrap = document.getElementById(prefix + '-years');
+  if (!wrap) { return null; }
+  var btns = wrap.querySelectorAll('[data-yr]');
+  var selected = null;
+  Array.prototype.forEach.call(btns, function (b) {
+    if (b.classList.contains('chip-on')) { selected = Number(b.getAttribute('data-yr')); }
+    b.addEventListener('click', function () {
+      if (b.disabled) { return; }
+      Array.prototype.forEach.call(btns, function (x) { x.classList.remove('chip-on'); });
+      b.classList.add('chip-on');
+      selected = Number(b.getAttribute('data-yr'));
+      if (onChange) { onChange(selected); }
+    });
+  });
+  return selected;
+};
+
 /* ---- Question batching ------------------------------------------------------
  * TP_batch(keys, difficulty, n, opts) -> array of up to n de-duplicated
  * { question, answer, key } pairs drawn at random from the given generator

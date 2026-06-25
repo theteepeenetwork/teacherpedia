@@ -117,6 +117,9 @@
         'prefix'         => 'th',
         'tabs'           => [['key' => 'cards', 'label' => 'Trail cards'], ['key' => 'answers', 'label' => 'Answer order']],
         'diff'           => 3,
+        'year'           => 4,
+        'year_min'       => 3,
+        'year_max'       => 6,
         'regen_label'    => 'New trail',
         'settings_extra' => $settings_extra,
       ]) ?>

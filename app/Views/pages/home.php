@@ -138,15 +138,6 @@
       <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">Solve a calculation to unlock each step through the grid &mdash; a wrong turn is a dead end. Self-marking.</p>
       <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">Open &rarr;</div>
     </a>
-    <a href="<?= base_url('beat-the-clock') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07); box-shadow:0 1px 2px rgba(28,36,32,.04);">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-        <div style="width:46px; height:46px; border-radius:12px; background:#f6e7e1; display:flex; align-items:center; justify-content:center; font-size:23px;">&#9201;</div>
-        <span style="font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#206e40; background:#e7f5ed; padding:4px 9px; border-radius:6px;">Live</span>
-      </div>
-      <h3 style="margin:18px 0 5px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:21px;">Beat the Clock</h3>
-      <p style="margin:0; font-size:14px; color:#5c6159; line-height:1.5;">A timed fluency sprint &mdash; answer as many questions as you can before the clock runs out. Self-marking.</p>
-      <div style="margin-top:16px; font-size:13px; font-weight:700; color:#1f8a4d;">Open &rarr;</div>
-    </a>
     <a href="<?= base_url('treasure-hunt') ?>" class="subj" style="display:block; background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(28,36,32,.07); box-shadow:0 1px 2px rgba(28,36,32,.04);">
       <div style="display:flex; justify-content:space-between; align-items:flex-start;">
         <div style="width:46px; height:46px; border-radius:12px; background:#f6ecdd; display:flex; align-items:center; justify-content:center; font-size:23px;">&#128506;</div>

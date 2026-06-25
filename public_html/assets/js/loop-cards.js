@@ -24,6 +24,7 @@
 
   var state = {
     difficulty: 3,
+    year: 4,
     strands: [],           // selected strand names
     count: 12,             // requested deck size
     tab: 'cards',          // 'cards' | 'answers'
@@ -34,6 +35,8 @@
 
   // strand -> [generator keys]  (only auto-generating objectives)
   var STRAND_KEYS = {};
+  // generator key -> year
+  var KEY_YEAR = {};
 
   // ---- helpers --------------------------------------------------------------
   function $(id) { return document.getElementById(id); }
@@ -48,6 +51,7 @@
       var strand = o.strand || 'Other';
       if (!STRAND_KEYS[strand]) { STRAND_KEYS[strand] = []; }
       if (STRAND_KEYS[strand].indexOf(key) === -1) { STRAND_KEYS[strand].push(key); }
+      KEY_YEAR[key] = o.year;
     });
   }
 
@@ -58,6 +62,7 @@
     var keys = [];
     state.strands.forEach(function (s) {
       (STRAND_KEYS[s] || []).forEach(function (k) {
+        if (KEY_YEAR[k] !== state.year) { return; }
         if (keys.indexOf(k) === -1) { keys.push(k); }
       });
     });
@@ -70,7 +75,7 @@
     var n = state.count;
     var keys = pool();
 
-    var batch = window.TP_batch(keys, state.difficulty, n, { dedupeOn: 'answer' });
+    var batch = window.TP_batch(keys, (window.TP_effDifficulty ? window.TP_effDifficulty(state.year, state.difficulty) : state.difficulty), n, { dedupeOn: 'answer' });
 
     if (batch.length < n) {
       if (batch.length >= MIN_CARDS) {
@@ -325,6 +330,9 @@
 
     indexObjectives();
     buildStrandChips();
+
+    var y0 = window.TP_wireYears ? window.TP_wireYears('lc', function (y) { state.year = y; rebuild(); }) : null;
+    if (y0) { state.year = y0; }
 
     Array.prototype.forEach.call(els.count.querySelectorAll('[data-count]'), function (c) {
       c.addEventListener('click', function () { setCount(Number(c.getAttribute('data-count'))); });

@@ -22,6 +22,7 @@
   // ----- state ---------------------------------------------------------------
   var state = {
     difficulty: 3,
+    year: 4,
     size: 4,              // 3 | 4 | 5  (5 has a FREE centre)
     cardsN: 4,            // how many unique printed cards
     strands: {},          // strand name -> true (selected)
@@ -50,7 +51,7 @@
   function selectedPool() {
     var keys = [];
     generatable().forEach(function (o) {
-      if (state.strands[o.strand]) { keys.push(o.key); }
+      if (state.strands[o.strand] && o.year === state.year) { keys.push(o.key); }
     });
     return keys;
   }
@@ -66,7 +67,7 @@
     var poolNeeded = cells * 2;          // so cards can differ
     var want = Math.max(poolNeeded, cells + 8);
 
-    var master = window.TP_batch(pool, state.difficulty, want, { dedupeOn: 'answer' });
+    var master = window.TP_batch(pool, (window.TP_effDifficulty ? window.TP_effDifficulty(state.year, state.difficulty) : state.difficulty), want, { dedupeOn: 'answer' });
 
     var warn = '';
     if (master.length < perCard) {
@@ -373,6 +374,9 @@
     $('bingo-save').addEventListener('click', onSave);
     $('bingo-print').addEventListener('click', function () { window.print(); });
     $('bingo-regen').addEventListener('click', regen);
+
+    var y0 = window.TP_wireYears ? window.TP_wireYears('bingo', function (y) { state.year = y; rebuild(); }) : null;
+    if (y0) { state.year = y0; }
 
     applyDefaultStrand();
     rebuild();

@@ -39,7 +39,6 @@ $routes->get('build', 'Build::index');
 $routes->get('build/(:num)', 'Build::index/$1');            // open a saved sheet
 $routes->get('code-breaker', 'CodeBreaker::index');
 $routes->get('maths-maze', 'MathsMaze::index');
-$routes->get('beat-the-clock', 'BeatTheClock::index');
 $routes->get('treasure-hunt', 'TreasureHunt::index');
 $routes->get('loop-cards', 'LoopCards::index');
 $routes->get('bingo', 'Bingo::index');

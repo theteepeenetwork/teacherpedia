@@ -14,6 +14,13 @@ class Browse extends BaseController
         $model      = new ActivityModel();
         $activities = $model->all();              // live first (sort_order), then soon
 
+        // Hide retired tools even if a DB still has their seeded row (no reseed
+        // needed). Keep this list in sync when a tool is removed.
+        $removed    = ['beat-the-clock'];
+        $activities = array_values(array_filter($activities, static function ($a) use ($removed) {
+            return ! in_array($a['slug'] ?? '', $removed, true);
+        }));
+
         $live = 0;
         $soon = 0;
         foreach ($activities as &$a) {

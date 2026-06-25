@@ -26,7 +26,8 @@
 
   // ---- State (mirrors the design component's state) -------------------------
   var state = {
-    difficulty: 2,
+    year: 4,                // school year sets the difficulty band
+    difficulty: 2,          // 1-5 meter fine-tunes within the year
     ops: ['+', '-', '×'],   // +  -  ×   (default selection)
     tab: 'active',
     word: '',               // teacher's custom message ('' = pick a random word)
@@ -97,7 +98,8 @@
 
   // Build a complete puzzle from the current difficulty + operations.
   function build() {
-    var d = state.difficulty;
+    // Year sets the band; the 1-5 meter fine-tunes within it.
+    var d = window.TP_effDifficulty ? window.TP_effDifficulty(state.year, state.difficulty) : state.difficulty;
     // Use the teacher's custom message when set, otherwise pick a random word.
     var word = state.word ? cleanWord(state.word) : pick(WORDS);
     if (!word.replace(/ /g, '')) { word = pick(WORDS); } // guard all-spaces input
@@ -360,6 +362,9 @@
   // ---- Wire up --------------------------------------------------------------
   function init() {
     els.ops = $('cb-ops');
+    // Year selector (shared partial) — sets the difficulty band.
+    var y0 = window.TP_wireYears ? window.TP_wireYears('cb', function (y) { state.year = y; rebuild(); }) : null;
+    if (y0) { state.year = y0; }
     // Standard toolbar hooks (shared partials/tool_toolbar): thumbs are class
     // elements inside the prefixed containers; the spinner is the regen icon.
     els.diffThumb = $('cb-difficulty') ? $('cb-difficulty').querySelector('.diff-thumb') : null;

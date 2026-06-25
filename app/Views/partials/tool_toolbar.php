@@ -21,6 +21,12 @@
  *   $regen_label     string  primary action label (e.g. 'Regenerate','New puzzle')
  *   $settings_extra  string  raw HTML for resource-specific settings (optional)
  *   $show_difficulty bool    default true
+ *   $show_year       bool    render the Year 1-6 selector (default true)
+ *   $year            int     initially selected year 1-6 (default 4)
+ *   $year_min/$year_max int  inclusive range of SELECTABLE years; years outside
+ *                            are shown disabled/greyed (default 1..6)
+ *
+ * Year hook: #<prefix>-years  button[data-yr] (selected = .chip-on, others .chip)
  */
 $prefix          = $prefix          ?? 'tool';
 $tabs            = $tabs            ?? [['key' => 'worksheet', 'label' => 'Worksheet'], ['key' => 'answerkey', 'label' => 'Answer key']];
@@ -28,12 +34,26 @@ $diff            = isset($diff) ? max(1, min(5, (int) $diff)) : 3;
 $regen_label     = $regen_label     ?? 'Regenerate';
 $settings_extra  = $settings_extra  ?? '';
 $show_difficulty = $show_difficulty ?? true;
+$show_year       = $show_year       ?? true;
+$yearMin         = isset($year_min) ? (int) $year_min : 1;
+$yearMax         = isset($year_max) ? (int) $year_max : 6;
+$year            = isset($year) ? max(1, min(6, (int) $year)) : 4;
+if ($year < $yearMin || $year > $yearMax) { $year = $yearMin; } // keep default selectable
 $p = esc($prefix, 'attr');
 // Difficulty shown as a filled/empty circle meter (●●●○○) — see tp-tool.js.
 $diffDots = str_repeat('●', $diff) . str_repeat('○', 5 - $diff);
 ?>
-<!-- Settings row: difficulty + resource-specific controls -->
+<!-- Settings row: year + difficulty + resource-specific controls -->
 <div class="app-toolbar tool-settings" style="border-bottom:1px solid rgba(28,36,32,.07); background:rgba(255,255,255,.4); flex-wrap:wrap; gap:14px;">
+  <?php if ($show_year): ?>
+    <span class="build-eyebrow-lbl">Year</span>
+    <div id="<?= $p ?>-years" style="display:flex; gap:6px;">
+      <?php for ($y = 1; $y <= 6; $y++): ?>
+        <?php $sel = ($y === $year); $disabled = ($y < $yearMin || $y > $yearMax); ?>
+        <button type="button" class="chip<?= $sel ? ' chip-on' : '' ?>" data-yr="<?= $y ?>"<?= $disabled ? ' disabled title="Coming soon for this year"' : '' ?>>Y<?= $y ?></button>
+      <?php endfor; ?>
+    </div>
+  <?php endif; ?>
   <?php if ($show_difficulty): ?>
     <span class="build-eyebrow-lbl">Difficulty</span>
     <div id="<?= $p ?>-difficulty" class="difficulty" style="width:200px;">

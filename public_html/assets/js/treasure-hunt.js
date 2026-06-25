@@ -23,6 +23,7 @@
 
   var state = {
     difficulty: 3,
+    year: 4,
     count: 16,
     tab: 'cards',          // 'cards' | 'answers'
     strands: {},           // strand name -> true when selected
@@ -68,7 +69,7 @@
   function activeKeyPool() {
     var keys = [], seen = {};
     generatableObjectives().forEach(function (o) {
-      if (state.strands[o.strand] && !seen[o.key]) { seen[o.key] = true; keys.push(o.key); }
+      if (state.strands[o.strand] && o.year === state.year && !seen[o.key]) { seen[o.key] = true; keys.push(o.key); }
     });
     return keys;
   }
@@ -88,7 +89,7 @@
 
     // De-dupe on the ANSWER so two cards can never share a header/answer (that
     // would make the loop ambiguous).
-    var batch = window.TP_batch(pool, state.difficulty, n, { dedupeOn: 'answer' });
+    var batch = window.TP_batch(pool, (window.TP_effDifficulty ? window.TP_effDifficulty(state.year, state.difficulty) : state.difficulty), n, { dedupeOn: 'answer' });
 
     if (batch.length < n) {
       state.shortfall = n - batch.length;
@@ -375,6 +376,9 @@
     }
 
     renderStrandChips();
+
+    var y0 = window.TP_wireYears ? window.TP_wireYears('th', function (y) { state.year = y; rebuild(); }) : null;
+    if (y0) { state.year = y0; }
 
     Array.prototype.forEach.call(els.count.querySelectorAll('[data-count]'), function (c) {
       c.addEventListener('click', function () { setCount(Number(c.getAttribute('data-count'))); });

@@ -23,7 +23,8 @@
   var RANGES = [[3, 12], [4, 20], [6, 40], [10, 80], [15, 150]];
 
   var state = {
-    difficulty: 3,
+    year: 4,               // school year sets the difficulty band
+    difficulty: 3,         // 1-5 meter fine-tunes within the year
     ops: ['+', '-', '×'],
     size: 5,
     rule: 'even',          // 'even' | 'odd'  (decided per puzzle)
@@ -90,7 +91,8 @@
   }
 
   function build() {
-    var d = state.difficulty;
+    // Year sets the band; the 1-5 meter fine-tunes within it.
+    var d = window.TP_effDifficulty ? window.TP_effDifficulty(state.year, state.difficulty) : state.difficulty;
     var n = state.size;
     var ops = state.ops.length ? state.ops : ['+'];
     var rule = pick(['even', 'odd']);
@@ -333,6 +335,9 @@
   // ---- wire up --------------------------------------------------------------
   function init() {
     els.ops = $('mm-ops');
+    // Year selector (shared partial) — sets the difficulty band.
+    var y0 = window.TP_wireYears ? window.TP_wireYears('mm', function (y) { state.year = y; rebuild(); }) : null;
+    if (y0) { state.year = y0; }
     els.size = $('mm-size');
     els.grid = $('mm-grid');
     els.diffThumb = $('mm-difficulty') ? $('mm-difficulty').querySelector('.diff-thumb') : null;

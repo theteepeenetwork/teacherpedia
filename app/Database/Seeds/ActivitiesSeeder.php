@@ -48,16 +48,6 @@ class ActivitiesSeeder extends Seeder
                 'sort_order'  => 3,
             ],
             [
-                'slug'        => 'beat-the-clock',
-                'name'        => 'Beat the Clock',
-                'description' => 'A timed fluency sprint: pupils answer as many auto-generated questions as they can before the clock runs out. Self-marking on screen with instant feedback and an end-of-round score.',
-                'icon'        => '⏱',
-                'tags'        => 'Fluency,Self-marking',
-                'status'      => 'live',
-                'route'       => '/beat-the-clock',
-                'sort_order'  => 4,
-            ],
-            [
                 'slug'        => 'treasure-hunt',
                 'name'        => 'Treasure Hunt',
                 'description' => 'Clue cards placed around the room: solve each question, hunt for the card whose answer matches, and follow the loop that visits every card once. A wrong answer breaks the trail — so it self-marks.',
