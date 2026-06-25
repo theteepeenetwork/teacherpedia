@@ -30,7 +30,10 @@
   body * { visibility: hidden; }
   .sheet, .sheet * { visibility: visible; }
 
-  /* The sheet becomes the whole printable page: full width, no chrome. */
+  /* The sheet becomes the whole printable page: full width, no chrome.
+     Keep colour-adjust:exact so every OTHER coloured element inside the sheet
+     (code-key tint, accent text, etc.) still prints — we only drop the sheet's
+     own backing fill so no full-page background colour prints. */
   .sheet {
     position: absolute !important;
     left: 0 !important;
@@ -42,8 +45,9 @@
     border-radius: 0 !important;
     box-shadow: none !important;
     padding: 0 !important;
-    /* No background fill: print as plain black ink on white paper (saves
-       toner and avoids a coloured page background printing). */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    /* Drop ONLY the sheet's own backing fill — children keep their colours. */
     background: transparent !important;
     background-image: none !important;
   }
