@@ -375,7 +375,7 @@
   "year": 4,
   "strand": "Representing & estimating",
   "text": "I can identify, represent and estimate numbers using different representations; including measures",
-  "key": null
+  "key": "rand_place_value_order"
  },
  {
   "year": 4,
@@ -1064,206 +1064,206 @@
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "*I can confidently identify the value of each digit in numbers given to 3dp",
-  "key": null
+  "text": "I can identify the value of each digit in numbers given to 3 decimal places",
+  "key": "y6_digit_value_3dp"
  },
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "prime number,",
-  "key": null
+  "text": "I can identify prime numbers",
+  "key": "prime_numbers"
  },
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "factors (or divisors),",
-  "key": null
+  "text": "I can find the factors of a number",
+  "key": "factor_pairs"
  },
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "multiples,",
-  "key": null
+  "text": "I can find multiples of a number",
+  "key": "rand_factor_multiple"
  },
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "common factors,",
-  "key": null
+  "text": "I can find the common factors of two numbers",
+  "key": "common_factors"
  },
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "common multiples,",
-  "key": null
+  "text": "I can find the common multiples of two numbers",
+  "key": "commonFactorsMultiples"
  },
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "highest common factor,",
-  "key": null
+  "text": "I can find the highest common factor (HCF) of two numbers",
+  "key": "y6_hcf"
  },
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "lowest common multiple",
-  "key": null
+  "text": "I can find the lowest common multiple (LCM) of two numbers",
+  "key": "y6_lcm"
  },
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "prime factorisation,",
-  "key": null
+  "text": "I can write a number as a product of its prime factors",
+  "key": "y6_prime_factorisation"
  },
  {
   "year": 6,
   "strand": "Representing & estimating",
-  "text": "product notation and unique factorisation property",
-  "key": null
+  "text": "I can work out a number from its prime factorisation",
+  "key": "y6_product_of_primes"
  },
  {
   "year": 6,
   "strand": "Reading & writing",
-  "text": "*I can to read, write, count and order numbers to 10,000,000",
-  "key": null
+  "text": "I can read, write, count and order numbers to 10,000,000",
+  "key": "rand_read_write_order_compare_y6"
  },
  {
   "year": 6,
   "strand": "Reading & writing",
-  "text": "*I can confidently to read, write, count and order numbers to 10,000,000 and determine the value of each digit",
-  "key": null
+  "text": "I can determine the value of each digit in numbers to 10,000,000",
+  "key": "y6_digit_value_10m"
  },
  {
   "year": 6,
   "strand": "Reading & writing",
-  "text": "*I can confidently to read, write, count and order numbers to 10,000,000 and beyond;and determine the value of each digit",
-  "key": null
+  "text": "I can read, write, count and order numbers to 10,000,000 and beyond",
+  "key": "exceeding_size_order"
  },
  {
   "year": 6,
   "strand": "Place value",
-  "text": "*I can read, write, count, order and compare numbers to 10,000,000",
-  "key": null
+  "text": "I can read, write, count, order and compare numbers to 10,000,000",
+  "key": "rand_read_write_order_compare_y6"
  },
  {
   "year": 6,
   "strand": "Place value",
-  "text": "*I can confidently read, write, count, order and compare numbers to 10,000,000",
-  "key": null
+  "text": "I can confidently order and compare numbers to 10,000,000",
+  "key": "exceeding_size_order"
  },
  {
   "year": 6,
   "strand": "Place value",
-  "text": "*I can understand place value for decimals, measures and integers of any size",
-  "key": null
+  "text": "I can understand place value for decimals and integers of any size",
+  "key": "decimals_size_order"
  },
  {
   "year": 6,
   "strand": "Place value",
-  "text": "*I can order positive and negative integers, decimals and fractions; use the number line as a model for ordering real numbers; use the symbols = < > ≤ ≥ ≠",
-  "key": null
+  "text": "I can order and compare integers and decimals using = < > symbols",
+  "key": "y6_compare_symbols"
  },
  {
   "year": 6,
   "strand": "Rounding",
-  "text": "*I can round any whole number to a required degree of accuracy",
-  "key": null
+  "text": "I can round any whole number to a required degree of accuracy",
+  "key": "rand_rounding"
  },
  {
   "year": 6,
   "strand": "Problem solving",
-  "text": "Solve number and practical problems using the above objectives",
-  "key": null
+  "text": "I can solve number and practical problems",
+  "key": "y6_word_problem"
  },
  {
   "year": 6,
   "strand": "Addition & subtraction",
-  "text": "*I can perform mental calculations, including with mixed operations and large numbers",
-  "key": null
+  "text": "I can perform mental calculations with mixed operations and large numbers",
+  "key": "y6_mental_mixed"
  },
  {
   "year": 6,
   "strand": "Addition & subtraction",
-  "text": "*I can solve problems involving addition and subtraction",
-  "key": null
+  "text": "I can solve problems involving addition and subtraction",
+  "key": "rand_adding_beyond_four_digits"
  },
  {
   "year": 6,
   "strand": "Addition & subtraction",
-  "text": "*I can solve addition and subtraction multi-step problems in contexts, deciding which operations and methods to use and why",
-  "key": null
+  "text": "I can solve multi-step addition and subtraction problems",
+  "key": "y6_mental_mixed"
  },
  {
   "year": 6,
   "strand": "Addition & subtraction",
-  "text": "*I can use the four operations, including formal written methods, applied to integers, decimals, proper and improper fractions, and mixed numbers, all both positive and negative",
-  "key": null
+  "text": "I can add and subtract decimals using formal written methods",
+  "key": "y6_decimal_addsub"
  },
  {
   "year": 6,
   "strand": "Addition & subtraction",
-  "text": "*I can recognise and use relationships between operations including inverse",
-  "key": null
+  "text": "I can recognise and use the inverse relationship between operations",
+  "key": "y6_inverse"
  },
  {
   "year": 6,
   "strand": "Multiplication & division",
-  "text": "*I can identify the value of each digit in numbers given to 3dp and multiply and divide numbers by 10, 100 and 1000 (giving answers up to 3dp)",
-  "key": null
+  "text": "I can multiply and divide numbers by 10, 100 and 1000 (answers up to 3 d.p.)",
+  "key": "rand_multiply_divide_powers10"
  },
  {
   "year": 6,
   "strand": "Multiplication & division",
-  "text": "*I can identify common factors, common multiples and prime numbers",
-  "key": null
+  "text": "I can identify common factors, common multiples and prime numbers",
+  "key": "commonFactorsMultiples"
  },
  {
   "year": 6,
   "strand": "Written methods",
-  "text": "*TU x TU",
-  "key": null
+  "text": "I can multiply a 2-digit number by a 2-digit number (long multiplication)",
+  "key": "y6_long_mult_2x2"
  },
  {
   "year": 6,
   "strand": "Written methods",
-  "text": "*HTU x TU",
-  "key": null
+  "text": "I can multiply a 3-digit number by a 2-digit number (long multiplication)",
+  "key": "y6_long_mult_3x2"
  },
  {
   "year": 6,
   "strand": "Written methods",
-  "text": "*ThHTU x TU",
-  "key": null
+  "text": "I can multiply a 4-digit number by a 2-digit number (long multiplication)",
+  "key": "y6_long_mult_4x2"
  },
  {
   "year": 6,
   "strand": "Written methods",
-  "text": "*TU � TU",
-  "key": null
+  "text": "I can divide a 2-digit number by a 2-digit number",
+  "key": "y6_div_2by2"
  },
  {
   "year": 6,
   "strand": "Written methods",
-  "text": "*HTU � TU",
-  "key": null
+  "text": "I can divide a 3-digit number by a 2-digit number",
+  "key": "y6_div_3by2"
  },
  {
   "year": 6,
   "strand": "Written methods",
-  "text": "*ThHTU � TU",
-  "key": null
+  "text": "I can divide a 4-digit number by a 2-digit number",
+  "key": "y6_div_4by2"
  },
  {
   "year": 6,
   "strand": "Estimation",
-  "text": "*I can use estimation to check answers to calculations and determine, in the context of a problem, and appropriate degree of accuracy",
-  "key": null
+  "text": "I can use estimation to check answers to calculations",
+  "key": "y6_estimate"
  },
  {
   "year": 6,
   "strand": "Order of operations",
-  "text": "*I can use my knowledge of the order of operations to carry out calculations involving 4 operations, including BODMAS",
-  "key": null
+  "text": "I can use the order of operations (BODMAS) to carry out calculations",
+  "key": "bodmas"
  },
  {
   "year": 6,

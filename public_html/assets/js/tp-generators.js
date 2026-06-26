@@ -290,6 +290,84 @@
   G.y2_quarter_amount = () => { const n = 4 * ri(2, 9); return { qtn: `1/4 of ${n} =`, ans: fmt(n / 4) }; };
   G.y2_threequarter_amount = () => { const n = 4 * ri(2, 9); return { qtn: `3/4 of ${n} =`, ans: fmt(3 * (n / 4)) }; };
 
+  // ===== Year 6 written/number methods =====
+  G.y6_digit_value_3dp = () => {
+    const n = ri(1, 9) + ri(1, 999) / 1000;
+    const s = n.toFixed(3);
+    const places = [{ name: 'tenths', idx: 2, val: 0.1 }, { name: 'hundredths', idx: 3, val: 0.01 }, { name: 'thousandths', idx: 4, val: 0.001 }];
+    const p = pick(places);
+    const digit = Number(s[p.idx]);
+    return { qtn: `What is the value of the ${digit} in the ${p.name} place of ${s}?`, ans: fmt(digit * p.val) };
+  };
+  G.y6_hcf = () => { const a = ri(8, 40), b = ri(8, 40); return { qtn: `HCF of ${a} and ${b} =`, ans: fmt(gcd(a, b)) }; };
+  G.y6_lcm = () => { const a = ri(2, 12), b = ri(2, 12); return { qtn: `LCM of ${a} and ${b} =`, ans: fmt(a * b / gcd(a, b)) }; };
+  G.y6_prime_factorisation = () => {
+    let n = ri(12, 60);
+    const isP = (x) => { if (x < 2) return false; for (let i = 2; i * i <= x; i++) if (x % i === 0) return false; return true; };
+    while (isP(n)) n = ri(12, 60);
+    const factors = []; let m = n;
+    for (let d = 2; d <= m; d++) { while (m % d === 0) { factors.push(d); m /= d; } }
+    return { qtn: `Write ${n} as a product of prime factors`, ans: factors.join(' × ') };
+  };
+  G.y6_product_of_primes = () => {
+    const primes = [2, 3, 5, 7];
+    const count = ri(2, 3);
+    const chosen = []; for (let i = 0; i < count; i++) chosen.push(pick(primes));
+    chosen.sort((a, b) => a - b);
+    const product = chosen.reduce((a, b) => a * b, 1);
+    return { qtn: `${chosen.join(' × ')} =`, ans: fmt(product) };
+  };
+  G.y6_digit_value_10m = () => {
+    const n = ri(1000000, 9999999);
+    const s = String(n);
+    const idx = ri(0, s.length - 1);
+    const digit = Number(s[idx]);
+    const placeVal = digit * Math.pow(10, s.length - 1 - idx);
+    return { qtn: `In ${fmt(n)}, what is the value of the digit ${digit}?`, ans: fmt(placeVal) };
+  };
+  G.y6_compare_symbols = () => {
+    const mk = () => pick([() => ri(-50, 50), () => ri(-1000, 1000), () => ri(1, 999) / 10])();
+    let a = mk(), b = pick([true, false]) ? a : mk();
+    const sym = a < b ? '<' : a > b ? '>' : '=';
+    return { qtn: `Insert <, > or = :  ${fmt(a)} ___ ${fmt(b)}`, ans: sym };
+  };
+  G.y6_word_problem = () => {
+    const items = ri(3, 12), price = ri(2, 20), paid = items * price + ri(5, 40);
+    const change = paid - items * price;
+    return { qtn: `A shop sells pens for £${price} each. Jo buys ${items} pens and pays with £${paid}. How much change (in £) does Jo get?`, ans: fmt(change) };
+  };
+  G.y6_mental_mixed = () => {
+    const a = ri(1000, 9000), b = ri(100, 900), c = ri(100, 900);
+    return { qtn: `${fmt(a)} + ${fmt(b)} − ${fmt(c)} =`, ans: fmt(a + b - c) };
+  };
+  G.y6_decimal_addsub = () => {
+    let x = ri(100, 9999) / 100, y = ri(100, 9999) / 100;
+    if (pick([true, false])) {
+      return { qtn: `${fmt(x)} + ${fmt(y)} =`, ans: fmt(Number((x + y).toFixed(2))) };
+    }
+    if (y > x) { const t = x; x = y; y = t; }
+    return { qtn: `${fmt(x)} − ${fmt(y)} =`, ans: fmt(Number((x - y).toFixed(2))) };
+  };
+  G.y6_inverse = () => {
+    const a = ri(20, 90), b = ri(20, 90), c = a + b;
+    return { qtn: `If ${a} + ${b} = ${c}, what is ${c} − ${b}?`, ans: fmt(a) };
+  };
+  G.y6_long_mult_2x2 = () => { const a = ri(11, 99), b = ri(11, 99); return { qtn: `${a} × ${b} =`, ans: fmt(a * b) }; };
+  G.y6_long_mult_3x2 = () => { const a = ri(100, 999), b = ri(11, 99); return { qtn: `${fmt(a)} × ${b} =`, ans: fmt(a * b) }; };
+  G.y6_long_mult_4x2 = () => { const a = ri(1000, 9999), b = ri(11, 99); return { qtn: `${fmt(a)} × ${b} =`, ans: fmt(a * b) }; };
+  G.y6_div_2by2 = () => { const b = ri(11, 25), q = ri(2, 9); return { qtn: `${fmt(b * q)} ÷ ${b} =`, ans: fmt(q) }; };
+  G.y6_div_3by2 = () => { const b = ri(11, 30), q = ri(10, 40); return { qtn: `${fmt(b * q)} ÷ ${b} =`, ans: fmt(q) }; };
+  G.y6_div_4by2 = () => {
+    const b = ri(12, 40); let q = ri(40, 250);
+    if (b * q > 9999) q = Math.floor(9999 / b);
+    return { qtn: `${fmt(b * q)} ÷ ${b} =`, ans: fmt(q) };
+  };
+  G.y6_estimate = () => {
+    const a = ri(100, 9999), b = ri(100, 9999);
+    const ra = Math.round(a / 100) * 100, rb = Math.round(b / 100) * 100;
+    return { qtn: `Estimate by rounding to the nearest 100:  ${fmt(a)} + ${fmt(b)} ≈`, ans: fmt(ra + rb) };
+  };
+
   window.TP_GEN = G;
 })();
 
