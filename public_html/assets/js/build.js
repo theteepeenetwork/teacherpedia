@@ -61,11 +61,6 @@
     return !!(o && o.key && window.TP_GEN && window.TP_GEN[o.key]);
   }
 
-  // Is this objective covered by the currently selected year(s)?
-  function inYear(o) {
-    return state.years.indexOf(o.year) !== -1;
-  }
-
   // ----- DOM refs -----
   var els = {};
   function $(id) { return document.getElementById(id); }
@@ -169,12 +164,10 @@
   function selCount() { return Object.keys(state.selected).length; }
 
   function visibleObjectives() {
-    // Objectives from OTHER years are no longer hidden — they're shown greyed
-    // (see buildRow) so teachers can see the full curriculum scope but only
-    // pick objectives covered by the selected year(s). Search + the Auto toggle
-    // still filter what's listed.
+    // Only show objectives for the selected year(s); other years are hidden.
     var q = state.query.trim().toLowerCase();
     return OBJ.filter(function (o) {
+      if (state.years.indexOf(o.year) === -1) { return false; }
       if (state.autoOnly && !canGenerate(o)) { return false; }
       if (q && o.text.toLowerCase().indexOf(q) === -1 && o.strand.toLowerCase().indexOf(q) === -1) {
         return false;
@@ -189,18 +182,11 @@
     var visible = visibleObjectives();
 
     if (visible.length === 0) {
-      lib.innerHTML = '<div class="build-empty-lib">No objectives match.<br>Try another search term.</div>';
+      var msg = state.years.length === 0
+        ? 'No year selected.<br>Pick a year above to see its objectives.'
+        : 'No objectives match.<br>Try another search term.';
+      lib.innerHTML = '<div class="build-empty-lib">' + msg + '</div>';
       return;
-    }
-
-    // Banner when the selected year(s) have no generatable objectives yet
-    // (e.g. Years 1-2 until that content is authored).
-    var inYearN = visible.filter(function (o) { return inYear(o) && canGenerate(o); }).length;
-    var banner = '';
-    if (state.years.length === 0) {
-      banner = 'No year selected — pick a year above. Objectives for other years are greyed out.';
-    } else if (inYearN === 0) {
-      banner = 'No objectives for Year ' + state.years.join('/') + ' yet — coming soon. Greyed rows belong to other years.';
     }
 
     // group by strand
@@ -239,25 +225,16 @@
     });
 
     lib.innerHTML = '';
-    if (banner) {
-      var b = document.createElement('div');
-      b.className = 'build-year-banner';
-      b.textContent = banner;
-      lib.appendChild(b);
-    }
     lib.appendChild(frag);
   }
 
   function buildRow(o, color) {
     var selected = !!state.selected[o.id];
-    var covered = inYear(o);
-    // Off-year objectives are shown but greyed and not selectable.
-    var addable = !selected && covered && canGenerate(o);
-    var offYear = !selected && !covered;
-    var soon = !selected && covered && !canGenerate(o);
+    var addable = !selected && canGenerate(o);
+    var soon = !selected && !canGenerate(o);
 
     var row = document.createElement('div');
-    row.className = 'orow' + (offYear ? ' orow-offyear' : '');
+    row.className = 'orow';
 
     // selection accent bar
     if (selected) {
@@ -285,7 +262,7 @@
     var t = document.createElement('div');
     t.className = 't';
     t.textContent = o.text;
-    t.style.color = (canGenerate(o) && !offYear) ? '#26302a' : '#a8a294';
+    t.style.color = canGenerate(o) ? '#26302a' : '#a8a294';
     textWrap.appendChild(t);
     var meta = document.createElement('div');
     meta.className = 'build-ometa';
