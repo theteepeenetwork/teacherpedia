@@ -99,6 +99,11 @@ class ActivitiesSeeder extends Seeder
             ],
         ];
 
+        // The four Column Methods search aliases (all open /columns?op=…).
+        foreach (\App\Models\ActivityModel::columnAliases() as $alias) {
+            $activities[] = $alias;
+        }
+
         foreach ($activities as &$a) {
             $a['created_at'] = $now;
             $a['updated_at'] = $now;

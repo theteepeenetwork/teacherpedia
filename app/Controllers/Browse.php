@@ -21,6 +21,16 @@ class Browse extends BaseController
             return ! in_array($a['slug'] ?? '', $removed, true);
         }));
 
+        // Merge in code-defined catalogue aliases (the four Column Methods search
+        // entries) so they appear with no DB re-seed; skip any already in the DB.
+        $haveSlugs = array_column($activities, 'slug');
+        foreach (ActivityModel::columnAliases() as $alias) {
+            if (! in_array($alias['slug'], $haveSlugs, true)) {
+                $activities[] = $alias;
+            }
+        }
+        usort($activities, static fn ($a, $b) => ($a['sort_order'] ?? 0) <=> ($b['sort_order'] ?? 0));
+
         $live = 0;
         $soon = 0;
         foreach ($activities as &$a) {
