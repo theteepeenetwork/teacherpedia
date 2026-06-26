@@ -5,50 +5,27 @@ namespace App\Controllers;
 use App\Models\ActivityModel;
 
 /**
- * Browse — public activity catalogue, rendered from the DB.
+ * Browse — public activity catalogue, rendered from the code-defined
+ * ActivityModel::catalog() so every resource is searchable with no DB re-seed.
  */
 class Browse extends BaseController
 {
     public function index()
     {
-        $model      = new ActivityModel();
-        $activities = $model->all();              // live first (sort_order), then soon
-
-        // Hide retired tools even if a DB still has their seeded row (no reseed
-        // needed). Keep this list in sync when a tool is removed.
-        $removed    = ['beat-the-clock'];
-        $activities = array_values(array_filter($activities, static function ($a) use ($removed) {
-            return ! in_array($a['slug'] ?? '', $removed, true);
-        }));
-
-        // Merge in code-defined catalogue aliases (the four Column Methods search
-        // entries) so they appear with no DB re-seed; skip any already in the DB.
-        $haveSlugs = array_column($activities, 'slug');
-        foreach (ActivityModel::columnAliases() as $alias) {
-            if (! in_array($alias['slug'], $haveSlugs, true)) {
-                $activities[] = $alias;
-            }
-        }
-        usort($activities, static fn ($a, $b) => ($a['sort_order'] ?? 0) <=> ($b['sort_order'] ?? 0));
+        // The catalogue is code-defined (ActivityModel::catalog()) so EVERY
+        // resource is searchable here with no DB re-seed. Coverage + sort order
+        // are already set on each entry.
+        $activities = ActivityModel::catalog();
 
         $live = 0;
         $soon = 0;
-        foreach ($activities as &$a) {
+        foreach ($activities as $a) {
             if (($a['status'] ?? '') === 'live') {
                 $live++;
             } else {
                 $soon++;
             }
-            // Year coverage for the Browse year filter. Prefer the DB columns
-            // if present (migration applied); otherwise fall back to a sensible
-            // default so the feature works with no migration/seed step required:
-            // every current live tool draws on the KS2 library (Years 3-6).
-            if (empty($a['min_year'])) {
-                $a['min_year'] = ($a['status'] ?? '') === 'live' ? 1 : null;
-                $a['max_year'] = ($a['status'] ?? '') === 'live' ? 6 : null;
-            }
         }
-        unset($a);
 
         return view('pages/browse', [
             'activeNav'  => 'browse',
