@@ -6,9 +6,9 @@ namespace App\Controllers;
  * Arithmagon Triangles — KS1-2 Numeracy structural-reasoning puzzle (/arithmagons).
  *
  * A triangle of three corner circles and three edge boxes, where each edge
- * equals its two touching corners combined (+ or ×). Because all three edges
- * come from one true set of corners the figure is over-constrained, so a wrong
- * value breaks two edges at once — the puzzle self-checks with no key needed.
+ * equals its two touching corners combined (+ or ×). In the Inverse challenge
+ * the three given edges over-determine the corners, so a wrong value breaks two
+ * edges at once and the puzzle self-checks with no key needed.
  *
  * Challenge maps to the attainment bands: Forward (Below) = corners given,
  * combine to the edges; Inverse (Meeting) = edges given, reason back to the

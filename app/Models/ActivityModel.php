@@ -62,7 +62,7 @@ class ActivityModel extends Model
              'description' => 'Auto-filled bingo cards (3×3, 4×4 or 5×5) plus a caller sheet. Read questions aloud, children dab the matching answer — whole-class fluency.',
              'icon' => '◉', 'tags' => 'Game,Whole class', 'status' => 'live', 'route' => '/bingo', 'sort_order' => 7],
             ['slug' => 'arithmagons', 'name' => 'Arithmagon Triangles',
-             'description' => 'Number triangles where each edge is its two corners added (or multiplied). Reason forwards or backwards to fill the gaps — over-constrained, so a wrong value breaks two edges and the puzzle self-checks. Three challenge levels.',
+             'description' => 'Number triangles where each edge is its two corners added (or multiplied). Reason forwards or backwards to fill the gaps. In the Inverse challenge the figure is over-constrained, so a wrong value breaks two edges and the puzzle self-checks. Three challenge levels.',
              'icon' => '△', 'tags' => 'Puzzle,Self-marking,Reasoning', 'status' => 'live', 'route' => '/arithmagons', 'sort_order' => 8],
             ['slug' => 'times-table-grids', 'name' => 'Times Table Grids',
              'description' => 'Auto-filled and blank multiplication grids with mixed and missing-number variations for quick-fire recall.',

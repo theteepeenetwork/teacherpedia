@@ -4,9 +4,9 @@
  * A triangle with three CORNER circles (the vertices) and three EDGE boxes. Each
  * edge equals its two touching corners combined by the chosen operation:
  *      edge = corner ∘ corner      (∘ is + or ×)
- * Because all three edges are derived from one true set of corners, the figure
- * is over-constrained: with the edges given, the corners are uniquely fixed and
- * a wrong value breaks two edges at once — so the puzzle self-checks structurally.
+ * In the Inverse challenge the three given edges over-determine the corners, so
+ * the figure is over-constrained: a wrong value breaks two edges at once and the
+ * puzzle self-checks structurally. (Forward and Mixed are not self-checking.)
  *
  * Challenge (maps to the attainment bands):
  *   Forward  (Below)     corners given, edges blank   → just combine.
@@ -117,12 +117,28 @@
   function rebuild() {
     state.puzzles = [];
     var e = eff();
-    for (var i = 0; i < state.count; i++) {
-      var p = null, guard = 0;
-      // generate + verify uniquely solvable; regen on the rare reject.
-      do { p = generate(state.op, state.pattern, e); guard++; } while (!solve(p) && guard < 30);
+    var seen = {}, attempts = 0, cap = state.count * 80 + 300;
+    // Fill the sheet with DISTINCT, uniquely-solvable puzzles; skip trivial
+    // all-equal-corner figures and exact duplicates.
+    while (state.puzzles.length < state.count && attempts < cap) {
+      attempts++;
+      var p = generate(state.op, state.pattern, e);
+      if (!solve(p)) { continue; }                                   // never push an unsolvable puzzle
+      if (p.v[0] === p.v[1] && p.v[1] === p.v[2]) { continue; }      // skip trivial all-equal corners
+      var sig = p.v.join(',') + '|' + p.e.join(',');
+      if (seen[sig]) { continue; }
+      seen[sig] = true;
       state.puzzles.push(p);
     }
+    // Fallback for a tiny answer-space (e.g. × inverse at the easiest level):
+    // top up with any solvable puzzle so the sheet is never short.
+    var fg = 0;
+    while (state.puzzles.length < state.count && fg < 800) {
+      fg++;
+      var q = generate(state.op, state.pattern, e);
+      if (solve(q)) { state.puzzles.push(q); }
+    }
+    while (state.puzzles.length < state.count && state.puzzles.length) { state.puzzles.push(state.puzzles[0]); }
     render();
   }
 
@@ -138,6 +154,8 @@
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" xmlns="http://www.w3.org/2000/svg" class="ag-svg">';
     // triangle sides
     s += '<polygon points="' + corners.map(function (c) { return c[0] + ',' + c[1]; }).join(' ') + '" fill="none" stroke="#c9cdd6" stroke-width="2"/>';
+    // operation hint at the centre (so a B&W print shows + or × without relying on the prose)
+    s += '<text x="105" y="124" text-anchor="middle" font-size="22" font-weight="800" fill="#c9b8ec" font-family="system-ui,sans-serif">' + (p.op === '×' ? '×' : '+') + '</text>';
     // edge boxes (rectangles)
     for (var k = 0; k < 3; k++) {
       var m = mids[k], shown = p.shownE[k];
@@ -162,7 +180,21 @@
 
   function render() {
     if (els.eyebrowDiff && window.TP_diffDots) { els.eyebrowDiff.textContent = window.TP_diffDots(state.difficulty); }
-    if (els.opSymbol) { els.opSymbol.textContent = state.op === '×' ? 'multiply (×)' : 'add (+)'; }
+    // Mode-aware instructions: the self-check property only holds for the
+    // Inverse challenge (3 given edges over-determine the 3 corners). Forward
+    // and Mixed are not self-checking, so we don't claim it there.
+    if (els.intro) {
+      var opWord = state.op === '×' ? '&times; (multiply)' : '+ (add)';
+      var lead = '&#9651; Each <strong>edge box</strong> equals the two <strong>corner circles</strong> it sits between, combined by <strong>' + opWord + '</strong>. Fill in every empty circle and box.';
+      if (state.pattern === 'inverse') {
+        lead += ' Because all three edges come from the same corners, a wrong number breaks two edges &mdash; so the puzzle checks itself.';
+      } else if (state.pattern === 'mixed') {
+        lead += ' Use the given corner and edges to work out the rest.';
+      } else {
+        lead += ' Combine the corners to find each edge.';
+      }
+      els.intro.innerHTML = lead;
+    }
     var revealed = state.tab === 'answers';
     var html = '<div class="ag-grid" style="--ag-cols:' + (state.count >= 9 ? 3 : 2) + ';">';
     state.puzzles.forEach(function (p, i) {
@@ -180,19 +212,26 @@
     });
   }
 
+  // Slide a segmented/slider thumb under its active button, measured in px
+  // (the shared .diff-thumb / .seg-thumb rules carry no width — the JS sets it),
+  // matching how Maths Maze drives these controls.
+  function moveThumb(thumb, wrap, selector, index) {
+    if (!thumb || !wrap) { return; }
+    var btns = wrap.querySelectorAll(selector);
+    var active = btns[index];
+    if (active) { thumb.style.left = active.offsetLeft + 'px'; thumb.style.width = active.offsetWidth + 'px'; }
+  }
+
   function setDiff(d) {
     state.difficulty = Math.max(1, Math.min(5, d));
-    if (els.diffThumb) { els.diffThumb.style.left = ((state.difficulty - 1) / 4 * 100) + '%'; }
+    moveThumb(els.diffThumb, $('ag-difficulty'), '[data-diff]', state.difficulty - 1);
     if (els.diffLabel && window.TP_diffDots) { els.diffLabel.textContent = window.TP_diffDots(state.difficulty); }
     rebuild();
   }
 
   function setTab(tab) {
     state.tab = tab;
-    if (els.tabThumb) { els.tabThumb.style.left = tab === 'answers' ? '50%' : '0%'; }
-    Array.prototype.forEach.call($('ag-tabs').querySelectorAll('[data-tab]'), function (b) {
-      b.classList.toggle('seg-on', b.getAttribute('data-tab') === tab);
-    });
+    moveThumb(els.tabThumb, $('ag-tabs'), '[data-tab]', tab === 'answers' ? 1 : 0);
     render();
   }
 
@@ -211,9 +250,9 @@
 
   function onSave() {
     var form = new FormData();
-    form.append('tool', 'arithmagons');
     form.append('title', 'Arithmagon Triangles');
-    form.append('config_json', JSON.stringify({
+    form.append('activity', 'arithmagons');
+    form.append('config', JSON.stringify({
       year: state.year, difficulty: state.difficulty, op: state.op, pattern: state.pattern, count: state.count
     }));
     fetch(window.TP_SAVE_URL || '/account/save', {
@@ -235,7 +274,7 @@
     els.diffLabel = $('ag-diff-label');
     els.eyebrowDiff = $('ag-eyebrow-diff');
     els.tabThumb = $('ag-tabs') ? $('ag-tabs').querySelector('.seg-thumb') : null;
-    els.opSymbol = $('ag-op-symbol');
+    els.intro = $('ag-intro');
     els.spin = $('ag-regen-icon');
     if (els.spin) { els.spin.style.transition = 'transform .5s ease'; }
     els.toast = $('ag-toast');

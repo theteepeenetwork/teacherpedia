@@ -97,10 +97,8 @@
       </div>
       <div class="sheet-rule" style="margin:16px 0 18px;"></div>
 
-      <p style="margin:0 0 16px; font-size:14px; color:#4a514a; line-height:1.55;">
-        &#9651; Each <strong>edge box</strong> equals the two <strong>corner circles</strong> it sits between,
-        <strong id="ag-op-symbol">add (+)</strong>ed together. Fill in every empty circle and box.
-        Because all three edges come from the same corners, a wrong number breaks two edges &mdash; so the puzzle checks itself.
+      <p id="ag-intro" style="margin:0 0 16px; font-size:14px; color:#4a514a; line-height:1.55;">
+        &#9651; Each <strong>edge box</strong> equals the two <strong>corner circles</strong> it sits between. Fill in every empty circle and box.
       </p>
 
       <div id="ag-grid" class="ag-grid"></div>
