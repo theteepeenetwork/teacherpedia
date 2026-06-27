@@ -16,6 +16,43 @@ class ObjectiveModel extends Model
     ];
 
     /**
+     * The White Rose framework objective library for the worksheet builder:
+     * one entry per topic/block per year, carrying the Below/Meeting/Exceeding
+     * band descriptors and a generator key (null = not auto-generatable, e.g.
+     * geometry/statistics/reasoning). Sourced from the content file
+     * (framework_objectives.json) so it needs no DB. Projected to the shape the
+     * builder expects: id, year, strand (=topic), text (=block), key, plus the
+     * three band descriptors.
+     */
+    public function framework(): array
+    {
+        $path = APPPATH . 'Database/data/framework_objectives.json';
+        if (! is_file($path)) {
+            return [];
+        }
+        $records = json_decode((string) file_get_contents($path), true);
+        if (! is_array($records)) {
+            return [];
+        }
+        $rows = [];
+        foreach ($records as $i => $r) {
+            $key = isset($r['key']) && $r['key'] !== '' ? (string) $r['key'] : null;
+            $rows[] = [
+                'id'              => $i + 1,
+                'year'            => (int) ($r['year'] ?? 0),
+                'strand'          => (string) ($r['topic'] ?? ''),
+                'text'            => (string) ($r['block'] ?? ''),
+                'key'             => $key,
+                'auto_generating' => $key !== null ? 1 : 0,
+                'below'           => (string) ($r['below'] ?? ''),
+                'meeting'         => (string) ($r['meeting'] ?? ''),
+                'exceeding'       => (string) ($r['exceeding'] ?? ''),
+            ];
+        }
+        return $rows;
+    }
+
+    /**
      * All objectives for a given year, ordered by strand then text.
      */
     public function byYear(int $year): array

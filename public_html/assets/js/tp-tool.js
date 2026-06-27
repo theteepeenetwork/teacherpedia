@@ -69,6 +69,20 @@ window.TP_achievableValues = function (ops, year, lo, hi) {
   return Object.keys(set).map(Number);
 };
 
+/* ---- Attainment band -> difficulty -----------------------------------------
+ * The worksheet builder differentiates by BAND (Below / Meeting / Exceeding)
+ * within a year. Map the band to an effective 1-5 difficulty for the year:
+ * Below = a notch easier, Meeting = expected, Exceeding = a notch harder.
+ * ------------------------------------------------------------------------- */
+window.TP_BANDS = ['below', 'meeting', 'exceeding'];
+window.TP_bandLabel = function (band) {
+  return band === 'below' ? 'Below' : band === 'exceeding' ? 'Exceeding' : 'Meeting';
+};
+window.TP_bandDifficulty = function (year, band) {
+  var meter = band === 'below' ? 2 : band === 'exceeding' ? 4 : 3;
+  return window.TP_effDifficulty(year, meter);
+};
+
 /* ---- Year selector wiring ---------------------------------------------------
  * Wires the shared #<prefix>-years chip row (rendered by partials/tool_toolbar).
  * Manages the .chip-on state and calls onChange(year) when an enabled chip is
