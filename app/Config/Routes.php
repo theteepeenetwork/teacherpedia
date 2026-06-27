@@ -43,6 +43,7 @@ $routes->get('columns', 'Columns::index');                  // Column Methods (?
 $routes->get('treasure-hunt', 'TreasureHunt::index');
 $routes->get('loop-cards', 'LoopCards::index');
 $routes->get('bingo', 'Bingo::index');
+$routes->get('arithmagons', 'Arithmagons::index');
 
 // ---- Account (logged-in teachers) ----
 $routes->group('account', ['filter' => 'auth'], static function (RouteCollection $routes): void {
