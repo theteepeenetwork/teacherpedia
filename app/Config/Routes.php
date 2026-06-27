@@ -44,6 +44,7 @@ $routes->get('treasure-hunt', 'TreasureHunt::index');
 $routes->get('loop-cards', 'LoopCards::index');
 $routes->get('bingo', 'Bingo::index');
 $routes->get('arithmagons', 'Arithmagons::index');
+$routes->get('cross-number', 'CrossNumber::index');
 $routes->get('resource/(:segment)', 'ResourceInfo::show/$1');  // info page: browse -> /resource/{slug} -> tool
 
 // ---- Account (logged-in teachers) ----
