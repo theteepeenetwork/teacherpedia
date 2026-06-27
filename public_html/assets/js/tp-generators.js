@@ -594,6 +594,10 @@
     return kind();
   };
 
+  // Expose the private helpers so the skill-level generator pack (loaded after
+  // this IIFE) can reuse them instead of re-implementing words()/fmt()/etc.
+  window.TP_H = { ri, pick, gcd, fmt, frac, words, toRoman, decN, dgt };
+
   window.TP_GEN = G;
 })();
 

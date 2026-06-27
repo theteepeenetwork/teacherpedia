@@ -16,17 +16,22 @@ class ObjectiveModel extends Model
     ];
 
     /**
-     * The White Rose framework objective library for the worksheet builder:
-     * one entry per topic/block per year, carrying the Below/Meeting/Exceeding
-     * band descriptors and a generator key (null = not auto-generatable, e.g.
-     * geometry/statistics/reasoning). Sourced from the content file
-     * (framework_objectives.json) so it needs no DB. Projected to the shape the
-     * builder expects: id, year, strand (=topic), text (=block), key, plus the
-     * three band descriptors.
+     * The White Rose framework library for the worksheet builder, atomised to
+     * the SKILL level: every block (e.g. "Count") is split into its individual
+     * skills (e.g. "Steps of 2 from 0", "Steps of 3 from 0", …), each its own
+     * selectable objective with its own generator key (null = not
+     * auto-generatable, e.g. practical measuring / drawing / coordinates). This
+     * lets a teacher choose exactly how many questions of each skill they want,
+     * at any year and any attainment band.
+     *
+     * Sourced from the content file (framework_skills.json) so it needs no DB.
+     * Projected to the shape the builder expects: id, year, strand (=topic),
+     * text (=skill name), block (the White Rose block the skill sits under),
+     * key, plus the three Below/Meeting/Exceeding band descriptors.
      */
     public function framework(): array
     {
-        $path = APPPATH . 'Database/data/framework_objectives.json';
+        $path = APPPATH . 'Database/data/framework_skills.json';
         if (! is_file($path)) {
             return [];
         }
@@ -41,7 +46,8 @@ class ObjectiveModel extends Model
                 'id'              => $i + 1,
                 'year'            => (int) ($r['year'] ?? 0),
                 'strand'          => (string) ($r['topic'] ?? ''),
-                'text'            => (string) ($r['block'] ?? ''),
+                'text'            => (string) ($r['skill'] ?? ''),
+                'block'           => (string) ($r['block'] ?? ''),
                 'key'             => $key,
                 'auto_generating' => $key !== null ? 1 : 0,
                 'below'           => (string) ($r['below'] ?? ''),

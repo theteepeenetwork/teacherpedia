@@ -30,6 +30,7 @@ class Build extends BaseController
                 'id'        => (int) $row['id'],
                 'year'      => (int) $row['year'],
                 'strand'    => (string) $row['strand'],
+                'block'     => (string) ($row['block'] ?? ''),
                 'text'      => (string) $row['text'],
                 'key'       => $row['key'] !== null && $row['key'] !== ''
                                 ? (string) $row['key']

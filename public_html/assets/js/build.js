@@ -17,20 +17,19 @@
 
   var OBJ = (window.TP_OBJECTIVES || []).slice();
 
-  // ----- strand ordering + colours (ported from the design) -----
+  // ----- strand (topic) ordering + colours -----
+  // Topics come from the White Rose skill framework (framework_skills.json).
   var STRAND_ORDER = [
-    'Counting', 'Comparing & ordering', 'Reading & writing', 'Representing & estimating',
-    'Place value', 'Rounding', 'Addition & subtraction', 'Multiplication & division',
-    'Written methods', 'Order of operations', 'Fractions, decimals & %', 'Percentages',
-    'Estimation', 'Problem solving', 'Mastery / missing number'
+    'Place value', 'Addition & subtraction', 'Multiplication & division',
+    'Fractions', 'Fractions, decimals & percentages', 'Ratio, proportion & algebra',
+    'Ratio and proportion', 'Algebra', 'Measurement', 'Geometry', 'Statistics'
   ];
   var STRAND_COLOR = {
-    'Counting': '#1f8a4d', 'Comparing & ordering': '#2a6fdb', 'Reading & writing': '#7a4fbf',
-    'Representing & estimating': '#0f9b9b', 'Place value': '#c0563a', 'Rounding': '#b8742e',
-    'Addition & subtraction': '#1f8a4d', 'Multiplication & division': '#2a6fdb',
-    'Written methods': '#7a4fbf', 'Order of operations': '#5a6b3b',
-    'Fractions, decimals & %': '#0f9b9b', 'Percentages': '#c0563a', 'Estimation': '#b8742e',
-    'Problem solving': '#5a6b3b', 'Mastery / missing number': '#7a4fbf'
+    'Place value': '#c0563a', 'Addition & subtraction': '#1f8a4d',
+    'Multiplication & division': '#2a6fdb', 'Fractions': '#0f9b9b',
+    'Fractions, decimals & percentages': '#0f9b9b', 'Ratio, proportion & algebra': '#7a4fbf',
+    'Ratio and proportion': '#7a4fbf', 'Algebra': '#7a4fbf',
+    'Measurement': '#b8742e', 'Geometry': '#5a6b3b', 'Statistics': '#2a6fdb'
   };
   function colorFor(s) { return STRAND_COLOR[s] || '#1f8a4d'; }
 
@@ -169,8 +168,9 @@
     return OBJ.filter(function (o) {
       if (state.years.indexOf(o.year) === -1) { return false; }
       if (state.autoOnly && !canGenerate(o)) { return false; }
-      if (q && o.text.toLowerCase().indexOf(q) === -1 && o.strand.toLowerCase().indexOf(q) === -1) {
-        return false;
+      if (q) {
+        var hay = (o.text + ' ' + o.strand + ' ' + (o.block || '') + ' ' + (o.meeting || '')).toLowerCase();
+        if (hay.indexOf(q) === -1) { return false; }
       }
       return true;
     });
@@ -277,7 +277,7 @@
     meta.className = 'build-ometa';
     var yr = document.createElement('span');
     yr.className = 'build-oyear';
-    yr.textContent = 'Year ' + o.year;
+    yr.textContent = o.block ? ('Year ' + o.year + ' · ' + o.block) : ('Year ' + o.year);
     meta.appendChild(yr);
     if (soon) {
       var tag = document.createElement('span');

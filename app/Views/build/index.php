@@ -245,5 +245,6 @@
   </script>
   <script src="<?= base_url('assets/js/tp-tool.js') ?>"></script>
   <script src="<?= base_url('assets/js/tp-generators.js') ?>"></script>
+  <script src="<?= base_url('assets/js/tp-skill-generators.js') ?>"></script>
   <script src="<?= base_url('assets/js/build.js') ?>"></script>
 <?= $this->endSection() ?>
