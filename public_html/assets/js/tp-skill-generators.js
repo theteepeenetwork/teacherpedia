@@ -69,6 +69,14 @@
   }
   G.count_negatives = negThroughZero;
   G.count_neg_through0 = negThroughZero;
+  // Negative numbers IN CONTEXT, calculating an interval across zero (temperature).
+  G.neg_intervals = function () {
+    return pick([
+      function () { var hi = ri(2, 12), lo = -ri(1, 10); return { qtn: 'The temperature was ' + hi + '°C. It fell to ' + lo + '°C. By how many degrees did it fall?', ans: fmt(hi - lo) + '°C' }; },
+      function () { var lo = -ri(1, 9), rise = ri(3, 14); return { qtn: 'At dawn it was ' + lo + '°C. It rose by ' + rise + '°C. What is the new temperature?', ans: fmt(lo + rise) + '°C' }; },
+      function () { var a = -ri(1, 8), b = ri(1, 9); return { qtn: 'What is the difference between ' + a + ' and ' + b + '?', ans: fmt(b - a) }; }
+    ])();
+  };
   G.count_powers10 = function () { var s = pick([10, 100, 1000, 10000, 100000]); return seqGen(s, { fromAny: true })(); };
   G.count_tenths = function () {
     var start = ri(0, 5), n = 6, dir = pick([1, -1]);
@@ -94,8 +102,15 @@
       return { qtn: fmt(d) + (more ? ' more than ' : ' less than ') + fmt(n) + ' =', ans: fmt(more ? n + d : n - d) };
     };
   }
-  G.one_more = function () { var n = ri(0, 99); return { qtn: '1 more than ' + n + ' =', ans: fmt(n + 1) }; };
-  G.one_less = function () { var n = ri(1, 100); return { qtn: '1 less than ' + n + ' =', ans: fmt(n - 1) }; };
+  // Band-aware: below stays within 10, exceeding crosses a tens boundary.
+  G.one_more = function (d) {
+    var n = d <= 2 ? ri(0, 9) : d >= 4 ? ri(1, 9) * 10 - 1 : ri(10, 98);
+    return { qtn: '1 more than ' + n + ' =', ans: fmt(n + 1) };
+  };
+  G.one_less = function (d) {
+    var n = d <= 2 ? ri(1, 9) : d >= 4 ? ri(2, 10) * 10 : ri(11, 99);
+    return { qtn: '1 less than ' + n + ' =', ans: fmt(n - 1) };
+  };
   G.more_less_10_100 = moreLess([10, 100], 100, 900);
   G.more_less_1000 = moreLess([1000], 1000, 9000);
 
@@ -216,15 +231,21 @@
         while (a < b && guard < 50) { a = genA(); guard++; }
         if (a < b) { a = b + (a % 10); }   // last-resort: keep b's shape, a >= b
       }
+      // Optional cap on an addition result (e.g. keep "2-digit + tens" within 100).
+      if (op === '+' && opts.cap) {
+        var g2 = 0;
+        while (a + b > opts.cap && g2 < 50) { a = genA(); b = genB(); g2++; }
+        if (a + b > opts.cap) { b = Math.max(0, opts.cap - a); }
+      }
       return { qtn: fmt(a) + ' ' + op + ' ' + fmt(b) + ' =', ans: fmt(op === '+' ? a + b : a - b) };
     };
   }
-  // "to 20": keep the total within 20 so it stays on the "numbers to 20" objective.
-  G.add_to_20 = function () { var a = ri(0, 20), b = ri(0, 20 - a); return { qtn: a + ' + ' + b + ' =', ans: fmt(a + b) }; };
-  G.sub_to_20 = function () { var a = ri(0, 20), b = ri(0, a); return { qtn: a + ' − ' + b + ' =', ans: fmt(a - b) }; };
-  G.addsub_2d_ones = addSub(function () { return ri(11, 99); }, function () { return ri(1, 9); });
-  G.addsub_2d_tens = addSub(function () { return ri(11, 89); }, function () { return ri(1, 9) * 10; });
-  G.addsub_2d_2d = addSub(function () { return ri(11, 99); }, function () { return ri(11, 99); });
+  // "to 20": total within 20 (within 10 at the below band).
+  G.add_to_20 = function (d) { var cap = d <= 2 ? 10 : 20; var a = ri(0, cap), b = ri(0, cap - a); return { qtn: a + ' + ' + b + ' =', ans: fmt(a + b) }; };
+  G.sub_to_20 = function (d) { var cap = d <= 2 ? 10 : 20; var a = ri(0, cap), b = ri(0, a); return { qtn: a + ' − ' + b + ' =', ans: fmt(a - b) }; };
+  G.addsub_2d_ones = addSub(function () { return ri(11, 99); }, function () { return ri(1, 9); }, { cap: 99 });
+  G.addsub_2d_tens = addSub(function () { return ri(11, 89); }, function () { return ri(1, 9) * 10; }, { cap: 99 });
+  G.addsub_2d_2d = addSub(function () { return ri(11, 99); }, function () { return ri(11, 99); }, { cap: 99 });
   G.add_three_1d = function () { var a = ri(1, 9), b = ri(1, 9), c = ri(1, 9); return { qtn: a + ' + ' + b + ' + ' + c + ' =', ans: fmt(a + b + c) }; };
   G.addsub_3d_ones = addSub(function () { return ri(101, 999); }, function () { return ri(1, 9); });
   G.addsub_3d_tens = addSub(function () { return ri(101, 899); }, function () { return ri(1, 9) * 10; });
@@ -241,14 +262,14 @@
   // missing-number / inverse. Difficulty scales the size: below (d<=2) stays
   // within 10, meeting/exceeding grow into 2- and 3-digit place-value problems.
   G.missing_number = function (d) {
-    var hi = d <= 2 ? 10 : d >= 4 ? 300 : 50;
-    var b = ri(1, Math.min(9, hi)), a = ri(1, hi);
-    if (hi > 50) { a = ri(100, hi); b = ri(20, 90); }
-    return { qtn: fmt(a) + ' + ___ = ' + fmt(a + b), ans: fmt(b) };
+    if (d <= 2) { var total = ri(5, 10), a = ri(1, total - 1); return { qtn: a + ' + ___ = ' + total, ans: fmt(total - a) }; }   // within 10
+    if (d >= 4) { var a4 = ri(100, 300), b4 = ri(20, 90); return { qtn: fmt(a4) + ' + ___ = ' + fmt(a4 + b4), ans: fmt(b4) }; }
+    var am = ri(10, 50), bm = ri(5, 40); return { qtn: am + ' + ___ = ' + fmt(am + bm), ans: fmt(bm) };
   };
   // × / ÷ missing-number (Multiplication & division block objective).
+  // Year 3 facts: the 3, 4, 8 (and 2, 5, 10) tables — no 11/12.
   G.missing_number_md = function () {
-    var f = ri(2, 12), m = ri(2, 12), p = f * m;
+    var f = pick([2, 3, 4, 5, 8, 10]), m = ri(2, 10), p = f * m;
     return pick([
       function () { return { qtn: f + ' × ___ = ' + fmt(p), ans: fmt(m) }; },
       function () { return { qtn: '___ × ' + m + ' = ' + fmt(p), ans: fmt(f) }; },
@@ -289,8 +310,11 @@
   }
   [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].forEach(function (t) { G['table_' + t] = tableGen(t); });
   G.tables_to_12 = function () { return tableGen(ri(2, 12))(); };
-  // Year 1 division: share/group within the 2, 5 and 10 counts.
-  G.divide_simple = function () { var t = pick([2, 5, 10]), m = ri(1, 12); return { qtn: (t * m) + ' ÷ ' + t + ' =', ans: fmt(m) }; };
+  // Year 1 division: small sharing/grouping within the 2, 5 and 10 counts
+  // (dividend kept within ~20).
+  G.divide_simple = function () { var t = pick([2, 5, 10]), m = ri(1, Math.floor(20 / t)); return { qtn: (t * m) + ' ÷ ' + t + ' =', ans: fmt(m) }; };
+  // Year 1 multiplication: small equal groups of 2, 5 or 10.
+  G.mult_groups = function () { var t = pick([2, 5, 10]), m = ri(1, t === 10 ? 3 : t === 5 ? 6 : 10); return { qtn: m + ' × ' + t + ' =', ans: fmt(m * t) }; };
   G.odd_even = function () { var n = ri(1, 99); return { qtn: 'Is ' + n + ' odd or even?', ans: n % 2 === 0 ? 'even' : 'odd' }; };
   // Distinct factors so swapping the order is a real commutativity step.
   G.commutativity = function () { var a = ri(2, 9), b = ri(2, 9); while (b === a) { b = ri(2, 9); } return { qtn: a + ' × ' + b + ' = ' + b + ' × ___', ans: fmt(a) }; };
@@ -322,6 +346,7 @@
   // (not just 1) to find.
   G.common_factors = function () {
     var g = ri(2, 6), a = g * ri(2, 6), b = g * ri(2, 6);
+    while (b === a) { b = g * ri(2, 6); }   // two DISTINCT numbers
     var f = []; for (var i = 1; i <= Math.min(a, b); i++) { if (a % i === 0 && b % i === 0) { f.push(i); } }
     return { qtn: 'Find the common factors of ' + a + ' and ' + b + '.', ans: f.join(', ') };
   };
@@ -368,14 +393,18 @@
   G.frac_equiv = function () { var d = pick([2, 3, 4, 5]); var k = ri(2, 4); return { qtn: 'Complete the equivalent fraction:  1/' + d + ' = ___/' + (d * k), ans: fmt(k) }; };
   G.frac_equiv_family = function () { var d = pick([2, 3, 4, 5]), n = 1, k = ri(2, 5); return { qtn: 'Write a fraction equivalent to ' + n + '/' + d + '.', ans: (n * k) + '/' + (d * k) }; };
   G.frac_simplify = function () { var g = ri(2, 6), d = ri(2, 6), n = ri(1, d - 1); return { qtn: 'Simplify the fraction ' + (n * g) + '/' + (d * g) + '.', ans: frac(n * g, d * g) }; };
-  // Same denominator, kept "within one whole" (sum of numerators <= denominator).
+  // Same denominator, "within one whole". The answer keeps the SAME denominator
+  // (the natural result of same-denominator working), so there is no
+  // simplified-vs-unsimplified ambiguity.
   G.frac_addsub_same = function () {
     var d = pick([4, 5, 6, 8, 10]);
     var op = pick(['+', '−']);
     var a, b;
     if (op === '+') { a = ri(1, d - 1); b = ri(1, d - a); }   // a + b <= d
     else { a = ri(1, d - 1); b = ri(1, a); }                   // a - b >= 0
-    return { qtn: a + '/' + d + ' ' + op + ' ' + b + '/' + d + ' =', ans: frac(op === '+' ? a + b : a - b, d) };
+    var num = op === '+' ? a + b : a - b;
+    var ans = num === 0 ? '0' : num === d ? '1' : num + '/' + d;
+    return { qtn: a + '/' + d + ' ' + op + ' ' + b + '/' + d + ' =', ans: ans };
   };
   G.frac_addsub_related = function () { var d = pick([2, 3, 4]); var d2 = d * pick([2, 3]); var a = ri(1, d - 1), b = ri(1, d2 - 1); return { qtn: a + '/' + d + ' + ' + b + '/' + d2 + ' =', ans: frac(a * (d2 / d) + b, d2) }; };
   G.frac_addsub_diff = function () { var d1 = pick([2, 3, 4]), d2 = pick([3, 5, 6]); var a = ri(1, d1 - 1), b = ri(1, d2 - 1); var L = d1 * d2 / gcd(d1, d2); return { qtn: a + '/' + d1 + ' + ' + b + '/' + d2 + ' =', ans: frac(a * (L / d1) + b * (L / d2), L) }; };
@@ -400,11 +429,19 @@
     return { qtn: 'Insert <, > or = :  ' + n1 + '/' + d1 + ' ___ ' + n2 + '/' + d2, ans: sym };
   };
   // Year 3 "fractions as numbers" — compare/order on the number line, not decimals.
+  var FRAC_WORD = { 2: 'halves', 3: 'thirds', 4: 'quarters', 5: 'fifths', 6: 'sixths', 8: 'eighths', 10: 'tenths' };
   G.frac_as_number = function () {
     var d = pick([3, 4, 5, 6, 8, 10]);
     return pick([
       function () { var a = ri(1, d - 1), b = ri(1, d - 1); while (b === a) { b = ri(1, d - 1); } var sym = a < b ? '<' : '>'; return { qtn: 'Insert < or > :  ' + a + '/' + d + ' ___ ' + b + '/' + d, ans: sym }; },
-      function () { var k = ri(1, d - 2); return { qtn: 'Counting in ' + d + 'ths, what comes next?  ' + k + '/' + d + ', ___', ans: (k + 1) + '/' + d }; }
+      function () { var k = ri(1, d - 2); return { qtn: 'Counting in ' + FRAC_WORD[d] + ', what comes next?  ' + k + '/' + d + ', ___', ans: (k + 1) + '/' + d }; }
+    ])();
+  };
+  // Year 3 compare: unit fractions, or fractions with the SAME denominator (within 1).
+  G.frac_compare_simple = function () {
+    return pick([
+      function () { var a = pick([2, 3, 4, 5, 6, 8]), b = pick([2, 3, 4, 5, 6, 8]); while (b === a) { b = pick([2, 3, 4, 5, 6, 8]); } var sym = (1 / a) < (1 / b) ? '<' : '>'; return { qtn: 'Insert < or > :  1/' + a + ' ___ 1/' + b, ans: sym }; },
+      function () { var d = pick([4, 5, 6, 8, 10]); var a = ri(1, d - 1), b = ri(1, d - 1); while (b === a) { b = ri(1, d - 1); } var sym = a < b ? '<' : '>'; return { qtn: 'Insert < or > :  ' + a + '/' + d + ' ___ ' + b + '/' + d, ans: sym }; }
     ])();
   };
 
@@ -439,6 +476,13 @@
     return { qtn: items + ' pens cost £' + price + ' each. Pay with £' + paid + '. How much change?', ans: '£' + fmt(paid - total) };
   };
   G.money_pounds = function () { var p = ri(120, 980); return { qtn: 'Write ' + p + 'p in pounds.', ans: '£' + (p / 100).toFixed(2) }; };
+  // Money problems involving decimals to 2 d.p. (Year 4 FDP measure/money).
+  G.money_decimal = function () {
+    return pick([
+      function () { var items = ri(2, 5), price = (ri(120, 480) / 100); var total = +(items * price).toFixed(2); var paid = Math.ceil(total / 5) * 5; return { qtn: items + ' pens cost £' + price.toFixed(2) + ' each. Pay with £' + paid + '. How much change?', ans: '£' + (paid - total).toFixed(2) }; },
+      function () { var a = ri(150, 950) / 100, b = ri(50, 400) / 100; return { qtn: '£' + a.toFixed(2) + ' + £' + b.toFixed(2) + ' =', ans: '£' + (a + b).toFixed(2) }; }
+    ])();
+  };
 
   // -------------------------------------------------------------------------
   // TIME FACTS / CONVERSIONS (clock-reading skills reuse the SVG keys)
@@ -451,23 +495,53 @@
   // MEASUREMENT — metric conversions, perimeter / area / volume
   // -------------------------------------------------------------------------
   var litre = function (n) { return n === 1 ? '1 litre' : n + ' litres'; };
-  G.convert_length = function () { return pick([function () { var m = ri(1, 9); return { qtn: 'Convert ' + m + ' m to cm.', ans: fmt(m * 100) + ' cm' }; }, function () { var cm = ri(2, 9); return { qtn: 'Convert ' + cm + ' cm to mm.', ans: fmt(cm * 10) + ' mm' }; }, function () { var km = ri(1, 9); return { qtn: 'Convert ' + km + ' km to m.', ans: fmt(km * 1000) + ' m' }; }])(); };
-  G.convert_mass = function () { var kg = ri(1, 9); return { qtn: 'Convert ' + kg + ' kg to g.', ans: fmt(kg * 1000) + ' g' }; };
-  G.convert_capacity = function () { var l = ri(1, 9); return { qtn: 'Convert ' + litre(l) + ' to ml.', ans: fmt(l * 1000) + ' ml' }; };
-  G.convert_metric = function () { return pick([G.convert_length, G.convert_mass, G.convert_capacity])(); };
-  G.convert_miles_km = function () { var mi = ri(1, 10) * 5; return { qtn: 'Using 5 miles ≈ 8 km, convert ' + mi + ' miles to km.', ans: fmt(mi / 5 * 8) + ' km' }; };
+  // Year 3 measures objective: measure, COMPARE, ADD and SUBTRACT (not only convert).
+  G.convert_length = function () {
+    return pick([
+      function () { var m = ri(1, 9); return { qtn: 'Convert ' + m + ' m to cm.', ans: fmt(m * 100) + ' cm' }; },
+      function () { var cm = ri(2, 9); return { qtn: 'Convert ' + cm + ' cm to mm.', ans: fmt(cm * 10) + ' mm' }; },
+      function () { var a = ri(20, 80), b = ri(10, 60); return { qtn: a + ' cm + ' + b + ' cm =', ans: fmt(a + b) + ' cm' }; },
+      function () { var a = ri(50, 95), b = ri(10, 45); return { qtn: a + ' cm − ' + b + ' cm =', ans: fmt(a - b) + ' cm' }; },
+      function () { var a = ri(2, 9), b = ri(2, 9); var sym = a < b ? '<' : a > b ? '>' : '='; return { qtn: 'Insert <, > or = :  ' + a + ' m ___ ' + b + ' m', ans: sym }; }
+    ])();
+  };
+  G.convert_mass = function () {
+    return pick([
+      function () { var kg = ri(1, 9); return { qtn: 'Convert ' + kg + ' kg to g.', ans: fmt(kg * 1000) + ' g' }; },
+      function () { var a = ri(100, 600), b = ri(100, 350); return { qtn: a + ' g + ' + b + ' g =', ans: fmt(a + b) + ' g' }; },
+      function () { var a = ri(400, 900), b = ri(100, 350); return { qtn: a + ' g − ' + b + ' g =', ans: fmt(a - b) + ' g' }; }
+    ])();
+  };
+  G.convert_capacity = function () {
+    return pick([
+      function () { var l = ri(1, 9); return { qtn: 'Convert ' + litre(l) + ' to ml.', ans: fmt(l * 1000) + ' ml' }; },
+      function () { var a = ri(100, 600), b = ri(100, 350); return { qtn: a + ' ml + ' + b + ' ml =', ans: fmt(a + b) + ' ml' }; },
+      function () { var a = ri(400, 900), b = ri(100, 350); return { qtn: a + ' ml − ' + b + ' ml =', ans: fmt(a - b) + ' ml' }; }
+    ])();
+  };
+  G.convert_metric = function () { return pick([function () { var m = ri(1, 9); return { qtn: 'Convert ' + m + ' m to cm.', ans: fmt(m * 100) + ' cm' }; }, function () { var kg = ri(1, 9); return { qtn: 'Convert ' + kg + ' kg to g.', ans: fmt(kg * 1000) + ' g' }; }, function () { var l = ri(1, 9); return { qtn: 'Convert ' + litre(l) + ' to ml.', ans: fmt(l * 1000) + ' ml' }; }])(); };
+  // Imperial equivalences named in the objective: inches, pounds, pints (plus miles/km).
+  G.convert_miles_km = function () {
+    return pick([
+      function () { var mi = ri(1, 10) * 5; return { qtn: 'Using 5 miles ≈ 8 km, convert ' + mi + ' miles to km.', ans: fmt(mi / 5 * 8) + ' km' }; },
+      function () { var inch = ri(2, 12); return { qtn: 'Using 1 inch ≈ 2.5 cm, about how many cm is ' + inch + ' inches?', ans: fmt(inch * 2.5) + ' cm' }; },
+      function () { var lb = ri(2, 11); return { qtn: 'Using 1 pound ≈ 450 g, about how many grams is ' + lb + ' pounds?', ans: fmt(lb * 450) + ' g' }; },
+      function () { var pt = ri(2, 8); return { qtn: 'Using 1 pint ≈ 568 ml, about how many ml is ' + pt + ' pints?', ans: fmt(pt * 568) + ' ml' }; }
+    ])();
+  };
   // Year 2 "choose and use sensible units" — estimate, not convert.
   G.estimate_length = function () { var o = pick([['a pencil', '15 cm'], ['a door', '2 m'], ['a football pitch', '100 m'], ['a finger', '6 cm'], ['a bus', '10 m']]); var wrong = o[1].indexOf('cm') > -1 ? o[1].replace('cm', 'm') : o[1].replace('m', 'cm'); var opts = shuffle([o[1], wrong]); return { qtn: 'Choose the sensible length of ' + o[0] + ':  ' + opts.join('  or  '), ans: o[1] }; };
   G.estimate_mass = function () { var o = pick([['an apple', '150 g'], ['a bag of sugar', '1 kg'], ['a car', '1,000 kg'], ['a feather', '1 g'], ['a cat', '4 kg']]); var wrong = o[1].indexOf('kg') > -1 ? o[1].replace('kg', 'g') : o[1].replace('g', 'kg'); var opts = shuffle([o[1], wrong]); return { qtn: 'Choose the sensible mass of ' + o[0] + ':  ' + opts.join('  or  '), ans: o[1] }; };
   G.estimate_capacity = function () { var o = pick([['a teaspoon', '5 ml'], ['a bucket', '10 litres'], ['a mug', '300 ml'], ['a bottle of water', '1 litre'], ['a bath', '80 litres']]); var wrong = o[1].indexOf('ml') > -1 ? o[1].replace('ml', 'litres') : o[1].replace(/litres?/, 'ml'); var opts = shuffle([o[1], wrong]); return { qtn: 'Choose the sensible capacity of ' + o[0] + ':  ' + opts.join('  or  '), ans: o[1] }; };
-  // Compare two measures with the same unit (Year 2 "compare & order" for measures).
-  G.compare_measures = function () { var u = pick(['cm', 'm', 'kg', 'g', 'ml', 'litres']); var a = ri(2, 99), b = pick([true, false]) ? a : ri(2, 99); var sym = a < b ? '<' : a > b ? '>' : '='; return { qtn: 'Insert <, > or = :  ' + a + ' ' + u + ' ___ ' + b + ' ' + u, ans: sym }; };
-  // Higher-year measure problems to 3 d.p.
+  // Compare two measures with the same unit (Year 2 "compare & order" for measures);
+  // mostly distinct values so the answer isn't almost always "=".
+  G.compare_measures = function () { var u = pick(['cm', 'm', 'kg', 'g', 'ml', 'litres']); var a = ri(2, 99), b = (Math.random() < 0.15) ? a : ri(2, 99); var sym = a < b ? '<' : a > b ? '>' : '='; return { qtn: 'Insert <, > or = :  ' + a + ' ' + u + ' ___ ' + b + ' ' + u, ans: sym }; };
+  // Four-operations measure problems in decimal notation, including scaling.
   G.measure_decimal = function () {
     return pick([
-      function () { var m = ri(1005, 9995) / 1000; return { qtn: 'Convert ' + m.toFixed(3) + ' km to metres.', ans: fmt(Math.round(m * 1000)) + ' m' }; },
-      function () { var m = ri(100, 9999); return { qtn: 'Convert ' + fmt(m) + ' m to km.', ans: (m / 1000).toFixed(3) + ' km' }; },
-      function () { var g = ri(1050, 9950); return { qtn: 'Convert ' + fmt(g) + ' g to kg.', ans: (g / 1000).toFixed(3) + ' kg' }; }
+      function () { var len = ri(105, 495) / 100, n = ri(2, 5); return { qtn: 'A plank is ' + len.toFixed(2) + ' m long. ' + n + ' planks are joined end to end. What is the total length?', ans: (len * n).toFixed(2) + ' m' }; },
+      function () { var total = ri(200, 900) / 100, n = pick([2, 4, 5]); return { qtn: fmt(n) + ' bottles hold ' + total.toFixed(2) + ' litres altogether. How much is in each bottle?', ans: (total / n).toFixed(2) + ' litres' }; },
+      function () { var a = ri(150, 950) / 100, b = ri(50, 140) / 100; return { qtn: 'A rope is ' + a.toFixed(2) + ' m. You cut off ' + b.toFixed(2) + ' m. How much is left?', ans: (a - b).toFixed(2) + ' m' }; }
     ])();
   };
   G.perimeter_rect = function () { var w = ri(2, 20), h = ri(2, 20); return { qtn: 'A rectangle is ' + w + ' cm by ' + h + ' cm. What is its perimeter?', ans: fmt(2 * (w + h)) + ' cm' }; };
@@ -533,6 +607,9 @@
     var d = dataset(keys);
     var hi = keys.reduce(function (a, b) { return d[a] >= d[b] ? a : b; });
     var lo = keys.reduce(function (a, b) { return d[a] <= d[b] ? a : b; });
+    // Ensure the two compared categories are distinct with a non-zero difference.
+    var guard = 0;
+    while (hi === lo && guard < 20) { d = dataset(keys); hi = keys.reduce(function (a, b) { return d[a] >= d[b] ? a : b; }); lo = keys.reduce(function (a, b) { return d[a] <= d[b] ? a : b; }); guard++; }
     return { qtn: 'How many more ' + hi + ' than ' + lo + '?', qhtml: barHTML(d, 'Pets', true), ans: fmt(d[hi] - d[lo]) };
   };
   G.stats_one_step = function () {  // bar charts / pictograms / tables
@@ -541,10 +618,14 @@
     var most = keys.reduce(function (a, b) { return d[a] >= d[b] ? a : b; });
     return { qtn: 'On which day were the most books read?', qhtml: barHTML(d, 'Books read', false), ans: most };
   };
-  G.stats_two_step = function () {  // 'how many more/fewer', comparison
+  G.stats_two_step = function () {  // 'how many more/fewer?' comparison
     var keys = shuffle(['Class A', 'Class B', 'Class C']).slice(0, 3);
     var d = dataset(keys);
-    return { qtn: 'How many points did all three classes score in total?', qhtml: barHTML(d, 'Points scored', false), ans: fmt(total(d)) };
+    var hi = keys.reduce(function (a, b) { return d[a] >= d[b] ? a : b; });
+    var lo = keys.reduce(function (a, b) { return d[a] <= d[b] ? a : b; });
+    var guard = 0;
+    while (hi === lo && guard < 20) { d = dataset(keys); hi = keys.reduce(function (a, b) { return d[a] >= d[b] ? a : b; }); lo = keys.reduce(function (a, b) { return d[a] <= d[b] ? a : b; }); guard++; }
+    return { qtn: 'How many more points did ' + hi + ' score than ' + lo + '?', qhtml: barHTML(d, 'Points scored', false), ans: fmt(d[hi] - d[lo]) };
   };
   G.stats_table = function () {  // simple tables / timetables
     var d = dataset(shuffle(['Apples', 'Pears', 'Plums', 'Grapes']).slice(0, 4));

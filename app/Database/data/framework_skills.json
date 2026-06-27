@@ -137,7 +137,7 @@
   "below": "Makes equal groups with support.",
   "meeting": "Solves one-step multiplication problems using objects, pictures and arrays (with support).",
   "exceeding": "Links equal groups to counting in 2s, 5s and 10s.",
-  "key": "mult_statements"
+  "key": "mult_groups"
  },
  {
   "year": 1,
@@ -1137,7 +1137,7 @@
   "below": "With support.",
   "meeting": "Compares and orders unit fractions and fractions with the same denominator.",
   "exceeding": "Orders and reasons.",
-  "key": "frac_compare"
+  "key": "frac_compare_simple"
  },
  {
   "year": 3,
@@ -1717,7 +1717,7 @@
   "below": "With support.",
   "meeting": "Solves simple measure and money problems involving fractions and decimals to 2 d.p.",
   "exceeding": "Solves multi-step problems and explains.",
-  "key": "money_problems"
+  "key": "money_decimal"
  },
  {
   "year": 4,
@@ -1937,7 +1937,7 @@
   "below": "With support.",
   "meeting": "Interprets negative numbers in context.",
   "exceeding": "Reasons about negatives and intervals.",
-  "key": "count_neg_through0"
+  "key": "neg_intervals"
  },
  {
   "year": 5,
@@ -2427,7 +2427,7 @@
   "below": "With support.",
   "meeting": "Uses negative numbers in context and calculates intervals across zero.",
   "exceeding": "Calculates intervals confidently and reasons.",
-  "key": "count_neg_through0"
+  "key": "neg_intervals"
  },
  {
   "year": 6,
