@@ -24,7 +24,9 @@
       background: #fff;
       break-inside: avoid;
     }
-    .ag-svg { display: block; width: 100%; height: auto; }     /* triangle fills the card width */
+    /* Triangle fills the card width, but capped so three rows (6-up / 9-up)
+       always fit on one A4 page; in 2-column layouts it centres in the card. */
+    .ag-svg { display: block; width: 100%; max-width: 220px; height: auto; margin: 0 auto; }
     .ag-cap {
       font-size: 12px; font-weight: 800; letter-spacing: .04em;
       text-transform: uppercase; color: var(--muted, #6c716a);
