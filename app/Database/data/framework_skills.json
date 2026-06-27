@@ -47,7 +47,7 @@
   "below": "Matches some numbers to objects with support.",
   "meeting": "Identifies and represents numbers using objects and pictorial representations.",
   "exceeding": "Represents a number several ways and explains.",
-  "key": null
+  "key": "pv_y1_count_objects"
  },
  {
   "year": 1,
@@ -187,7 +187,7 @@
   "below": "Compares two lengths directly with support.",
   "meeting": "Compares, describes and solves practical problems for length/height.",
   "exceeding": "Orders several lengths and reasons.",
-  "key": null
+  "key": "meas_y1_tallest_longest"
  },
  {
   "year": 1,
@@ -197,7 +197,7 @@
   "below": "Compares two masses with support.",
   "meeting": "Compares, describes and solves practical problems for mass/weight.",
   "exceeding": "Orders several masses and reasons.",
-  "key": null
+  "key": "meas_y1_balance_mass"
  },
  {
   "year": 1,
@@ -207,7 +207,7 @@
   "below": "Compares two capacities with support.",
   "meeting": "Compares, describes and solves practical problems for capacity/volume.",
   "exceeding": "Orders several capacities and reasons.",
-  "key": null
+  "key": "meas_y1_compare_capacity"
  },
  {
   "year": 1,
@@ -217,7 +217,7 @@
   "below": "Compares two durations with support.",
   "meeting": "Compares, describes and solves practical problems for time.",
   "exceeding": "Orders events/durations and reasons.",
-  "key": null
+  "key": "meas_y1_time_compare_duration"
  },
  {
   "year": 1,
@@ -227,7 +227,7 @@
   "below": "Measures with uniform units with help.",
   "meeting": "Measures and begins to record lengths, mass, capacity and time.",
   "exceeding": "Measures accurately and records sensibly.",
-  "key": null
+  "key": "meas_length_count_cubes"
  },
  {
   "year": 1,
@@ -247,7 +247,7 @@
   "below": "Uses some time language with support.",
   "meeting": "Sequences events in chronological order using time language.",
   "exceeding": "Sequences events and reasons about before/after.",
-  "key": null
+  "key": "meas_y1_sequence_events"
  },
  {
   "year": 1,
@@ -257,7 +257,7 @@
   "below": "Names some days/months with support.",
   "meeting": "Recognises and uses language relating to dates (days, weeks, months, years).",
   "exceeding": "Uses date language confidently in context.",
-  "key": null
+  "key": "meas_y1_date_language"
  },
  {
   "year": 1,
@@ -297,7 +297,7 @@
   "below": "Follows whole/half turn instructions with support.",
   "meeting": "Describes position, direction and movement, including whole, half, quarter and three-quarter turns.",
   "exceeding": "Uses turn and position language to give directions.",
-  "key": null
+  "key": "geo_position_turns"
  },
  {
   "year": 2,
@@ -627,7 +627,7 @@
   "below": "Reads a thermometer with support.",
   "meeting": "Estimates and measures temperature (°C).",
   "exceeding": "Reads/compares temperatures and reasons.",
-  "key": null
+  "key": "meas_temperature_thermometer_y2"
  },
  {
   "year": 2,
@@ -697,7 +697,7 @@
   "below": "Compares two intervals with support.",
   "meeting": "Compares and sequences intervals of time.",
   "exceeding": "Orders intervals and reasons.",
-  "key": null
+  "key": "meas_time_compare_intervals"
  },
  {
   "year": 2,
@@ -737,7 +737,7 @@
   "below": "Identifies a face with support.",
   "meeting": "Identifies 2-D shapes on the surface of 3-D shapes.",
   "exceeding": "Identifies and names faces on several 3-D shapes.",
-  "key": null
+  "key": "geo_2d_on_3d_faces"
  },
  {
   "year": 2,
@@ -747,7 +747,7 @@
   "below": "Sorts by one property with support.",
   "meeting": "Compares and sorts common 2-D shapes and everyday objects.",
   "exceeding": "Sorts by several properties and explains.",
-  "key": null
+  "key": "geo_sort_shapes_by_sides"
  },
  {
   "year": 2,
@@ -777,7 +777,7 @@
   "below": "Continues a pattern with support.",
   "meeting": "Orders and arranges combinations of objects in patterns and sequences.",
   "exceeding": "Creates and describes patterns and predicts terms.",
-  "key": null
+  "key": "geo_repeating_pattern_next"
  },
  {
   "year": 2,
@@ -787,7 +787,7 @@
   "below": "Uses some position language with support.",
   "meeting": "Describes position, direction and rotation (quarter/half/three-quarter turns; clockwise/anti-clockwise).",
   "exceeding": "Uses precise rotational/positional language to predict movement.",
-  "key": null
+  "key": "geo_position_rotation"
  },
  {
   "year": 2,
@@ -907,7 +907,7 @@
   "below": "Uses one representation with support.",
   "meeting": "Identifies, represents and estimates numbers using different representations.",
   "exceeding": "Estimates and justifies on a number line.",
-  "key": null
+  "key": "pv_dienes_represent_estimate"
  },
  {
   "year": 3,
@@ -1287,7 +1287,7 @@
   "below": "With support.",
   "meeting": "Recognises 3-D shapes in different orientations and describes them.",
   "exceeding": "Describes by faces/edges/vertices.",
-  "key": null
+  "key": "geo_3d_orientation_name"
  },
  {
   "year": 3,
@@ -1317,7 +1317,7 @@
   "below": "With support.",
   "meeting": "Identifies horizontal and vertical lines.",
   "exceeding": "Identifies confidently in different orientations.",
-  "key": null
+  "key": "geo_horizontal_vertical_lines"
  },
  {
   "year": 3,
@@ -1327,7 +1327,7 @@
   "below": "With support.",
   "meeting": "Identifies pairs of perpendicular and parallel lines.",
   "exceeding": "Identifies and reasons.",
-  "key": null
+  "key": "geo_parallel_perpendicular"
  },
  {
   "year": 3,
@@ -1447,7 +1447,7 @@
   "below": "Uses one representation with support.",
   "meeting": "Identifies, represents and estimates numbers using different representations.",
   "exceeding": "Estimates and justifies on a number line.",
-  "key": null
+  "key": "pv_numberline_estimate_y4"
  },
  {
   "year": 4,
@@ -1737,7 +1737,7 @@
   "below": "With support.",
   "meeting": "Estimates, compares and calculates different measures.",
   "exceeding": "Reasons and solves multi-step problems.",
-  "key": null
+  "key": "meas_convert_compare_diff"
  },
  {
   "year": 4,
@@ -1797,7 +1797,7 @@
   "below": "Classifies common shapes with support.",
   "meeting": "Compares and classifies quadrilaterals and triangles based on properties and sizes.",
   "exceeding": "Classifies by multiple properties and reasons.",
-  "key": null
+  "key": "geo_classify_quad_triangle"
  },
  {
   "year": 4,
@@ -1807,7 +1807,7 @@
   "below": "Finds a vertical line of symmetry.",
   "meeting": "Identifies lines of symmetry in 2-D shapes in different orientations.",
   "exceeding": "Finds symmetry in any orientation and reasons.",
-  "key": null
+  "key": "geo_symmetry_line_rotated"
  },
  {
   "year": 4,
@@ -1827,7 +1827,7 @@
   "below": "With support.",
   "meeting": "Completes a simple symmetric figure with respect to a specific line of symmetry.",
   "exceeding": "Completes symmetric figures accurately.",
-  "key": null
+  "key": "geo_complete_symmetric_figure"
  },
  {
   "year": 4,
@@ -1837,7 +1837,7 @@
   "below": "Plots points with support.",
   "meeting": "Describes positions on a 2-D grid as coordinates in the first quadrant.",
   "exceeding": "Uses coordinates accurately and predicts positions.",
-  "key": null
+  "key": "geo_first_quadrant_coords"
  },
  {
   "year": 4,
@@ -1847,7 +1847,7 @@
   "below": "With support.",
   "meeting": "Describes movements between positions as translations (left/right, up/down).",
   "exceeding": "Describes translations precisely.",
-  "key": null
+  "key": "geo_translate_shape_grid"
  },
  {
   "year": 4,
@@ -1857,7 +1857,7 @@
   "below": "With support.",
   "meeting": "Plots specified points and draws sides to complete a polygon.",
   "exceeding": "Plots accurately and completes polygons.",
-  "key": null
+  "key": "geo_plot_complete_polygon"
  },
  {
   "year": 4,
@@ -1877,7 +1877,7 @@
   "below": "Reads time graphs with support.",
   "meeting": "Interprets and presents data using time graphs.",
   "exceeding": "Interprets and constructs time graphs.",
-  "key": null
+  "key": "stats_time_graph_readoff"
  },
  {
   "year": 4,
@@ -2287,7 +2287,7 @@
   "below": "With support.",
   "meeting": "Estimates volume and capacity.",
   "exceeding": "Estimates and compares volumes and reasons.",
-  "key": null
+  "key": "meas_estimate_capacity_mcq"
  },
  {
   "year": 5,
@@ -2307,7 +2307,7 @@
   "below": "With support.",
   "meeting": "Uses the properties of rectangles to find missing lengths and angles.",
   "exceeding": "Deduces a chain of related facts.",
-  "key": null
+  "key": "geo_rect_missing_side_angle"
  },
  {
   "year": 5,
@@ -2337,7 +2337,7 @@
   "below": "With support.",
   "meeting": "Draws given angles and measures them in degrees.",
   "exceeding": "Draws and measures accurately.",
-  "key": null
+  "key": "geo_measure_angle_protractor"
  },
  {
   "year": 5,
@@ -2357,7 +2357,7 @@
   "below": "With support.",
   "meeting": "Identifies, describes and represents position after a reflection or translation; knows the shape is unchanged.",
   "exceeding": "Describes precisely and predicts the image.",
-  "key": null
+  "key": "geo_reflect_translate_point_y5"
  },
  {
   "year": 5,
@@ -2747,7 +2747,7 @@
   "below": "With support.",
   "meeting": "Recognises that shapes with the same area can have different perimeters and vice versa.",
   "exceeding": "Reasons about area and perimeter relationships.",
-  "key": null
+  "key": "meas_same_area_diff_perimeter_y6"
  },
  {
   "year": 6,
@@ -2757,7 +2757,7 @@
   "below": "With support.",
   "meeting": "Recognises when it is possible to use formulae for area and volume.",
   "exceeding": "Selects and justifies the correct formula.",
-  "key": null
+  "key": "geo_when_formula_y6"
  },
  {
   "year": 6,
@@ -2787,7 +2787,7 @@
   "below": "With support.",
   "meeting": "Draws 2-D shapes using given dimensions and angles.",
   "exceeding": "Draws accurately and reasons about properties.",
-  "key": null
+  "key": "geo_draw_dimensions_angle_y6"
  },
  {
   "year": 6,
@@ -2797,7 +2797,7 @@
   "below": "With support.",
   "meeting": "Compares and classifies geometric shapes based on properties and sizes.",
   "exceeding": "Classifies by multiple properties and reasons.",
-  "key": null
+  "key": "geo_classify_shape_y6"
  },
  {
   "year": 6,
@@ -2817,7 +2817,7 @@
   "below": "With support.",
   "meeting": "Recognises, describes and builds simple 3-D shapes, including making nets.",
   "exceeding": "Visualises nets and reasons about which fold into a solid.",
-  "key": null
+  "key": "geo_net_solid_y6"
  },
  {
   "year": 6,
@@ -2847,7 +2847,7 @@
   "below": "Works in the first quadrant with support.",
   "meeting": "Describes positions on the full coordinate grid (all four quadrants).",
   "exceeding": "Works accurately across all quadrants.",
-  "key": null
+  "key": "geo_four_quadrant_read_y6"
  },
  {
   "year": 6,
@@ -2857,7 +2857,7 @@
   "below": "With support.",
   "meeting": "Draws and translates simple shapes on the coordinate plane and reflects them in the axes.",
   "exceeding": "Predicts images of transformations.",
-  "key": null
+  "key": "geo_translate_reflect_y6"
  },
  {
   "year": 6,
@@ -2867,7 +2867,7 @@
   "below": "Reads them with support.",
   "meeting": "Interprets and constructs pie charts and line graphs and uses them to solve problems.",
   "exceeding": "Constructs accurately and solves multi-step problems.",
-  "key": null
+  "key": "stats_pie_line_y6"
  },
  {
   "year": 6,
