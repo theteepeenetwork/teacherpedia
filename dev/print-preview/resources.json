@@ -1,0 +1,4 @@
+{
+ "arithmagons": { "view": "arithmagons/index", "route": "/arithmagons", "accent": "#7b4cc4", "wait": "#ag-grid .ag-card" },
+ "code-breaker": { "view": "code_breaker/index", "route": "/code-breaker", "accent": "#2a6fdb", "wait": ".sheet" }
+}

@@ -29,11 +29,20 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
 const FCPATH = path.join(ROOT, 'public_html');
 
-// Known resources — extend as new ones are built.
-const RESOURCES = {
-  arithmagons:    { view: 'arithmagons/index', route: '/arithmagons', accent: '#7b4cc4', wait: '#ag-grid .ag-card' },
-  'code-breaker': { view: 'code_breaker/index', route: '/code-breaker', accent: '#2a6fdb', wait: '.sheet' },
-};
+// Known resources. Built-ins plus anything in resources.json (the scaffold
+// registers new resources there automatically), so the print tool auto-covers
+// every resource without editing this file.
+const RESOURCES = (() => {
+  const r = {
+    arithmagons:    { view: 'arithmagons/index', route: '/arithmagons', accent: '#7b4cc4', wait: '#ag-grid .ag-card' },
+    'code-breaker': { view: 'code_breaker/index', route: '/code-breaker', accent: '#2a6fdb', wait: '.sheet' },
+  };
+  try {
+    const f = path.join(__dirname, 'resources.json');
+    if (fs.existsSync(f)) { Object.assign(r, JSON.parse(fs.readFileSync(f, 'utf8'))); }
+  } catch (e) { /* ignore a malformed registry */ }
+  return r;
+})();
 
 const argv = process.argv.slice(2);
 const opt = (name, def) => { const i = argv.indexOf('--' + name); return i > -1 ? argv[i + 1] : def; };
