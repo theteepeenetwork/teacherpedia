@@ -90,6 +90,15 @@ function yearTables(year) {
 }
 // Max digits in any entry for the year (Year 3 column ± is "up to 3 digits").
 function ceilingDigits(year) { return year <= 3 ? 3 : 4; }
+// Curriculum METHOD limits for × and ÷ (mirror of the engine's helpers).
+function mulMethodOk(sm, lg, year) {
+  if (sm < 2 || lg < 2) return false;
+  if (year <= 3) return sm <= 9 && lg <= 99;
+  if (year === 4) return sm <= 9 && lg <= 999;
+  if (year === 5) return (sm <= 9 && lg <= 9999) || (sm <= 99 && lg <= 99);
+  return sm <= 99 && lg <= 9999;
+}
+function divDividendMax(year) { return year <= 3 ? 99 : year === 4 ? 999 : 9999; }
 
 for (var run = 0; run < RUNS; run++) {
   var year = YEARS[run % YEARS.length];
@@ -155,23 +164,25 @@ for (var run = 0; run < RUNS; run++) {
       m = e.clue.match(/^(.+?) − (.+)$/);
       check(num(m[1]) >= num(m[2]), 'run ' + run + ' entry ' + e.n + e.dir + ': subtraction goes negative "' + e.clue + '"');
     } else if (op === '×') {
-      // KS2 written multiplication a × b: a 1-or-2-digit multiplier (≤ 99) by a
-      // number up to 4 digits — covers tables, short (n-digit × 1-digit) and long
-      // (up to 4-digit × 2-digit) multiplication. Both operands ≥ 2.
+      // The × METHOD must be on the year's curriculum (Y3 2-digit×1-digit … Y6
+      // long multiplication) — see mulMethodOk. Both operands ≥ 2.
       m = e.clue.match(/^(.+?) × (.+)$/);
       var a = num(m[1]), b = num(m[2]);
       var smX = Math.min(a, b), lgX = Math.max(a, b);
-      check(smX >= 2 && smX <= 99 && lgX <= 9999, 'run ' + run + ' entry ' + e.n + e.dir + ': × operands out of range "' + e.clue + '"');
+      check(mulMethodOk(smX, lgX, year), 'run ' + run + ' entry ' + e.n + e.dir + ': × method off-curriculum for year ' + year + ' "' + e.clue + '"');
     } else if (op === '÷') {
       m = e.clue.match(/^(.+?) ÷ (.+)$/);
       var dd = num(m[1]), dv = num(m[2]);
       check(dd % dv === 0, 'run ' + run + ' entry ' + e.n + e.dir + ': non-exact ÷ "' + e.clue + '"');
-      // Long division by a 2-digit divisor is Year 5/6 only; below that every ÷
-      // divisor must be a times-table fact for the year.
-      if (band === 'exceeding' && year >= 5) {
-        check(dv >= 11 && dv <= 25, 'run ' + run + ' entry ' + e.n + e.dir + ': exceeding ÷ divisor out of range "' + e.clue + '"');
+      // Any 2-digit divisor is LONG division — a Year 5+ method. A 1-digit
+      // divisor (or ÷10) is short/table division: the divisor must be a year
+      // table fact and the dividend within the year's written method.
+      if (dv >= 11) {
+        check(year >= 5, 'run ' + run + ' entry ' + e.n + e.dir + ': long division below year 5 "' + e.clue + '" (year ' + year + ')');
+        check(dv <= 25 && dd <= 9999, 'run ' + run + ' entry ' + e.n + e.dir + ': long-division operands out of range "' + e.clue + '"');
       } else {
         check(tables.indexOf(dv) !== -1, 'run ' + run + ' entry ' + e.n + e.dir + ': off-curriculum ÷ divisor "' + e.clue + '" (year ' + year + ')');
+        check(dd <= divDividendMax(year), 'run ' + run + ' entry ' + e.n + e.dir + ': ÷ dividend ' + dd + ' exceeds year ' + year + ' method max ' + divDividendMax(year) + ' "' + e.clue + '"');
       }
     } else if (op === 'f' || op === '%') {
       // whole-number result already checked via cv === e.value (integer compare)

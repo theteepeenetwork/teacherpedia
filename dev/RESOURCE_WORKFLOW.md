@@ -129,6 +129,16 @@ Commit, push to the working branch, open/refresh a **draft PR**.
       hand-picked subset. (This is the test that catches "offers a year whose
       content isn't on its curriculum"; if a year can't be made appropriate,
       narrow the offered range.)
+- [ ] **Curriculum is per-YEAR, not just per-difficulty — and it's the METHOD, not
+      only the magnitude.** The difficulty meter (below/meeting/exceeding) must not
+      push content past the *year's* ceiling: e.g. Year 3 column ± is "up to 3
+      digits", so a Y3 sheet shows **no 4-digit number anywhere** — entries *and*
+      every clue operand — at any difficulty. Gate the *written method* too: Y3 ×÷
+      is tables / 2-digit×1-digit, long division is Y5+, etc. Where the grid/values
+      can't be expressed with the year's method, fall back to an op that can —
+      don't emit an off-curriculum calculation. The bespoke validator must assert
+      this for EVERY year (see `cn-validate.js`: digit ceiling on entries *and*
+      operands, plus `mulMethodOk`/`divDividendMax` method gates).
 - [ ] Save posts `activity:'<slug>'` + `title` + `config`; slug in
       `Account::ALLOWED_ACTIVITIES`.
 - [ ] **Every UI control actually changes the output.** Toggle each setting

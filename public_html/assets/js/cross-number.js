@@ -32,6 +32,23 @@
     return (typeof window !== 'undefined' && window.TP_yearTables) ? window.TP_yearTables(year)
       : (year <= 2 ? [2, 5, 10] : year === 3 ? [2, 3, 4, 5, 8, 10] : [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
   }
+  // Curriculum METHOD limits for × and ÷ by year — not just the digit count, but
+  // which written method is on the curriculum:
+  //   Y3  tables / 2-digit × 1-digit          ·  2-digit ÷ 1-digit (table facts)
+  //   Y4  3-digit × 1-digit                    ·  3-digit ÷ 1-digit
+  //   Y5  4-digit × 1-digit OR 2-digit × 2-digit ·  4-digit ÷ 1-digit, long ÷ begins
+  //   Y6  long multiplication/division by a 2-digit number
+  // A product/quotient that can't be written with the year's method returns null
+  // from its builder, so the entry falls back to + / − instead.
+  function mulMethodOk(sm, lg, year) {
+    if (sm < 2 || lg < 2) { return false; }
+    if (year <= 3) { return sm <= 9 && lg <= 99; }
+    if (year === 4) { return sm <= 9 && lg <= 999; }
+    if (year === 5) { return (sm <= 9 && lg <= 9999) || (sm <= 99 && lg <= 99); }
+    return sm <= 99 && lg <= 9999;
+  }
+  function divDividendMax(year) { return year <= 3 ? 99 : year === 4 ? 999 : 9999; }
+
   function digitsOf(n, len) {
     var s = String(n), out = [];
     for (var i = 0; i < s.length; i++) { out.push(s.charCodeAt(i) - 48); }
@@ -369,15 +386,17 @@
       return fmt(extra) + ' − ' + fmt(extra - value);
     }
     function mul() {
-      // Written multiplication: a small factor (1-2 digit) × its cofactor. Only
-      // a PRIME value has no such factorisation, so generate() re-rolls the grid
-      // to avoid primes when × is selected — meaning × stays × (no fallback).
+      // Written multiplication whose METHOD is on the year's curriculum (see
+      // mulMethodOk). Only factor pairs the year could actually be asked to
+      // compute are kept; if none exist the entry falls back to + / −.
       var pairs = [];
       for (var a = 2; a <= 99; a++) {
         if (value % a !== 0) { continue; }
         var b = value / a;
         if (b < 2) { continue; }
-        pairs.push([Math.max(a, b), Math.min(a, b)]);   // [bigger, smaller]
+        var sm = Math.min(a, b), lg = Math.max(a, b);
+        if (!mulMethodOk(sm, lg, year)) { continue; }
+        pairs.push([lg, sm]);   // [bigger, smaller]
       }
       if (!pairs.length) { return null; }
       // Prefer a tables-style product (smaller factor ≤ 12) for readability.
@@ -394,11 +413,16 @@
       // is a Year 5/6 method, so only use it for exceeding sheets at Y5+.
       var b, i;
       if (tier === 'exceeding' && year >= 5) {
-        for (i = 0; i < 10; i++) { b = ri(11, 25); if (value * b <= maxV) { return fmt(value * b) + ' ÷ ' + fmt(b); } }
+        for (i = 0; i < 12; i++) { b = ri(11, 25); if (value * b <= maxV) { return fmt(value * b) + ' ÷ ' + fmt(b); } }
         return null;
       }
-      var opts = shuffle(tables);
-      for (i = 0; i < opts.length; i++) { if (value * opts[i] <= maxV) { return fmt(value * opts[i]) + ' ÷ ' + fmt(opts[i]); } }
+      // Short / table division: a 1-digit divisor (or ÷10 place value) with the
+      // DIVIDEND inside the year's method (Y3 2-digit ÷ 1-digit … ). A 2-digit
+      // divisor is LONG division — that only comes from the exceeding/Y5+ branch
+      // above, never here, whatever tables the year knows.
+      var lim = divDividendMax(year);
+      var opts = shuffle(tables).filter(function (dv) { return dv <= 10; });
+      for (i = 0; i < opts.length; i++) { if (value * opts[i] <= lim) { return fmt(value * opts[i]) + ' ÷ ' + fmt(opts[i]); } }
       return null;
     }
     function fracOf() {
