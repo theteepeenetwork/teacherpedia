@@ -88,6 +88,8 @@ function yearTables(year) {
   if (year === 3) return [2, 3, 4, 5, 8, 10];
   return [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 }
+// Max digits in any entry for the year (Year 3 column ± is "up to 3 digits").
+function ceilingDigits(year) { return year <= 3 ? 3 : 4; }
 
 for (var run = 0; run < RUNS; run++) {
   var year = YEARS[run % YEARS.length];
@@ -104,8 +106,12 @@ for (var run = 0; run < RUNS; run++) {
   }
 
   if (!p || !p.entries || !p.entries.length) { fails.push('run ' + run + ': empty puzzle'); continue; }
-  // Hard requirement: every puzzle has exactly 12 clues (any Across/Down split).
+  // Hard requirement: every puzzle has exactly 12 clues, in a BALANCED split
+  // (each direction 5–7) so neither clue column overflows the printed page.
   check(p.entries.length === 12, 'run ' + run + ': ' + p.entries.length + ' entries, want exactly 12');
+  var nA = p.entries.filter(function (x) { return x.dir === 'A'; }).length;
+  var nD = p.entries.length - nA;
+  check(nA >= 5 && nD >= 5, 'run ' + run + ': unbalanced split ' + nA + 'A/' + nD + 'D (each direction must be 5–7)');
   skelHits[band] = skelHits[band] || {};
   skelHits[band][p.id] = (skelHits[band][p.id] || 0) + 1;
 
@@ -133,6 +139,13 @@ for (var run = 0; run < RUNS; run++) {
     check(e.len < 2 || String(firstDigit) !== '0', 'run ' + run + ' entry ' + e.n + e.dir + ': leading zero');
     // entry length must produce a number with exactly len digits
     check(String(e.value).length === e.len, 'run ' + run + ' entry ' + e.n + e.dir + ': value ' + e.value + ' not ' + e.len + ' digits');
+    // entry must not exceed the year's curriculum digit ceiling (Y3 ≤ 3 digits)
+    check(e.len <= ceilingDigits(year), 'run ' + run + ' entry ' + e.n + e.dir + ': ' + e.len + '-digit entry exceeds year ' + year + ' ceiling of ' + ceilingDigits(year));
+    // NO number anywhere in the clue (operands, dividends, wholes) may exceed the
+    // year ceiling either — a Year 3 sheet must show no 4-digit number at all.
+    var opDigits = e.clue.replace(/[^0-9,]/g, ' ').split(/\s+/).filter(Boolean).map(function (s) { return s.replace(/,/g, '').length; });
+    var maxOpDigits = opDigits.length ? Math.max.apply(null, opDigits) : 0;
+    check(maxOpDigits <= ceilingDigits(year), 'run ' + run + ' entry ' + e.n + e.dir + ': clue "' + e.clue + '" has a ' + maxOpDigits + '-digit number > year ' + year + ' ceiling');
 
     // (d) year-appropriateness
     var op = clueOp(e.clue);
@@ -153,10 +166,12 @@ for (var run = 0; run < RUNS; run++) {
       m = e.clue.match(/^(.+?) ÷ (.+)$/);
       var dd = num(m[1]), dv = num(m[2]);
       check(dd % dv === 0, 'run ' + run + ' entry ' + e.n + e.dir + ': non-exact ÷ "' + e.clue + '"');
-      if (band !== 'exceeding') {
-        check(tables.indexOf(dv) !== -1, 'run ' + run + ' entry ' + e.n + e.dir + ': off-curriculum ÷ divisor "' + e.clue + '" (year ' + year + ')');
-      } else {
+      // Long division by a 2-digit divisor is Year 5/6 only; below that every ÷
+      // divisor must be a times-table fact for the year.
+      if (band === 'exceeding' && year >= 5) {
         check(dv >= 11 && dv <= 25, 'run ' + run + ' entry ' + e.n + e.dir + ': exceeding ÷ divisor out of range "' + e.clue + '"');
+      } else {
+        check(tables.indexOf(dv) !== -1, 'run ' + run + ' entry ' + e.n + e.dir + ': off-curriculum ÷ divisor "' + e.clue + '" (year ' + year + ')');
       }
     } else if (op === 'f' || op === '%') {
       // whole-number result already checked via cv === e.value (integer compare)

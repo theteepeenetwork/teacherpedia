@@ -171,11 +171,32 @@
   // and min entries per direction. Tiers differ by grid size (visible size step);
   // the harder NUMBERS/operations come from `tier`/`d` in clueBuilders, not from
   // forbidding short entries (which is what made big square grids unsearchable).
+  // minPer 5 with total 12 keeps the Across/Down split balanced (each direction
+  // 5–7), so neither clue column runs long enough to overflow the printed page —
+  // a 4/8 or 3/9 split stacks 8–9 clues in one column and spills to a 2nd sheet.
   var SHAPE = {
-    below:     { rows: 6, cols: 6, bf: 0.28, minL: 2, maxL: 3, minX: 6, minPer: 4, total: 12 },
-    meeting:   { rows: 7, cols: 6, bf: 0.30, minL: 2, maxL: 4, minX: 5, minPer: 3, total: 12 },
-    exceeding: { rows: 8, cols: 6, bf: 0.30, minL: 2, maxL: 4, minX: 5, minPer: 3, total: 12 }
+    below:     { rows: 6, cols: 6, bf: 0.28, minL: 2, maxL: 3, minX: 6, minPer: 5, total: 12 },
+    meeting:   { rows: 7, cols: 6, bf: 0.26, minL: 2, maxL: 4, minX: 5, minPer: 5, total: 12 },
+    exceeding: { rows: 8, cols: 6, bf: 0.30, minL: 2, maxL: 4, minX: 5, minPer: 5, total: 12 }
   };
+
+  // CURRICULUM CEILING on the number of DIGITS in any entry, by year. Year 3 adds
+  // and subtracts numbers "up to three digits"; from Year 4 the column method
+  // extends to four digits (Y5/Y6 go further, but the crossword caps at 4 to keep
+  // the grid and the ×/÷ envelope sane — still within curriculum). The grid's run
+  // length IS the entry's digit count, so the ceiling is enforced by choosing the
+  // shape, not just by clamping clues.
+  function ceilingDigits(year) { return year <= 3 ? 3 : 4; }
+
+  // Map (year, band) to the SHAPE whose max run length respects the year ceiling.
+  // A 3-digit ceiling (Year 3, or a "below" sheet) always uses the small 6x6
+  // grid whatever the difficulty meter says; 4-digit years grow the grid by band.
+  // The difficulty still scales operand magnitude and operations in clueBuilders.
+  function shapeTier(year, band) {
+    if (ceilingDigits(year) <= 3) { return 'below'; }
+    if (band === 'below') { return 'below'; }
+    return band;
+  }
 
   function randMaskGrid(rows, cols, bf) {
     var g = [], r, c;
@@ -324,6 +345,7 @@
   // glyphs ×  ÷  − (U+2212) to match the rest of the suite.
   function clueBuilders(value, d, year, tier) {
     var tables = yearTables(year);
+    var maxV = Math.pow(10, ceilingDigits(year)) - 1;   // biggest in-curriculum number for the year
 
     function add() {
       if (value < 2) { return null; }
@@ -336,7 +358,13 @@
     }
     function sub() {
       if (value < 1) { return null; }
+      // The minuend must also stay within the year's digit ceiling (Year 3's
+      // column ± is "up to three digits" — so no 4-digit minuend on a 3-digit
+      // answer). Cap the headroom accordingly.
+      var headroom = maxV - value;
+      if (headroom < 1) { return null; }
       var span = d <= 2 ? 30 : d <= 4 ? 200 : 900;
+      span = Math.min(span, headroom);
       var extra = value + ri(1, span);
       return fmt(extra) + ' − ' + fmt(extra - value);
     }
@@ -359,13 +387,19 @@
     }
     function div() {
       if (value < 1) { return null; }
-      if (tier === 'exceeding') {
-        // long division: value × b ÷ b, b a 2-digit divisor — exact by build
-        var b = ri(11, 25);
-        return fmt(value * b) + ' ÷ ' + fmt(b);
+      // The DIVIDEND (value × divisor) is shown in the clue, so it too must stay
+      // within the year's digit ceiling — no 4-digit number on a Year 3 sheet,
+      // even inside a division. Pick a divisor that keeps it in range, else null
+      // (the entry falls back to another op). Long division by a 2-digit divisor
+      // is a Year 5/6 method, so only use it for exceeding sheets at Y5+.
+      var b, i;
+      if (tier === 'exceeding' && year >= 5) {
+        for (i = 0; i < 10; i++) { b = ri(11, 25); if (value * b <= maxV) { return fmt(value * b) + ' ÷ ' + fmt(b); } }
+        return null;
       }
-      var dv = pick(tables);
-      return fmt(value * dv) + ' ÷ ' + fmt(dv);
+      var opts = shuffle(tables);
+      for (i = 0; i < opts.length; i++) { if (value * opts[i] <= maxV) { return fmt(value * opts[i]) + ' ÷ ' + fmt(opts[i]); } }
+      return null;
     }
     function fracOf() {
       // ¾ of W, ½ of W, etc. — only when W is a clean whole and value < W.
@@ -378,7 +412,7 @@
         if ((value * den) % num !== 0) { continue; }
         var whole = value * den / num;
         if (whole <= value) { continue; }          // result must be a part
-        if (whole > 9999) { continue; }
+        if (whole > maxV) { continue; }            // keep the whole within the year ceiling
         return glyph + ' of ' + fmt(whole);
       }
       return null;
@@ -394,7 +428,7 @@
         if ((value * 100) % pc !== 0) { continue; }
         var whole = value * 100 / pc;
         if (whole <= value) { continue; }
-        if (whole > 9999) { continue; }
+        if (whole > maxV) { continue; }            // keep the whole within the year ceiling
         return pc + '% of ' + fmt(whole);
       }
       return null;
@@ -452,9 +486,11 @@
       : ['+', '-', '×', '÷'];
     if (!ops.length) { ops = ['+', '-']; }
 
-    // generate a FRESH random shape for the tier (varied every puzzle); if the
-    // search misses its budget, fall back to a transformed fixed skeleton.
-    var sk = randomSkeleton(tier) || fallbackSkeleton(tier);
+    // generate a FRESH random shape (varied every puzzle) whose grid size keeps
+    // every entry within the YEAR's digit ceiling; if the search misses its
+    // budget, fall back to a transformed fixed skeleton of the same size.
+    var st = shapeTier(year, tier);
+    var sk = randomSkeleton(st) || fallbackSkeleton(st);
     var lay = layout(sk);
 
     // 1) fill every white cell with a random digit. Entry-start cells must be
