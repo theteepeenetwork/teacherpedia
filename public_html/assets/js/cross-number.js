@@ -212,29 +212,23 @@
       return fmt(extra) + ' − ' + fmt(extra - value);
     }
     function mul() {
-      if (tier === 'exceeding') {
-        // long multiplication: 2-digit × 2-digit (or × small) = value
-        var pairs = [];
-        for (var a = 11; a <= 99; a++) {
-          if (value % a === 0) {
-            var b = value / a;
-            if (b >= 2 && b <= 99 && a >= b) { pairs.push([a, b]); }
-          }
-        }
-        if (!pairs.length) { return null; }
-        var p = pick(pairs);
-        return fmt(p[0]) + ' × ' + fmt(p[1]);
+      // Find factor pairs a × b = value with operands sensible for the tier:
+      //   below/meeting -> both factors 1-2 digit (1-or-2-digit × 1-or-2-digit)
+      //   exceeding     -> long multiplication, up to 2-digit × 3-digit
+      // Returns null only when value has no such factorisation (e.g. a prime),
+      // so × works for the great majority of composite entry values.
+      var pairs = [];
+      for (var a = 2; a * a <= value; a++) {
+        if (value % a !== 0) { continue; }
+        var b = value / a;
+        if (tier === 'exceeding') { if (a <= 99 && b <= 999) { pairs.push([b, a]); } }
+        else { if (a <= 99 && b <= 99) { pairs.push([b, a]); } }
       }
-      // table fact: f (a year table) × m, with multiplier m = 2..12 (a real
-      // table fact, never × 1, which isn't on-curriculum practice).
-      var fs = [];
-      for (var i = 0; i < tables.length; i++) {
-        var m = value / tables[i];
-        if (value % tables[i] === 0 && m >= 2 && m <= 12) { fs.push(tables[i]); }
-      }
-      if (!fs.length) { return null; }
-      var f = pick(fs);
-      return fmt(f) + ' × ' + fmt(value / f);
+      if (!pairs.length) { return null; }
+      // prefer a pair containing an on-curriculum table factor
+      var onCur = pairs.filter(function (p) { return tables.indexOf(p[0]) !== -1 || tables.indexOf(p[1]) !== -1; });
+      var p = pick(onCur.length ? onCur : pairs);
+      return fmt(p[0]) + ' × ' + fmt(p[1]);     // larger × smaller
     }
     function div() {
       if (value < 1) { return null; }
@@ -308,18 +302,16 @@
     } else {
       d = band === 'below' ? 2 : band === 'exceeding' ? 4 : 3;
     }
-    // Gate the available ops by TIER so differentiation matches the curriculum:
-    //   Below     -> +/- only (mostly small entries)
-    //   Meeting   -> adds ×/÷ (table facts / exact division)
-    //   Exceeding -> adds long ×/÷ and fraction/percentage-of-amount
-    // The UI op-chips are the teacher's *preference*; the tier is the ceiling, so
-    // a Below sheet never prints an off-curriculum × or ÷ regardless of chips.
-    var allowed = tier === 'below' ? ['+', '-']
-      : tier === 'meeting' ? ['+', '-', '×', '÷']
-      : ['+', '-', '×', '÷', 'f', '%'];
-    var ops = (opts.ops && opts.ops.length) ? opts.ops.slice() : allowed.slice();
-    ops = ops.filter(function (o) { return allowed.indexOf(o) !== -1; });
-    if (!ops.length) { ops = tier === 'below' ? ['+', '-'] : allowed.slice(); }
+    // The op-chips are AUTHORITATIVE — honour exactly what the teacher selected
+    // (every chip shown must work at every difficulty). The tier still scales
+    // entry size and operand magnitude via `tier`/`d`, and the YEAR gates the
+    // ×/÷ tables in clueBuilders, so clues stay curriculum-appropriate. Default
+    // when nothing is passed = + − × ÷.
+    var VALID = ['+', '-', '×', '÷', 'f', '%'];
+    var ops = (opts.ops && opts.ops.length)
+      ? opts.ops.slice().filter(function (o) { return VALID.indexOf(o) !== -1; })
+      : ['+', '-', '×', '÷'];
+    if (!ops.length) { ops = ['+', '-']; }
 
     // pick a skeleton for the tier
     var pool = SKELETONS.filter(function (s) { return s.tier === tier; });

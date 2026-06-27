@@ -140,16 +140,17 @@ for (var run = 0; run < RUNS; run++) {
       m = e.clue.match(/^(.+?) − (.+)$/);
       check(num(m[1]) >= num(m[2]), 'run ' + run + ' entry ' + e.n + e.dir + ': subtraction goes negative "' + e.clue + '"');
     } else if (op === '×') {
+      // Written multiplication a × b (Y3-6). Operands sensible for the tier:
+      //   below/meeting -> 1-or-2-digit × 1-or-2-digit (the builder prefers a
+      //                    table factor where possible);
+      //   exceeding     -> up to 2-digit × 3-digit long multiplication.
       m = e.clue.match(/^(.+?) × (.+)$/);
       var a = num(m[1]), b = num(m[2]);
+      check(a >= 2 && b >= 2, 'run ' + run + ' entry ' + e.n + e.dir + ': × operand < 2 "' + e.clue + '"');
       if (band === 'exceeding') {
-        // long multiplication: at least one 2-digit operand, both within 2 digits
-        check(a >= 2 && a <= 99 && b >= 2 && b <= 99, 'run ' + run + ' entry ' + e.n + e.dir + ': exceeding × operands out of range "' + e.clue + '"');
-        check(a >= 11 || b >= 11, 'run ' + run + ' entry ' + e.n + e.dir + ': exceeding × not long "' + e.clue + '"');
+        check(Math.min(a, b) <= 99 && Math.max(a, b) <= 999, 'run ' + run + ' entry ' + e.n + e.dir + ': exceeding × operands out of range "' + e.clue + '"');
       } else {
-        // one operand must be an on-curriculum table fact, multiplier ≤ 12
-        var f = Math.min(a, b), mlt = Math.max(a, b);
-        check(tables.indexOf(f) !== -1 && mlt <= 12, 'run ' + run + ' entry ' + e.n + e.dir + ': off-curriculum × "' + e.clue + '" (year ' + year + ')');
+        check(a <= 99 && b <= 99, 'run ' + run + ' entry ' + e.n + e.dir + ': × operands out of range "' + e.clue + '"');
       }
     } else if (op === '÷') {
       m = e.clue.match(/^(.+?) ÷ (.+)$/);

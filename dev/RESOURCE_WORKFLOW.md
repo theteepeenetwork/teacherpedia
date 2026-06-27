@@ -125,6 +125,10 @@ Commit, push to the working branch, open/refresh a **draft PR**.
       clamp the year defensively in the engine. Don't leave it 1–6 by default.
 - [ ] Save posts `activity:'<slug>'` + `title` + `config`; slug in
       `Account::ALLOWED_ACTIVITIES`.
+- [ ] **Every UI control actually changes the output.** Toggle each setting
+      (operation chips, modes, counts) and assert the generated content reflects
+      it — a control that's offered but filtered out downstream (or never
+      re-renders) is a silent no-op. Test it in Node where you can.
 
 ## Print checklist  *(via dev/print-preview)*
 
