@@ -31,7 +31,8 @@
     }
     .build-orow-bar { position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; border-radius: 3px; }
     .build-otext { flex: 1; min-width: 0; }
-    .build-otext .t { font-size: 12.5px; font-weight: 500; line-height: 1.32; }
+    .build-otext .t { font-size: 12.5px; font-weight: 700; line-height: 1.3; }
+    .build-odesc { font-size: 11px; color: #6c716a; line-height: 1.35; margin-top: 1px; }
     .build-ometa { display: flex; align-items: center; gap: 7px; margin-top: 2px; }
     .build-oyear { font-size: 10.5px; color: #a8a294; font-weight: 600; }
     .build-soon-tag {
@@ -161,20 +162,29 @@
     <!-- ===== RIGHT : PREVIEW ===== -->
     <main class="app-main">
 
-      <!-- Standard resource toolbar (difficulty + tabs + Save/Print/New).
-           Builder-specific settings (column + answer-space toggles) are passed
-           in as the settings_extra slot, right-aligned. -->
+      <!-- Standard resource toolbar (tabs + Save/Print/New). The builder uses
+           an attainment-band selector (Below/Meeting/Exceeding) instead of the
+           1-5 meter, and its own Year chips in the left panel — so the partial's
+           difficulty + year rows are turned off and the band selector + sheet
+           toggles go in the settings slot. -->
       <?php ob_start(); ?>
+        <span class="build-eyebrow-lbl">Level</span>
+        <div id="build-band" style="display:flex; gap:7px;">
+          <button type="button" class="chip" data-band="below">Below</button>
+          <button type="button" class="chip chip-on" data-band="meeting">Meeting</button>
+          <button type="button" class="chip" data-band="exceeding">Exceeding</button>
+        </div>
         <div style="flex:1;"></div>
         <button type="button" id="build-twocol" class="chip">&#9638; Two columns</button>
         <button type="button" id="build-answerspace" class="chip">&#9135; Answer space</button>
       <?php $settings_extra = ob_get_clean(); ?>
       <?= view('partials/tool_toolbar', [
-            'prefix'         => 'build',
-            'tabs'           => [['key' => 'worksheet', 'label' => 'Worksheet'], ['key' => 'answerkey', 'label' => 'Answer key']],
-            'diff'           => 3,
-            'regen_label'    => 'Regenerate',
-            'settings_extra' => $settings_extra,
+            'prefix'          => 'build',
+            'tabs'            => [['key' => 'worksheet', 'label' => 'Worksheet'], ['key' => 'answerkey', 'label' => 'Answer key']],
+            'show_year'       => false,
+            'show_difficulty' => false,
+            'regen_label'     => 'Regenerate',
+            'settings_extra'  => $settings_extra,
           ]) ?>
 
       <!-- A4 sheet preview -->

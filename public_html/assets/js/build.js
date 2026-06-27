@@ -34,13 +34,13 @@
   };
   function colorFor(s) { return STRAND_COLOR[s] || '#1f8a4d'; }
 
-  // Difficulty is shown as a circle meter (●●●○○) via the shared TP_diffDots
-  // helper (tp-tool.js), so the level isn't spelled out for pupils/parents.
+  // Differentiation is by attainment BAND (Below / Meeting / Exceeding) within
+  // the selected year — see TP_bandDifficulty (tp-tool.js).
 
   // ----- state -----
   var state = {
     title: '',
-    difficulty: 3,
+    band: 'meeting',  // 'below' | 'meeting' | 'exceeding'
     years: [6],
     query: '',
     autoOnly: false,
@@ -69,8 +69,8 @@
   function generateOne(o) {
     // Guard: never call the generator for an unknown / null key.
     if (!canGenerate(o)) { return null; }
-    // Year sets the difficulty band; the 1-5 meter fine-tunes within it.
-    var eff = window.TP_effDifficulty ? window.TP_effDifficulty(o.year, state.difficulty) : state.difficulty;
+    // The attainment band sets the question level within the objective's year.
+    var eff = window.TP_bandDifficulty ? window.TP_bandDifficulty(o.year, state.band) : 3;
     var r = window.TP_generate(o.key, eff);
     if (!r) { return null; }
     return { question: r.question, answer: r.answer };
@@ -256,7 +256,9 @@
     }
     row.appendChild(tick);
 
-    // text + meta
+    // text + meta. The block name (o.text) is the heading; the band descriptor
+    // (Meeting by default) is the objective itself. All three bands are in the
+    // tooltip so teachers can see what Below/Exceeding mean for this block.
     var textWrap = document.createElement('div');
     textWrap.className = 'build-otext';
     var t = document.createElement('div');
@@ -264,6 +266,13 @@
     t.textContent = o.text;
     t.style.color = canGenerate(o) ? '#26302a' : '#a8a294';
     textWrap.appendChild(t);
+    if (o.meeting) {
+      var desc = document.createElement('div');
+      desc.className = 'build-odesc';
+      desc.textContent = o.meeting;
+      row.title = 'Below: ' + (o.below || '—') + '\nMeeting: ' + (o.meeting || '—') + '\nExceeding: ' + (o.exceeding || '—');
+      textWrap.appendChild(desc);
+    }
     var meta = document.createElement('div');
     meta.className = 'build-ometa';
     var yr = document.createElement('span');
@@ -273,7 +282,7 @@
     if (soon) {
       var tag = document.createElement('span');
       tag.className = 'build-soon-tag';
-      tag.textContent = 'Coming soon';
+      tag.textContent = 'No auto-questions';
       meta.appendChild(tag);
     }
     textWrap.appendChild(meta);
@@ -335,7 +344,7 @@
     var answersOn = state.tab === 'answerkey';
 
     if (els.sheetEyebrow) {
-      els.sheetEyebrow.textContent = yearSpanLabel() + ' · Numeracy · ' + window.TP_diffDots(state.difficulty);
+      els.sheetEyebrow.textContent = yearSpanLabel() + ' · Numeracy · ' + window.TP_bandLabel(state.band);
     }
     if (els.sheetTitle) { els.sheetTitle.textContent = displayTitle(); }
     if (els.keybadge) { els.keybadge.style.display = answersOn ? 'inline-flex' : 'none'; }
@@ -398,18 +407,12 @@
     }
   }
 
-  // ----- control rendering (difficulty thumb, segmented thumb, chips) -----
-  function renderDifficulty() {
-    var wrap = els.difficulty;
-    if (!wrap) { return; }
-    var btns = wrap.querySelectorAll('button');
-    var thumb = wrap.querySelector('.diff-thumb');
-    var active = btns[state.difficulty - 1];
-    if (thumb && active) {
-      thumb.style.left = active.offsetLeft + 'px';
-      thumb.style.width = active.offsetWidth + 'px';
-    }
-    if (els.diffLabel) { els.diffLabel.textContent = window.TP_diffDots(state.difficulty); }
+  // ----- control rendering (band selector, segmented thumb, chips) -----
+  function renderBand() {
+    if (!els.band) { return; }
+    els.band.querySelectorAll('[data-band]').forEach(function (b) {
+      b.classList.toggle('chip-on', b.getAttribute('data-band') === state.band);
+    });
   }
 
   function renderTabs() {
@@ -436,10 +439,10 @@
   }
 
   // ----- actions -----
-  function setDifficulty(d) {
-    state.difficulty = d;
-    renderDifficulty();
-    rebuild(true); // re-roll because difficulty changes the numbers
+  function setBand(band) {
+    state.band = band;
+    renderBand();
+    rebuild(true); // re-roll because the band changes the question level
   }
 
   function setTab(tab) {
@@ -501,7 +504,7 @@
   function save() {
     var config = {
       title: state.title,
-      difficulty: state.difficulty,
+      band: state.band,
       twoCol: state.twoCol,
       answerSpace: state.answerSpace,
       items: buildConfigItems()
@@ -538,7 +541,7 @@
     if (!window.TP_SAVED || !window.TP_SAVED.config) { return; }
     var cfg = window.TP_SAVED.config;
     state.title = (cfg.title != null) ? String(cfg.title) : (window.TP_SAVED.title || '');
-    if (cfg.difficulty >= 1 && cfg.difficulty <= 5) { state.difficulty = cfg.difficulty; }
+    if (cfg.band === 'below' || cfg.band === 'meeting' || cfg.band === 'exceeding') { state.band = cfg.band; }
     state.twoCol = !!cfg.twoCol;
     state.answerSpace = !!cfg.answerSpace;
 
@@ -593,8 +596,7 @@
     els.clear = $('build-clear');
     els.totalQ = $('build-total-q');
     els.selCount = $('build-sel-count');
-    els.difficulty = $('build-difficulty');
-    els.diffLabel = $('build-diff-label');
+    els.band = $('build-band');
     els.twoColBtn = $('build-twocol');
     els.answerSpaceBtn = $('build-answerspace');
     els.tabs = $('build-tabs');
@@ -639,10 +641,10 @@
     }
     // clear
     if (els.clear) { els.clear.addEventListener('click', clearAll); }
-    // difficulty
-    if (els.difficulty) {
-      els.difficulty.querySelectorAll('button').forEach(function (b) {
-        b.addEventListener('click', function () { setDifficulty(Number(b.getAttribute('data-diff'))); });
+    // attainment band (Below / Meeting / Exceeding)
+    if (els.band) {
+      els.band.querySelectorAll('[data-band]').forEach(function (b) {
+        b.addEventListener('click', function () { setBand(b.getAttribute('data-band')); });
       });
     }
     // two col / answer space
@@ -676,13 +678,13 @@
 
     // first render
     renderChips();
-    renderDifficulty();
+    renderBand();
     renderTabs();
     renderLibrary();
     rebuild(true);
 
-    // keep sliding thumbs aligned on resize
-    window.addEventListener('resize', function () { renderDifficulty(); renderTabs(); });
+    // keep the segmented (Worksheet/Answer key) thumb aligned on resize
+    window.addEventListener('resize', function () { renderTabs(); });
   }
 
   if (document.readyState === 'loading') {

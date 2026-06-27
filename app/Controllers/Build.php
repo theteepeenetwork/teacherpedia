@@ -19,22 +19,25 @@ class Build extends BaseController
     {
         $objectiveModel = new ObjectiveModel();
 
-        // The objective library is sourced from the content file (no re-seed
-        // needed to add curriculum content). Project to the lean shape the JS
-        // builder expects.
-        $rows = $objectiveModel->library();
+        // The builder uses the White Rose framework library: one objective per
+        // topic/block per year, carrying the Below/Meeting/Exceeding band
+        // descriptors (content-as-code, no re-seed).
+        $rows = $objectiveModel->framework();
 
         $objectives = [];
         foreach ($rows as $row) {
             $objectives[] = [
-                'id'     => (int) $row['id'],
-                'year'   => (int) $row['year'],
-                'strand' => (string) $row['strand'],
-                'text'   => (string) $row['text'],
-                'key'    => $row['generator_key'] !== null && $row['generator_key'] !== ''
-                                ? (string) $row['generator_key']
+                'id'        => (int) $row['id'],
+                'year'      => (int) $row['year'],
+                'strand'    => (string) $row['strand'],
+                'text'      => (string) $row['text'],
+                'key'       => $row['key'] !== null && $row['key'] !== ''
+                                ? (string) $row['key']
                                 : null,
-                'auto'   => (int) ($row['auto_generating'] ?? 0) === 1,
+                'auto'      => (int) ($row['auto_generating'] ?? 0) === 1,
+                'below'     => (string) ($row['below'] ?? ''),
+                'meeting'   => (string) ($row['meeting'] ?? ''),
+                'exceeding' => (string) ($row['exceeding'] ?? ''),
             ];
         }
 
