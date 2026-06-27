@@ -5,30 +5,51 @@
 <?= $this->section('pageHead') ?>
   <link rel="stylesheet" href="<?= base_url('assets/css/tp-print.css') ?>">
   <style>
-    /* Arithmagon sheet — a responsive grid of triangle puzzles. */
+    /* Arithmagon sheet — a responsive grid of triangle puzzles that fills the
+       page. On screen the triangles scale to the card width; in print the sheet
+       becomes a full-height flex column so the grid fills the A4 and the footer
+       pins to the bottom. */
     .ag-grid {
       display: grid;
       grid-template-columns: repeat(var(--ag-cols, 2), 1fr);
-      gap: 18px 14px;
-      margin: 6px 0 10px;
+      gap: 18px 16px;
+      margin: 10px 0 14px;
     }
     .ag-card {
       margin: 0;
       border: 1.5px solid rgba(28,36,32,.12);
-      border-radius: 12px;
-      padding: 10px 6px 6px;
-      display: flex; flex-direction: column; align-items: center;
+      border-radius: 14px;
+      padding: 12px 10px 10px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       background: #fff;
       break-inside: avoid;
     }
-    .ag-svg { display: block; max-width: 100%; height: auto; }
+    .ag-svg { display: block; width: 100%; height: auto; }     /* triangle fills the card width */
     .ag-cap {
-      font-size: 11px; font-weight: 800; letter-spacing: .04em;
+      font-size: 12px; font-weight: 800; letter-spacing: .04em;
       text-transform: uppercase; color: var(--muted, #6c716a);
-      margin-top: 2px;
+      margin-top: 8px;
     }
+    /* The sheet stands as tall as a page; the puzzle rows share the height
+       equally (grid-auto-rows:1fr) so the grid fills the page, each triangle is
+       centred with its caption inside its cell, and the footer pins to the
+       bottom. This reads the same on screen and in print. */
+    .ag-sheet { min-height: 940px; display: flex; flex-direction: column; }
+    .ag-sheet #ag-grid { flex: 1 1 auto; grid-auto-rows: 1fr; }
+    .ag-sheet .ag-card { height: 100%; }
+    .ag-sheet .sheet-foot { margin-top: auto; }
+
     @media print {
-      .ag-card { border-color: rgba(28,36,32,.18); }
+      /* tp-print.css isolates the worksheet with
+         .sheet { position:absolute; min-height:0 !important; padding:0 !important }.
+         Override (with !important) so OUR sheet fills the printable A4 area
+         (297mm − 2×16mm @page margins ≈ 265mm). */
+      .ag-sheet {
+        min-height: 255mm !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .ag-card { border-color: rgba(28,36,32,.22); }
     }
   </style>
 <?= $this->endSection() ?>
@@ -83,7 +104,7 @@
 
   <!-- DESK -->
   <div class="app-scroll" style="flex:1; padding:38px 44px 80px; display:flex; justify-content:center; align-items:flex-start;">
-    <div class="sheet" style="width:660px;">
+    <div class="sheet ag-sheet" style="width:660px;">
 
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
         <div style="min-width:0;">
