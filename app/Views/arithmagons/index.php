@@ -12,14 +12,14 @@
     .ag-grid {
       display: grid;
       grid-template-columns: repeat(var(--ag-cols, 2), 1fr);
-      gap: 18px 16px;
-      margin: 10px 0 14px;
+      gap: 14px;
+      margin: 12px 0 14px;
     }
     .ag-card {
       margin: 0;
       border: 1.5px solid rgba(28,36,32,.12);
       border-radius: 14px;
-      padding: 12px 10px 10px;
+      padding: 8px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       background: #fff;
       break-inside: avoid;
@@ -28,16 +28,15 @@
     .ag-cap {
       font-size: 12px; font-weight: 800; letter-spacing: .04em;
       text-transform: uppercase; color: var(--muted, #6c716a);
-      margin-top: 8px;
+      margin-top: 6px;
     }
-    /* The sheet stands as tall as a page; the puzzle rows share the height
-       equally (grid-auto-rows:1fr) so the grid fills the page, each triangle is
-       centred with its caption inside its cell, and the footer pins to the
-       bottom. This reads the same on screen and in print. */
+    /* The sheet stands as tall as a page; the rows share the height equally so
+       the grid fills the page, with each triangle+caption centred as a group in
+       its cell, and the footer ends at the bottom. Same on screen and in print. */
     .ag-sheet { min-height: 940px; display: flex; flex-direction: column; }
     .ag-sheet #ag-grid { flex: 1 1 auto; grid-auto-rows: 1fr; }
     .ag-sheet .ag-card { height: 100%; }
-    .ag-sheet .sheet-foot { margin-top: auto; }
+    .ag-sheet .sheet-foot { margin-top: 14px; }
 
     @media print {
       /* tp-print.css isolates the worksheet with
