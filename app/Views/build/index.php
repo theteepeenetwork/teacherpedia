@@ -73,6 +73,9 @@
     .sheet-qvisual { display: block; margin: 7px 0 2px; line-height: 0; }
     .sheet-qvisual svg { display: inline-block; vertical-align: top; }
     .tp-clock, .tp-shape, .tp-angle { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    /* Statistics data representations (pictogram / tally / block diagram / table) */
+    .tp-data { line-height: 1.3; margin: 2px 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .tp-data table { margin: 0; }
 
     /* Regenerate spin polish */
     @keyframes build-spin { to { transform: rotate(360deg); } }

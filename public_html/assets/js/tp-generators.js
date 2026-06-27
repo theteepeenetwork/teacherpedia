@@ -584,12 +584,21 @@
     ]);
     return kind();
   };
-  // Y6: missing angles in triangles / on lines / at a point.
+  // Y6: unknown angles in triangles, quadrilaterals and regular polygons.
   G.y6_angle_missing = () => {
     const kind = pick([
       () => { const a = ri(30, 80), b = ri(30, 80); return { qtn: `A triangle has angles ${a}° and ${b}°. Find the third angle.`, ans: `${180 - a - b}°` }; },
+      () => { const a = ri(60, 110), b = ri(60, 110), c = ri(60, 110); return { qtn: `A quadrilateral has angles ${a}°, ${b}°, ${c}° and one more. Find the missing angle.`, ans: `${360 - a - b - c}°` }; },
+      () => { const sides = pick([3, 4, 5, 6, 8, 10]); return { qtn: `What is the size of each interior angle of a regular ${sides}-sided polygon?`, ans: `${(180 * (sides - 2)) / sides}°` }; },
+    ]);
+    return kind();
+  };
+  // Y6: angles at a point, on a straight line, and vertically opposite.
+  G.y6_angle_point_line = () => {
+    const kind = pick([
       () => { const a = ri(20, 160); return { qtn: `Two angles on a straight line: one is ${a}°. Find the other.`, ans: `${180 - a}°` }; },
-      () => { const a = ri(40, 140), b = ri(40, 140); const sum = a + b; return { qtn: `Three angles meet at a point: ${a}°, ${b}° and one more. Find the missing angle.`, ans: `${360 - sum}°` }; },
+      () => { const a = ri(40, 140), b = ri(40, 140); return { qtn: `Three angles meet at a point: ${a}°, ${b}° and one more. Find the missing angle.`, ans: `${360 - a - b}°` }; },
+      () => { const a = ri(25, 155); return { qtn: `Two straight lines cross. One angle is ${a}°. What is the angle vertically opposite it?`, ans: `${a}°` }; },
     ]);
     return kind();
   };

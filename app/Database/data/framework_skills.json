@@ -147,7 +147,7 @@
   "below": "Shares into equal groups with support.",
   "meeting": "Solves one-step division problems using objects, pictures and arrays (with support).",
   "exceeding": "Explains sharing and grouping and links to known counts.",
-  "key": "table_2"
+  "key": "divide_simple"
  },
  {
   "year": 1,
@@ -567,7 +567,7 @@
   "below": "Shows with diagrams with support.",
   "meeting": "Recognises the equivalence of 2/4 and 1/2.",
   "exceeding": "Reasons about other simple equivalences.",
-  "key": "frac_equiv"
+  "key": "frac_equiv_half"
  },
  {
   "year": 2,
@@ -607,7 +607,7 @@
   "below": "Measures length with support.",
   "meeting": "Chooses and uses standard units to estimate and measure length/height (m/cm).",
   "exceeding": "Selects unit and justifies; reasons about estimates.",
-  "key": "convert_length"
+  "key": "estimate_length"
  },
  {
   "year": 2,
@@ -617,7 +617,7 @@
   "below": "Measures mass with support.",
   "meeting": "Estimates and measures mass (kg/g).",
   "exceeding": "Selects unit and reasons.",
-  "key": "convert_mass"
+  "key": "estimate_mass"
  },
  {
   "year": 2,
@@ -637,7 +637,7 @@
   "below": "Measures capacity with support.",
   "meeting": "Estimates and measures capacity (litres/ml).",
   "exceeding": "Selects unit and reasons.",
-  "key": "convert_capacity"
+  "key": "estimate_capacity"
  },
  {
   "year": 2,
@@ -647,7 +647,7 @@
   "below": "Compares two measures with support.",
   "meeting": "Compares and orders length, mass, volume/capacity using <, > and =.",
   "exceeding": "Orders several measures and justifies.",
-  "key": "compare_100"
+  "key": "compare_measures"
  },
  {
   "year": 2,
@@ -677,7 +677,7 @@
   "below": "Finds one combination with support.",
   "meeting": "Finds different combinations of coins that equal the same amount.",
   "exceeding": "Finds all combinations systematically.",
-  "key": "money_combine"
+  "key": "coin_combinations"
  },
  {
   "year": 2,
@@ -1057,7 +1057,7 @@
   "below": "Simple problems with support.",
   "meeting": "Solves problems, including missing-number problems, involving × and ÷.",
   "exceeding": "Solves and explains harder problems.",
-  "key": "missing_number"
+  "key": "missing_number_md"
  },
  {
   "year": 3,
@@ -2537,7 +2537,7 @@
   "below": "With support.",
   "meeting": "Uses common multiples to express fractions in the same denomination.",
   "exceeding": "Finds common denominators efficiently.",
-  "key": "frac_addsub_diff"
+  "key": "frac_common_denom"
  },
  {
   "year": 6,
@@ -2837,7 +2837,7 @@
   "below": "With support.",
   "meeting": "Recognises angles at a point, on a straight line and vertically opposite, and finds missing angles.",
   "exceeding": "Uses angle facts to reason through problems.",
-  "key": "y6_angle_missing"
+  "key": "y6_angle_point_line"
  },
  {
   "year": 6,
