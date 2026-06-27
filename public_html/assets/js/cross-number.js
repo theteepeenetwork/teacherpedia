@@ -40,111 +40,120 @@
   }
 
   // ---- fixed grid skeletons -------------------------------------------------
-  // Each skeleton declares its size and a list of entries
-  //   { dir:'A'|'D', r, c, len }
-  // White cells and crossword numbering are derived deterministically from the
-  // entries below (a cell is numbered if it starts an Across and/or a Down).
-  // tier: 'below' | 'meeting' | 'exceeding'.
+  // Each skeleton is an ASCII grid MASK keyed by tier (below|meeting|exceeding).
+  // Entries (Across/Down) and crossword numbering are DERIVED from the mask, so
+  // every grid is a well-formed, dense crossword (6 Across + 6+ Down, many
+  // crossings). The masks were found by a validated search (6/6 entries, runs in
+  // the tier's digit range, fully connected, every entry crossing). See
+  // dev/RESOURCE_WORKFLOW.md.
+  // Derive crossword entries from an ASCII grid mask ('.'=white, '#'=black):
+  // each entry is a maximal run of >=2 white cells (bounded by a black cell or
+  // the edge), so the grid is ALWAYS a well-formed crossword and dense 6-across/
+  // 6-down grids are easy to draw. See dev/RESOURCE_WORKFLOW.md.
+  function entriesFromGrid(grid) {
+    var R = grid.length, C = grid[0].length;
+    function w(r, c) { return r >= 0 && r < R && c >= 0 && c < C && grid[r].charAt(c) !== '#'; }
+    var es = [];
+    for (var r = 0; r < R; r++) {
+      for (var c = 0; c < C; c++) {
+        if (!w(r, c)) { continue; }
+        if (!w(r, c - 1) && w(r, c + 1)) { var la = 0; while (w(r, c + la)) { la++; } es.push({ dir: 'A', r: r, c: c, len: la }); }
+        if (!w(r - 1, c) && w(r + 1, c)) { var ld = 0; while (w(r + ld, c)) { ld++; } es.push({ dir: 'D', r: r, c: c, len: ld }); }
+      }
+    }
+    return es;
+  }
+
   var SKELETONS = [
-    // ---- BELOW: 5x5, MOSTLY 2-digit entries, few crossings ----------------
-    // Each grid is majority 2-digit (per the brief) with a couple of 3-digit
-    // anchors; every entry crosses at least one entry of the other direction.
-    { id: 'b1', tier: 'below', rows: 5, cols: 5, entries: [
-      { dir: 'A', r: 0, c: 0, len: 2 },
-      { dir: 'A', r: 0, c: 2, len: 2 },
-      { dir: 'A', r: 2, c: 0, len: 3 },
-      { dir: 'A', r: 4, c: 1, len: 2 },
-      { dir: 'D', r: 0, c: 0, len: 2 },
-      { dir: 'D', r: 0, c: 2, len: 3 },
-      { dir: 'D', r: 2, c: 1, len: 3 }
+    { id: 'b1', tier: 'below', grid: [
+      '###...',
+      '#...#.',
+      '#.#..#',
+      '#..#.#',
+      '.#...#',
+      '...###'
     ] },
-    { id: 'b2', tier: 'below', rows: 5, cols: 5, entries: [
-      { dir: 'A', r: 0, c: 0, len: 2 },
-      { dir: 'A', r: 2, c: 1, len: 2 },
-      { dir: 'A', r: 3, c: 2, len: 3 },
-      { dir: 'A', r: 4, c: 3, len: 2 },
-      { dir: 'D', r: 0, c: 1, len: 3 },
-      { dir: 'D', r: 2, c: 2, len: 2 },
-      { dir: 'D', r: 3, c: 4, len: 2 }
+    { id: 'b2', tier: 'below', grid: [
+      '...##.',
+      '#.#...',
+      '#...#.',
+      '.#...#',
+      '...#.#',
+      '.##...'
     ] },
-    { id: 'b3', tier: 'below', rows: 5, cols: 5, entries: [
-      { dir: 'A', r: 0, c: 0, len: 3 },
-      { dir: 'A', r: 1, c: 0, len: 2 },
-      { dir: 'A', r: 2, c: 2, len: 2 },
-      { dir: 'A', r: 4, c: 2, len: 2 },
-      { dir: 'D', r: 0, c: 0, len: 2 },
-      { dir: 'D', r: 0, c: 2, len: 3 },
-      { dir: 'D', r: 2, c: 3, len: 3 }
+    { id: 'b3', tier: 'below', grid: [
+      '#.#...',
+      '#..#.#',
+      '##...#',
+      '#...##',
+      '#.#..#',
+      '...#.#'
     ] },
-
-    // ---- MEETING: 6x6 / 7x7, 3-digit, several crossings -------------------
-    { id: 'm1', tier: 'meeting', rows: 6, cols: 6, entries: [
-      { dir: 'A', r: 0, c: 0, len: 3 },
-      { dir: 'A', r: 2, c: 0, len: 3 },
-      { dir: 'A', r: 2, c: 4, len: 2 },
-      { dir: 'A', r: 4, c: 1, len: 3 },
-      { dir: 'D', r: 0, c: 0, len: 3 },
-      { dir: 'D', r: 0, c: 2, len: 3 },
-      { dir: 'D', r: 2, c: 4, len: 3 }
+    { id: 'm1', tier: 'meeting', grid: [
+      '..###.#',
+      '#.###.#',
+      '...#...',
+      '##...##',
+      '...#...',
+      '#.###.#',
+      '#.###..'
     ] },
-    { id: 'm2', tier: 'meeting', rows: 7, cols: 7, entries: [
-      { dir: 'A', r: 0, c: 1, len: 3 },
-      { dir: 'A', r: 2, c: 0, len: 3 },
-      { dir: 'A', r: 2, c: 4, len: 3 },
-      { dir: 'A', r: 4, c: 2, len: 3 },
-      { dir: 'A', r: 6, c: 4, len: 3 },
-      { dir: 'D', r: 0, c: 1, len: 3 },
-      { dir: 'D', r: 2, c: 4, len: 3 },
-      { dir: 'D', r: 4, c: 2, len: 3 }
+    { id: 'm2', tier: 'meeting', grid: [
+      '...###.',
+      '##.#...',
+      '##...##',
+      '###.###',
+      '##...##',
+      '...#.##',
+      '.###...'
     ] },
-    { id: 'm3', tier: 'meeting', rows: 6, cols: 6, entries: [
-      { dir: 'A', r: 0, c: 0, len: 3 },
-      { dir: 'A', r: 2, c: 2, len: 3 },
-      { dir: 'A', r: 4, c: 0, len: 3 },
-      { dir: 'A', r: 4, c: 4, len: 2 },
-      { dir: 'D', r: 0, c: 0, len: 3 },
-      { dir: 'D', r: 0, c: 2, len: 3 },
-      { dir: 'D', r: 2, c: 4, len: 3 }
+    { id: 'm3', tier: 'meeting', grid: [
+      '..#####',
+      '...####',
+      '...####',
+      '##...##',
+      '####...',
+      '####...',
+      '#####..'
     ] },
-
-    // ---- EXCEEDING: 8x8, 4-digit, many crossings --------------------------
-    { id: 'e1', tier: 'exceeding', rows: 8, cols: 8, entries: [
-      { dir: 'A', r: 0, c: 0, len: 4 },
-      { dir: 'A', r: 2, c: 0, len: 4 },
-      { dir: 'A', r: 2, c: 5, len: 3 },
-      { dir: 'A', r: 4, c: 1, len: 4 },
-      { dir: 'A', r: 6, c: 0, len: 4 },
-      { dir: 'D', r: 0, c: 0, len: 3 },
-      { dir: 'D', r: 0, c: 2, len: 3 },
-      { dir: 'D', r: 4, c: 1, len: 3 },
-      { dir: 'D', r: 4, c: 3, len: 3 },
-      { dir: 'D', r: 2, c: 5, len: 3 }
+    { id: 'e1', tier: 'exceeding', grid: [
+      '##.#####',
+      '...#.###',
+      '#....###',
+      '#.##....',
+      '....##.#',
+      '###....#',
+      '###.#...',
+      '#####.##'
     ] },
-    { id: 'e2', tier: 'exceeding', rows: 8, cols: 8, entries: [
-      { dir: 'A', r: 0, c: 1, len: 4 },
-      { dir: 'A', r: 2, c: 0, len: 4 },
-      { dir: 'A', r: 2, c: 5, len: 3 },
-      { dir: 'A', r: 4, c: 2, len: 4 },
-      { dir: 'A', r: 6, c: 1, len: 4 },
-      { dir: 'D', r: 0, c: 1, len: 3 },
-      { dir: 'D', r: 0, c: 3, len: 3 },
-      { dir: 'D', r: 4, c: 2, len: 3 },
-      { dir: 'D', r: 4, c: 5, len: 3 },
-      { dir: 'D', r: 2, c: 0, len: 3 }
+    { id: 'e2', tier: 'exceeding', grid: [
+      '.#######',
+      '.##...##',
+      '....####',
+      '.#....##',
+      '##....#.',
+      '####....',
+      '##...##.',
+      '#######.'
     ] },
-    { id: 'e3', tier: 'exceeding', rows: 8, cols: 8, entries: [
-      { dir: 'A', r: 0, c: 0, len: 4 },
-      { dir: 'A', r: 2, c: 1, len: 4 },
-      { dir: 'A', r: 4, c: 0, len: 4 },
-      { dir: 'A', r: 4, c: 5, len: 3 },
-      { dir: 'A', r: 6, c: 2, len: 4 },
-      { dir: 'D', r: 0, c: 0, len: 3 },
-      { dir: 'D', r: 0, c: 3, len: 3 },
-      { dir: 'D', r: 2, c: 1, len: 3 },
-      { dir: 'D', r: 4, c: 5, len: 3 },
-      { dir: 'D', r: 4, c: 6, len: 3 }
-    ] }
+    { id: 'e3', tier: 'exceeding', grid: [
+      '####...#',
+      '####.###',
+      '.#....##',
+      '.#.#....',
+      '....#.#.',
+      '##....#.',
+      '###.####',
+      '#...####'
+    ] },
   ];
+  // Derive rows/cols/entries from each grid mask once at load.
+  for (var _si = 0; _si < SKELETONS.length; _si++) {
+    var _sk = SKELETONS[_si];
+    _sk.rows = _sk.grid.length;
+    _sk.cols = _sk.grid[0].length;
+    _sk.entries = entriesFromGrid(_sk.grid);
+  }
 
   // Derive white cells + crossword numbering for a skeleton. Returns a fresh
   // model: { rows, cols, white(set), starts(map key->number), entries(numbered) }.
