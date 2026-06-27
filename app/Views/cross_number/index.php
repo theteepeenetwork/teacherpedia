@@ -95,6 +95,11 @@
         'diff'           => 3,
         'regen_label'    => 'New sheet',
         'settings_extra' => $settings_extra,
+        // Multi-digit entries and ×/÷ clues make this a Year 3-6 resource;
+        // Y1/Y2 are shown disabled so off-curriculum sheets can't be generated.
+        'year'           => 4,
+        'year_min'       => 3,
+        'year_max'       => 6,
       ]) ?>
 
   <div class="app-scroll" style="flex:1; padding:38px 44px 80px; display:flex; justify-content:center; align-items:flex-start;">

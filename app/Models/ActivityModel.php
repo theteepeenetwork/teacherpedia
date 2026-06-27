@@ -86,6 +86,7 @@ class ActivityModel extends Model
              'description' => 'A crossword where every answer is a number. Each numbered clue is a calculation; its answer fills that run of squares, one digit per box. Across and Down answers share squares, so a wrong digit clashes and the grid won\'t close — it self-checks. Three challenge levels.',
              'blurb' => 'Cross-Number Crossword swaps words for numbers. Each numbered clue is a calculation — like 24 × 3 or 156 + 88 — and its answer is written one digit per square along an Across or Down run. Where an Across answer crosses a Down answer they share a square, so the digits must agree; a wrong answer clashes at the crossing and the grid won\'t close, which means the puzzle quietly marks itself.',
              'icon' => '▦', 'tags' => 'Puzzle,Self-marking,Reasoning', 'status' => 'live', 'route' => '/cross-number', 'sort_order' => 9,
+             'min_year' => 3, 'max_year' => 6,
              'image' => '/assets/images/resources/cross-number.png',
              'how' => [
                  'Choose the year group and difficulty, and pick which operations the clues use (+ − × ÷).',

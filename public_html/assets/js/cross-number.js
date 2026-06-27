@@ -394,7 +394,10 @@
   function bandFromMeter(m) { return m <= 2 ? 'below' : m >= 4 ? 'exceeding' : 'meeting'; }
 
   function rebuild() {
-    state.puzzle = generate({ year: state.year, band: bandFromMeter(state.difficulty), ops: state.ops });
+    // This is a Year 3-6 resource (the selector disables Y1/Y2); clamp defensively
+    // so clue generation never falls back to an off-curriculum year.
+    var yr = Math.max(3, Math.min(6, state.year | 0));
+    state.puzzle = generate({ year: yr, band: bandFromMeter(state.difficulty), ops: state.ops });
     render();
   }
 

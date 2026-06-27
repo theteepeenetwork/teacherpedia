@@ -118,6 +118,11 @@ Commit, push to the working branch, open/refresh a **draft PR**.
       `<prefix>-diff-label`, `<prefix>-eyebrow-diff`, `<prefix>-tabs`/`data-tab`,
       `<prefix>-save`/`-print`/`-regen`/`-regen-icon`).
 - [ ] Year/difficulty via `TP_wireYears` + `TP_effDifficulty(year, meter)`.
+- [ ] **Year range matches the resource's real curriculum span.** If the content
+      isn't appropriate at the extremes (e.g. multi-digit / ×÷ puzzles aren't
+      KS1), set `tool_toolbar` `year_min`/`year_max` (disables out-of-range year
+      chips) **and** the catalogue `min_year`/`max_year` (Browse filter), and
+      clamp the year defensively in the engine. Don't leave it 1–6 by default.
 - [ ] Save posts `activity:'<slug>'` + `title` + `config`; slug in
       `Account::ALLOWED_ACTIVITIES`.
 
