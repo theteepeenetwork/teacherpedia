@@ -65,7 +65,7 @@
     <?php foreach ($activities as $a):
       $live      = ($a['status'] ?? '') === 'live';
       $tags      = array_filter(array_map('trim', explode(',', (string) ($a['tags'] ?? ''))));
-      $href      = $live && ! empty($a['route']) ? base_url(ltrim($a['route'], '/')) : base_url('browse');
+      $href      = $live && ! empty($a['slug']) ? base_url('resource/' . $a['slug']) : base_url('browse');
       $titleCol  = $live ? '#1c2420' : '#6c716a';
       $descCol   = $live ? '#5c6159' : '#9a9f95';
       $ctaCol    = $live ? '#1f8a4d' : '#b8bcb2';
@@ -85,7 +85,7 @@
         $coverage = $minYear === $maxYear ? 'Year ' . $minYear : 'Years ' . $minYear . '&ndash;' . $maxYear;
       }
     ?>
-    <a class="rcard activity-card" data-search="<?= esc($haystack, 'attr') ?>" data-min-year="<?= $minYear !== null ? $minYear : '' ?>" data-max-year="<?= $maxYear !== null ? $maxYear : '' ?>" href="<?= esc($href, 'attr') ?>" style="display:block; background:#fff; border-radius:18px; padding:24px; border:1px solid rgba(28,36,32,.08); box-shadow:0 1px 2px rgba(28,36,32,.04); <?= $cardOpacity ?>">
+    <a class="rcard activity-card" data-search="<?= esc($haystack, 'attr') ?>" data-min-year="<?= $minYear !== null ? $minYear : '' ?>" data-max-year="<?= $maxYear !== null ? $maxYear : '' ?>" href="<?= esc($href) ?>" style="display:block; background:#fff; border-radius:18px; padding:24px; border:1px solid rgba(28,36,32,.08); box-shadow:0 1px 2px rgba(28,36,32,.04); <?= $cardOpacity ?>">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:18px;">
         <div style="width:50px; height:50px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:24px; background:<?= $iconBg ?>;"><?= esc($a['icon'] ?? '') ?></div>
         <span style="<?= $badgeStyle ?>"><?= $live ? 'Live' : 'Soon' ?></span>

@@ -180,20 +180,10 @@
 
   function render() {
     if (els.eyebrowDiff && window.TP_diffDots) { els.eyebrowDiff.textContent = window.TP_diffDots(state.difficulty); }
-    // Mode-aware instructions: the self-check property only holds for the
-    // Inverse challenge (3 given edges over-determine the 3 corners). Forward
-    // and Mixed are not self-checking, so we don't claim it there.
+    // The how-it-works explanation now lives on the resource info page
+    // (/resource/arithmagons); the sheet keeps a single short task line.
     if (els.intro) {
-      var opWord = state.op === '×' ? '&times; (multiply)' : '+ (add)';
-      var lead = '&#9651; Each <strong>edge box</strong> equals the two <strong>corner circles</strong> it sits between, combined by <strong>' + opWord + '</strong>. Fill in every empty circle and box.';
-      if (state.pattern === 'inverse') {
-        lead += ' Because all three edges come from the same corners, a wrong number breaks two edges &mdash; so the puzzle checks itself.';
-      } else if (state.pattern === 'mixed') {
-        lead += ' Use the given corner and edges to work out the rest.';
-      } else {
-        lead += ' Combine the corners to find each edge.';
-      }
-      els.intro.innerHTML = lead;
+      els.intro.innerHTML = '&#9651; Fill in every empty circle and box.';
     }
     var revealed = state.tab === 'answers';
     var html = '<div class="ag-grid" style="--ag-cols:' + (state.count >= 9 ? 3 : 2) + ';">';

@@ -48,7 +48,16 @@ class ActivityModel extends Model
              'icon' => '📝', 'tags' => 'Printable,Differentiated', 'status' => 'live', 'route' => '/build', 'sort_order' => 1],
             ['slug' => 'code-breaker', 'name' => 'Code Breaker',
              'description' => 'Solve calculations to crack a number-to-letter cipher and reveal a hidden message. A self-marking puzzle children love.',
-             'icon' => '🔍', 'tags' => 'Puzzle,Self-marking', 'status' => 'live', 'route' => '/code-breaker', 'sort_order' => 2],
+             'blurb' => 'Code Breaker turns calculation practice into a puzzle. Every answer maps to a letter, and the letters spell out a secret message you choose — so children are motivated to get each sum right. Because a wrong answer produces a wrong letter, the activity quietly self-marks.',
+             'icon' => '🔍', 'tags' => 'Puzzle,Self-marking', 'status' => 'live', 'route' => '/code-breaker', 'sort_order' => 2,
+             'image' => '/assets/images/resources/code-breaker.png',
+             'how' => [
+                 'Type the secret message you want children to reveal (or hit Random), and choose which operations to include.',
+                 'Each distinct letter is given a unique number; every question is a calculation whose answer is that number.',
+                 'Children solve each calculation, find the answer in the code key, and write its letter in the box.',
+                 'Reading the letters in order spells out the secret message — a wrong sum gives a wrong letter, so it self-checks.',
+                 'Switch to the Answer key tab to reveal every value and the full message for instant marking.',
+             ]],
             ['slug' => 'maths-maze', 'name' => 'Maths Maze',
              'description' => 'Solve a calculation to unlock each step through the grid — only the right answers open the path and a wrong turn is a dead end. Self-marking and prints as a puzzle.',
              'icon' => '⊟', 'tags' => 'Game,Self-marking', 'status' => 'live', 'route' => '/maths-maze', 'sort_order' => 3],
@@ -63,7 +72,16 @@ class ActivityModel extends Model
              'icon' => '◉', 'tags' => 'Game,Whole class', 'status' => 'live', 'route' => '/bingo', 'sort_order' => 7],
             ['slug' => 'arithmagons', 'name' => 'Arithmagon Triangles',
              'description' => 'Number triangles where each edge is its two corners added (or multiplied). Reason forwards or backwards to fill the gaps. In the Inverse challenge the figure is over-constrained, so a wrong value breaks two edges and the puzzle self-checks. Three challenge levels.',
-             'icon' => '△', 'tags' => 'Puzzle,Self-marking,Reasoning', 'status' => 'live', 'route' => '/arithmagons', 'sort_order' => 8],
+             'blurb' => 'Arithmagon Triangles build number sense through reasoning. Each edge box equals the two corner circles beside it, combined by addition or multiplication. Forward puzzles give the corners; Inverse puzzles give the edges and ask children to reason back to the corners — and because the figure is over-constrained, a wrong value breaks two edges, so the puzzle self-checks.',
+             'icon' => '△', 'tags' => 'Puzzle,Self-marking,Reasoning', 'status' => 'live', 'route' => '/arithmagons', 'sort_order' => 8,
+             'image' => '/assets/images/resources/arithmagons.png',
+             'how' => [
+                 'Each edge box equals the two corner circles it sits between, combined by add (+) or multiply (×).',
+                 'Forward: the three corners are given — combine adjacent corners to fill each edge.',
+                 'Inverse: the three edges are given — reason backwards to recover the three corners.',
+                 'Mixed: one corner and two edges are given — work in both directions to complete the triangle.',
+                 'In the Inverse challenge a wrong value breaks two edges, so the puzzle self-checks. Use the Answer key tab to mark.',
+             ]],
             ['slug' => 'times-table-grids', 'name' => 'Times Table Grids',
              'description' => 'Auto-filled and blank multiplication grids with mixed and missing-number variations for quick-fire recall.',
              'icon' => '⊞', 'tags' => 'Recall,Printable', 'status' => 'soon', 'route' => null, 'sort_order' => 20],
@@ -84,6 +102,21 @@ class ActivityModel extends Model
 
         usort($all, static fn ($x, $y) => ($x['sort_order'] ?? 0) <=> ($y['sort_order'] ?? 0));
         return $all;
+    }
+
+    /**
+     * Look up a single catalogue entry by slug (the code-defined catalog() is
+     * the source of truth). Returns the entry array, or null if not found —
+     * used by the resource info page (browse -> /resource/{slug} -> tool).
+     */
+    public static function bySlug(string $slug): ?array
+    {
+        foreach (self::catalog() as $a) {
+            if (($a['slug'] ?? null) === $slug) {
+                return $a;
+            }
+        }
+        return null;
     }
 
     /**

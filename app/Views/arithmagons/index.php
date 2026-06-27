@@ -98,7 +98,7 @@
       <div class="sheet-rule" style="margin:16px 0 18px;"></div>
 
       <p id="ag-intro" style="margin:0 0 16px; font-size:14px; color:#4a514a; line-height:1.55;">
-        &#9651; Each <strong>edge box</strong> equals the two <strong>corner circles</strong> it sits between. Fill in every empty circle and box.
+        &#9651; Fill in every empty circle and box.
       </p>
 
       <div id="ag-grid" class="ag-grid"></div>

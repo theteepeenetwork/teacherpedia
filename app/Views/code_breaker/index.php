@@ -65,7 +65,7 @@
       </div>
       <div class="sheet-rule" style="margin:16px 0 18px;"></div>
 
-      <p style="margin:0 0 20px; font-size:14px; color:#4a514a; line-height:1.55;">&#128269; Solve each calculation. Find your answer in the <strong>code key</strong> below and write its letter in the box. Read the letters in order to reveal the secret message!</p>
+      <p style="margin:0 0 20px; font-size:14px; color:#4a514a; line-height:1.55;">&#128269; Crack the code to reveal the secret message.</p>
 
       <div style="border:1.5px solid color-mix(in oklab,var(--accent) 35%,#fff); background:color-mix(in oklab,var(--accent) 5%,#fff); border-radius:12px; padding:14px 16px; margin-bottom:24px;">
         <div style="font-size:10.5px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:color-mix(in oklab,var(--accent) 55%,var(--ink)); margin-bottom:11px;">Code key</div>
