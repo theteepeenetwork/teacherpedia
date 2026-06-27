@@ -30,12 +30,13 @@
       text-transform: uppercase; color: var(--muted, #6c716a);
       margin-top: 6px;
     }
-    /* The sheet stands as tall as a page; the rows share the height equally so
-       the grid fills the page, with each triangle+caption centred as a group in
-       its cell, and the footer ends at the bottom. Same on screen and in print. */
+    /* The sheet stands as tall as a page; cards stay compact (sized to the
+       triangle) and the leftover height is spread BETWEEN the rows
+       (align-content:space-between, now acting on the real card rows) so the
+       puzzles are evenly distributed down the page with no dead space inside the
+       cards, and the footer ends at the bottom. Same on screen and in print. */
     .ag-sheet { min-height: 940px; display: flex; flex-direction: column; }
-    .ag-sheet #ag-grid { flex: 1 1 auto; grid-auto-rows: 1fr; }
-    .ag-sheet .ag-card { height: 100%; }
+    .ag-sheet #ag-grid { flex: 1 1 auto; align-content: space-between; }
     .ag-sheet .sheet-foot { margin-top: 14px; }
 
     @media print {

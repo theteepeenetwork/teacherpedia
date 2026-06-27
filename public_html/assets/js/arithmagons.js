@@ -186,12 +186,15 @@
       els.intro.innerHTML = '&#9651; Fill in every empty circle and box.';
     }
     var revealed = state.tab === 'answers';
-    var html = '<div class="ag-grid" style="--ag-cols:' + (state.count >= 9 ? 3 : 2) + ';">';
+    // Render the cards DIRECTLY into #ag-grid (which is itself the grid) — no
+    // nested wrapper — so the column count and row distribution act on the real
+    // card rows.
+    els.grid.style.setProperty('--ag-cols', state.count >= 9 ? 3 : 2);
+    var html = '';
     state.puzzles.forEach(function (p, i) {
       html += '<figure class="ag-card">' + triangleSVG(p, revealed) +
         '<figcaption class="ag-cap">Puzzle ' + (i + 1) + '</figcaption></figure>';
     });
-    html += '</div>';
     els.grid.innerHTML = html;
   }
 
