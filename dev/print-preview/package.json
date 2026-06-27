@@ -1,0 +1,10 @@
+{
+  "name": "tp-print-preview",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Server-less print-preview (real A4 PDF) renderer for teacherpedia resources — visual print assessment for the resource workflow.",
+  "bin": { "tp-print-preview": "preview.js" },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}
