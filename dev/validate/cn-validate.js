@@ -140,18 +140,13 @@ for (var run = 0; run < RUNS; run++) {
       m = e.clue.match(/^(.+?) − (.+)$/);
       check(num(m[1]) >= num(m[2]), 'run ' + run + ' entry ' + e.n + e.dir + ': subtraction goes negative "' + e.clue + '"');
     } else if (op === '×') {
-      // Written multiplication a × b (Y3-6). Operands sensible for the tier:
-      //   below/meeting -> 1-or-2-digit × 1-or-2-digit (the builder prefers a
-      //                    table factor where possible);
-      //   exceeding     -> up to 2-digit × 3-digit long multiplication.
+      // KS2 written multiplication a × b: a 1-or-2-digit multiplier (≤ 99) by a
+      // number up to 4 digits — covers tables, short (n-digit × 1-digit) and long
+      // (up to 4-digit × 2-digit) multiplication. Both operands ≥ 2.
       m = e.clue.match(/^(.+?) × (.+)$/);
       var a = num(m[1]), b = num(m[2]);
-      check(a >= 2 && b >= 2, 'run ' + run + ' entry ' + e.n + e.dir + ': × operand < 2 "' + e.clue + '"');
-      if (band === 'exceeding') {
-        check(Math.min(a, b) <= 99 && Math.max(a, b) <= 999, 'run ' + run + ' entry ' + e.n + e.dir + ': exceeding × operands out of range "' + e.clue + '"');
-      } else {
-        check(a <= 99 && b <= 99, 'run ' + run + ' entry ' + e.n + e.dir + ': × operands out of range "' + e.clue + '"');
-      }
+      var smX = Math.min(a, b), lgX = Math.max(a, b);
+      check(smX >= 2 && smX <= 99 && lgX <= 9999, 'run ' + run + ' entry ' + e.n + e.dir + ': × operands out of range "' + e.clue + '"');
     } else if (op === '÷') {
       m = e.clue.match(/^(.+?) ÷ (.+)$/);
       var dd = num(m[1]), dv = num(m[2]);

@@ -212,23 +212,21 @@
       return fmt(extra) + ' − ' + fmt(extra - value);
     }
     function mul() {
-      // Find factor pairs a × b = value with operands sensible for the tier:
-      //   below/meeting -> both factors 1-2 digit (1-or-2-digit × 1-or-2-digit)
-      //   exceeding     -> long multiplication, up to 2-digit × 3-digit
-      // Returns null only when value has no such factorisation (e.g. a prime),
-      // so × works for the great majority of composite entry values.
+      // Written multiplication: a small factor (1-2 digit) × its cofactor. Only
+      // a PRIME value has no such factorisation, so generate() re-rolls the grid
+      // to avoid primes when × is selected — meaning × stays × (no fallback).
       var pairs = [];
-      for (var a = 2; a * a <= value; a++) {
+      for (var a = 2; a <= 99; a++) {
         if (value % a !== 0) { continue; }
         var b = value / a;
-        if (tier === 'exceeding') { if (a <= 99 && b <= 999) { pairs.push([b, a]); } }
-        else { if (a <= 99 && b <= 99) { pairs.push([b, a]); } }
+        if (b < 2) { continue; }
+        pairs.push([Math.max(a, b), Math.min(a, b)]);   // [bigger, smaller]
       }
       if (!pairs.length) { return null; }
-      // prefer a pair containing an on-curriculum table factor
-      var onCur = pairs.filter(function (p) { return tables.indexOf(p[0]) !== -1 || tables.indexOf(p[1]) !== -1; });
-      var p = pick(onCur.length ? onCur : pairs);
-      return fmt(p[0]) + ' × ' + fmt(p[1]);     // larger × smaller
+      // Prefer a tables-style product (smaller factor ≤ 12) for readability.
+      var nice = pairs.filter(function (p) { return p[1] <= 12; });
+      var p = pick(nice.length ? nice : pairs);
+      return fmt(p[0]) + ' × ' + fmt(p[1]);
     }
     function div() {
       if (value < 1) { return null; }
@@ -287,6 +285,18 @@
     return make['-']() || make['+']();    // guaranteed for any value ≥ 1
   }
 
+  // Can `value` be clued by at least one of the SELECTED ops? Used to re-roll the
+  // grid so every entry can use a chosen op (e.g. × selected -> avoid primes), so
+  // the clues honour the selection without a +/- fallback.
+  function cluable(value, ops, d, year, tier) {
+    var make = clueBuilders(value, d, year, tier);
+    for (var i = 0; i < ops.length; i++) {
+      var fn = make[ops[i]];
+      if (fn && fn() != null) { return true; }
+    }
+    return false;
+  }
+
   // ---- generate -------------------------------------------------------------
   // opts = { year, band, meter, ops }.  Returns { grid, entries, qtn, ans }.
   function generate(opts) {
@@ -319,15 +329,36 @@
     var lay = layout(pick(pool));
 
     // 1) fill every white cell with a random digit. Entry-start cells must be
-    //    1–9 (no leading zero); interior cells may be 0–9. Start cells are
-    //    filled first so an intersecting interior never overwrites them.
-    var digit = {};            // "r,c" -> 0..9
-    var startKeys = {};
+    //    1–9 (no leading zero); interior cells may be 0–9. RE-ROLL the whole fill
+    //    until every entry's value can be clued by a SELECTED op (so e.g. with
+    //    only × selected we avoid prime values and every clue is a multiplication
+    //    — no +/- fallback). Intersections stay consistent because the whole grid
+    //    is re-filled together. Keep the best (fewest un-cluable) if a perfect
+    //    fill isn't found within the budget.
     var i, e;
+    var startKeys = {};
     for (i = 0; i < lay.entries.length; i++) { startKeys[lay.entries[i].r + ',' + lay.entries[i].c] = true; }
     var wk = Object.keys(lay.white);
-    for (i = 0; i < wk.length; i++) {
-      digit[wk[i]] = startKeys[wk[i]] ? ri(1, 9) : ri(0, 9);
+
+    function fillOnce() {
+      var dg = {};
+      for (var j = 0; j < wk.length; j++) { dg[wk[j]] = startKeys[wk[j]] ? ri(1, 9) : ri(0, 9); }
+      return dg;
+    }
+    function valueOf(dg, ent) {
+      var v = 0;
+      for (var k = 0; k < ent.cells.length; k++) { v = v * 10 + dg[ent.cells[k][0] + ',' + ent.cells[k][1]]; }
+      return v;
+    }
+
+    var digit = null, bestMiss = Infinity;
+    for (var attempt = 0; attempt < 600; attempt++) {
+      var dg = fillOnce(), miss = 0;
+      for (i = 0; i < lay.entries.length; i++) {
+        if (!cluable(valueOf(dg, lay.entries[i]), ops, d, year, tier)) { miss++; }
+      }
+      if (miss < bestMiss) { bestMiss = miss; digit = dg; }
+      if (miss === 0) { break; }
     }
 
     // 2) read each entry's number off the grid; 3) build its clue.

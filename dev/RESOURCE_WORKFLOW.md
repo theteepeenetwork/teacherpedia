@@ -123,6 +123,12 @@ Commit, push to the working branch, open/refresh a **draft PR**.
       KS1), set `tool_toolbar` `year_min`/`year_max` (disables out-of-range year
       chips) **and** the catalogue `min_year`/`max_year` (Browse filter), and
       clamp the year defensively in the engine. Don't leave it 1–6 by default.
+      Verify with `php dev/validate/year-coverage.php <slug>` (toolbar must equal
+      catalogue), and make the **bespoke validator exercise EVERY offered year**
+      (year_min..year_max), asserting curriculum-appropriateness at each — not a
+      hand-picked subset. (This is the test that catches "offers a year whose
+      content isn't on its curriculum"; if a year can't be made appropriate,
+      narrow the offered range.)
 - [ ] Save posts `activity:'<slug>'` + `title` + `config`; slug in
       `Account::ALLOWED_ACTIVITIES`.
 - [ ] **Every UI control actually changes the output.** Toggle each setting
@@ -200,3 +206,12 @@ every setting (correct page counts)** · committed and in a draft PR.
   above wired correctly). See `dev/scaffold/README.md`.
 - `dev/print-preview/preview.js` — render the real A4 print PDF (or a PNG), no
   server needed. See `dev/print-preview/README.md`.
+- `dev/validate/year-coverage.php <slug>` — assert the toolbar's offered year
+  range equals the catalogue's (so a resource can't silently offer a year its
+  content isn't on the curriculum for).
+- `dev/validate/<slug>-validate.js` — each resource ships a **bespoke correctness
+  validator** (the generic gate proves it *prints*, not that the *content* is
+  right). It runs the engine across the **full offered year range** and every
+  difficulty, asserting the answer is correct, the activity's invariants hold
+  (e.g. crossword intersections agree), and clues are curriculum-appropriate for
+  that year. See `dev/validate/cn-validate.js` for the pattern.
