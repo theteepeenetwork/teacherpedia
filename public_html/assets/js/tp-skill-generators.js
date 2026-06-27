@@ -120,17 +120,29 @@
   // -------------------------------------------------------------------------
   // PLACE VALUE — value of a digit in an N-digit number
   // -------------------------------------------------------------------------
-  function placeValue(digits) {
+  // "What is the value of the digit X?" only has a single answer when X appears
+  // exactly once, so we always pick a digit that is non-zero AND unique in the
+  // number (regenerating if a draw has no such digit). lo/hi bound the size so
+  // each year stays within its curriculum ceiling.
+  function placeValue(lo, hi) {
     return function () {
-      var lo = Math.pow(10, digits - 1), hi = Math.pow(10, digits) - 1;
-      var n = ri(lo, hi), s = String(n);
-      var idx = ri(0, s.length - 1), digit = Number(s[idx]);
+      var n, s, counts, candidates, guard = 0;
+      do {
+        n = ri(lo, hi); s = String(n); counts = {};
+        for (var k = 0; k < s.length; k++) { counts[s[k]] = (counts[s[k]] || 0) + 1; }
+        candidates = [];
+        for (var i = 0; i < s.length; i++) { if (s[i] !== '0' && counts[s[i]] === 1) { candidates.push(i); } }
+        guard++;
+      } while (candidates.length === 0 && guard < 40);
+      var idx = candidates.length ? pick(candidates) : s.length - 1;
+      var digit = Number(s[idx]);
       var place = digit * Math.pow(10, s.length - 1 - idx);
       return { qtn: 'In ' + fmt(n) + ', what is the value of the digit ' + digit + '?', ans: fmt(place) };
     };
   }
-  G.place_2 = placeValue(2); G.place_3 = placeValue(3); G.place_4 = placeValue(4);
-  G.place_1m = placeValue(7); G.place_10m = placeValue(8);
+  G.place_2 = placeValue(10, 99); G.place_3 = placeValue(100, 999); G.place_4 = placeValue(1000, 9999);
+  G.place_1m = placeValue(100000, 999999);      // Y5: read/write/value to 1,000,000
+  G.place_10m = placeValue(1000000, 9999999);   // Y6: read/write/value up to 10,000,000
 
   // -------------------------------------------------------------------------
   // COMPARE & ORDER

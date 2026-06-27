@@ -318,9 +318,18 @@
     return { qtn: `${chosen.join(' × ')} =`, ans: fmt(product) };
   };
   G.y6_digit_value_10m = () => {
-    const n = ri(1000000, 9999999);
-    const s = String(n);
-    const idx = ri(0, s.length - 1);
+    // Pick a non-zero digit that is UNIQUE in the number, so "the value of the
+    // digit X" has a single unambiguous answer (regenerate otherwise).
+    let n, s, candidates, guard = 0;
+    do {
+      n = ri(1000000, 9999999); s = String(n);
+      const counts = {};
+      for (const c of s) { counts[c] = (counts[c] || 0) + 1; }
+      candidates = [];
+      for (let i = 0; i < s.length; i++) { if (s[i] !== '0' && counts[s[i]] === 1) { candidates.push(i); } }
+      guard++;
+    } while (candidates.length === 0 && guard < 40);
+    const idx = candidates.length ? pick(candidates) : s.length - 1;
     const digit = Number(s[idx]);
     const placeVal = digit * Math.pow(10, s.length - 1 - idx);
     return { qtn: `In ${fmt(n)}, what is the value of the digit ${digit}?`, ans: fmt(placeVal) };
