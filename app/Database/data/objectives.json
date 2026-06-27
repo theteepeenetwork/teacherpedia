@@ -1,0 +1,1508 @@
+[
+ {
+  "year": 3,
+  "strand": "Counting",
+  "text": "Count in steps of 50 from 0",
+  "key": "count_in_fifties_zero"
+ },
+ {
+  "year": 3,
+  "strand": "Counting",
+  "text": "Count in steps of 4 from 0",
+  "key": "count_in_fours"
+ },
+ {
+  "year": 3,
+  "strand": "Counting",
+  "text": "Count backwards in steps of 50",
+  "key": "count_in_fifties_multiple_5"
+ },
+ {
+  "year": 3,
+  "strand": "Counting",
+  "text": "Count in steps of 100 from 0",
+  "key": "count_in_hundreds_zero"
+ },
+ {
+  "year": 3,
+  "strand": "Counting",
+  "text": "Count in steps of 8 from 0",
+  "key": "count_in_eights"
+ },
+ {
+  "year": 3,
+  "strand": "Counting",
+  "text": "Count backwards in steps of 100",
+  "key": "_count_back_in_hundreds"
+ },
+ {
+  "year": 3,
+  "strand": "Counting",
+  "text": "find 10 more or less than a given number",
+  "key": "rand_ten_more_less"
+ },
+ {
+  "year": 3,
+  "strand": "Counting",
+  "text": "find 100 more or less than a given number",
+  "key": "rand_hundred_more_less"
+ },
+ {
+  "year": 3,
+  "strand": "Counting",
+  "text": "find 10 or 100 more or less than a given number.",
+  "key": "rand_ten_hundred_more_less"
+ },
+ {
+  "year": 3,
+  "strand": "Comparing & ordering",
+  "text": "compare and order numbers up to 1000 in numerals",
+  "key": "_order_size_order"
+ },
+ {
+  "year": 3,
+  "strand": "Comparing & ordering",
+  "text": "compare and order numbers up to 1000 in words",
+  "key": "size_order_words"
+ },
+ {
+  "year": 3,
+  "strand": "Representing & estimating",
+  "text": "identify and represent numbers using different methods by estimating postion on a number line",
+  "key": "number_liney3"
+ },
+ {
+  "year": 3,
+  "strand": "Representing & estimating",
+  "text": "recognise multiples of 2, 5 and 10 up to 1000",
+  "key": "multiples_of_2_5_10"
+ },
+ {
+  "year": 3,
+  "strand": "Reading & writing",
+  "text": "Read and write numbers up to 1000 in numerals",
+  "key": "words_write_in_numerals"
+ },
+ {
+  "year": 3,
+  "strand": "Reading & writing",
+  "text": "Read and write up to 1000 in words",
+  "key": "write_numerals_in_words"
+ },
+ {
+  "year": 3,
+  "strand": "Reading & writing",
+  "text": "Read and write numbers up to 1000 in numerals and words",
+  "key": "rand_nums_words"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "Recognise the value of each digit in 2-digit numbers (tens, ones/units)",
+  "key": "partition_number_2digit"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "Partition and recognise the value of HTU",
+  "key": "partition_number_3digit"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "Partition 3-digit numbers in more than one way (adding values)",
+  "key": "_add_partition_number"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "Double simple numbers beyond 20 (ending in zero e.g. 30, 40, 50)",
+  "key": "double_number_multiplesof_10"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "Double numbers beyond 20, with units (e.g. 21, 33 etc) up to 50",
+  "key": "double_number_meeting"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "I am fluent in the order and place value of numbers to 1000",
+  "key": "rand_place_value_order"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "Halve simple numbers beyond 20 (answers ending in zero)",
+  "key": "_halve_number_answerendingzero"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "Halve numbers beyond 20 (answers ending in 5 e.g. halve of 30 is 15)",
+  "key": "halve_number_answermultiple5"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "Double all numbers up to 100",
+  "key": "double_number_exceeding"
+ },
+ {
+  "year": 3,
+  "strand": "Place value",
+  "text": "Halve all numbers up to 100",
+  "key": "halve_number_100"
+ },
+ {
+  "year": 3,
+  "strand": "Rounding",
+  "text": "Round 2-digit numbers to the nearest 10",
+  "key": "ten_round_numbers"
+ },
+ {
+  "year": 3,
+  "strand": "Rounding",
+  "text": "Round 2 and 3-digit numbers to the nearest 10 or 100",
+  "key": "round_ten_and_hundred"
+ },
+ {
+  "year": 3,
+  "strand": "Rounding",
+  "text": "round 2 and 3-digit numbers to the nearest 10 or 100 and give estimates for their sums and differences",
+  "key": "rand_rounding"
+ },
+ {
+  "year": 3,
+  "strand": "Rounding",
+  "text": "add TU and TU (bridging 100)",
+  "key": "addition_TO_TO"
+ },
+ {
+  "year": 3,
+  "strand": "Rounding",
+  "text": "add HTU and TU (not bridging 1000)",
+  "key": "addition_HTO_TO"
+ },
+ {
+  "year": 3,
+  "strand": "Rounding",
+  "text": "add HTU and HTU",
+  "key": "HTO_HTO_addition"
+ },
+ {
+  "year": 3,
+  "strand": "Rounding",
+  "text": "subtract TU and TU",
+  "key": "subtraction_TO_TO"
+ },
+ {
+  "year": 3,
+  "strand": "Rounding",
+  "text": "subtract TU from HTU (HTU - TU)",
+  "key": "subtraction_HTO_TO"
+ },
+ {
+  "year": 3,
+  "strand": "Rounding",
+  "text": "subtract HTU from HTU",
+  "key": "subtraction_HTO_HTO"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "3x table.",
+  "key": "three_x"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "8 x table",
+  "key": "eight_x"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "Mixed 3, 4 and 8 x table",
+  "key": "rand_3_4_8"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "4 x table",
+  "key": "four_x"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "Ones x 10",
+  "key": "ten_x"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "Inverse 3 x table",
+  "key": "inverse_three_x"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "Inverse 8 x table",
+  "key": "inverse_eight_x"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "Inverse 4 x table",
+  "key": "inverse_four_x"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "TO x 10",
+  "key": "multiplybyten"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "Ones x 100",
+  "key": "multiplybyhundred"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "Inverse 2, 3, 4, 5, 8, 10 x table",
+  "key": "rand_inverse_y3"
+ },
+ {
+  "year": 3,
+  "strand": "Multiplication & division",
+  "text": "TO x 100",
+  "key": "multiplybyhundred"
+ },
+ {
+  "year": 3,
+  "strand": "Written methods",
+  "text": "TO x O",
+  "key": "TO_O_multiply"
+ },
+ {
+  "year": 3,
+  "strand": "Written methods",
+  "text": "TO ÷ O no remainder",
+  "key": "divide_TO_O_noremainder"
+ },
+ {
+  "year": 3,
+  "strand": "Written methods",
+  "text": "TO ÷ O remainder",
+  "key": "TO_O_divide"
+ },
+ {
+  "year": 3,
+  "strand": "Written methods",
+  "text": "TO x TO",
+  "key": "x_multiply_TO_TO"
+ },
+ {
+  "year": 4,
+  "strand": "Counting",
+  "text": "I can count in multiples of 25, 1000 and 11",
+  "key": "random_25_50_11"
+ },
+ {
+  "year": 4,
+  "strand": "Counting",
+  "text": "I can count in multiples of 7 and 9",
+  "key": "random_7_9"
+ },
+ {
+  "year": 4,
+  "strand": "Counting",
+  "text": "I can count in multiples of 6, 7, 9, 11, 12, 25 and 1000 (Children should know all tables by this point)",
+  "key": "random_count_x"
+ },
+ {
+  "year": 4,
+  "strand": "Counting",
+  "text": "I can find 1000 more than any given number",
+  "key": "thousand_more"
+ },
+ {
+  "year": 4,
+  "strand": "Counting",
+  "text": "I can find 1000 less than any given number",
+  "key": "thousand_less"
+ },
+ {
+  "year": 4,
+  "strand": "Counting",
+  "text": "I can count backwards through to zero",
+  "key": "count_through_zero"
+ },
+ {
+  "year": 4,
+  "strand": "Counting",
+  "text": "I can say how many more is needed to make 100 from a given number",
+  "key": "number_bond_100"
+ },
+ {
+  "year": 4,
+  "strand": "Counting",
+  "text": "I can say how many more is needed to make 1000 from a given number",
+  "key": "number_bond_1000"
+ },
+ {
+  "year": 4,
+  "strand": "Comparing & ordering",
+  "text": "I can order and compare numbers beyond 1000",
+  "key": "_order_size_order"
+ },
+ {
+  "year": 4,
+  "strand": "Comparing & ordering",
+  "text": "I can compare numbers with the same number to decimal places up to 2 decimal places (copied from fractions)",
+  "key": "decimals_size_order"
+ },
+ {
+  "year": 4,
+  "strand": "Comparing & ordering",
+  "text": "I can use the symbols < and > to state inequalities",
+  "key": "more_or_less_than"
+ },
+ {
+  "year": 4,
+  "strand": "Representing & estimating",
+  "text": "I can identify, represent and estimate numbers using different representations; including measures",
+  "key": "rand_place_value_order"
+ },
+ {
+  "year": 4,
+  "strand": "Reading & writing",
+  "text": "I can read numbers in words and write as digits to 1000.",
+  "key": "words_write_in_numerals_below"
+ },
+ {
+  "year": 4,
+  "strand": "Reading & writing",
+  "text": "I can read numbers in words and write in digits to at least 10,000 and vice versa.",
+  "key": "rand_nums_words"
+ },
+ {
+  "year": 4,
+  "strand": "Reading & writing",
+  "text": "I can read, write, order and compare numbers to 100,000",
+  "key": "d_exceeding_rand_nums_words"
+ },
+ {
+  "year": 4,
+  "strand": "Reading & writing",
+  "text": "I can read Roman numerals to 100 (I to C)",
+  "key": "read_roman_numerals"
+ },
+ {
+  "year": 4,
+  "strand": "Reading & writing",
+  "text": "I can read Roman numerals to 500.",
+  "key": "roman_numerals_exceeding"
+ },
+ {
+  "year": 4,
+  "strand": "Place value",
+  "text": "I can recognise the place value of each digit in 4-digit numbers (ThHTU)",
+  "key": "place_value_below"
+ },
+ {
+  "year": 4,
+  "strand": "Place value",
+  "text": "I can recognise the place value of each digit in 5-digit numbers",
+  "key": "place_value"
+ },
+ {
+  "year": 4,
+  "strand": "Place value",
+  "text": "I can recognise the place value of each digit in 6-digit numbers",
+  "key": "place_value_exceeding"
+ },
+ {
+  "year": 4,
+  "strand": "Place value",
+  "text": "I can double numbers beyond 100 (e.g. 200, 300, 400 etc)",
+  "key": "double_number_multiplesof100"
+ },
+ {
+  "year": 4,
+  "strand": "Place value",
+  "text": "I can double numbers beyond 100 involving tens (e.g. 120, 140 etc)",
+  "key": "double_number_multiplesof_10"
+ },
+ {
+  "year": 4,
+  "strand": "Place value",
+  "text": "I can double numbers beyond 100 involving tens and units (e.g 115)",
+  "key": "_double_number_1000"
+ },
+ {
+  "year": 4,
+  "strand": "Place value",
+  "text": "I can halve numbers above 100 (e.g. 200, 300, 400 etc)",
+  "key": "halve_number_multipleof100"
+ },
+ {
+  "year": 4,
+  "strand": "Place value",
+  "text": "I can halve numbers above 100 (e.g. 120, 140 etc)",
+  "key": "_halve_number_answerendingzero"
+ },
+ {
+  "year": 4,
+  "strand": "Place value",
+  "text": "I can halve numbers above 100 involving tens that will end in 5 (e.g 110)",
+  "key": "halve_number_answermultiple5"
+ },
+ {
+  "year": 4,
+  "strand": "Rounding",
+  "text": "I can round any number to the nearest 10",
+  "key": "ten_round_numbers"
+ },
+ {
+  "year": 4,
+  "strand": "Rounding",
+  "text": "I can round any number to the nearest 100",
+  "key": "round_numbers_hundred"
+ },
+ {
+  "year": 4,
+  "strand": "Rounding",
+  "text": "I can round any number to the nearest 10, 100 or 1000",
+  "key": "round_ten_and_hundred_thousand"
+ },
+ {
+  "year": 4,
+  "strand": "Addition & subtraction",
+  "text": "I can estimate and use inverse operations to check answers",
+  "key": "rand_rounding"
+ },
+ {
+  "year": 4,
+  "strand": "Written methods",
+  "text": "I can add HTU and HTU",
+  "key": "HTO_HTO_addition"
+ },
+ {
+  "year": 4,
+  "strand": "Written methods",
+  "text": "I can add HTU and HTU (bridging 1000)",
+  "key": "bridge1000_addition_HTO_HTO"
+ },
+ {
+  "year": 4,
+  "strand": "Written methods",
+  "text": "I can add and subtract numbers up to 4-digits",
+  "key": "add_or_subtract_4_digit"
+ },
+ {
+  "year": 4,
+  "strand": "Written methods",
+  "text": "I can subtract TU from HTU (HTU - TU)",
+  "key": "subtraction_HTO_TO"
+ },
+ {
+  "year": 4,
+  "strand": "Written methods",
+  "text": "I can subtract HTU from HTU",
+  "key": "subtraction_HTO_HTO"
+ },
+ {
+  "year": 4,
+  "strand": "Multiplication & division",
+  "text": "I can recall multiplication facts for all the multiplication tables up to 12 x 12.",
+  "key": "all_rand"
+ },
+ {
+  "year": 4,
+  "strand": "Multiplication & division",
+  "text": "I can recall inverse multiplication facts for all the multiplication tables up to 12 x 12.",
+  "key": "rand_inverse"
+ },
+ {
+  "year": 4,
+  "strand": "Multiplication & division",
+  "text": "I can multiply up to 12x12 and recall inverse facts.",
+  "key": "multiply_inverse_rand"
+ },
+ {
+  "year": 4,
+  "strand": "Multiplication & division",
+  "text": "I can use factor pairs in mental calculations.",
+  "key": "factor_pairs"
+ },
+ {
+  "year": 4,
+  "strand": "Multiplication & division",
+  "text": "I can multiply 3 numnbers.",
+  "key": "_3_number_multiply"
+ },
+ {
+  "year": 4,
+  "strand": "Multiplication & division",
+  "text": "I can recognise and use factor pairs and commutatively in mental calculations",
+  "key": "commutativity"
+ },
+ {
+  "year": 4,
+  "strand": "Written methods",
+  "text": "TU x U",
+  "key": "TO_O_multiply"
+ },
+ {
+  "year": 4,
+  "strand": "Written methods",
+  "text": "* I can Calculate TU x TU",
+  "key": "x_multiply_TO_TO"
+ },
+ {
+  "year": 4,
+  "strand": "Written methods",
+  "text": "HTU x U",
+  "key": "multiply_HTO_O"
+ },
+ {
+  "year": 4,
+  "strand": "Written methods",
+  "text": "I can divide TU by U",
+  "key": "TO_O_divide"
+ },
+ {
+  "year": 5,
+  "strand": "Counting",
+  "text": "count forwards and backwards with positive and negative whole numbers through zero",
+  "key": "count_through_zero"
+ },
+ {
+  "year": 5,
+  "strand": "Counting",
+  "text": "count forwards/backwards in 1000s, 10,000s and 100,000s up to 1,000,000",
+  "key": "rand_thousand_tenthousand_hundredthousand"
+ },
+ {
+  "year": 5,
+  "strand": "Counting",
+  "text": "count from any given number in whole number and decimal steps",
+  "key": "rand_count_whole_and_decimal"
+ },
+ {
+  "year": 5,
+  "strand": "Counting",
+  "text": "count forwards/backwards in 10s and 100s up to 1,000,000",
+  "key": "rand_forwardsbackwards_10s_100s"
+ },
+ {
+  "year": 5,
+  "strand": "Comparing & ordering",
+  "text": "order numbers up to 500,000",
+  "key": "below_size_order"
+ },
+ {
+  "year": 5,
+  "strand": "Comparing & ordering",
+  "text": "Confidently order numbers up to 1,000,000",
+  "key": "_order_size_order"
+ },
+ {
+  "year": 5,
+  "strand": "Comparing & ordering",
+  "text": "Confidently order numbers beyond 1,000,000",
+  "key": "exceeding_size_order"
+ },
+ {
+  "year": 5,
+  "strand": "Reading & writing",
+  "text": "write numbers to 1,000,000 in words.",
+  "key": "size_order_words"
+ },
+ {
+  "year": 5,
+  "strand": "Reading & writing",
+  "text": "write numbers to 1,000,000 in words as digits.",
+  "key": "words_write_in_numerals"
+ },
+ {
+  "year": 5,
+  "strand": "Reading & writing",
+  "text": "write numbers beyond 1,000,000 in words and digits.",
+  "key": "rand_write_exceeding"
+ },
+ {
+  "year": 5,
+  "strand": "Reading & writing",
+  "text": "read Roman numerals to 1000 (M)",
+  "key": "read_roman_numerals"
+ },
+ {
+  "year": 5,
+  "strand": "Reading & writing",
+  "text": "recognise years written in Roman numerals",
+  "key": "roman_numerals_exceeding"
+ },
+ {
+  "year": 5,
+  "strand": "Reading & writing",
+  "text": "write Roman numerals to 1000 (M)",
+  "key": "write_roman_numerals_exceeding"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "identify the place value of any digit up to 500,000",
+  "key": "place_value"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "identify the place value of any digit up to 1,000,000",
+  "key": "place_value_exceeding"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "identify the place value of any digit up to 1,000,000 and add place values together.",
+  "key": "_add_partition_number"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "confidently double/halve any number up to 3-digits",
+  "key": "_rand_double_halve_wt_y5"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "double/halve any number up to 4-digits",
+  "key": "double_halve_aare_y5_rand"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "double/halve any number beyond 4-digits",
+  "key": "double_halve_aboveare_y5_rand"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "double numbers involving decimals to 1dp",
+  "key": "double_number_1decimal"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "double numbers involving decimals to 2dp",
+  "key": "double_number_2decimal"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "have halve numbers that will end in decimals to 1dp (e.g. halve of 133 = 66.5)",
+  "key": "halve_number_answerof1decimal"
+ },
+ {
+  "year": 5,
+  "strand": "Place value",
+  "text": "Halve numbers that will end in decimals to 2dp (e.g. halve of 66.5 = 33.25)",
+  "key": "halve_number_answerof2decimal"
+ },
+ {
+  "year": 5,
+  "strand": "Rounding",
+  "text": "round any number up to 1,000,000 to the nearest 10, 100, 1000",
+  "key": "round_ten_and_hundred_thousand"
+ },
+ {
+  "year": 5,
+  "strand": "Rounding",
+  "text": "round any number up to 1,000,000 to the nearest 10,000 and 100,000",
+  "key": "round_tenthousand_hundredthousand"
+ },
+ {
+  "year": 5,
+  "strand": "Rounding",
+  "text": "round any number up to 1,000,000 to the nearest 10, 100, 1000, 10,000 and 100,000",
+  "key": "round_ten_and_hundred_thousand_tenthousand_hundredthousand"
+ },
+ {
+  "year": 5,
+  "strand": "Rounding",
+  "text": "round decimals to 2dp",
+  "key": "round_decimal_numbers_2dp"
+ },
+ {
+  "year": 5,
+  "strand": "Rounding",
+  "text": "round decimals to 3dp",
+  "key": "round_decimal_numbers_3dp"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "add ThHTU and HTU",
+  "key": "addition_ThHTO_HTO"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "add ThHTU and ThHTU",
+  "key": "addition_ThHTO_ThHTO"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "add and subtract numbers with more than 4-digits",
+  "key": "rand_adding_beyond_four_digits"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "subtract HTU and ThHTU",
+  "key": "subtraction_ThHTO_HTO"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "subtract ThHTU from ThHTU",
+  "key": "subtraction_ThHTO_ThHTO"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "U. t h th + U. t h th",
+  "key": "addition_othth_othth"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "U. t + U. t",
+  "key": "addition_ot_ot"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "U. t h th - U. t h th",
+  "key": "subtraction_othth_othth"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "U. t h + U. t h",
+  "key": "addition_oth_oth"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "U. t h - U. t h th",
+  "key": "subtraction_oth_othth"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "U. t - U. t",
+  "key": "subtraction_ot_ot"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "U. t h - U. t h",
+  "key": "subtraction_oth_oth"
+ },
+ {
+  "year": 5,
+  "strand": "Written methods",
+  "text": "U. t - U. t h",
+  "key": "subtraction_ot_otth"
+ },
+ {
+  "year": 5,
+  "strand": "Identify multiples and factors.",
+  "text": "Identify multiples and factors.",
+  "key": "rand_factor_multiple"
+ },
+ {
+  "year": 5,
+  "strand": "Identify multiples and factors.",
+  "text": "find all factor pairs of a number",
+  "key": "factor_pairs"
+ },
+ {
+  "year": 5,
+  "strand": "Identify multiples and factors.",
+  "text": "recognise and use square numbers and cube numbers and the notations for these (2 and3).",
+  "key": "rand_cubed_squared"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "Know and use the vocabulary of prime numbers, prime factors and composite (non- prime) numbers",
+  "key": "prime_numbers"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "Identify common factors of two numbers.",
+  "key": "common_factors"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "multiply and divide whole numbers and decimals by 10, 100 and 1000.",
+  "key": "rand_multiply_divide_powers10"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "Calculate HTU x U",
+  "key": "multiply_HTO_O"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "Calculate ThHTU x U",
+  "key": "multiply_ThHTO_O"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "Calculate U.t x U",
+  "key": "decimalmultiplybyones"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "Calculate TU x TU",
+  "key": "x_multiply_TO_TO"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "Calculate ThHTU x TU",
+  "key": "multiply_ThHTO_TO"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "Calculate HTU ÷ U",
+  "key": "divide_HTO_O"
+ },
+ {
+  "year": 5,
+  "strand": "Identify common factors of two numbers.",
+  "text": "Calculate ThHTU ÷ U",
+  "key": "divide_ThHTO_O"
+ },
+ {
+  "year": 5,
+  "strand": "Fractions, decimals & %",
+  "text": "I can compare and order fractions whose denominators are all multiples of the same number.",
+  "key": "orderFractionsSameDenoms"
+ },
+ {
+  "year": 5,
+  "strand": "Fractions, decimals & %",
+  "text": "I can compare and order fractions whose denominators are all different.",
+  "key": "orderFractionsDifferentDenoms"
+ },
+ {
+  "year": 5,
+  "strand": "Fractions, decimals & %",
+  "text": "I can read and write fractions as decimal numbers.",
+  "key": "fractionAsDecimalNumbers"
+ },
+ {
+  "year": 5,
+  "strand": "Fractions, decimals & %",
+  "text": "I can write decimals as fractions over 100",
+  "key": "decimalAsFraction"
+ },
+ {
+  "year": 5,
+  "strand": "Fractions, decimals & %",
+  "text": "I can read and write decimal numbers as equivalent fractions in their simplest form.",
+  "key": "decimalAsSimplestFraction"
+ },
+ {
+  "year": 5,
+  "strand": "Fractions, decimals & %",
+  "text": "I can write decimals as percent.",
+  "key": "decimalAsPercent"
+ },
+ {
+  "year": 5,
+  "strand": "Fractions, decimals & %",
+  "text": "I can write fractions as percent.*",
+  "key": "fractionAsPercent"
+ },
+ {
+  "year": 5,
+  "strand": "Percentages",
+  "text": "Find 10% of a multiple of 10",
+  "key": "percentage10percent10multiple"
+ },
+ {
+  "year": 5,
+  "strand": "Percentages",
+  "text": "Find 10% of any number",
+  "key": "percentage10percentNumber"
+ },
+ {
+  "year": 5,
+  "strand": "Percentages",
+  "text": "Find 5% of a multiple of 10",
+  "key": "percent5Multiple10"
+ },
+ {
+  "year": 5,
+  "strand": "Percentages",
+  "text": "Find 20% of a multiple of 10",
+  "key": "percentage20percent10multiple"
+ },
+ {
+  "year": 5,
+  "strand": "Percentages",
+  "text": "Frind 20% of any number",
+  "key": "percentage20percentNumber"
+ },
+ {
+  "year": 5,
+  "strand": "Percentages",
+  "text": "Find 1% of a multple of 10",
+  "key": "percentage1percent10multiple"
+ },
+ {
+  "year": 5,
+  "strand": "Percentages",
+  "text": "Find 1% of any number",
+  "key": "percentage1percentNumber"
+ },
+ {
+  "year": 5,
+  "strand": "Percentages",
+  "text": "Find any % of a number",
+  "key": "percentNumber"
+ },
+ {
+  "year": 5,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an HTO+HTO addition calculation.",
+  "key": "missing_HTO_HTO_addition"
+ },
+ {
+  "year": 5,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an ThHTO+ThHTO addition calculation.",
+  "key": "missing_ThHTO_ThHTO_addition"
+ },
+ {
+  "year": 5,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an TthThHTO+ThThHTO subtraction calculation.",
+  "key": "missing_TThThHTO_TthThHTO_addition"
+ },
+ {
+  "year": 5,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an ThHTO-ThHTO subtraction calculation.",
+  "key": "missing_ThHTO_ThHTO_subtraction"
+ },
+ {
+  "year": 5,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an TthThHTO-ThThHTO subtraction calculation.",
+  "key": "missing_TThThHTO_TthThHTO_subtraction"
+ },
+ {
+  "year": 5,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an HTO x TO multiplication calculation.",
+  "key": "missing_HTO_TO_multiplication"
+ },
+ {
+  "year": 6,
+  "strand": "Counting",
+  "text": "I can use negative numbers in context, and calculate intervals across zero",
+  "key": "count_through_zero"
+ },
+ {
+  "year": 6,
+  "strand": "Comparing & ordering",
+  "text": "I can to read, write, count, order and compare numbers to 10,000,000",
+  "key": "rand_read_write_order_compare_y6"
+ },
+ {
+  "year": 6,
+  "strand": "Comparing & ordering",
+  "text": "I can determine the value of each digit to 10,000,000",
+  "key": "place_value"
+ },
+ {
+  "year": 6,
+  "strand": "Comparing & ordering",
+  "text": "I can determine the value of each digit 100,000,000",
+  "key": "place_value_exceeding"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can identify the value of each digit in numbers given to 3dp",
+  "key": "place_value_decimal"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can confidently identify the value of each digit in numbers given to 3dp",
+  "key": "place_value_decimal_confidently"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can identify the value of each digit in numbers given to 3 decimal places",
+  "key": "y6_digit_value_3dp"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can identify prime numbers",
+  "key": "prime_numbers"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can find the factors of a number",
+  "key": "factor_pairs"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can find multiples of a number",
+  "key": "rand_factor_multiple"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can find the common factors of two numbers",
+  "key": "common_factors"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can find the common multiples of two numbers",
+  "key": "commonFactorsMultiples"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can find the highest common factor (HCF) of two numbers",
+  "key": "y6_hcf"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can find the lowest common multiple (LCM) of two numbers",
+  "key": "y6_lcm"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can write a number as a product of its prime factors",
+  "key": "y6_prime_factorisation"
+ },
+ {
+  "year": 6,
+  "strand": "Representing & estimating",
+  "text": "I can work out a number from its prime factorisation",
+  "key": "y6_product_of_primes"
+ },
+ {
+  "year": 6,
+  "strand": "Reading & writing",
+  "text": "I can read, write, count and order numbers to 10,000,000",
+  "key": "rand_read_write_order_compare_y6"
+ },
+ {
+  "year": 6,
+  "strand": "Reading & writing",
+  "text": "I can determine the value of each digit in numbers to 10,000,000",
+  "key": "y6_digit_value_10m"
+ },
+ {
+  "year": 6,
+  "strand": "Reading & writing",
+  "text": "I can read, write, count and order numbers to 10,000,000 and beyond",
+  "key": "exceeding_size_order"
+ },
+ {
+  "year": 6,
+  "strand": "Place value",
+  "text": "I can read, write, count, order and compare numbers to 10,000,000",
+  "key": "rand_read_write_order_compare_y6"
+ },
+ {
+  "year": 6,
+  "strand": "Place value",
+  "text": "I can confidently order and compare numbers to 10,000,000",
+  "key": "exceeding_size_order"
+ },
+ {
+  "year": 6,
+  "strand": "Place value",
+  "text": "I can understand place value for decimals and integers of any size",
+  "key": "decimals_size_order"
+ },
+ {
+  "year": 6,
+  "strand": "Place value",
+  "text": "I can order and compare integers and decimals using = < > symbols",
+  "key": "y6_compare_symbols"
+ },
+ {
+  "year": 6,
+  "strand": "Rounding",
+  "text": "I can round any whole number to a required degree of accuracy",
+  "key": "rand_rounding"
+ },
+ {
+  "year": 6,
+  "strand": "Problem solving",
+  "text": "I can solve number and practical problems",
+  "key": "y6_word_problem"
+ },
+ {
+  "year": 6,
+  "strand": "Addition & subtraction",
+  "text": "I can perform mental calculations with mixed operations and large numbers",
+  "key": "y6_mental_mixed"
+ },
+ {
+  "year": 6,
+  "strand": "Addition & subtraction",
+  "text": "I can solve problems involving addition and subtraction",
+  "key": "rand_adding_beyond_four_digits"
+ },
+ {
+  "year": 6,
+  "strand": "Addition & subtraction",
+  "text": "I can solve multi-step addition and subtraction problems",
+  "key": "y6_mental_mixed"
+ },
+ {
+  "year": 6,
+  "strand": "Addition & subtraction",
+  "text": "I can add and subtract decimals using formal written methods",
+  "key": "y6_decimal_addsub"
+ },
+ {
+  "year": 6,
+  "strand": "Addition & subtraction",
+  "text": "I can recognise and use the inverse relationship between operations",
+  "key": "y6_inverse"
+ },
+ {
+  "year": 6,
+  "strand": "Multiplication & division",
+  "text": "I can multiply and divide numbers by 10, 100 and 1000 (answers up to 3 d.p.)",
+  "key": "rand_multiply_divide_powers10"
+ },
+ {
+  "year": 6,
+  "strand": "Multiplication & division",
+  "text": "I can identify common factors, common multiples and prime numbers",
+  "key": "commonFactorsMultiples"
+ },
+ {
+  "year": 6,
+  "strand": "Written methods",
+  "text": "I can multiply a 2-digit number by a 2-digit number (long multiplication)",
+  "key": "y6_long_mult_2x2"
+ },
+ {
+  "year": 6,
+  "strand": "Written methods",
+  "text": "I can multiply a 3-digit number by a 2-digit number (long multiplication)",
+  "key": "y6_long_mult_3x2"
+ },
+ {
+  "year": 6,
+  "strand": "Written methods",
+  "text": "I can multiply a 4-digit number by a 2-digit number (long multiplication)",
+  "key": "y6_long_mult_4x2"
+ },
+ {
+  "year": 6,
+  "strand": "Written methods",
+  "text": "I can divide a 2-digit number by a 2-digit number",
+  "key": "y6_div_2by2"
+ },
+ {
+  "year": 6,
+  "strand": "Written methods",
+  "text": "I can divide a 3-digit number by a 2-digit number",
+  "key": "y6_div_3by2"
+ },
+ {
+  "year": 6,
+  "strand": "Written methods",
+  "text": "I can divide a 4-digit number by a 2-digit number",
+  "key": "y6_div_4by2"
+ },
+ {
+  "year": 6,
+  "strand": "Estimation",
+  "text": "I can use estimation to check answers to calculations",
+  "key": "y6_estimate"
+ },
+ {
+  "year": 6,
+  "strand": "Order of operations",
+  "text": "I can use the order of operations (BODMAS) to carry out calculations",
+  "key": "bodmas"
+ },
+ {
+  "year": 6,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an HTO+HTO addition calculation.",
+  "key": "missing_HTO_HTO_addition"
+ },
+ {
+  "year": 6,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an ThHTO+ThHTO addition calculation.",
+  "key": "missing_ThHTO_ThHTO_addition"
+ },
+ {
+  "year": 6,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an TthThHTO+ThThHTO subtraction calculation.",
+  "key": "missing_TThThHTO_TthThHTO_addition"
+ },
+ {
+  "year": 6,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an ThHTO-ThHTO subtraction calculation.",
+  "key": "missing_ThHTO_ThHTO_subtraction"
+ },
+ {
+  "year": 6,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an TthThHTO-ThThHTO subtraction calculation.",
+  "key": "missing_TThThHTO_TthThHTO_subtraction"
+ },
+ {
+  "year": 6,
+  "strand": "Mastery / missing number",
+  "text": "Identify the missing numbers in an HTO x TO multiplication calculation.",
+  "key": "missing_HTO_TO_multiplication"
+ },
+ {
+  "year": 1,
+  "strand": "Counting",
+  "text": "Count in 2s",
+  "key": "y1_count_2s"
+ },
+ {
+  "year": 1,
+  "strand": "Counting",
+  "text": "Count in 5s",
+  "key": "y1_count_5s"
+ },
+ {
+  "year": 1,
+  "strand": "Counting",
+  "text": "Count in 10s",
+  "key": "y1_count_10s"
+ },
+ {
+  "year": 1,
+  "strand": "Place value",
+  "text": "One more or one less",
+  "key": "y1_one_more_less"
+ },
+ {
+  "year": 1,
+  "strand": "Comparing & ordering",
+  "text": "Compare numbers to 20",
+  "key": "y1_compare_20"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Add within 10",
+  "key": "y1_add_10"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Subtract within 10",
+  "key": "y1_sub_10"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Add within 20",
+  "key": "y1_add_20"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Subtract within 20",
+  "key": "y1_sub_20"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Number bonds to 10",
+  "key": "y1_bonds_10"
+ },
+ {
+  "year": 1,
+  "strand": "Addition & subtraction",
+  "text": "Number bonds to 20",
+  "key": "y1_bonds_20"
+ },
+ {
+  "year": 1,
+  "strand": "Multiplication & division",
+  "text": "Double a number to 10",
+  "key": "y1_double_10"
+ },
+ {
+  "year": 1,
+  "strand": "Multiplication & division",
+  "text": "Halve an even number to 20",
+  "key": "y1_halve_20"
+ },
+ {
+  "year": 1,
+  "strand": "Fractions, decimals & %",
+  "text": "Find half of a quantity",
+  "key": "y1_half_amount"
+ },
+ {
+  "year": 1,
+  "strand": "Fractions, decimals & %",
+  "text": "Find a quarter of a quantity",
+  "key": "y1_quarter_amount"
+ },
+ {
+  "year": 2,
+  "strand": "Place value",
+  "text": "Tens and ones in a 2-digit number",
+  "key": "y2_tens_ones"
+ },
+ {
+  "year": 2,
+  "strand": "Place value",
+  "text": "Ten more or ten less",
+  "key": "y2_ten_more_less"
+ },
+ {
+  "year": 2,
+  "strand": "Comparing & ordering",
+  "text": "Compare numbers to 100",
+  "key": "y2_compare_100"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Add ones to a 2-digit number",
+  "key": "y2_add_ones"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Add tens to a 2-digit number",
+  "key": "y2_add_tens"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Add two 2-digit numbers",
+  "key": "y2_add_2digit"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Subtract within 100",
+  "key": "y2_sub_100"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Number bonds to 20",
+  "key": "y2_bonds_20"
+ },
+ {
+  "year": 2,
+  "strand": "Addition & subtraction",
+  "text": "Number bonds to 100 (tens)",
+  "key": "y2_bonds_100_tens"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "2 times table",
+  "key": "y2_mult_2"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "5 times table",
+  "key": "y2_mult_5"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "10 times table",
+  "key": "y2_mult_10"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "Divide by 2",
+  "key": "y2_div_2"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "Divide by 5",
+  "key": "y2_div_5"
+ },
+ {
+  "year": 2,
+  "strand": "Multiplication & division",
+  "text": "Divide by 10",
+  "key": "y2_div_10"
+ },
+ {
+  "year": 2,
+  "strand": "Fractions, decimals & %",
+  "text": "Find half of a quantity",
+  "key": "y2_half_amount"
+ },
+ {
+  "year": 2,
+  "strand": "Fractions, decimals & %",
+  "text": "Find a third of a quantity",
+  "key": "y2_third_amount"
+ },
+ {
+  "year": 2,
+  "strand": "Fractions, decimals & %",
+  "text": "Find a quarter of a quantity",
+  "key": "y2_quarter_amount"
+ },
+ {
+  "year": 2,
+  "strand": "Fractions, decimals & %",
+  "text": "Find three quarters of a quantity",
+  "key": "y2_threequarter_amount"
+ }
+]

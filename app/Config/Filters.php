@@ -13,6 +13,7 @@ use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
 use App\Filters\Auth;
+use App\Filters\AdminAuth;
 
 class Filters extends BaseFilters
 {
@@ -36,6 +37,7 @@ class Filters extends BaseFilters
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
         'auth'          => Auth::class,
+        'admin'         => AdminAuth::class,
     ];
 
     /**
@@ -74,7 +76,8 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
-            'auth',
+            // Auth is applied per-route/group (see Routes.php), not globally,
+            // so public pages stay open.
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',

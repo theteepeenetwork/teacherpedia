@@ -1,0 +1,2882 @@
+[
+ {
+  "year": 1,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "To/across 100 from any number",
+  "below": "Counts to ~20 from 0; support needed beyond and across tens.",
+  "meeting": "Counts to and across 100, forwards and backwards, from any given number.",
+  "exceeding": "Counts fluently across 100 from any number and predicts what comes next.",
+  "key": "count_across100"
+ },
+ {
+  "year": 1,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Steps of 2 from 0",
+  "below": "Counts in 2s with prompts.",
+  "meeting": "Counts in steps of 2 from 0.",
+  "exceeding": "Counts in 2s fluently and links to even numbers.",
+  "key": "count_2"
+ },
+ {
+  "year": 1,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Steps of 5 from 0",
+  "below": "Counts in 5s with prompts.",
+  "meeting": "Counts in steps of 5 from 0.",
+  "exceeding": "Counts in 5s fluently and spots the 0/5 pattern.",
+  "key": "count_5"
+ },
+ {
+  "year": 1,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Steps of 10 from 0",
+  "below": "Counts in 10s with prompts.",
+  "meeting": "Counts in steps of 10 from 0.",
+  "exceeding": "Counts in 10s fluently and relates to the tens place.",
+  "key": "count_10"
+ },
+ {
+  "year": 1,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Objects & pictures",
+  "below": "Matches some numbers to objects with support.",
+  "meeting": "Identifies and represents numbers using objects and pictorial representations.",
+  "exceeding": "Represents a number several ways and explains.",
+  "key": null
+ },
+ {
+  "year": 1,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Numerals to 100",
+  "below": "Reads/writes some two-digit numerals; reverses some.",
+  "meeting": "Reads and writes numbers to 100 in numerals.",
+  "exceeding": "Reads and writes any number to 100 accurately.",
+  "key": "numerals_100"
+ },
+ {
+  "year": 1,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Words 1–20",
+  "below": "Reads/writes some number words with support.",
+  "meeting": "Reads and writes numbers from 1 to 20 in words.",
+  "exceeding": "Reads and writes all words 1–20 accurately.",
+  "key": "words_20"
+ },
+ {
+  "year": 1,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "One more",
+  "below": "Finds one more within 10 with apparatus.",
+  "meeting": "Given a number, identifies one more.",
+  "exceeding": "Finds one more across tens boundaries and explains.",
+  "key": "one_more"
+ },
+ {
+  "year": 1,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "One less",
+  "below": "Finds one less within 10 with apparatus.",
+  "meeting": "Given a number, identifies one less.",
+  "exceeding": "Finds one less across tens boundaries and explains.",
+  "key": "one_less"
+ },
+ {
+  "year": 1,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "Add to 20",
+  "below": "Adds within 10; counts on with apparatus.",
+  "meeting": "Adds one- and two-digit numbers to 20, including zero.",
+  "exceeding": "Recalls/derives addition facts to 20 fluently.",
+  "key": "add_to_20"
+ },
+ {
+  "year": 1,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "Subtract to 20",
+  "below": "Subtracts within 10 with apparatus.",
+  "meeting": "Subtracts one- and two-digit numbers to 20, including zero.",
+  "exceeding": "Recalls/derives subtraction facts to 20 fluently.",
+  "key": "sub_to_20"
+ },
+ {
+  "year": 1,
+  "topic": "Addition & subtraction",
+  "block": "Problems",
+  "skill": "One-step problems",
+  "below": "Solves with objects and adult support.",
+  "meeting": "Solves one-step +/− problems using concrete objects and pictures.",
+  "exceeding": "Explains the strategy and solves simple two-step problems.",
+  "key": "word_one_step"
+ },
+ {
+  "year": 1,
+  "topic": "Addition & subtraction",
+  "block": "Problems",
+  "skill": "Missing number",
+  "below": "Fills gaps within 10 with apparatus.",
+  "meeting": "Solves missing-number problems (e.g. 7 = □ − 9).",
+  "exceeding": "Solves and checks missing-number problems independently.",
+  "key": "missing_number"
+ },
+ {
+  "year": 1,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "Multiplication",
+  "below": "Makes equal groups with support.",
+  "meeting": "Solves one-step multiplication problems using objects, pictures and arrays (with support).",
+  "exceeding": "Links equal groups to counting in 2s, 5s and 10s.",
+  "key": "mult_groups"
+ },
+ {
+  "year": 1,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "Division",
+  "below": "Shares into equal groups with support.",
+  "meeting": "Solves one-step division problems using objects, pictures and arrays (with support).",
+  "exceeding": "Explains sharing and grouping and links to known counts.",
+  "key": "divide_simple"
+ },
+ {
+  "year": 1,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "Half",
+  "below": "Halves shapes with support; unsure parts must be equal.",
+  "meeting": "Recognises, finds and names a half of an object, shape or quantity.",
+  "exceeding": "Finds half of a quantity and spots unequal non-examples.",
+  "key": "frac_half"
+ },
+ {
+  "year": 1,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "Quarter",
+  "below": "Quarters shapes with support.",
+  "meeting": "Recognises, finds and names a quarter of an object, shape or quantity.",
+  "exceeding": "Finds a quarter of a quantity and relates it to a half.",
+  "key": "frac_quarter"
+ },
+ {
+  "year": 1,
+  "topic": "Ratio, proportion & algebra",
+  "block": "Algebra (missing-number thinking)",
+  "skill": "Missing number",
+  "below": "Fills gaps within 10 with apparatus.",
+  "meeting": "Solves missing-number problems such as 7 = □ − 9.",
+  "exceeding": "Explains the method and checks by working backwards.",
+  "key": "missing_number"
+ },
+ {
+  "year": 1,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Length/height",
+  "below": "Compares two lengths directly with support.",
+  "meeting": "Compares, describes and solves practical problems for length/height.",
+  "exceeding": "Orders several lengths and reasons.",
+  "key": null
+ },
+ {
+  "year": 1,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Mass/weight",
+  "below": "Compares two masses with support.",
+  "meeting": "Compares, describes and solves practical problems for mass/weight.",
+  "exceeding": "Orders several masses and reasons.",
+  "key": null
+ },
+ {
+  "year": 1,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Capacity/volume",
+  "below": "Compares two capacities with support.",
+  "meeting": "Compares, describes and solves practical problems for capacity/volume.",
+  "exceeding": "Orders several capacities and reasons.",
+  "key": null
+ },
+ {
+  "year": 1,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Time",
+  "below": "Compares two durations with support.",
+  "meeting": "Compares, describes and solves practical problems for time.",
+  "exceeding": "Orders events/durations and reasons.",
+  "key": null
+ },
+ {
+  "year": 1,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Measure & record",
+  "below": "Measures with uniform units with help.",
+  "meeting": "Measures and begins to record lengths, mass, capacity and time.",
+  "exceeding": "Measures accurately and records sensibly.",
+  "key": null
+ },
+ {
+  "year": 1,
+  "topic": "Measurement",
+  "block": "Money",
+  "skill": "Coins & notes",
+  "below": "Recognises a few coins with prompts.",
+  "meeting": "Recognises and knows the value of different coins and notes.",
+  "exceeding": "Orders coins by value and totals two coins.",
+  "key": "money_combine"
+ },
+ {
+  "year": 1,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Sequence events",
+  "below": "Uses some time language with support.",
+  "meeting": "Sequences events in chronological order using time language.",
+  "exceeding": "Sequences events and reasons about before/after.",
+  "key": null
+ },
+ {
+  "year": 1,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Date language",
+  "below": "Names some days/months with support.",
+  "meeting": "Recognises and uses language relating to dates (days, weeks, months, years).",
+  "exceeding": "Uses date language confidently in context.",
+  "key": null
+ },
+ {
+  "year": 1,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "O’clock & half past",
+  "below": "Reads o’clock with support.",
+  "meeting": "Tells the time to the hour and half past and draws the hands.",
+  "exceeding": "Tells o’clock and half past and draws hands accurately.",
+  "key": "y1_time_oclock"
+ },
+ {
+  "year": 1,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Name 2-D shapes",
+  "below": "Names some 2-D shapes with prompts.",
+  "meeting": "Recognises and names common 2-D shapes (squares, rectangles, circles, triangles).",
+  "exceeding": "Names and sorts 2-D shapes, referring to sides/corners.",
+  "key": "y1_name_2d"
+ },
+ {
+  "year": 1,
+  "topic": "Geometry",
+  "block": "3-D shapes",
+  "skill": "Name 3-D shapes",
+  "below": "Names some 3-D shapes with prompts.",
+  "meeting": "Recognises and names common 3-D shapes (cubes, cuboids, pyramids, spheres).",
+  "exceeding": "Names 3-D shapes and matches them to real objects.",
+  "key": "y1_name_3d"
+ },
+ {
+  "year": 1,
+  "topic": "Geometry",
+  "block": "Position and direction",
+  "skill": "Position & turns",
+  "below": "Follows whole/half turn instructions with support.",
+  "meeting": "Describes position, direction and movement, including whole, half, quarter and three-quarter turns.",
+  "exceeding": "Uses turn and position language to give directions.",
+  "key": null
+ },
+ {
+  "year": 2,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Steps of 2 from 0",
+  "below": "Counts in 2s from 0 with prompts.",
+  "meeting": "Counts in steps of 2 from 0, forwards and backwards.",
+  "exceeding": "Counts in 2s fluently and predicts later terms.",
+  "key": "count_2"
+ },
+ {
+  "year": 2,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Steps of 3 from 0",
+  "below": "Counts in 3s with support.",
+  "meeting": "Counts in steps of 3 from 0, forwards and backwards.",
+  "exceeding": "Counts in 3s fluently and predicts later terms.",
+  "key": "count_3"
+ },
+ {
+  "year": 2,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Steps of 5 from 0",
+  "below": "Counts in 5s with prompts.",
+  "meeting": "Counts in steps of 5 from 0, forwards and backwards.",
+  "exceeding": "Counts in 5s fluently and predicts later terms.",
+  "key": "count_5"
+ },
+ {
+  "year": 2,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "10s from any number",
+  "below": "Counts in 10s from 0; from other numbers with support.",
+  "meeting": "Counts in 10s from any number, forwards and backwards.",
+  "exceeding": "Counts in 10s from any number fluently.",
+  "key": "count_10_any"
+ },
+ {
+  "year": 2,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Numerals to 100",
+  "below": "Reads/writes some two-digit numerals.",
+  "meeting": "Reads and writes numbers to at least 100 in numerals.",
+  "exceeding": "Reads/writes numbers beyond 100 accurately.",
+  "key": "numerals_100"
+ },
+ {
+  "year": 2,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Words to 100",
+  "below": "Reads/writes some number words with support.",
+  "meeting": "Reads and writes numbers to at least 100 in words.",
+  "exceeding": "Reads/writes number words fluently.",
+  "key": "words_100"
+ },
+ {
+  "year": 2,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "Place value (T,O)",
+  "below": "Partitions with apparatus.",
+  "meeting": "Recognises the place value of each digit in a two-digit number (tens, ones).",
+  "exceeding": "Partitions flexibly (e.g. 34 = 20 + 14).",
+  "key": "place_2"
+ },
+ {
+  "year": 2,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "Compare & order",
+  "below": "Compares using objects with support.",
+  "meeting": "Compares and orders numbers from 0 up to 100 using <, > and =.",
+  "exceeding": "Orders sets and justifies using place value.",
+  "key": "compare_100"
+ },
+ {
+  "year": 2,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Solve problems",
+  "below": "Solves simple problems with support.",
+  "meeting": "Uses place value and number facts to solve problems.",
+  "exceeding": "Chooses efficient facts and explains in unfamiliar problems.",
+  "key": "word_two_step"
+ },
+ {
+  "year": 2,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "2-digit & ones",
+  "below": "Within ten secure; crossing ten with support.",
+  "meeting": "Adds/subtracts a two-digit number and ones.",
+  "exceeding": "Crosses tens fluently and explains.",
+  "key": "addsub_2d_ones"
+ },
+ {
+  "year": 2,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "2-digit & tens",
+  "below": "Adds/subtracts tens with apparatus.",
+  "meeting": "Adds/subtracts a two-digit number and tens.",
+  "exceeding": "Adds/subtracts tens mentally and reasons.",
+  "key": "addsub_2d_tens"
+ },
+ {
+  "year": 2,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "Two 2-digit numbers",
+  "below": "Uses apparatus; insecure crossing tens.",
+  "meeting": "Adds/subtracts two two-digit numbers.",
+  "exceeding": "Uses efficient mental/written methods.",
+  "key": "addsub_2d_2d"
+ },
+ {
+  "year": 2,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "Three 1-digit numbers",
+  "below": "Adds three ones with support.",
+  "meeting": "Adds three one-digit numbers.",
+  "exceeding": "Looks for bonds/pairs to add efficiently.",
+  "key": "add_three_1d"
+ },
+ {
+  "year": 2,
+  "topic": "Addition & subtraction",
+  "block": "Problems",
+  "skill": "Contextual problems",
+  "below": "Solves one-step problems with apparatus.",
+  "meeting": "Solves +/− problems with objects/pictures, incl. quantities and measures.",
+  "exceeding": "Solves problems in unfamiliar contexts and explains.",
+  "key": "word_one_step"
+ },
+ {
+  "year": 2,
+  "topic": "Addition & subtraction",
+  "block": "Problems",
+  "skill": "Mental & written",
+  "below": "Uses one method with support.",
+  "meeting": "Applies increasing knowledge of mental and written methods.",
+  "exceeding": "Selects an efficient method and justifies.",
+  "key": "addsub_2d_2d"
+ },
+ {
+  "year": 2,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "2 times table",
+  "below": "Counts in 2s; recall developing.",
+  "meeting": "Recalls and uses × and ÷ facts for the 2 times table.",
+  "exceeding": "Rapid recall; derives division facts.",
+  "key": "table_2"
+ },
+ {
+  "year": 2,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "5 times table",
+  "below": "Counts in 5s; recall developing.",
+  "meeting": "Recalls and uses × and ÷ facts for the 5 times table.",
+  "exceeding": "Rapid recall; derives division facts.",
+  "key": "table_5"
+ },
+ {
+  "year": 2,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "10 times table",
+  "below": "Counts in 10s; recall developing.",
+  "meeting": "Recalls and uses × and ÷ facts for the 10 times table.",
+  "exceeding": "Rapid recall; derives division facts.",
+  "key": "table_10"
+ },
+ {
+  "year": 2,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Odd & even",
+  "below": "Identifies some odd/even with support.",
+  "meeting": "Recognises odd and even numbers.",
+  "exceeding": "Explains odd/even using grouping.",
+  "key": "odd_even"
+ },
+ {
+  "year": 2,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Commutativity",
+  "below": "Shows × in any order with apparatus.",
+  "meeting": "Shows that × is commutative and ÷ is not.",
+  "exceeding": "Reasons why ÷ is not commutative.",
+  "key": "commutativity"
+ },
+ {
+  "year": 2,
+  "topic": "Multiplication & division",
+  "block": "Calculations",
+  "skill": "Write statements",
+  "below": "Writes simple statements with support.",
+  "meeting": "Calculates and writes statements using ×, ÷ and = within known tables.",
+  "exceeding": "Writes families of related facts.",
+  "key": "mult_statements"
+ },
+ {
+  "year": 2,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "×/÷ problems",
+  "below": "Uses arrays/repeated addition with support.",
+  "meeting": "Solves ×/÷ problems using arrays, repeated addition and known facts in context.",
+  "exceeding": "Solves scaling/correspondence and missing-number problems.",
+  "key": "word_one_step"
+ },
+ {
+  "year": 2,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "1/3",
+  "below": "Finds 1/3 of shapes with support.",
+  "meeting": "Recognises, finds, names and writes 1/3 of a length, shape, set or quantity.",
+  "exceeding": "Finds 1/3 of quantities and reasons.",
+  "key": "frac_third"
+ },
+ {
+  "year": 2,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "1/4",
+  "below": "Finds 1/4 of shapes with support.",
+  "meeting": "Recognises, finds, names and writes 1/4 of a length, shape, set or quantity.",
+  "exceeding": "Finds 1/4 of quantities and reasons.",
+  "key": "frac_quarter"
+ },
+ {
+  "year": 2,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "2/4",
+  "below": "Finds 2/4 with support.",
+  "meeting": "Recognises, finds, names and writes 2/4 of a length, shape, set or quantity.",
+  "exceeding": "Links 2/4 to 1/2 and finds of quantities.",
+  "key": "frac_twoq"
+ },
+ {
+  "year": 2,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "3/4",
+  "below": "Finds 3/4 with support.",
+  "meeting": "Recognises, finds, names and writes 3/4 of a length, shape, set or quantity.",
+  "exceeding": "Finds 3/4 of quantities and reasons.",
+  "key": "frac_threeq"
+ },
+ {
+  "year": 2,
+  "topic": "Fractions",
+  "block": "Compare",
+  "skill": "Equivalence 2/4 = 1/2",
+  "below": "Shows with diagrams with support.",
+  "meeting": "Recognises the equivalence of 2/4 and 1/2.",
+  "exceeding": "Reasons about other simple equivalences.",
+  "key": "frac_equiv_half"
+ },
+ {
+  "year": 2,
+  "topic": "Fractions",
+  "block": "Calculations",
+  "skill": "Simple fractions",
+  "below": "Finds with apparatus.",
+  "meeting": "Writes simple fractions (e.g. 1/2 of 6 = 3).",
+  "exceeding": "Links finding a fraction to division and explains.",
+  "key": "frac_simple"
+ },
+ {
+  "year": 2,
+  "topic": "Ratio, proportion & algebra",
+  "block": "Algebra (inverse relationships)",
+  "skill": "Inverse to check",
+  "below": "Checks with prompts.",
+  "meeting": "Uses the inverse relationship between + and − to check calculations.",
+  "exceeding": "Uses the inverse independently to check.",
+  "key": "inverse_check"
+ },
+ {
+  "year": 2,
+  "topic": "Ratio, proportion & algebra",
+  "block": "Algebra (inverse relationships)",
+  "skill": "Missing-number problems",
+  "below": "Solves simple missing-number with support.",
+  "meeting": "Uses the inverse to solve missing-number problems.",
+  "exceeding": "Solves and justifies a range of missing-number problems.",
+  "key": "missing_number"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Length (m/cm)",
+  "below": "Measures length with support.",
+  "meeting": "Chooses and uses standard units to estimate and measure length/height (m/cm).",
+  "exceeding": "Selects unit and justifies; reasons about estimates.",
+  "key": "estimate_length"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Mass (kg/g)",
+  "below": "Measures mass with support.",
+  "meeting": "Estimates and measures mass (kg/g).",
+  "exceeding": "Selects unit and reasons.",
+  "key": "estimate_mass"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Temperature (°C)",
+  "below": "Reads a thermometer with support.",
+  "meeting": "Estimates and measures temperature (°C).",
+  "exceeding": "Reads/compares temperatures and reasons.",
+  "key": null
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Capacity (l/ml)",
+  "below": "Measures capacity with support.",
+  "meeting": "Estimates and measures capacity (litres/ml).",
+  "exceeding": "Selects unit and reasons.",
+  "key": "estimate_capacity"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Compare & order",
+  "below": "Compares two measures with support.",
+  "meeting": "Compares and orders length, mass, volume/capacity using <, > and =.",
+  "exceeding": "Orders several measures and justifies.",
+  "key": "compare_measures"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Money",
+  "skill": "£ and p symbols",
+  "below": "Uses £/p symbols with prompts.",
+  "meeting": "Recognises and uses symbols for pounds (£) and pence (p).",
+  "exceeding": "Uses £ and p accurately in problems.",
+  "key": "money_pounds"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Money",
+  "skill": "Combine amounts",
+  "below": "Combines coins with support.",
+  "meeting": "Combines amounts to make a particular value.",
+  "exceeding": "Finds totals efficiently.",
+  "key": "money_combine"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Money",
+  "skill": "Coin combinations",
+  "below": "Finds one combination with support.",
+  "meeting": "Finds different combinations of coins that equal the same amount.",
+  "exceeding": "Finds all combinations systematically.",
+  "key": "coin_combinations"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Money",
+  "skill": "Problems & change",
+  "below": "Solves simple money problems with support.",
+  "meeting": "Solves +/− money problems (same unit), including giving change.",
+  "exceeding": "Gives change with several coins and explains.",
+  "key": "money_problems"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Compare intervals",
+  "below": "Compares two intervals with support.",
+  "meeting": "Compares and sequences intervals of time.",
+  "exceeding": "Orders intervals and reasons.",
+  "key": null
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Time to 5 minutes",
+  "below": "Tells o’clock/half past; five-minute with support.",
+  "meeting": "Tells and writes the time to five minutes, incl. quarter past/to; draws the hands.",
+  "exceeding": "Tells five-minute times and draws hands accurately.",
+  "key": "y2_time_5min"
+ },
+ {
+  "year": 2,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Minutes/hours facts",
+  "below": "Recalls with prompts.",
+  "meeting": "Knows the number of minutes in an hour and hours in a day.",
+  "exceeding": "Uses these facts to reason about durations.",
+  "key": "time_facts"
+ },
+ {
+  "year": 2,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Properties & symmetry",
+  "below": "Names shapes; states some properties with support.",
+  "meeting": "Identifies and describes properties of 2-D shapes (sides, vertical line symmetry).",
+  "exceeding": "Classifies by several properties and reasons about symmetry.",
+  "key": "y2_2d_properties"
+ },
+ {
+  "year": 2,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "2-D on 3-D",
+  "below": "Identifies a face with support.",
+  "meeting": "Identifies 2-D shapes on the surface of 3-D shapes.",
+  "exceeding": "Identifies and names faces on several 3-D shapes.",
+  "key": null
+ },
+ {
+  "year": 2,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Compare & sort",
+  "below": "Sorts by one property with support.",
+  "meeting": "Compares and sorts common 2-D shapes and everyday objects.",
+  "exceeding": "Sorts by several properties and explains.",
+  "key": null
+ },
+ {
+  "year": 2,
+  "topic": "Geometry",
+  "block": "3-D shapes",
+  "skill": "Name 3-D shapes",
+  "below": "Names some 3-D shapes with prompts.",
+  "meeting": "Recognises and names common 3-D shapes.",
+  "exceeding": "Names and describes 3-D shapes by properties.",
+  "key": "y1_name_3d"
+ },
+ {
+  "year": 2,
+  "topic": "Geometry",
+  "block": "3-D shapes",
+  "skill": "Compare & sort",
+  "below": "Sorts by one property with support.",
+  "meeting": "Compares and sorts common 3-D shapes and everyday objects.",
+  "exceeding": "Sorts by faces/edges/vertices and explains.",
+  "key": "y2_3d_properties"
+ },
+ {
+  "year": 2,
+  "topic": "Geometry",
+  "block": "Position and direction",
+  "skill": "Patterns & sequences",
+  "below": "Continues a pattern with support.",
+  "meeting": "Orders and arranges combinations of objects in patterns and sequences.",
+  "exceeding": "Creates and describes patterns and predicts terms.",
+  "key": null
+ },
+ {
+  "year": 2,
+  "topic": "Geometry",
+  "block": "Position and direction",
+  "skill": "Position & rotation",
+  "below": "Uses some position language with support.",
+  "meeting": "Describes position, direction and rotation (quarter/half/three-quarter turns; clockwise/anti-clockwise).",
+  "exceeding": "Uses precise rotational/positional language to predict movement.",
+  "key": null
+ },
+ {
+  "year": 2,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Pictograms",
+  "below": "Reads a simple pictogram with support.",
+  "meeting": "Interprets and constructs pictograms.",
+  "exceeding": "Constructs accurate pictograms and chooses symbols.",
+  "key": "stats_total"
+ },
+ {
+  "year": 2,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Tally charts",
+  "below": "Reads/keeps a tally with support.",
+  "meeting": "Interprets and constructs tally charts.",
+  "exceeding": "Constructs accurate tallies and totals.",
+  "key": "stats_total"
+ },
+ {
+  "year": 2,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Block diagrams",
+  "below": "Reads a block diagram with support.",
+  "meeting": "Interprets and constructs block diagrams.",
+  "exceeding": "Constructs accurate block diagrams.",
+  "key": "stats_compare"
+ },
+ {
+  "year": 2,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Simple tables",
+  "below": "Reads a simple table with support.",
+  "meeting": "Interprets and constructs simple tables.",
+  "exceeding": "Constructs and interprets tables.",
+  "key": "stats_table"
+ },
+ {
+  "year": 2,
+  "topic": "Statistics",
+  "block": "Solve statistical problems",
+  "skill": "Totalling",
+  "below": "Counts categories with support.",
+  "meeting": "Asks and answers questions about totalling categorical data.",
+  "exceeding": "Totals and compares and reasons.",
+  "key": "stats_total"
+ },
+ {
+  "year": 2,
+  "topic": "Statistics",
+  "block": "Solve statistical problems",
+  "skill": "Comparing",
+  "below": "Compares two categories with support.",
+  "meeting": "Asks and answers questions comparing categorical data.",
+  "exceeding": "Answers comparison questions and reasons about the data.",
+  "key": "stats_compare"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Multiples of 4",
+  "below": "Counts in 4s with support.",
+  "meeting": "Counts from 0 in multiples of 4.",
+  "exceeding": "Counts in 4s fluently and links to the 4 table.",
+  "key": "count_4"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Multiples of 8",
+  "below": "Counts in 8s with support.",
+  "meeting": "Counts from 0 in multiples of 8.",
+  "exceeding": "Counts in 8s fluently; links 4s and 8s.",
+  "key": "count_8"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Multiples of 50",
+  "below": "Counts in 50s with support.",
+  "meeting": "Counts from 0 in multiples of 50.",
+  "exceeding": "Counts in 50s fluently and reasons.",
+  "key": "count_50"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Multiples of 100",
+  "below": "Counts in 100s with support.",
+  "meeting": "Counts from 0 in multiples of 100.",
+  "exceeding": "Counts in 100s fluently and reasons.",
+  "key": "count_100"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "10/100 more or less",
+  "below": "Finds 10 more/less with support.",
+  "meeting": "Finds 10 or 100 more or less than a given number.",
+  "exceeding": "Finds 10/100 more/less fluently and explains.",
+  "key": "more_less_10_100"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Representations & estimate",
+  "below": "Uses one representation with support.",
+  "meeting": "Identifies, represents and estimates numbers using different representations.",
+  "exceeding": "Estimates and justifies on a number line.",
+  "key": null
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Numerals to 1000",
+  "below": "Reads/writes some three-digit numerals.",
+  "meeting": "Reads and writes numbers up to 1000 in numerals.",
+  "exceeding": "Reads/writes any number to 1000 accurately.",
+  "key": "numerals_1000"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Words to 1000",
+  "below": "Reads/writes some number words with support.",
+  "meeting": "Reads and writes numbers up to 1000 in words.",
+  "exceeding": "Reads/writes number words fluently.",
+  "key": "words_1000"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "Place value (H,T,O)",
+  "below": "Partitions with apparatus.",
+  "meeting": "Recognises the place value of each digit in a three-digit number.",
+  "exceeding": "Partitions flexibly and reasons.",
+  "key": "place_3"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "Compare & order to 1000",
+  "below": "Compares with support.",
+  "meeting": "Compares and orders numbers up to 1000.",
+  "exceeding": "Orders sets and justifies.",
+  "key": "compare_1000"
+ },
+ {
+  "year": 3,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Solve problems",
+  "below": "Solves simple problems with support.",
+  "meeting": "Solves number and practical problems involving these ideas.",
+  "exceeding": "Solves multi-step problems and explains.",
+  "key": "word_two_step"
+ },
+ {
+  "year": 3,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "3-digit & ones (mental)",
+  "below": "With apparatus.",
+  "meeting": "Adds and subtracts mentally a three-digit number and ones.",
+  "exceeding": "Mentally and efficiently, explaining.",
+  "key": "addsub_3d_ones"
+ },
+ {
+  "year": 3,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "3-digit & tens (mental)",
+  "below": "With apparatus.",
+  "meeting": "Adds and subtracts mentally a three-digit number and tens.",
+  "exceeding": "Mentally and efficiently.",
+  "key": "addsub_3d_tens"
+ },
+ {
+  "year": 3,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "3-digit & hundreds (mental)",
+  "below": "With apparatus.",
+  "meeting": "Adds and subtracts mentally a three-digit number and hundreds.",
+  "exceeding": "Mentally and efficiently.",
+  "key": "addsub_3d_hundreds"
+ },
+ {
+  "year": 3,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "Column ± to 3 digits",
+  "below": "Column method insecure when exchanging.",
+  "meeting": "Adds and subtracts numbers up to three digits using formal column methods.",
+  "exceeding": "Exchanges fluently and checks.",
+  "key": "col_addsub_3d"
+ },
+ {
+  "year": 3,
+  "topic": "Addition & subtraction",
+  "block": "Problems",
+  "skill": "Problems incl. missing number",
+  "below": "Solves one-step; missing-number with support.",
+  "meeting": "Solves problems, incl. missing-number, using number facts, place value and complex ±.",
+  "exceeding": "Solves multi-step problems and checks.",
+  "key": "missing_number"
+ },
+ {
+  "year": 3,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "3 times table",
+  "below": "Building recall of 3s.",
+  "meeting": "Recalls and uses × and ÷ facts for the 3 times table.",
+  "exceeding": "Rapid recall; derives related facts.",
+  "key": "table_3"
+ },
+ {
+  "year": 3,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "4 times table",
+  "below": "Building recall of 4s.",
+  "meeting": "Recalls and uses × and ÷ facts for the 4 times table.",
+  "exceeding": "Rapid recall; derives related facts.",
+  "key": "table_4"
+ },
+ {
+  "year": 3,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "8 times table",
+  "below": "Building recall of 8s.",
+  "meeting": "Recalls and uses × and ÷ facts for the 8 times table.",
+  "exceeding": "Rapid recall; links 4s and 8s.",
+  "key": "table_8"
+ },
+ {
+  "year": 3,
+  "topic": "Multiplication & division",
+  "block": "Calculations",
+  "skill": "2-digit × 1-digit",
+  "below": "With support.",
+  "meeting": "Writes and calculates statements for two-digit × one-digit (mental to formal written).",
+  "exceeding": "Uses formal method confidently and explains.",
+  "key": "mult_2dx1d"
+ },
+ {
+  "year": 3,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "×/÷ & missing number",
+  "below": "Simple problems with support.",
+  "meeting": "Solves problems, including missing-number problems, involving × and ÷.",
+  "exceeding": "Solves and explains harder problems.",
+  "key": "missing_number_md"
+ },
+ {
+  "year": 3,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "Scaling",
+  "below": "With support.",
+  "meeting": "Solves positive integer scaling problems.",
+  "exceeding": "Reasons about scaling.",
+  "key": "scaling"
+ },
+ {
+  "year": 3,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "Correspondence",
+  "below": "With support.",
+  "meeting": "Solves correspondence problems (n objects to m objects).",
+  "exceeding": "Solves harder correspondence problems.",
+  "key": "correspondence"
+ },
+ {
+  "year": 3,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "Count in tenths",
+  "below": "Counts in tenths with prompts.",
+  "meeting": "Counts up and down in tenths.",
+  "exceeding": "Reasons about tenths arising from dividing by 10.",
+  "key": "count_tenths"
+ },
+ {
+  "year": 3,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "Unit fractions of a set",
+  "below": "With support.",
+  "meeting": "Recognises, finds and writes unit fractions of a discrete set.",
+  "exceeding": "Finds unit fractions of larger sets fluently.",
+  "key": "frac_unit_set"
+ },
+ {
+  "year": 3,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "Non-unit fractions of a set",
+  "below": "With support.",
+  "meeting": "Recognises, finds and writes non-unit fractions (small denominators) of a set.",
+  "exceeding": "Finds non-unit fractions of amounts and reasons.",
+  "key": "frac_nonunit_set"
+ },
+ {
+  "year": 3,
+  "topic": "Fractions",
+  "block": "Recognise and write",
+  "skill": "Fractions as numbers",
+  "below": "Places simple fractions with support.",
+  "meeting": "Recognises and uses fractions as numbers.",
+  "exceeding": "Reasons about fractions as numbers on a line.",
+  "key": "frac_as_number"
+ },
+ {
+  "year": 3,
+  "topic": "Fractions",
+  "block": "Compare",
+  "skill": "Equivalent fractions",
+  "below": "With support.",
+  "meeting": "Recognises and shows equivalent fractions with diagrams.",
+  "exceeding": "Reasons about equivalence without diagrams.",
+  "key": "frac_equiv_family"
+ },
+ {
+  "year": 3,
+  "topic": "Fractions",
+  "block": "Compare",
+  "skill": "Compare & order",
+  "below": "With support.",
+  "meeting": "Compares and orders unit fractions and fractions with the same denominator.",
+  "exceeding": "Orders and reasons.",
+  "key": "frac_compare_simple"
+ },
+ {
+  "year": 3,
+  "topic": "Fractions",
+  "block": "Calculations",
+  "skill": "Add/subtract same denom.",
+  "below": "Adds with support.",
+  "meeting": "Adds and subtracts fractions with the same denominator within one whole.",
+  "exceeding": "Solves missing-number fraction calculations.",
+  "key": "frac_addsub_same"
+ },
+ {
+  "year": 3,
+  "topic": "Fractions",
+  "block": "Solve problems",
+  "skill": "Fraction problems",
+  "below": "Simple problems with support.",
+  "meeting": "Solves problems involving all of the above.",
+  "exceeding": "Solves multi-step problems and reasons.",
+  "key": "frac_nonunit_set"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Length (m/cm/mm)",
+  "below": "Measures with support.",
+  "meeting": "Measures, compares, adds and subtracts lengths (m/cm/mm).",
+  "exceeding": "Converts within length and solves problems.",
+  "key": "convert_length"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Mass (kg/g)",
+  "below": "With support.",
+  "meeting": "Measures, compares, adds and subtracts mass (kg/g).",
+  "exceeding": "Converts and solves problems.",
+  "key": "convert_mass"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Volume/capacity (l/ml)",
+  "below": "With support.",
+  "meeting": "Measures, compares, adds and subtracts volume/capacity (l/ml).",
+  "exceeding": "Converts and solves problems.",
+  "key": "convert_capacity"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Money",
+  "skill": "Add/subtract & change",
+  "below": "With support.",
+  "meeting": "Adds and subtracts amounts of money to give change, using £ and p.",
+  "exceeding": "Solves multi-step money problems.",
+  "key": "money_problems"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Analogue, Roman, 12/24h",
+  "below": "Reading developing; to five minutes.",
+  "meeting": "Tells and writes time on analogue (incl. Roman numerals I–XII) and 12/24-hour clocks.",
+  "exceeding": "Reads all clocks accurately.",
+  "key": "y3_time_minute"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "To the nearest minute",
+  "below": "With support.",
+  "meeting": "Estimates and reads time to the nearest minute.",
+  "exceeding": "Reads to the minute confidently.",
+  "key": "y3_time_minute"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Record & compare time",
+  "below": "With support.",
+  "meeting": "Records and compares time in seconds, minutes and hours; uses a.m./p.m. etc.",
+  "exceeding": "Compares and reasons about durations.",
+  "key": "time_facts3"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Time facts",
+  "below": "Recalls with prompts.",
+  "meeting": "Knows seconds in a minute; days in each month, year and leap year.",
+  "exceeding": "Uses these facts to solve problems.",
+  "key": "time_facts3"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Compare durations",
+  "below": "Compares two with support.",
+  "meeting": "Compares durations of events.",
+  "exceeding": "Calculates durations across the hour.",
+  "key": "time_convert"
+ },
+ {
+  "year": 3,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "Perimeter of 2-D shapes",
+  "below": "Counts sides with support.",
+  "meeting": "Measures the perimeter of simple 2-D shapes.",
+  "exceeding": "Finds missing side lengths and reasons.",
+  "key": "perimeter_2d"
+ },
+ {
+  "year": 3,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Draw 2-D shapes",
+  "below": "Draws with support.",
+  "meeting": "Draws 2-D shapes.",
+  "exceeding": "Draws accurately and describes properties.",
+  "key": "y3_name_polygon"
+ },
+ {
+  "year": 3,
+  "topic": "Geometry",
+  "block": "3-D shapes",
+  "skill": "Make 3-D shapes",
+  "below": "With support.",
+  "meeting": "Makes 3-D shapes using modelling materials.",
+  "exceeding": "Builds accurately and describes.",
+  "key": "y2_3d_properties"
+ },
+ {
+  "year": 3,
+  "topic": "Geometry",
+  "block": "3-D shapes",
+  "skill": "Orientations",
+  "below": "With support.",
+  "meeting": "Recognises 3-D shapes in different orientations and describes them.",
+  "exceeding": "Describes by faces/edges/vertices.",
+  "key": null
+ },
+ {
+  "year": 3,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Angles as turns",
+  "below": "With prompts.",
+  "meeting": "Recognises angles as a property of shape or a description of a turn.",
+  "exceeding": "Reasons about turns.",
+  "key": "y3_angle_right"
+ },
+ {
+  "year": 3,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Right angles",
+  "below": "Identifies right angles with prompts.",
+  "meeting": "Identifies right angles; relates to half/three-quarter/complete turns; compares to a right angle.",
+  "exceeding": "Reasons and compares angles accurately.",
+  "key": "y3_angle_right"
+ },
+ {
+  "year": 3,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Horizontal & vertical",
+  "below": "With support.",
+  "meeting": "Identifies horizontal and vertical lines.",
+  "exceeding": "Identifies confidently in different orientations.",
+  "key": null
+ },
+ {
+  "year": 3,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Perpendicular & parallel",
+  "below": "With support.",
+  "meeting": "Identifies pairs of perpendicular and parallel lines.",
+  "exceeding": "Identifies and reasons.",
+  "key": null
+ },
+ {
+  "year": 3,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Bar charts",
+  "below": "Reads scaled bar charts with support.",
+  "meeting": "Interprets and presents data using bar charts.",
+  "exceeding": "Constructs accurate scaled bar charts.",
+  "key": "stats_one_step"
+ },
+ {
+  "year": 3,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Pictograms",
+  "below": "With support.",
+  "meeting": "Interprets and presents data using pictograms.",
+  "exceeding": "Chooses scale and constructs.",
+  "key": "stats_total"
+ },
+ {
+  "year": 3,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Tables",
+  "below": "With support.",
+  "meeting": "Interprets and presents data using tables.",
+  "exceeding": "Constructs and interprets tables.",
+  "key": "stats_table"
+ },
+ {
+  "year": 3,
+  "topic": "Statistics",
+  "block": "Solve statistical problems",
+  "skill": "One-step questions",
+  "below": "With support.",
+  "meeting": "Solves one-step questions using scaled charts, pictograms and tables.",
+  "exceeding": "Answers and reasons.",
+  "key": "stats_one_step"
+ },
+ {
+  "year": 3,
+  "topic": "Statistics",
+  "block": "Solve statistical problems",
+  "skill": "Two-step questions",
+  "below": "With support.",
+  "meeting": "Solves two-step questions (‘how many more/fewer?’).",
+  "exceeding": "Solves two-step questions and reasons.",
+  "key": "stats_two_step"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Multiples of 6",
+  "below": "Counts in 6s with support.",
+  "meeting": "Counts in multiples of 6.",
+  "exceeding": "Counts in 6s fluently and links to the 6 table.",
+  "key": "count_6"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Multiples of 7",
+  "below": "Counts in 7s with support.",
+  "meeting": "Counts in multiples of 7.",
+  "exceeding": "Counts in 7s fluently and links to the 7 table.",
+  "key": "count_7"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Multiples of 9",
+  "below": "Counts in 9s with support.",
+  "meeting": "Counts in multiples of 9.",
+  "exceeding": "Counts in 9s fluently and spots patterns.",
+  "key": "count_9"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Multiples of 25",
+  "below": "Counts in 25s with support.",
+  "meeting": "Counts in multiples of 25.",
+  "exceeding": "Counts in 25s fluently and reasons.",
+  "key": "count_25"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Multiples of 1000",
+  "below": "Counts in 1000s with support.",
+  "meeting": "Counts in multiples of 1000.",
+  "exceeding": "Counts in 1000s fluently and reasons about thousands.",
+  "key": "count_1000"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Negative numbers",
+  "below": "Counts back to zero; below zero with support.",
+  "meeting": "Counts backwards through zero to include negative numbers.",
+  "exceeding": "Counts through zero fluently and reasons about negatives.",
+  "key": "count_neg_through0"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Representations & estimate",
+  "below": "Uses one representation with support.",
+  "meeting": "Identifies, represents and estimates numbers using different representations.",
+  "exceeding": "Estimates and justifies on a number line.",
+  "key": null
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Roman numerals to 100",
+  "below": "Reads some Roman numerals with support.",
+  "meeting": "Reads Roman numerals to 100 (I to C); knows about the concept of zero and place value.",
+  "exceeding": "Converts to/from Roman numerals and explains the change.",
+  "key": "roman_to_100"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "1000 more/less",
+  "below": "With support.",
+  "meeting": "Finds 1000 more or less than a given number.",
+  "exceeding": "Finds 1000 more/less fluently and explains.",
+  "key": "more_less_1000"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "Place value (4-digit)",
+  "below": "Partitions with apparatus.",
+  "meeting": "Recognises the place value of each digit in a four-digit number.",
+  "exceeding": "Partitions flexibly and reasons.",
+  "key": "place_4"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "Order & compare beyond 1000",
+  "below": "With support.",
+  "meeting": "Orders and compares numbers beyond 1000.",
+  "exceeding": "Orders large sets and justifies.",
+  "key": "order_numbers"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Round to 10/100/1000",
+  "below": "Rounds to 10/100 with prompts.",
+  "meeting": "Rounds any number to the nearest 10, 100 or 1000.",
+  "exceeding": "Reasons about rounding at any scale.",
+  "key": "round_10_100_1000"
+ },
+ {
+  "year": 4,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Problems (large numbers)",
+  "below": "Simple problems with support.",
+  "meeting": "Solves number and practical problems with increasingly large positive numbers.",
+  "exceeding": "Solves multi-step problems and explains.",
+  "key": "word_multi_step"
+ },
+ {
+  "year": 4,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "Column addition (4-digit)",
+  "below": "Method insecure with exchanges.",
+  "meeting": "Adds numbers with up to 4 digits using formal column addition.",
+  "exceeding": "Adds fluently and checks with estimation/inverse.",
+  "key": "col_add_4d"
+ },
+ {
+  "year": 4,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "Column subtraction (4-digit)",
+  "below": "Method insecure with exchanges.",
+  "meeting": "Subtracts numbers with up to 4 digits using formal column subtraction.",
+  "exceeding": "Subtracts fluently and checks.",
+  "key": "col_sub_4d"
+ },
+ {
+  "year": 4,
+  "topic": "Addition & subtraction",
+  "block": "Problems",
+  "skill": "Two-step problems",
+  "below": "Solves one-step problems.",
+  "meeting": "Solves two-step problems in context, deciding operations and methods.",
+  "exceeding": "Solves multi-step problems and justifies.",
+  "key": "word_two_step"
+ },
+ {
+  "year": 4,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Tables to 12 × 12",
+  "below": "Recall developing.",
+  "meeting": "Recalls × and ÷ facts for tables up to 12 × 12.",
+  "exceeding": "Fluent recall; derives related facts.",
+  "key": "tables_to_12"
+ },
+ {
+  "year": 4,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Mental ×/÷ (incl. ×0, ×1, ÷1)",
+  "below": "With support.",
+  "meeting": "Uses place value and known/derived facts to multiply and divide mentally.",
+  "exceeding": "Uses derived facts flexibly.",
+  "key": "mental_md"
+ },
+ {
+  "year": 4,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Multiply three numbers",
+  "below": "With support.",
+  "meeting": "Multiplies together three numbers.",
+  "exceeding": "Chooses an efficient order and explains.",
+  "key": "mult_three"
+ },
+ {
+  "year": 4,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Factor pairs & commutativity",
+  "below": "Finds some factor pairs with support.",
+  "meeting": "Recognises and uses factor pairs and commutativity in mental calculations.",
+  "exceeding": "Reasons with factor pairs.",
+  "key": "factors"
+ },
+ {
+  "year": 4,
+  "topic": "Multiplication & division",
+  "block": "Calculations",
+  "skill": "2-digit × 1-digit (formal)",
+  "below": "With support.",
+  "meeting": "Multiplies two-digit numbers by a one-digit number using formal written layout.",
+  "exceeding": "Uses the method fluently and estimates to check.",
+  "key": "mult_2dx1d"
+ },
+ {
+  "year": 4,
+  "topic": "Multiplication & division",
+  "block": "Calculations",
+  "skill": "3-digit × 1-digit (formal)",
+  "below": "With support.",
+  "meeting": "Multiplies three-digit numbers by a one-digit number using formal written layout.",
+  "exceeding": "Uses the method fluently and checks.",
+  "key": "mult_3dx1d"
+ },
+ {
+  "year": 4,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "Distributive law",
+  "below": "With support.",
+  "meeting": "Solves problems multiplying and adding, incl. the distributive law (two-digit × one-digit).",
+  "exceeding": "Applies the distributive law flexibly.",
+  "key": "distributive"
+ },
+ {
+  "year": 4,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "Integer scaling",
+  "below": "With support.",
+  "meeting": "Solves integer scaling problems.",
+  "exceeding": "Reasons about scaling.",
+  "key": "scaling"
+ },
+ {
+  "year": 4,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "Correspondence",
+  "below": "With support.",
+  "meeting": "Solves harder correspondence problems (n objects to m objects).",
+  "exceeding": "Solves harder correspondence problems and explains.",
+  "key": "correspondence"
+ },
+ {
+  "year": 4,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Recognise and write",
+  "skill": "Hundredths",
+  "below": "Counts in hundredths with prompts.",
+  "meeting": "Counts in hundredths; knows hundredths arise from dividing by 100 and tenths by ten.",
+  "exceeding": "Relates tenths, hundredths and division and explains.",
+  "key": "count_hundredths"
+ },
+ {
+  "year": 4,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Compare",
+  "skill": "Common equivalent families",
+  "below": "With support.",
+  "meeting": "Recognises and shows families of common equivalent fractions using diagrams.",
+  "exceeding": "Generates equivalent fractions and reasons about the pattern.",
+  "key": "frac_equiv_family"
+ },
+ {
+  "year": 4,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Calculations",
+  "skill": "Add/subtract same denom.",
+  "below": "Adds with support.",
+  "meeting": "Adds and subtracts fractions with the same denominator.",
+  "exceeding": "Solves missing-number fraction calculations.",
+  "key": "frac_addsub_same"
+ },
+ {
+  "year": 4,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Solve problems",
+  "skill": "Quantities & dividing",
+  "below": "Finds simple fractions of quantities with support.",
+  "meeting": "Solves problems calculating and dividing quantities (incl. non-unit fractions, whole-number answers).",
+  "exceeding": "Solves multi-step fraction problems and reasons.",
+  "key": "frac_nonunit_set"
+ },
+ {
+  "year": 4,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Decimals: Recognise, write, compare",
+  "skill": "Tenths/hundredths equivalents",
+  "below": "With support.",
+  "meeting": "Recognises and writes decimal equivalents of any number of tenths or hundredths.",
+  "exceeding": "Reasons about decimal place value.",
+  "key": "dec_tenths_hundredths"
+ },
+ {
+  "year": 4,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Decimals: Recognise, write, compare",
+  "skill": "Equivalents to 1/4, 1/2, 3/4",
+  "below": "With support.",
+  "meeting": "Recognises and writes decimal equivalents to 1/4, 1/2 and 3/4.",
+  "exceeding": "Recalls and uses these equivalents fluently.",
+  "key": "dec_equiv_quarter"
+ },
+ {
+  "year": 4,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Decimals: Recognise, write, compare",
+  "skill": "Round 1 d.p. to whole",
+  "below": "With support.",
+  "meeting": "Rounds decimals with one decimal place to the nearest whole number.",
+  "exceeding": "Reasons about rounding decimals.",
+  "key": "round_dp1"
+ },
+ {
+  "year": 4,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Decimals: Recognise, write, compare",
+  "skill": "Compare to 2 d.p.",
+  "below": "With support.",
+  "meeting": "Compares numbers with the same number of decimal places up to two decimal places.",
+  "exceeding": "Orders decimals confidently.",
+  "key": "dec_compare"
+ },
+ {
+  "year": 4,
+  "topic": "Fractions, decimals & percentages",
+  "block": null,
+  "skill": "Measure/money problems",
+  "below": "With support.",
+  "meeting": "Solves simple measure and money problems involving fractions and decimals to 2 d.p.",
+  "exceeding": "Solves multi-step problems and explains.",
+  "key": "money_decimal"
+ },
+ {
+  "year": 4,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Convert units",
+  "below": "Converts simple units with support.",
+  "meeting": "Converts between different units of measure (e.g. km to m; hour to minute).",
+  "exceeding": "Converts confidently and solves multi-step problems.",
+  "key": "convert_metric"
+ },
+ {
+  "year": 4,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Estimate/compare/calculate",
+  "below": "With support.",
+  "meeting": "Estimates, compares and calculates different measures.",
+  "exceeding": "Reasons and solves multi-step problems.",
+  "key": null
+ },
+ {
+  "year": 4,
+  "topic": "Measurement",
+  "block": "Money",
+  "skill": "Money (£ and p)",
+  "below": "With support.",
+  "meeting": "Estimates, compares and calculates measures, including money in pounds and pence.",
+  "exceeding": "Solves multi-step money problems.",
+  "key": "money_problems"
+ },
+ {
+  "year": 4,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Analogue ↔ digital 12/24h",
+  "below": "With support.",
+  "meeting": "Reads, writes and converts time between analogue and digital 12/24-hour clocks.",
+  "exceeding": "Solves multi-step time problems across formats.",
+  "key": "y4_time_24hr"
+ },
+ {
+  "year": 4,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Time conversions",
+  "below": "With support.",
+  "meeting": "Solves problems converting hours→minutes, minutes→seconds, years→months, weeks→days.",
+  "exceeding": "Solves multi-step conversion problems.",
+  "key": "time_convert"
+ },
+ {
+  "year": 4,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "Perimeter of rectilinear",
+  "below": "Counts/calculates with support.",
+  "meeting": "Measures and calculates the perimeter of a rectilinear figure (incl. squares) in cm and m.",
+  "exceeding": "Finds missing lengths and reasons.",
+  "key": "perimeter_rect"
+ },
+ {
+  "year": 4,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "Area by counting squares",
+  "below": "Counts squares with support.",
+  "meeting": "Finds the area of rectilinear shapes by counting squares.",
+  "exceeding": "Reasons about area and relates to multiplication.",
+  "key": "area_count"
+ },
+ {
+  "year": 4,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Classify quad/triangles",
+  "below": "Classifies common shapes with support.",
+  "meeting": "Compares and classifies quadrilaterals and triangles based on properties and sizes.",
+  "exceeding": "Classifies by multiple properties and reasons.",
+  "key": null
+ },
+ {
+  "year": 4,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Lines of symmetry",
+  "below": "Finds a vertical line of symmetry.",
+  "meeting": "Identifies lines of symmetry in 2-D shapes in different orientations.",
+  "exceeding": "Finds symmetry in any orientation and reasons.",
+  "key": null
+ },
+ {
+  "year": 4,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Acute & obtuse",
+  "below": "With prompts.",
+  "meeting": "Identifies acute and obtuse angles; compares and orders angles up to two right angles.",
+  "exceeding": "Reasons about and orders angles accurately.",
+  "key": "y4_angle_type"
+ },
+ {
+  "year": 4,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Complete symmetric figure",
+  "below": "With support.",
+  "meeting": "Completes a simple symmetric figure with respect to a specific line of symmetry.",
+  "exceeding": "Completes symmetric figures accurately.",
+  "key": null
+ },
+ {
+  "year": 4,
+  "topic": "Geometry",
+  "block": "Position and direction",
+  "skill": "First-quadrant coordinates",
+  "below": "Plots points with support.",
+  "meeting": "Describes positions on a 2-D grid as coordinates in the first quadrant.",
+  "exceeding": "Uses coordinates accurately and predicts positions.",
+  "key": null
+ },
+ {
+  "year": 4,
+  "topic": "Geometry",
+  "block": "Position and direction",
+  "skill": "Translations",
+  "below": "With support.",
+  "meeting": "Describes movements between positions as translations (left/right, up/down).",
+  "exceeding": "Describes translations precisely.",
+  "key": null
+ },
+ {
+  "year": 4,
+  "topic": "Geometry",
+  "block": "Position and direction",
+  "skill": "Plot & complete polygon",
+  "below": "With support.",
+  "meeting": "Plots specified points and draws sides to complete a polygon.",
+  "exceeding": "Plots accurately and completes polygons.",
+  "key": null
+ },
+ {
+  "year": 4,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Bar charts",
+  "below": "Reads bar charts with support.",
+  "meeting": "Interprets and presents discrete and continuous data using bar charts.",
+  "exceeding": "Chooses scale and constructs accurately.",
+  "key": "stats_one_step"
+ },
+ {
+  "year": 4,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Time graphs",
+  "below": "Reads time graphs with support.",
+  "meeting": "Interprets and presents data using time graphs.",
+  "exceeding": "Interprets and constructs time graphs.",
+  "key": null
+ },
+ {
+  "year": 4,
+  "topic": "Statistics",
+  "block": "Solve statistical problems",
+  "skill": "Comparison/sum/difference",
+  "below": "With support.",
+  "meeting": "Solves comparison, sum and difference problems using bar charts, pictograms, tables and other graphs.",
+  "exceeding": "Solves multi-step data problems and reasons.",
+  "key": "stats_two_step"
+ },
+ {
+  "year": 5,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Powers of 10 to 1,000,000",
+  "below": "Counts in powers of 10 with support.",
+  "meeting": "Counts forwards/backwards in steps of powers of 10 for any number up to 1,000,000.",
+  "exceeding": "Reasons about the effect of adding/subtracting powers of 10.",
+  "key": "count_powers10"
+ },
+ {
+  "year": 5,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Read/write/value to 1,000,000",
+  "below": "With support.",
+  "meeting": "Reads, writes and determines the value of each digit to at least 1,000,000.",
+  "exceeding": "Represents large numbers several ways and explains digit values.",
+  "key": "place_1m"
+ },
+ {
+  "year": 5,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Roman numerals to 1000",
+  "below": "With support.",
+  "meeting": "Reads Roman numerals to 1000 (M) and recognises years written in Roman numerals.",
+  "exceeding": "Reads Roman numerals fluently and reasons.",
+  "key": "roman_to_1000"
+ },
+ {
+  "year": 5,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "Order & compare to 1,000,000",
+  "below": "With support.",
+  "meeting": "Orders and compares numbers to at least 1,000,000.",
+  "exceeding": "Reasons about ordering of large numbers.",
+  "key": "compare_big"
+ },
+ {
+  "year": 5,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Interpret negatives",
+  "below": "With support.",
+  "meeting": "Interprets negative numbers in context.",
+  "exceeding": "Reasons about negatives and intervals.",
+  "key": "neg_intervals"
+ },
+ {
+  "year": 5,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Round (10 to 100,000)",
+  "below": "Rounds to 10/100 with prompts.",
+  "meeting": "Rounds any number up to 1,000,000 to the nearest 10, 100, 1000, 10,000 and 100,000.",
+  "exceeding": "Reasons about rounding at any scale.",
+  "key": "round_multi"
+ },
+ {
+  "year": 5,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Solve problems",
+  "below": "Simple problems with support.",
+  "meeting": "Solves number and practical problems involving all of the above.",
+  "exceeding": "Solves multi-step problems and explains.",
+  "key": "word_two_step"
+ },
+ {
+  "year": 5,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "Formal ± (>4 digits)",
+  "below": "Method insecure with larger numbers.",
+  "meeting": "Adds and subtracts whole numbers with more than 4 digits using formal written methods.",
+  "exceeding": "Calculates fluently and checks with estimation/inverse.",
+  "key": "formal_addsub_5d"
+ },
+ {
+  "year": 5,
+  "topic": "Addition & subtraction",
+  "block": "Calculations",
+  "skill": "Mental ± (large numbers)",
+  "below": "With support.",
+  "meeting": "Adds and subtracts numbers mentally with increasingly large numbers.",
+  "exceeding": "Selects efficient mental strategies.",
+  "key": "mental_addsub_large"
+ },
+ {
+  "year": 5,
+  "topic": "Addition & subtraction",
+  "block": "Problems",
+  "skill": "Multi-step problems",
+  "below": "Solves one/two-step problems.",
+  "meeting": "Solves multi-step problems in context, deciding operations and methods.",
+  "exceeding": "Solves complex multi-step problems and justifies.",
+  "key": "word_multi_step"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Multiples, factors, common factors",
+  "below": "With support.",
+  "meeting": "Identifies multiples and factors, incl. all factor pairs and common factors of two numbers.",
+  "exceeding": "Reasons with factors and common factors.",
+  "key": "common_factors"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Prime/composite vocabulary",
+  "below": "With support.",
+  "meeting": "Knows and uses the vocabulary of prime numbers, prime factors and composite numbers.",
+  "exceeding": "Reasons about prime factorisation.",
+  "key": "prime_vocab"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Primes (test to 100, recall to 19)",
+  "below": "Recalls some primes.",
+  "meeting": "Establishes whether a number up to 100 is prime; recalls primes up to 19.",
+  "exceeding": "Tests primality efficiently and explains.",
+  "key": "primes_test"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Square numbers",
+  "below": "With support.",
+  "meeting": "Recognises and uses square numbers and the notation ².",
+  "exceeding": "Reasons with square numbers.",
+  "key": "square_numbers"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Recall / Use",
+  "skill": "Cube numbers",
+  "below": "With support.",
+  "meeting": "Recognises and uses cube numbers and the notation ³.",
+  "exceeding": "Reasons with cube numbers.",
+  "key": "cube_numbers"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Calculations",
+  "skill": "Long multiplication",
+  "below": "With support.",
+  "meeting": "Multiplies numbers up to 4 digits by a one- or two-digit number (incl. long multiplication).",
+  "exceeding": "Uses the method fluently and checks.",
+  "key": "long_mult"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Calculations",
+  "skill": "Mental ×/÷",
+  "below": "With support.",
+  "meeting": "Multiplies and divides numbers mentally drawing upon known facts.",
+  "exceeding": "Selects efficient strategies.",
+  "key": "mental_md"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Calculations",
+  "skill": "Short division + remainders",
+  "below": "With support.",
+  "meeting": "Divides up to 4 digits by a one-digit number (short division), interpreting remainders.",
+  "exceeding": "Interprets remainders in context.",
+  "key": "short_div"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Calculations",
+  "skill": "×÷ by 10/100/1000",
+  "below": "With support.",
+  "meeting": "Multiplies and divides whole numbers and decimals by 10, 100 and 1000.",
+  "exceeding": "Reasons about place-value shifts.",
+  "key": "md_10_100_1000"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Problems",
+  "skill": "Factors/multiples/squares/cubes",
+  "below": "Simple problems with support.",
+  "meeting": "Solves ×/÷ problems using knowledge of factors, multiples, squares and cubes.",
+  "exceeding": "Solves multi-step problems and reasons.",
+  "key": "square_numbers"
+ },
+ {
+  "year": 5,
+  "topic": "Multiplication & division",
+  "block": "Combined",
+  "skill": "Four operations & =",
+  "below": "With support.",
+  "meeting": "Solves problems with +, −, × and ÷ combined, understanding the meaning of =.",
+  "exceeding": "Solves multi-step combined problems and explains order.",
+  "key": "four_ops"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Recognise and write",
+  "skill": "Equivalent fractions",
+  "below": "With support.",
+  "meeting": "Identifies, names and writes equivalent fractions (incl. tenths and hundredths).",
+  "exceeding": "Reasons about equivalence fluently.",
+  "key": "frac_equiv_family"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Recognise and write",
+  "skill": "Mixed ↔ improper",
+  "below": "Converts with support.",
+  "meeting": "Recognises mixed numbers and improper fractions and converts between them; writes statements > 1 as mixed numbers.",
+  "exceeding": "Converts fluently both ways and reasons.",
+  "key": "mixed_improper"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Compare",
+  "skill": "Compare & order",
+  "below": "With support.",
+  "meeting": "Compares and orders fractions whose denominators are multiples of the same number.",
+  "exceeding": "Compares a wider range of fractions by reasoning.",
+  "key": "frac_compare"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Calculations",
+  "skill": "Add/subtract (related denom.)",
+  "below": "With support.",
+  "meeting": "Adds and subtracts fractions with the same denominator and denominators that are multiples of the same number.",
+  "exceeding": "Calculates fluently and solves missing-number problems.",
+  "key": "frac_addsub_related"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Calculations",
+  "skill": "× by whole numbers",
+  "below": "With support.",
+  "meeting": "Multiplies proper fractions and mixed numbers by whole numbers (with materials/diagrams).",
+  "exceeding": "Multiplies fluently and reasons.",
+  "key": "frac_mult_whole"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Decimals: Recognise, write, compare",
+  "skill": "Decimals as fractions",
+  "below": "With support.",
+  "meeting": "Reads and writes decimal numbers as fractions (e.g. 0.71 = 71/100).",
+  "exceeding": "Reasons about the relationship.",
+  "key": "dec_as_fraction"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Decimals: Recognise, write, compare",
+  "skill": "Thousandths",
+  "below": "With support.",
+  "meeting": "Recognises and uses thousandths and relates them to tenths, hundredths and decimal equivalents.",
+  "exceeding": "Reasons about thousandths.",
+  "key": "dec_thousandths"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Decimals: Recognise, write, compare",
+  "skill": "Round 2 d.p.",
+  "below": "With support.",
+  "meeting": "Rounds decimals with two decimal places to the nearest whole number and to one decimal place.",
+  "exceeding": "Reasons about rounding decimals.",
+  "key": "round_dp2"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Decimals: Recognise, write, compare",
+  "skill": "Order/compare to 3 d.p.",
+  "below": "With support.",
+  "meeting": "Reads, writes, orders and compares numbers with up to three decimal places.",
+  "exceeding": "Orders decimals to 3 d.p. confidently.",
+  "key": "dec_order_3dp"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": null,
+  "skill": "Understand %",
+  "below": "With support.",
+  "meeting": "Understands % as parts per hundred; writes percentages as a fraction (denom. 100) and a decimal.",
+  "exceeding": "Reasons across FDP equivalents.",
+  "key": "percent_understand"
+ },
+ {
+  "year": 5,
+  "topic": "Fractions, decimals & percentages",
+  "block": null,
+  "skill": "% / decimal equivalents",
+  "below": "With support.",
+  "meeting": "Solves problems using percentage and decimal equivalents of common fractions.",
+  "exceeding": "Solves problems in unfamiliar contexts.",
+  "key": "fdp_equiv"
+ },
+ {
+  "year": 5,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Convert metric units",
+  "below": "With support.",
+  "meeting": "Converts between different units of metric measure.",
+  "exceeding": "Converts confidently and reasons.",
+  "key": "convert_metric"
+ },
+ {
+  "year": 5,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Metric ↔ imperial",
+  "below": "With support.",
+  "meeting": "Uses approximate equivalences between metric and common imperial units (inches, pounds, pints).",
+  "exceeding": "Estimates equivalences confidently.",
+  "key": "convert_miles_km"
+ },
+ {
+  "year": 5,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Four operations with measures",
+  "below": "With support.",
+  "meeting": "Uses all four operations to solve measure problems using decimal notation, incl. scaling.",
+  "exceeding": "Solves multi-step problems with scaling.",
+  "key": "measure_decimal"
+ },
+ {
+  "year": 5,
+  "topic": "Measurement",
+  "block": "Money",
+  "skill": "Money problems",
+  "below": "With support.",
+  "meeting": "Uses all four operations to solve problems involving money.",
+  "exceeding": "Solves multi-step money problems.",
+  "key": "money_problems"
+ },
+ {
+  "year": 5,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Convert units of time",
+  "below": "With support.",
+  "meeting": "Solves problems involving converting between units of time.",
+  "exceeding": "Solves multi-step time-conversion problems.",
+  "key": "time_convert"
+ },
+ {
+  "year": 5,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "Perimeter of composite shapes",
+  "below": "With support.",
+  "meeting": "Measures and calculates the perimeter of composite rectilinear shapes.",
+  "exceeding": "Finds missing lengths and reasons.",
+  "key": "perimeter_rect"
+ },
+ {
+  "year": 5,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "Area of rectangles + irregular",
+  "below": "With support.",
+  "meeting": "Calculates and compares the area of rectangles (cm²/m²); estimates the area of irregular shapes.",
+  "exceeding": "Reasons about area and estimates well.",
+  "key": "area_rect"
+ },
+ {
+  "year": 5,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "Estimate volume/capacity",
+  "below": "With support.",
+  "meeting": "Estimates volume and capacity.",
+  "exceeding": "Estimates and compares volumes and reasons.",
+  "key": null
+ },
+ {
+  "year": 5,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Regular/irregular polygons",
+  "below": "With support.",
+  "meeting": "Distinguishes regular and irregular polygons by reasoning about sides and angles.",
+  "exceeding": "Reasons about properties to deduce facts.",
+  "key": "y3_name_polygon"
+ },
+ {
+  "year": 5,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Rectangle properties",
+  "below": "With support.",
+  "meeting": "Uses the properties of rectangles to find missing lengths and angles.",
+  "exceeding": "Deduces a chain of related facts.",
+  "key": null
+ },
+ {
+  "year": 5,
+  "topic": "Geometry",
+  "block": "3-D shapes",
+  "skill": "3-D from 2-D",
+  "below": "With support.",
+  "meeting": "Identifies 3-D shapes, incl. cubes and other cuboids, from 2-D representations.",
+  "exceeding": "Visualises and reasons from different views.",
+  "key": "y2_3d_properties"
+ },
+ {
+  "year": 5,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Acute/obtuse/reflex",
+  "below": "With support.",
+  "meeting": "Knows angles are in degrees; estimates and compares acute, obtuse and reflex angles.",
+  "exceeding": "Estimates accurately and reasons.",
+  "key": "y5_angle_facts"
+ },
+ {
+  "year": 5,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Draw & measure",
+  "below": "With support.",
+  "meeting": "Draws given angles and measures them in degrees.",
+  "exceeding": "Draws and measures accurately.",
+  "key": null
+ },
+ {
+  "year": 5,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Angles at point/line",
+  "below": "With support.",
+  "meeting": "Identifies angles at a point (360°), on a straight line (180°) and other multiples of 90°.",
+  "exceeding": "Uses these facts to find missing angles.",
+  "key": "y5_angle_facts"
+ },
+ {
+  "year": 5,
+  "topic": "Geometry",
+  "block": "Position and direction",
+  "skill": "Reflection/translation",
+  "below": "With support.",
+  "meeting": "Identifies, describes and represents position after a reflection or translation; knows the shape is unchanged.",
+  "exceeding": "Describes precisely and predicts the image.",
+  "key": null
+ },
+ {
+  "year": 5,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Tables & timetables",
+  "below": "With support.",
+  "meeting": "Completes, reads and interprets information in tables, including timetables.",
+  "exceeding": "Interprets timetables to solve problems.",
+  "key": "stats_table"
+ },
+ {
+  "year": 5,
+  "topic": "Statistics",
+  "block": "Solve statistical problems",
+  "skill": "Line graph problems",
+  "below": "Reads line graphs with support.",
+  "meeting": "Solves comparison, sum and difference problems using a line graph.",
+  "exceeding": "Solves multi-step problems and reasons.",
+  "key": "stats_two_step"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Count",
+  "skill": "Positive & negative through zero",
+  "below": "Counts through zero with support.",
+  "meeting": "Counts forwards and backwards with positive and negative whole numbers, including through zero.",
+  "exceeding": "Reasons about intervals across zero and predicts terms.",
+  "key": "count_neg_through0"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Represent",
+  "skill": "Read/write/value to 10,000,000",
+  "below": "With support.",
+  "meeting": "Reads, writes and determines the value of each digit up to 10,000,000.",
+  "exceeding": "Represents very large numbers several ways and explains.",
+  "key": "place_10m"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Use and compare",
+  "skill": "Order & compare to 10,000,000",
+  "below": "With support.",
+  "meeting": "Orders and compares numbers up to 10,000,000.",
+  "exceeding": "Reasons about ordering of very large numbers.",
+  "key": "compare_10m"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Round to required accuracy",
+  "below": "Rounds with prompts.",
+  "meeting": "Rounds any whole number to a required degree of accuracy.",
+  "exceeding": "Reasons about accuracy and rounding.",
+  "key": "round_accuracy"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Negatives & intervals",
+  "below": "With support.",
+  "meeting": "Uses negative numbers in context and calculates intervals across zero.",
+  "exceeding": "Calculates intervals confidently and reasons.",
+  "key": "neg_intervals"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Problems / Rounding",
+  "skill": "Solve problems",
+  "below": "Simple problems with support.",
+  "meeting": "Solves number and practical problems involving all of the above.",
+  "exceeding": "Solves multi-step problems and explains.",
+  "key": "word_two_step"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Recall / Use",
+  "skill": "Common factors/multiples/primes",
+  "below": "With support.",
+  "meeting": "Identifies common factors, common multiples and prime numbers.",
+  "exceeding": "Reasons with factors, multiples and primes.",
+  "key": "common_factors"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Recall / Use",
+  "skill": "Estimate & appropriate accuracy",
+  "below": "Estimates with prompts.",
+  "meeting": "Uses estimation to check answers and determine an appropriate degree of accuracy.",
+  "exceeding": "Judges sensible accuracy and checks efficiently.",
+  "key": "estimate_calc"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Calculations",
+  "skill": "Long multiplication",
+  "below": "Method insecure.",
+  "meeting": "Multiplies 4-digit numbers by a two-digit number using long multiplication.",
+  "exceeding": "Uses the method fluently and checks.",
+  "key": "long_mult"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Calculations",
+  "skill": "Long division + remainders",
+  "below": "Method insecure.",
+  "meeting": "Divides 4-digit numbers by a two-digit number using long division, interpreting remainders.",
+  "exceeding": "Interprets remainders flexibly (whole/fraction/rounding).",
+  "key": "long_div"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Calculations",
+  "skill": "Short division",
+  "below": "With support.",
+  "meeting": "Divides 4-digit numbers by a two-digit number using short division where appropriate.",
+  "exceeding": "Chooses the most efficient method.",
+  "key": "short_div_2digit"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Calculations",
+  "skill": "Mental (mixed operations)",
+  "below": "With support.",
+  "meeting": "Performs mental calculations with mixed operations and large numbers.",
+  "exceeding": "Calculates fluently and explains.",
+  "key": "mental_addsub_large"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Problems",
+  "skill": "Four-operation problems",
+  "below": "Single-operation problems with support.",
+  "meeting": "Solves problems involving addition, subtraction, multiplication and division.",
+  "exceeding": "Solves multi-step problems and chooses efficient methods.",
+  "key": "four_ops"
+ },
+ {
+  "year": 6,
+  "topic": "Place value",
+  "block": "Combined",
+  "skill": "Order of operations",
+  "below": "With support.",
+  "meeting": "Uses the order of operations to carry out calculations involving the four operations.",
+  "exceeding": "Applies the order of operations fluently and explains.",
+  "key": "order_of_operations"
+ },
+ {
+  "year": 6,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Compare",
+  "skill": "Simplify (common factors)",
+  "below": "With support.",
+  "meeting": "Uses common factors to simplify fractions.",
+  "exceeding": "Simplifies fluently and reasons.",
+  "key": "frac_simplify"
+ },
+ {
+  "year": 6,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Compare",
+  "skill": "Common denomination",
+  "below": "With support.",
+  "meeting": "Uses common multiples to express fractions in the same denomination.",
+  "exceeding": "Finds common denominators efficiently.",
+  "key": "frac_common_denom"
+ },
+ {
+  "year": 6,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Compare",
+  "skill": "Compare & order (incl. > 1)",
+  "below": "With support.",
+  "meeting": "Compares and orders fractions, including fractions > 1.",
+  "exceeding": "Orders a wide range of fractions by reasoning.",
+  "key": "frac_compare"
+ },
+ {
+  "year": 6,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Calculations",
+  "skill": "Add/subtract different denom.",
+  "below": "With support.",
+  "meeting": "Adds and subtracts fractions with different denominators and mixed numbers.",
+  "exceeding": "Calculates fluently and explains.",
+  "key": "frac_addsub_diff"
+ },
+ {
+  "year": 6,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Calculations",
+  "skill": "× pairs of proper fractions",
+  "below": "With support.",
+  "meeting": "Multiplies pairs of proper fractions, writing the answer in its simplest form.",
+  "exceeding": "Multiplies fluently and simplifies.",
+  "key": "frac_mult_pair"
+ },
+ {
+  "year": 6,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Fractions: Calculations",
+  "skill": "÷ proper fraction by whole",
+  "below": "With support.",
+  "meeting": "Divides proper fractions by whole numbers.",
+  "exceeding": "Divides fluently and reasons.",
+  "key": "frac_div_whole"
+ },
+ {
+  "year": 6,
+  "topic": "Fractions, decimals & percentages",
+  "block": "Decimals: Recognise, write, compare",
+  "skill": "Digit value to 3 d.p.",
+  "below": "With support.",
+  "meeting": "Identifies the value of each digit in numbers given to three decimal places.",
+  "exceeding": "Reasons about decimal place value to 3 d.p.",
+  "key": "digit_value_3dp"
+ },
+ {
+  "year": 6,
+  "topic": "Fractions, decimals & percentages",
+  "block": null,
+  "skill": "Fraction → decimal",
+  "below": "With support.",
+  "meeting": "Associates a fraction with division and calculates decimal equivalents (e.g. 0.375).",
+  "exceeding": "Calculates equivalents fluently.",
+  "key": "fraction_to_decimal"
+ },
+ {
+  "year": 6,
+  "topic": "Fractions, decimals & percentages",
+  "block": null,
+  "skill": "FDP equivalences",
+  "below": "With prompts.",
+  "meeting": "Recalls and uses equivalences between fractions, decimals and percentages in different contexts.",
+  "exceeding": "Moves fluently between FDP and reasons.",
+  "key": "fdp_equiv"
+ },
+ {
+  "year": 6,
+  "topic": "Ratio and proportion",
+  "block": null,
+  "skill": "Relative sizes (integer ×÷)",
+  "below": "With support.",
+  "meeting": "Solves problems involving relative sizes using integer multiplication and division.",
+  "exceeding": "Reasons proportionally and solves multi-step problems.",
+  "key": "ratio_relative"
+ },
+ {
+  "year": 6,
+  "topic": "Ratio and proportion",
+  "block": null,
+  "skill": "Percentages for comparison",
+  "below": "With support.",
+  "meeting": "Solves problems involving the calculation/use of percentages for comparison.",
+  "exceeding": "Solves multi-step percentage problems.",
+  "key": "ratio_percent"
+ },
+ {
+  "year": 6,
+  "topic": "Ratio and proportion",
+  "block": null,
+  "skill": "Similar shapes / scale factor",
+  "below": "With support.",
+  "meeting": "Solves problems involving similar shapes where the scale factor is known or can be found.",
+  "exceeding": "Finds and applies scale factors and reasons.",
+  "key": "scale_factor"
+ },
+ {
+  "year": 6,
+  "topic": "Ratio and proportion",
+  "block": null,
+  "skill": "Unequal sharing/grouping",
+  "below": "With support.",
+  "meeting": "Solves problems involving unequal sharing and grouping using fractions and multiples.",
+  "exceeding": "Solves multi-step sharing problems and explains.",
+  "key": "unequal_sharing"
+ },
+ {
+  "year": 6,
+  "topic": "Algebra",
+  "block": null,
+  "skill": "Simple formulae",
+  "below": "Uses a formula with support.",
+  "meeting": "Uses simple formulae.",
+  "exceeding": "Applies and rearranges simple formulae.",
+  "key": "simple_formula"
+ },
+ {
+  "year": 6,
+  "topic": "Algebra",
+  "block": null,
+  "skill": "Linear sequences",
+  "below": "Continues sequences with support.",
+  "meeting": "Generates and describes linear number sequences.",
+  "exceeding": "Describes the rule and generalises.",
+  "key": "linear_sequence"
+ },
+ {
+  "year": 6,
+  "topic": "Algebra",
+  "block": null,
+  "skill": "Express algebraically",
+  "below": "With support.",
+  "meeting": "Expresses missing-number problems algebraically.",
+  "exceeding": "Expresses and solves algebraically.",
+  "key": "express_algebra"
+ },
+ {
+  "year": 6,
+  "topic": "Algebra",
+  "block": null,
+  "skill": "Two unknowns",
+  "below": "With support.",
+  "meeting": "Finds pairs of numbers that satisfy an equation with two unknowns.",
+  "exceeding": "Works systematically through possibilities.",
+  "key": "two_unknowns"
+ },
+ {
+  "year": 6,
+  "topic": "Algebra",
+  "block": null,
+  "skill": "Enumerate combinations",
+  "below": "With support.",
+  "meeting": "Enumerates possibilities of combinations of two variables.",
+  "exceeding": "Lists all combinations systematically and reasons.",
+  "key": "enumerate_combos"
+ },
+ {
+  "year": 6,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Calculate & convert (3 d.p.)",
+  "below": "With support.",
+  "meeting": "Solves problems calculating and converting units of measure (decimal notation to 3 d.p.).",
+  "exceeding": "Converts confidently and solves multi-step problems.",
+  "key": "measure_decimal"
+ },
+ {
+  "year": 6,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Convert standard units",
+  "below": "With support.",
+  "meeting": "Converts between standard units (length, mass, volume, time), smaller ↔ larger.",
+  "exceeding": "Converts fluently and reasons.",
+  "key": "convert_metric"
+ },
+ {
+  "year": 6,
+  "topic": "Measurement",
+  "block": "Using measures",
+  "skill": "Miles ↔ kilometres",
+  "below": "With support.",
+  "meeting": "Converts between miles and kilometres.",
+  "exceeding": "Converts confidently and estimates.",
+  "key": "convert_miles_km"
+ },
+ {
+  "year": 6,
+  "topic": "Measurement",
+  "block": "Time",
+  "skill": "Convert time units",
+  "below": "With support.",
+  "meeting": "Converts time between standard units (smaller ↔ larger). (WRM: mainly Y5.)",
+  "exceeding": "Solves multi-step problems combining time and measure.",
+  "key": "y6_time_convert"
+ },
+ {
+  "year": 6,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "Same area ≠ same perimeter",
+  "below": "With support.",
+  "meeting": "Recognises that shapes with the same area can have different perimeters and vice versa.",
+  "exceeding": "Reasons about area and perimeter relationships.",
+  "key": null
+ },
+ {
+  "year": 6,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "When to use formulae",
+  "below": "With support.",
+  "meeting": "Recognises when it is possible to use formulae for area and volume.",
+  "exceeding": "Selects and justifies the correct formula.",
+  "key": null
+ },
+ {
+  "year": 6,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "Area of parallelograms/triangles",
+  "below": "With support.",
+  "meeting": "Calculates the area of parallelograms and triangles.",
+  "exceeding": "Calculates fluently and solves problems.",
+  "key": "area_tri_para"
+ },
+ {
+  "year": 6,
+  "topic": "Measurement",
+  "block": "Perimeter, area, volume",
+  "skill": "Volume of cubes/cuboids",
+  "below": "With support.",
+  "meeting": "Calculates, estimates and compares the volume of cubes and cuboids (cm³/m³).",
+  "exceeding": "Reasons about volume and solves problems.",
+  "key": "volume_cuboid"
+ },
+ {
+  "year": 6,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Draw from dimensions/angles",
+  "below": "With support.",
+  "meeting": "Draws 2-D shapes using given dimensions and angles.",
+  "exceeding": "Draws accurately and reasons about properties.",
+  "key": null
+ },
+ {
+  "year": 6,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Classify shapes",
+  "below": "With support.",
+  "meeting": "Compares and classifies geometric shapes based on properties and sizes.",
+  "exceeding": "Classifies by multiple properties and reasons.",
+  "key": null
+ },
+ {
+  "year": 6,
+  "topic": "Geometry",
+  "block": "2-D shapes",
+  "skill": "Parts of circles",
+  "below": "Names parts with support.",
+  "meeting": "Illustrates and names parts of circles (radius, diameter, circumference); knows diameter = 2 × radius.",
+  "exceeding": "Reasons about circle relationships.",
+  "key": "y6_circle_parts"
+ },
+ {
+  "year": 6,
+  "topic": "Geometry",
+  "block": "3-D shapes",
+  "skill": "Build shapes & nets",
+  "below": "With support.",
+  "meeting": "Recognises, describes and builds simple 3-D shapes, including making nets.",
+  "exceeding": "Visualises nets and reasons about which fold into a solid.",
+  "key": null
+ },
+ {
+  "year": 6,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Angles in shapes",
+  "below": "With support.",
+  "meeting": "Finds unknown angles in triangles, quadrilaterals and regular polygons.",
+  "exceeding": "Solves multi-step angle problems.",
+  "key": "y6_angle_missing"
+ },
+ {
+  "year": 6,
+  "topic": "Geometry",
+  "block": "Angles and lines",
+  "skill": "Point/line/vertically opposite",
+  "below": "With support.",
+  "meeting": "Recognises angles at a point, on a straight line and vertically opposite, and finds missing angles.",
+  "exceeding": "Uses angle facts to reason through problems.",
+  "key": "y6_angle_point_line"
+ },
+ {
+  "year": 6,
+  "topic": "Geometry",
+  "block": "Position and direction",
+  "skill": "Four quadrants",
+  "below": "Works in the first quadrant with support.",
+  "meeting": "Describes positions on the full coordinate grid (all four quadrants).",
+  "exceeding": "Works accurately across all quadrants.",
+  "key": null
+ },
+ {
+  "year": 6,
+  "topic": "Geometry",
+  "block": "Position and direction",
+  "skill": "Translate & reflect",
+  "below": "With support.",
+  "meeting": "Draws and translates simple shapes on the coordinate plane and reflects them in the axes.",
+  "exceeding": "Predicts images of transformations.",
+  "key": null
+ },
+ {
+  "year": 6,
+  "topic": "Statistics",
+  "block": "Present and interpret data",
+  "skill": "Pie charts & line graphs",
+  "below": "Reads them with support.",
+  "meeting": "Interprets and constructs pie charts and line graphs and uses them to solve problems.",
+  "exceeding": "Constructs accurately and solves multi-step problems.",
+  "key": null
+ },
+ {
+  "year": 6,
+  "topic": "Statistics",
+  "block": "Solve statistical problems",
+  "skill": "Mean as an average",
+  "below": "Calculates the mean with support.",
+  "meeting": "Calculates and interprets the mean as an average.",
+  "exceeding": "Chooses and justifies an appropriate average.",
+  "key": "stats_mean"
+ }
+]
