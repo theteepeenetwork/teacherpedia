@@ -68,6 +68,12 @@
       background: #fbf3d6; color: #8a6d2b; font-size: 12px; font-weight: 600; line-height: 1.4;
     }
 
+    /* Visual question media (clock faces, shapes, angles) rendered under the
+       question caption. block + margin so the SVG sits on its own line. */
+    .sheet-qvisual { display: block; margin: 7px 0 2px; line-height: 0; }
+    .sheet-qvisual svg { display: inline-block; vertical-align: top; }
+    .tp-clock, .tp-shape, .tp-angle { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
     /* Regenerate spin polish */
     @keyframes build-spin { to { transform: rotate(360deg); } }
     .build-spinning { animation: build-spin .5s linear; }

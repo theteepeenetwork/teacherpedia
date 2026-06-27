@@ -368,6 +368,232 @@
     return { qtn: `Estimate by rounding to the nearest 100:  ${fmt(a)} + ${fmt(b)} ≈`, ans: fmt(ra + rb) };
   };
 
+  /* =========================================================================
+     VISUAL STRANDS — Time & Geometry (Shape)
+     -------------------------------------------------------------------------
+     These generators return a `qhtml` field (an inline SVG string) ALONGSIDE
+     the usual { qtn, ans }. The worksheet renderer draws qhtml under the
+     question caption; tools that only want text simply ignore it. Curriculum
+     bands (Below / Meeting / Exceeding) reach these via the difficulty arg
+     (2 = below, 3 = meeting, 4 = exceeding) so e.g. Y2 clocks read to the
+     nearest 5 minutes at Meeting but stay on o'clock / half past at Below.
+     ====================================================================== */
+
+  // ---- Time helpers -------------------------------------------------------
+  // h is 1..12, m is 0..59. Words follow UK primary phrasing.
+  const timeWords = (h, m) => {
+    const h12 = ((h + 11) % 12) + 1;          // keep 12 as 12
+    const next = (h12 % 12) + 1;
+    if (m === 0) return `${h12} o'clock`;
+    if (m === 15) return `quarter past ${h12}`;
+    if (m === 30) return `half past ${h12}`;
+    if (m === 45) return `quarter to ${next}`;
+    if (m < 30) return `${m} minute${m === 1 ? '' : 's'} past ${h12}`;
+    return `${60 - m} minute${60 - m === 1 ? '' : 's'} to ${next}`;
+  };
+  const digital = (h, m) => `${h}:${String(m).padStart(2, '0')}`;
+  const digital24 = (h24, m) => `${String(h24).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+
+  // Analogue clock face as inline SVG. roman=true draws Roman numerals (Y3+).
+  const clockSVG = (h, m, roman) => {
+    const S = 92, c = S / 2, r = c - 3;
+    const romans = ['XII', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
+    const pt = (ang, rad) => [c + rad * Math.cos((ang - 90) * Math.PI / 180), c + rad * Math.sin((ang - 90) * Math.PI / 180)];
+    let s = `<circle cx="${c}" cy="${c}" r="${r}" fill="#fff" stroke="#26302a" stroke-width="2"/>`;
+    for (let i = 0; i < 12; i++) {
+      const [x1, y1] = pt(i * 30, r - 2), [x2, y2] = pt(i * 30, r - (i % 3 ? 4 : 7));
+      s += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#9aa096" stroke-width="${i % 3 ? 1 : 2}"/>`;
+    }
+    for (let n = 1; n <= 12; n++) {
+      const [x, y] = pt(n * 30, r - 13);
+      s += `<text x="${x.toFixed(1)}" y="${(y + 3.3).toFixed(1)}" font-size="9.5" text-anchor="middle" fill="#26302a" font-family="Georgia,serif">${roman ? romans[n % 12] : n}</text>`;
+    }
+    const ha = ((h % 12) + m / 60) * 30, ma = m * 6;
+    const [hx, hy] = pt(ha, r * 0.5), [mx, my] = pt(ma, r * 0.78);
+    s += `<line x1="${c}" y1="${c}" x2="${hx.toFixed(1)}" y2="${hy.toFixed(1)}" stroke="#26302a" stroke-width="3.4" stroke-linecap="round"/>`;
+    s += `<line x1="${c}" y1="${c}" x2="${mx.toFixed(1)}" y2="${my.toFixed(1)}" stroke="#1f8a4d" stroke-width="2.2" stroke-linecap="round"/>`;
+    s += `<circle cx="${c}" cy="${c}" r="2.6" fill="#26302a"/>`;
+    return `<svg class="tp-clock" width="${S}" height="${S}" viewBox="0 0 ${S} ${S}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="clock face">${s}</svg>`;
+  };
+
+  // ---- Time generators ----------------------------------------------------
+  // Y1: o'clock & half past (read the drawn clock).
+  G.y1_time_oclock = (d) => {
+    const h = ri(1, 12);
+    const m = (d <= 2) ? 0 : pick([0, 30]);     // Below: o'clock only
+    return { qtn: 'What time is shown on the clock?', qhtml: clockSVG(h, m, false), ans: timeWords(h, m) };
+  };
+  // Y2: to five minutes incl. quarter past / to.
+  G.y2_time_5min = (d) => {
+    const h = ri(1, 12);
+    const choices = (d <= 2) ? [0, 15, 30, 45] : [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+    const m = pick(choices);
+    return { qtn: 'What time is shown on the clock?', qhtml: clockSVG(h, m, false), ans: timeWords(h, m) };
+  };
+  // Y3: read analogue to the minute (Roman numerals appear at Meeting+).
+  G.y3_time_minute = (d) => {
+    const h = ri(1, 12);
+    const m = (d <= 2) ? pick([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]) : ri(1, 59);
+    const roman = d >= 3 && pick([true, false]);
+    return { qtn: 'Write the time shown in digital (hh:mm).', qhtml: clockSVG(h, m, roman), ans: digital(h, m) };
+  };
+  // Y4: convert analogue / 12-hour to 24-hour digital.
+  G.y4_time_24hr = () => {
+    const h = ri(1, 12), m = pick([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]);
+    const pm = pick([true, false]);
+    const h24 = pm ? (h === 12 ? 12 : h + 12) : (h === 12 ? 0 : h);
+    const ampm = pm ? 'pm' : 'am';
+    return { qtn: `Write ${digital(h, m)} ${ampm} as a 24-hour time.`, ans: digital24(h24, m) };
+  };
+  // Y5 / Y6: convert between units of time.
+  G.y5_time_convert = () => {
+    const kind = pick([
+      () => { const h = ri(2, 6); return { qtn: `How many minutes are there in ${h} hours?`, ans: fmt(h * 60) }; },
+      () => { const m = ri(2, 8) * 30; return { qtn: `How many hours and minutes is ${m} minutes? (write as h hr m min)`, ans: `${Math.floor(m / 60)} hr ${m % 60} min` }; },
+      () => { const w = ri(2, 8); return { qtn: `How many days are there in ${w} weeks?`, ans: fmt(w * 7) }; },
+      () => { const y = ri(2, 6); return { qtn: `How many months are there in ${y} years?`, ans: fmt(y * 12) }; },
+      () => { const m = ri(2, 6); return { qtn: `How many seconds are there in ${m} minutes?`, ans: fmt(m * 60) }; },
+    ]);
+    return kind();
+  };
+  G.y6_time_convert = () => {
+    const kind = pick([
+      () => { const h = ri(2, 9), m = ri(1, 5) * 10; return { qtn: `Convert ${h} hours ${m} minutes into minutes.`, ans: fmt(h * 60 + m) }; },
+      () => { const d = ri(2, 9); return { qtn: `How many hours are there in ${d} days?`, ans: fmt(d * 24) }; },
+      () => { const wk = ri(2, 6); return { qtn: `How many hours are there in ${wk} day${wk === 1 ? '' : 's'}? Then in ${wk} weeks?`, ans: `${fmt(wk * 24)} hours; ${fmt(wk * 7 * 24)} hours` }; },
+    ]);
+    return kind();
+  };
+
+  // ---- Shape (2-D) helpers ------------------------------------------------
+  const SHAPES2D = {
+    circle: { sides: 0, vertices: 0 },
+    triangle: { sides: 3, vertices: 3 },
+    square: { sides: 4, vertices: 4 },
+    rectangle: { sides: 4, vertices: 4 },
+    pentagon: { sides: 5, vertices: 5 },
+    hexagon: { sides: 6, vertices: 6 },
+    heptagon: { sides: 7, vertices: 7 },
+    octagon: { sides: 8, vertices: 8 },
+  };
+  const shape2dSVG = (name) => {
+    const S = 84, c = S / 2, R = c - 9;
+    const fill = '#eaf5ee', stroke = '#1f8a4d', sw = 2.2;
+    const open = `<svg class="tp-shape" width="${S}" height="${S}" viewBox="0 0 ${S} ${S}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="shape">`;
+    if (name === 'circle') {
+      return `${open}<circle cx="${c}" cy="${c}" r="${R}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"/></svg>`;
+    }
+    if (name === 'rectangle') {
+      const w = R * 1.75, hh = R * 1.0;
+      return `${open}<rect x="${(c - w / 2).toFixed(1)}" y="${(c - hh / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${hh.toFixed(1)}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"/></svg>`;
+    }
+    const sides = SHAPES2D[name].sides;
+    // Start angle chosen so each shape sits "the right way up".
+    const start = name === 'square' ? 45 : name === 'octagon' ? -90 + 22.5 : -90;
+    const pts = [];
+    for (let i = 0; i < sides; i++) {
+      const a = (start + i * 360 / sides) * Math.PI / 180;
+      pts.push(`${(c + R * Math.cos(a)).toFixed(1)},${(c + R * Math.sin(a)).toFixed(1)}`);
+    }
+    return `${open}<polygon points="${pts.join(' ')}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}" stroke-linejoin="round"/></svg>`;
+  };
+
+  // Y1: name a common 2-D shape.
+  G.y1_name_2d = () => {
+    const name = pick(['circle', 'triangle', 'square', 'rectangle']);
+    return { qtn: 'What is the name of this 2-D shape?', qhtml: shape2dSVG(name), ans: name };
+  };
+  // Y2: count sides / vertices of a drawn 2-D shape.
+  G.y2_2d_properties = (d) => {
+    const name = pick(d <= 2 ? ['triangle', 'square', 'rectangle', 'pentagon'] : ['triangle', 'pentagon', 'hexagon', 'heptagon', 'octagon']);
+    const ask = pick(['sides', 'vertices']);
+    return { qtn: `How many ${ask} does this shape have?`, qhtml: shape2dSVG(name), ans: fmt(SHAPES2D[name][ask]) };
+  };
+  // Y3: name a polygon by its number of sides (drawn).
+  G.y3_name_polygon = () => {
+    const name = pick(['pentagon', 'hexagon', 'heptagon', 'octagon']);
+    return { qtn: 'Name this polygon.', qhtml: shape2dSVG(name), ans: name };
+  };
+
+  // ---- Shape (3-D) --------------------------------------------------------
+  const SHAPES3D = {
+    cube: { faces: 6, edges: 12, vertices: 8, objects: ['a dice', 'a sugar cube', 'a Rubik’s cube'] },
+    cuboid: { faces: 6, edges: 12, vertices: 8, objects: ['a cereal box', 'a brick', 'a matchbox'] },
+    sphere: { faces: 1, edges: 0, vertices: 0, objects: ['a football', 'a marble', 'an orange'] },
+    cylinder: { faces: 3, edges: 2, vertices: 0, objects: ['a tin of beans', 'a drinks can', 'a candle'] },
+    cone: { faces: 2, edges: 1, vertices: 1, objects: ['an ice-cream cone', 'a party hat', 'a traffic cone'] },
+    'square-based pyramid': { faces: 5, edges: 8, vertices: 5, objects: ['the Egyptian pyramids'] },
+    'triangular prism': { faces: 5, edges: 9, vertices: 6, objects: ['a Toblerone box', 'a tent'] },
+  };
+  // Y1: name the 3-D shape of an everyday object.
+  G.y1_name_3d = () => {
+    const names = Object.keys(SHAPES3D);
+    const name = pick(names);
+    const obj = pick(SHAPES3D[name].objects);
+    return { qtn: `What 3-D shape is ${obj}?`, ans: name };
+  };
+  // Y2/Y3: faces / edges / vertices of a named 3-D shape (flat-faced solids only).
+  G.y2_3d_properties = () => {
+    const name = pick(['cube', 'cuboid', 'square-based pyramid', 'triangular prism']);
+    const ask = pick(['faces', 'edges', 'vertices']);
+    return { qtn: `How many ${ask} does ${name === 'square-based pyramid' || name === 'triangular prism' ? 'a' : 'a'} ${name} have?`, ans: fmt(SHAPES3D[name][ask]) };
+  };
+
+  // ---- Angles & lines -----------------------------------------------------
+  // An angle drawn from a vertex; learners classify it.
+  const angleSVG = (deg) => {
+    const S = 96, ox = 16, oy = 74, len = 64;
+    const ray = (a) => [ox + len * Math.cos(a * Math.PI / 180), oy - len * Math.sin(a * Math.PI / 180)];
+    const [x2, y2] = ray(deg);
+    const [ax] = ray(0);
+    let s = `<line x1="${ox}" y1="${oy}" x2="${(ox + len).toFixed(1)}" y2="${oy}" stroke="#26302a" stroke-width="2.4" stroke-linecap="round"/>`;
+    s += `<line x1="${ox}" y1="${oy}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#26302a" stroke-width="2.4" stroke-linecap="round"/>`;
+    // small arc to mark the angle
+    const [arx, ary] = ray(deg / 2);
+    s += `<path d="M ${(ox + 22)} ${oy} A 22 22 0 0 0 ${(ox + 22 * Math.cos(deg * Math.PI / 180)).toFixed(1)} ${(oy - 22 * Math.sin(deg * Math.PI / 180)).toFixed(1)}" fill="none" stroke="#1f8a4d" stroke-width="1.8"/>`;
+    s += `<circle cx="${ox}" cy="${oy}" r="2.4" fill="#26302a"/>`;
+    return `<svg class="tp-angle" width="${S}" height="${S}" viewBox="0 0 ${S} ${S}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="angle">${s}</svg>`;
+  };
+  const classifyAngle = (deg) => deg < 90 ? 'acute' : deg === 90 ? 'right angle' : deg < 180 ? 'obtuse' : deg === 180 ? 'straight' : 'reflex';
+  // Y3: right angle / less / greater (drawn).
+  G.y3_angle_right = () => {
+    const deg = pick([35, 50, 70, 90, 90, 110, 130, 150]);
+    const ans = deg < 90 ? 'less than a right angle' : deg === 90 ? 'a right angle' : 'greater than a right angle';
+    return { qtn: 'Is this angle less than, equal to, or greater than a right angle?', qhtml: angleSVG(deg), ans };
+  };
+  // Y4: classify acute / obtuse (drawn).
+  G.y4_angle_type = () => {
+    const deg = pick([25, 40, 55, 70, 100, 120, 135, 160]);
+    return { qtn: 'Is this angle acute or obtuse?', qhtml: angleSVG(deg), ans: classifyAngle(deg) };
+  };
+  // Y5: estimate/identify; angles at a point / on a line.
+  G.y5_angle_facts = () => {
+    const kind = pick([
+      () => { const a = ri(2, 17) * 10; return { qtn: `Angles on a straight line add up to 180°. One angle is ${a}°. Find the other.`, ans: `${180 - a}°` }; },
+      () => { const a = ri(3, 32) * 10; return { qtn: `Angles at a point add up to 360°. One angle is ${a}°. Find the other.`, ans: `${360 - a}°` }; },
+      () => { const deg = pick([30, 45, 60, 120, 135, 200, 250, 300]); return { qtn: 'Classify this angle (acute / right / obtuse / reflex).', qhtml: angleSVG(Math.min(deg, 179)), ans: classifyAngle(deg) }; },
+    ]);
+    return kind();
+  };
+  // Y6: missing angles in triangles / on lines / at a point.
+  G.y6_angle_missing = () => {
+    const kind = pick([
+      () => { const a = ri(30, 80), b = ri(30, 80); return { qtn: `A triangle has angles ${a}° and ${b}°. Find the third angle.`, ans: `${180 - a - b}°` }; },
+      () => { const a = ri(20, 160); return { qtn: `Two angles on a straight line: one is ${a}°. Find the other.`, ans: `${180 - a}°` }; },
+      () => { const a = ri(40, 140), b = ri(40, 140); const sum = a + b; return { qtn: `Three angles meet at a point: ${a}°, ${b}° and one more. Find the missing angle.`, ans: `${360 - sum}°` }; },
+    ]);
+    return kind();
+  };
+  // Y6: parts of a circle (radius / diameter relationship).
+  G.y6_circle_parts = () => {
+    const kind = pick([
+      () => { const r = ri(2, 25); return { qtn: `A circle has a radius of ${r} cm. What is its diameter?`, ans: `${fmt(r * 2)} cm` }; },
+      () => { const dm = ri(2, 25) * 2; return { qtn: `A circle has a diameter of ${dm} cm. What is its radius?`, ans: `${fmt(dm / 2)} cm` }; },
+      () => ({ qtn: 'What is the name of a straight line from the centre of a circle to its edge?', ans: 'radius' }),
+    ]);
+    return kind();
+  };
+
   window.TP_GEN = G;
 })();
 
@@ -397,5 +623,5 @@ window.TP_generate = function (key, difficulty) {
   const g = window.TP_GEN[key];
   if (!g) return null;
   const r = g(difficulty);
-  return { question: r.qtn ?? r.question, answer: r.ans ?? r.answer };
+  return { question: r.qtn ?? r.question, answer: r.ans ?? r.answer, qhtml: r.qhtml ?? null };
 };

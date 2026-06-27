@@ -73,7 +73,7 @@
     var eff = window.TP_bandDifficulty ? window.TP_bandDifficulty(o.year, state.band) : 3;
     var r = window.TP_generate(o.key, eff);
     if (!r) { return null; }
-    return { question: r.question, answer: r.answer };
+    return { question: r.question, answer: r.answer, qhtml: r.qhtml || null };
   }
 
   // Rebuild the question list. force=true re-rolls everything; force=false keeps
@@ -108,9 +108,9 @@
           // Guard null: skip objectives we cannot generate (shouldn't be
           // selectable, but stay defensive).
           if (!g) { continue; }
-          q = { id: id, question: g.question, answer: g.answer };
+          q = { id: id, question: g.question, answer: g.answer, qhtml: g.qhtml || null };
         }
-        list.push({ id: id, question: q.question, answer: q.answer, num: 0 });
+        list.push({ id: id, question: q.question, answer: q.answer, qhtml: q.qhtml || null, num: 0 });
       }
     }
     OBJ.forEach(function (o) { emit(o.id); });
@@ -373,6 +373,16 @@
         var qspan = document.createElement('span');
         qspan.textContent = q.question;
         body.appendChild(qspan);
+
+        // Visual questions (clocks, shapes, angles) carry an SVG in qhtml that
+        // is drawn under the caption. Trusted, generated locally — never user
+        // input — so innerHTML is safe here.
+        if (q.qhtml) {
+          var vis = document.createElement('span');
+          vis.className = 'sheet-qvisual';
+          vis.innerHTML = q.qhtml;
+          body.appendChild(vis);
+        }
 
         if (!answersOn && state.answerSpace) {
           var blank = document.createElement('span');
