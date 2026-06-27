@@ -104,6 +104,8 @@ for (var run = 0; run < RUNS; run++) {
   }
 
   if (!p || !p.entries || !p.entries.length) { fails.push('run ' + run + ': empty puzzle'); continue; }
+  // Hard requirement: every puzzle has exactly 12 clues (any Across/Down split).
+  check(p.entries.length === 12, 'run ' + run + ': ' + p.entries.length + ' entries, want exactly 12');
   skelHits[band] = skelHits[band] || {};
   skelHits[band][p.id] = (skelHits[band][p.id] || 0) + 1;
 
@@ -174,9 +176,12 @@ for (var run = 0; run < RUNS; run++) {
 // (e) variety
 var distinctSigs = Object.keys(sigSet).length;
 check(distinctSigs > RUNS * 0.9, 'low variety: only ' + distinctSigs + ' distinct puzzle signatures of ' + RUNS);
+// Shapes are RANDOMISED per puzzle (fresh valid mask each generate, fixed
+// skeletons only as a rare fallback), so each band should show many distinct
+// grids over ~200 runs. A regression to fixed-only shapes would collapse this.
 BANDS.forEach(function (b) {
   var hit = Object.keys(skelHits[b] || {}).length;
-  check(hit >= 3, 'band ' + b + ' only hit ' + hit + ' skeleton(s) (want >=3)');
+  check(hit >= 25, 'band ' + b + ' only hit ' + hit + ' distinct shape(s) (want >=25 — shapes must be randomised)');
 });
 
 // ---- report ----------------------------------------------------------------

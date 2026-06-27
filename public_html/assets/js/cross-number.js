@@ -90,61 +90,61 @@
       '...#.#'
     ] },
     { id: 'm1', tier: 'meeting', grid: [
-      '..###.#',
-      '#.###.#',
-      '...#...',
-      '##...##',
-      '...#...',
-      '#.###.#',
-      '#.###..'
+      '##.###',
+      '...#.#',
+      '.#...#',
+      '..##..',
+      '#...#.',
+      '#.#...',
+      '###.##'
     ] },
     { id: 'm2', tier: 'meeting', grid: [
-      '...###.',
-      '##.#...',
-      '##...##',
-      '###.###',
-      '##...##',
-      '...#.##',
-      '.###...'
+      '...###',
+      '.#.###',
+      '.#...#',
+      '..##..',
+      '#...#.',
+      '###.#.',
+      '###...'
     ] },
     { id: 'm3', tier: 'meeting', grid: [
-      '..#####',
-      '...####',
-      '...####',
-      '##...##',
-      '####...',
-      '####...',
-      '#####..'
+      '....##',
+      '.#.#.#',
+      '#....#',
+      '..##..',
+      '#....#',
+      '#.#.#.',
+      '##....'
     ] },
     { id: 'e1', tier: 'exceeding', grid: [
-      '##.#####',
-      '...#.###',
-      '#....###',
-      '#.##....',
-      '....##.#',
-      '###....#',
-      '###.#...',
-      '#####.##'
+      '####.#',
+      '#....#',
+      '...###',
+      '#....#',
+      '#....#',
+      '###...',
+      '#....#',
+      '#.####'
     ] },
     { id: 'e2', tier: 'exceeding', grid: [
-      '.#######',
-      '.##...##',
-      '....####',
-      '.#....##',
-      '##....#.',
-      '####....',
-      '##...##.',
-      '#######.'
+      '###.##',
+      '#...##',
+      '..#...',
+      '.##.#.',
+      '.#.##.',
+      '...#..',
+      '##...#',
+      '##.###'
     ] },
     { id: 'e3', tier: 'exceeding', grid: [
-      '####...#',
-      '####.###',
-      '.#....##',
-      '.#.#....',
-      '....#.#.',
-      '##....#.',
-      '###.####',
-      '#...####'
+      '#####.',
+      '##....',
+      '###..#',
+      '#....#',
+      '#....#',
+      '#..###',
+      '....##',
+      '.#####'
     ] },
   ];
   // Derive rows/cols/entries from each grid mask once at load.
@@ -153,6 +153,135 @@
     _sk.rows = _sk.grid.length;
     _sk.cols = _sk.grid[0].length;
     _sk.entries = entriesFromGrid(_sk.grid);
+  }
+
+  // ---- random shape generation ---------------------------------------------
+  // The fixed SKELETONS above guarantee a valid fallback, but using only 3 masks
+  // per tier looks repetitive. So we GENERATE A FRESH random mask per puzzle and
+  // accept it only if it is a well-formed, dense crossword: exactly 12 entries
+  // (any Across/Down split), every run in the tier's digit range, every white
+  // cell covered, enough crossings, every entry crossing another, fully
+  // connected, no all-black row/col. Reject-sampling with 180°-rotational
+  // symmetry on rectangular grids is reliable and fast for all three tiers
+  // (below 6x6 ~100%, meeting 7x6 ~96%, exceeding 8x6 ~100% within budget — see
+  // dev/validate + the shape benchmark). If a tier somehow misses its budget we
+  // fall back to a RANDOM DIHEDRAL TRANSFORM of a fixed skeleton (still varied).
+  //
+  // Per-tier shape: rows×cols, black fraction, run-length range, min crossings,
+  // and min entries per direction. Tiers differ by grid size (visible size step);
+  // the harder NUMBERS/operations come from `tier`/`d` in clueBuilders, not from
+  // forbidding short entries (which is what made big square grids unsearchable).
+  var SHAPE = {
+    below:     { rows: 6, cols: 6, bf: 0.28, minL: 2, maxL: 3, minX: 6, minPer: 4, total: 12 },
+    meeting:   { rows: 7, cols: 6, bf: 0.30, minL: 2, maxL: 4, minX: 5, minPer: 3, total: 12 },
+    exceeding: { rows: 8, cols: 6, bf: 0.30, minL: 2, maxL: 4, minX: 5, minPer: 3, total: 12 }
+  };
+
+  function randMaskGrid(rows, cols, bf) {
+    var g = [], r, c;
+    for (r = 0; r < rows; r++) { var row = []; for (c = 0; c < cols; c++) { row.push('.'); } g.push(row); }
+    for (r = 0; r < rows; r++) {
+      for (c = 0; c < cols; c++) {
+        if (Math.random() < bf) { g[r][c] = '#'; g[rows - 1 - r][cols - 1 - c] = '#'; }   // keep 180° symmetry
+      }
+    }
+    return g.map(function (a) { return a.join(''); });
+  }
+
+  // Is `grid` a well-formed, dense crossword for params P? (the acceptance test)
+  function maskValid(grid, P) {
+    var R = grid.length, C = grid[0].length;
+    function w(r, c) { return r >= 0 && r < R && c >= 0 && c < C && grid[r].charAt(c) !== '#'; }
+    var es = entriesFromGrid(grid);
+    var A = 0, D = 0, i, e, k, r, c;
+    for (i = 0; i < es.length; i++) {
+      e = es[i];
+      if (e.len < P.minL || e.len > P.maxL) { return false; }
+      if (e.dir === 'A') { A++; } else { D++; }
+    }
+    if (A + D !== P.total) { return false; }
+    if (A < P.minPer || D < P.minPer) { return false; }
+    for (r = 0; r < R; r++) { var ab = true; for (c = 0; c < C; c++) { if (w(r, c)) { ab = false; break; } } if (ab) { return false; } }
+    for (c = 0; c < C; c++) { var ab2 = true; for (r = 0; r < R; r++) { if (w(r, c)) { ab2 = false; break; } } if (ab2) { return false; } }
+    var cov = {}, inA = {}, inD = {};
+    for (i = 0; i < es.length; i++) {
+      e = es[i];
+      for (k = 0; k < e.len; k++) {
+        var rr = e.dir === 'A' ? e.r : e.r + k, cc = e.dir === 'A' ? e.c + k : e.c, key = rr + ',' + cc;
+        cov[key] = 1; if (e.dir === 'A') { inA[key] = 1; } else { inD[key] = 1; }
+      }
+    }
+    for (r = 0; r < R; r++) { for (c = 0; c < C; c++) { if (w(r, c) && !cov[r + ',' + c]) { return false; } } }
+    var cross = 0, kk; for (kk in inA) { if (inD[kk]) { cross++; } }
+    if (cross < P.minX) { return false; }
+    for (i = 0; i < es.length; i++) {
+      e = es[i]; var hit = false;
+      for (k = 0; k < e.len; k++) {
+        var r2 = e.dir === 'A' ? e.r : e.r + k, c2 = e.dir === 'A' ? e.c + k : e.c;
+        if ((e.dir === 'A' ? inD : inA)[r2 + ',' + c2]) { hit = true; break; }
+      }
+      if (!hit) { return false; }
+    }
+    // fully connected white region
+    var whites = []; for (r = 0; r < R; r++) { for (c = 0; c < C; c++) { if (w(r, c)) { whites.push(r + ',' + c); } } }
+    if (!whites.length) { return false; }
+    var seen = {}; seen[whites[0]] = 1; var st = [whites[0]];
+    var nb = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+    while (st.length) {
+      var p = st.pop().split(','), pr = +p[0], pc = +p[1];
+      for (var d = 0; d < 4; d++) {
+        var nr = pr + nb[d][0], nc = pc + nb[d][1];
+        if (w(nr, nc)) { var nk = nr + ',' + nc; if (!seen[nk]) { seen[nk] = 1; st.push(nk); } }
+      }
+    }
+    var cnt = 0, sk2; for (sk2 in seen) { cnt++; }
+    return cnt === whites.length;
+  }
+
+  // Short stable id from a grid (so distinct shapes get distinct ids → the
+  // validator's per-band variety check measures REAL shape variety).
+  function hashGrid(grid) {
+    var s = grid.join('/'), h = 0;
+    for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) | 0; }
+    return (h >>> 0).toString(36);
+  }
+  function skFromGrid(grid, tier, prefix) {
+    return { id: prefix + hashGrid(grid), tier: tier, grid: grid, rows: grid.length, cols: grid[0].length, entries: entriesFromGrid(grid) };
+  }
+
+  // One of the 8 dihedral transforms of a grid (square skeletons only — all the
+  // fixed ones are). Validity is isomorphism-invariant, so a transform of a valid
+  // skeleton is valid — used to vary the fallback.
+  function transformGrid(grid, op) {
+    var R = grid.length, C = grid[0].length, out = [], r, c, row;
+    function g(r, c) { return grid[r].charAt(c); }
+    switch (op) {
+      case 1: for (r = 0; r < R; r++) { row = ''; for (c = C - 1; c >= 0; c--) { row += g(r, c); } out.push(row); } return out; // flip H
+      case 2: for (r = R - 1; r >= 0; r--) { out.push(grid[r]); } return out;                                                   // flip V
+      case 3: for (r = R - 1; r >= 0; r--) { row = ''; for (c = C - 1; c >= 0; c--) { row += g(r, c); } out.push(row); } return out; // rot180
+      case 4: for (c = 0; c < C; c++) { row = ''; for (r = 0; r < R; r++) { row += g(r, c); } out.push(row); } return out;        // transpose
+      case 5: for (c = C - 1; c >= 0; c--) { row = ''; for (r = 0; r < R; r++) { row += g(r, c); } out.push(row); } return out;   // rot90
+      case 6: for (c = 0; c < C; c++) { row = ''; for (r = R - 1; r >= 0; r--) { row += g(r, c); } out.push(row); } return out;   // rot-90
+      case 7: for (c = C - 1; c >= 0; c--) { row = ''; for (r = R - 1; r >= 0; r--) { row += g(r, c); } out.push(row); } return out; // anti-transpose
+      default: return grid.slice();
+    }
+  }
+
+  // A fresh RANDOM valid skeleton for the tier, or null if the budget is missed.
+  function randomSkeleton(tier) {
+    var P = SHAPE[tier] || SHAPE.meeting;
+    for (var t = 0; t < 20000; t++) {
+      var g = randMaskGrid(P.rows, P.cols, P.bf);
+      if (maskValid(g, P)) { return skFromGrid(g, tier, 'r'); }
+    }
+    return null;
+  }
+  // Guaranteed-valid fallback: a random dihedral transform of a fixed skeleton.
+  function fallbackSkeleton(tier) {
+    var poolF = SKELETONS.filter(function (s) { return s.tier === tier; });
+    if (!poolF.length) { poolF = SKELETONS.filter(function (s) { return s.tier === 'meeting'; }); }
+    var base = pick(poolF);
+    return skFromGrid(transformGrid(base.grid, Math.floor(Math.random() * 8)), tier, 'f');
   }
 
   // Derive white cells + crossword numbering for a skeleton. Returns a fresh
@@ -323,10 +452,10 @@
       : ['+', '-', '×', '÷'];
     if (!ops.length) { ops = ['+', '-']; }
 
-    // pick a skeleton for the tier
-    var pool = SKELETONS.filter(function (s) { return s.tier === tier; });
-    if (!pool.length) { pool = SKELETONS.filter(function (s) { return s.tier === 'meeting'; }); }
-    var lay = layout(pick(pool));
+    // generate a FRESH random shape for the tier (varied every puzzle); if the
+    // search misses its budget, fall back to a transformed fixed skeleton.
+    var sk = randomSkeleton(tier) || fallbackSkeleton(tier);
+    var lay = layout(sk);
 
     // 1) fill every white cell with a random digit. Entry-start cells must be
     //    1–9 (no leading zero); interior cells may be 0–9. RE-ROLL the whole fill
@@ -478,10 +607,13 @@
     var revealed = state.tab === 'answers';
     p.solved = revealed ? p.ans : null;
 
-    // Size the grid per tier so the page fills at every setting: a small Below
-    // grid prints large; the big Exceeding grid is capped so it still fits one A4
-    // (keeps roughly constant cell size, ~52px, across grid sizes).
-    var gridMax = Math.min(520, Math.max(430, p.cols * 64));
+    // Size the grid so it fills the page yet always fits one A4. The grids share
+    // a column count but differ in ROWS (below 6, meeting 7, exceeding 8); the SVG
+    // is width-constrained with height:auto, so we derive the max-WIDTH from a
+    // target HEIGHT (width = H · cols/rows). That keeps every tier ~constant grid
+    // height (~500px) instead of letting the 8-row grid run off the page.
+    var targetH = 500;
+    var gridMax = Math.max(330, Math.min(430, Math.round(targetH * p.cols / p.rows)));
     els.grid.style.setProperty('--cn-grid-max', gridMax + 'px');
 
     // grid (inline SVG) directly into #cn-grid
