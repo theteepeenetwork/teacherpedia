@@ -16,5 +16,11 @@
         "route": "/cross-number",
         "accent": "#b45309",
         "wait": "#cn-grid svg"
+    },
+    "digit-detectives": {
+        "view": "digit_detectives/index",
+        "route": "/digit-detectives",
+        "accent": "#34507a",
+        "wait": "#dd-grid .dd-card"
     }
 }

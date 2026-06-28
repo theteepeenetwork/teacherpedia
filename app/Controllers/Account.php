@@ -15,7 +15,7 @@ use App\Models\SavedSheetModel;
 class Account extends BaseController
 {
     /** Activities we accept / know how to render. */
-    private const ALLOWED_ACTIVITIES = ['worksheet', 'code-breaker', 'maths-maze', 'treasure-hunt', 'loop-cards', 'bingo', 'columns', 'arithmagons', 'cross-number'];
+    private const ALLOWED_ACTIVITIES = ['worksheet', 'code-breaker', 'maths-maze', 'treasure-hunt', 'loop-cards', 'bingo', 'columns', 'arithmagons', 'cross-number', 'digit-detectives'];
 
     /**
      * List the current user's saved sheets (newest first).
