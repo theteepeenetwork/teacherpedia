@@ -57,11 +57,19 @@
     <div class="grid grid-3">
       <?php foreach ($sheets as $sheet): ?>
         <?php
-          $isWorksheet = ($sheet['activity'] ?? '') === 'worksheet';
-          $tagLabel    = $isWorksheet ? 'Worksheet' : 'Code Breaker';
-          $openUrl     = $isWorksheet
-              ? base_url('build/' . (int) $sheet['id'])
-              : base_url('code-breaker');
+          $activity    = $sheet['activity'] ?? '';
+          $isWorksheet = $activity === 'worksheet';
+          $isDigitDet  = $activity === 'digit-detectives';
+          if ($isWorksheet) {
+              $tagLabel = 'Worksheet';
+              $openUrl  = base_url('build/' . (int) $sheet['id']);
+          } elseif ($isDigitDet) {
+              $tagLabel = 'Digit Detectives';
+              $openUrl  = base_url('digit-detectives/' . (int) $sheet['id']);
+          } else {
+              $tagLabel = 'Code Breaker';
+              $openUrl  = base_url('code-breaker');
+          }
           $ts   = strtotime((string) ($sheet['created_at'] ?? ''));
           $date = $ts ? date('j M Y', $ts) : '';
         ?>
