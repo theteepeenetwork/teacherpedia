@@ -22,5 +22,11 @@
         "route": "/digit-detectives",
         "accent": "#34507a",
         "wait": "#dd-grid .dd-card"
+    },
+    "area-maze": {
+        "view": "area_maze/index",
+        "route": "/area-maze",
+        "accent": "#a23b5e",
+        "wait": "#am-grid .am-card"
     }
 }
