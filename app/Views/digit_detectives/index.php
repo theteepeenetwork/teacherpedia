@@ -60,6 +60,20 @@
       font-size: 11px; font-weight: 800; letter-spacing: .04em;
       color: var(--accent);
     }
+    /* FIX 3: the worked Example card — visually distinct (tinted, accent border)
+       with an "Example" tag. */
+    .dd-card-example {
+      border-color: var(--accent);
+      border-width: 2px;
+      background: color-mix(in oklab, var(--accent) 5%, #fff);
+    }
+    .dd-card-tag {
+      position: absolute; top: 6px; right: 8px;
+      font-family: var(--font-head, sans-serif);
+      font-size: 8.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      color: #fff; background: var(--accent);
+      padding: 2px 6px; border-radius: 999px;
+    }
 
     /* The formal column sum: a CSS grid, one narrow operator gutter + N digit
        columns. Monospaced tabular cells; capped width so 6/9/12-up all fit one
@@ -76,41 +90,58 @@
       display: flex; align-items: center; justify-content: center;
       height: 27px; font-size: 20px; font-weight: 700; color: #1a1a1a;
     }
-    /* A blank: an OUTLINED box (distinguishable from solid given glyphs in B&W),
-       with a small place-value label (tens/ones). */
+    /* A blank: a PLAIN outlined missing-digit box (no in-sum word tags — FIX 2).
+       White fill so it reads as "write here", distinguishable from solid given
+       glyphs in B&W. */
     .dd-blank {
       position: relative;
       border: 1.6px solid var(--accent);
       border-radius: 5px;
-      background: color-mix(in oklab, var(--accent) 5%, #fff);
-    }
-    .dd-bl-lab {
-      position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
-      font-size: 7.5px; font-weight: 800; line-height: 1;
-      color: var(--accent);
-      background: #fff; padding: 0 2px; border-radius: 3px;
-      font-family: var(--font-head, sans-serif); letter-spacing: .02em;
+      background: #fff;
     }
     .dd-blank.dd-solved { color: var(--accent); }
     .dd-rule { height: 0; border-top: 2px solid #1a1a1a; align-self: center; margin: 2px 0; }
     .dd-carry { display: flex; align-items: flex-end; justify-content: center; height: 11px; }
     .dd-carry small { font-size: 9px; font-weight: 700; color: var(--accent); line-height: 1; }
 
-    /* per-card answer strip: [tens][ones] -> letter */
-    .dd-strip {
-      display: flex; align-items: center; gap: 4px; margin-top: 7px;
-    }
+    /* FIX 2: the single labelled decode strip — [tens][ones] -> [letter] with the
+       words printed UNDER each box. One consistent "write here" style (thin
+       outline, WHITE fill, no grey); ONLY the letter box gets the accent outline
+       to mark the goal. */
+    .dd-strip-wrap { margin-top: 6px; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .dd-strip { display: flex; align-items: flex-start; gap: 5px; }
+    .dd-strip-cell { display: flex; flex-direction: column; align-items: center; gap: 1px; }
     .dd-strip-box {
-      width: 20px; height: 22px; border: 1.3px solid rgba(28,36,32,.36); border-radius: 4px;
+      width: 20px; height: 22px; border: 1.3px solid rgba(28,36,32,.55); border-radius: 4px;
+      background: #fff;
       display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums;
+      font-size: 14px; font-weight: 800; color: #1a1a1a; font-variant-numeric: tabular-nums;
     }
-    .dd-strip-arrow { color: #9aa0a8; font-size: 12px; }
+    .dd-strip-lab {
+      font-size: 7px; font-weight: 800; letter-spacing: .02em; text-transform: uppercase;
+      color: #6c716a; font-family: var(--font-head, sans-serif); line-height: 1;
+    }
+    .dd-strip-arrow { color: #9aa0a8; font-size: 12px; align-self: center; margin-top: -7px; }
     .dd-strip-ltr {
-      width: 22px; height: 22px; border: 1.4px solid var(--accent); border-radius: 5px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 800; color: var(--accent);
+      border: 1.6px solid var(--accent); color: var(--accent); font-size: 14px;
     }
+    .dd-strip-cue {
+      font-size: 8px; font-weight: 600; color: #6c716a; text-align: center; line-height: 1.2;
+      max-width: 168px;
+    }
+    /* Densest (12-up) sheets: hide the per-card cue (kept on the Example card and
+       in the intro line) and compact each card so the whole sheet stays on ONE
+       A4 (gotcha 4). */
+    #dd-grid.dd-dense .dd-card:not(.dd-card-example) .dd-strip-cue { display: none; }
+    #dd-grid.dd-dense .dd-card { padding: 5px 7px; }
+    #dd-grid.dd-dense .dd-cell { height: 19px; font-size: 16px; }
+    #dd-grid.dd-dense .dd-carry { height: 9px; }
+    #dd-grid.dd-dense .dd-sum { max-width: 148px; }
+    #dd-grid.dd-dense .dd-strip-wrap { margin-top: 3px; }
+    #dd-grid.dd-dense .dd-strip-box { width: 17px; height: 18px; font-size: 12px; }
+    #dd-grid.dd-dense .dd-strip-ltr { font-size: 12px; }
+    #dd-grid.dd-dense .dd-strip-lab { font-size: 6.5px; }
+    #dd-grid.dd-dense .dd-card-no { font-size: 10px; }
 
     /* Reveal footer. */
     .dd-reveal {
@@ -166,7 +197,7 @@
     <a href="/browse" class="app-crumb">&larr; All resources</a>
     <div class="app-divider"></div>
     <div class="app-title">Digit Detectives</div>
-    <div class="app-context"><span class="dot"></span>KS1&ndash;2 &middot; Numeracy</div>
+    <div class="app-context"><span class="dot"></span><span id="dd-context">KS2 &middot; Numeracy</span></div>
     <div style="flex:1;"></div>
     <a href="/account" class="app-crumb" style="padding:8px 6px;">My saved sheets</a>
     <div class="avatar">MP</div>
@@ -209,7 +240,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
         <div style="min-width:0;">
-          <div class="sheet-eyebrow">KS1&ndash;2 Numeracy &middot; Digit Detectives &middot; <span id="dd-eyebrow-diff">&#9679;&#9679;&#9679;&#9675;&#9675;</span></div>
+          <div class="sheet-eyebrow"><span id="dd-eyebrow-ks">KS2 &middot; Year 4</span> &middot; Numeracy &middot; <span id="dd-eyebrow-diff">&#9679;&#9679;&#9679;&#9675;&#9675;</span></div>
           <h1 class="sheet-title">Digit Detectives</h1>
         </div>
         <div class="sheet-meta">

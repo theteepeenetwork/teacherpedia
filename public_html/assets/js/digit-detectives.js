@@ -3,30 +3,29 @@
  * -----------------------------------------------------------------------------
  * A grid of small column-ADDITION cards. Each card is a REAL, correct sum laid
  * out in the formal written method (addends stacked over a rule, total beneath)
- * with EXACTLY TWO digits blanked, in two DIFFERENT columns. The solver recovers
- * each blank by running the algorithm backwards (place value + carries). Because
- * there is at most one blank per column and every other digit in a blanked
- * column is known, each blank is FORCED to a single value — no guessing.
+ * with EXACTLY TWO digits blanked: the TOTAL's adjacent TENS and ONES columns.
+ * The solver finds the total (run the algorithm forwards), then reads its last
+ * two digits. Because the addends are all known, the two answer blanks are
+ * FORCED to a single value — no guessing.
  *
  * Cipher (two-digit codebook):
- *   The two blanks read left->right as a two-digit number 00-25 -> letter A-Z
- *   (00=A, 01=B, … 25=Z). The LEFT (higher place-value) blank is the TENS digit,
- *   the RIGHT blank is the ONES digit. One letter per puzzle; puzzle position =
+ *   The total's last two digits read as a two-digit number 00-25 -> letter A-Z
+ *   (00=A, 01=B, … 25=Z): total % 100 === code (FIX 4). The TENS blank is the
+ *   left, the ONES blank the right. One letter per puzzle; puzzle position =
  *   message-letter position. Reading one letter per card in order spells a
- *   whole-sheet reveal (a joke punchline or praise word) — the self-mark.
+ *   whole-sheet reveal (a joke punchline or praise word) — the self-mark. The
+ *   revealed message has EXACTLY one letter per puzzle (FIX 1).
  *
  * Magnitude scales by YEAR (aligned to objectives.json addition keys); the 1-5
- * meter scales magnitude WITHIN the year ceiling, carries, small-addend count,
- * and (Y4+) answer-vs-addend blanks — NEVER the year ceiling.
+ * meter scales ADDEND magnitude WITHIN the year ceiling — NEVER the ceiling, and
+ * NEVER the blank placement (always the total's last two digits, every year).
  *
- *   Y3 FORWARD only  : both blanks in the ANSWER row. Single-digit addends
- *                      (3-5 of them) OR two numbers <=3 digits; total <=3 digits;
- *                      3-digit numbers never appear with 3+ addends.
- *   Y4 inverse begins: two numbers up to 4 digits; total <=4 digits; >=1 blank
- *                      may be an ADDEND digit.
- *   Y5 inverse       : two numbers 5-6 digits; total <=6 digits.
- *   Y6 multi/mixed   : 2-3 numbers, 4-6 digits, mixed sizes; total <=6 digits;
- *                      the ONLY year that mixes three large numbers.
+ *   Y3 : single-digit addends (3-5) OR two numbers <=3 digits; total <=3 digits;
+ *        3-digit numbers never appear with 3+ addends.
+ *   Y4 : two numbers up to 4 digits; total <=4 digits.
+ *   Y5 : two numbers 5-6 digits; total <=6 digits.
+ *   Y6 : 2-3 numbers, 4-6 digits, mixed sizes; total <=6 digits; the ONLY year
+ *        that mixes three large numbers.
  *
  * Determinism: a seedable PRNG (mulberry32) means a saved {year,difficulty,
  * count,source,message,seed} re-prints the IDENTICAL sheet.
@@ -71,18 +70,20 @@
   // ---- reveal bank: jokes (Q + A) and praise words -------------------------
   // Jokes print the question at the TOP; the punchline is what the sheet spells.
   // Praise words are single tokens. Each cleaned to A-Z only.
+  //
+  // FIX 1: the revealed message must show EXACTLY one letter per puzzle, so every
+  // bank entry is chosen by its LETTER count (spaces ignored). The supported
+  // puzzle counts are 6 / 9 / 12; each must offer >= 3 entries at that length.
   var JOKES = [
-    { q: 'Why was the maths book sad?', a: 'PROBLEMS' },
-    { q: 'What do you call a number that can’t keep still?', a: 'A ROAMAN NUMERAL' },
-    { q: 'Why did the student wear glasses in maths?', a: 'TO IMPROVE DIVISION' },
-    { q: 'What did zero say to eight?', a: 'NICE BELT' },
-    { q: 'Why is six afraid of seven?', a: 'SEVEN ATE NINE' },
-    { q: 'What’s a maths teacher’s favourite dessert?', a: 'PI' },
-    { q: 'What did one calculator say to the other?', a: 'COUNT ON ME' }
+    { q: 'Why is six afraid of seven?', a: 'SEVEN ATE NINE' }   // 12 letters
   ];
   var PRAISE = [
-    'BRILLIANT', 'WELL DONE', 'SUPERSTAR', 'FANTASTIC', 'TOP MARKS',
-    'GENIUS', 'MAGNIFICENT', 'EXCELLENT', 'CHAMPION', 'WONDERFUL'
+    // 6 letters
+    'GENIUS', 'WIZARD', 'CLEVER', 'BRAINY', 'EXPERT',
+    // 9 letters
+    'EXCELLENT', 'BRILLIANT', 'FANTASTIC', 'WONDERFUL', 'SUPERSTAR', 'DETECTIVE',
+    // 12 letters
+    'MATHEMAGICAL', 'CONGRATULATE'
   ];
 
   // Keep only A-Z and spaces, upper-case, collapse spaces, trim.
@@ -95,6 +96,21 @@
   }
   // The letters that actually drive puzzles (spaces stripped). Pad/trim to count.
   function messageLetters(msg) { return cleanMessage(msg).replace(/ /g, '').split(''); }
+  // Number of code-bearing letters in a message (spaces ignored).
+  function letterCount(msg) { return messageLetters(msg).length; }
+
+  // FIX 1: candidate reveals whose letter count EXACTLY equals `count`.
+  // Jokes carry their question as the prompt; praise words have no prompt.
+  function revealsForCount(count) {
+    var out = [];
+    for (var j = 0; j < JOKES.length; j++) {
+      if (letterCount(JOKES[j].a) === count) { out.push({ msg: cleanMessage(JOKES[j].a), prompt: JOKES[j].q, kind: 'joke' }); }
+    }
+    for (var p = 0; p < PRAISE.length; p++) {
+      if (letterCount(PRAISE[p]) === count) { out.push({ msg: cleanMessage(PRAISE[p]), prompt: '', kind: 'word' }); }
+    }
+    return out;
+  }
 
   // ---- year magnitude bands ------------------------------------------------
   // ceilingDigits: the HARD per-number digit cap for the year (never exceeded,
@@ -109,35 +125,35 @@
 
   // Per-year shape, with the 1-5 meter (d) scaling magnitude WITHIN the ceiling.
   // Returns the menu of "forms" the year may take; build() picks one.
-  //   form.mode    : 'forward' (blanks both in total) | 'inverse' (>=1 addend blank)
-  //   form.nAdd    : addend count
+  //
+  // FIX 4: EVERY puzzle is now FORWARD — the two blanks are always the total's
+  // adjacent TENS and ONES columns (total % 100 === code). There are no addend
+  // blanks. The year therefore only drives ADDEND magnitude; the blank placement
+  // is fixed. Forms describe addend shape only.
+  //   form.kind    : 'small' (several single-digit addends) | 'pair' | 'mixed'
+  //   form.nAdd    : addend count (number, or 'small' = 3-5 single digits)
   //   form.widthMin/widthMax: per-number digit band (<= ceiling)
-  //   form.singleDigitAddends: addends are single digits (Y3 small-addend form)
   function yearForms(year, d) {
     var ceil = ceilingDigits(year);
 
     if (year === 3) {
-      // FORWARD only. Two forms:
+      // Two forms (magnitude <= 3 digits):
       //  - several SINGLE-DIGIT addends (3-5), total <= 3 digits;
       //  - TWO numbers up to 3 digits, total <= 3 digits.
       // 3-digit numbers NEVER appear with 3+ addends (small-addend form is 1-digit).
       return {
-        mode: 'forward',
         choices: [
-          { mode: 'forward', kind: 'small', nAdd: 'small', widthMin: 1, widthMax: 1, total: 'auto' },
-          { mode: 'forward', kind: 'pair', nAdd: 2, widthMin: 2, widthMax: 3 }
+          { kind: 'small', nAdd: 'small', widthMin: 1, widthMax: 1 },
+          { kind: 'pair', nAdd: 2, widthMin: 2, widthMax: 3 }
         ],
         ceil: ceil
       };
     }
     if (year === 4) {
       // Two numbers, 3-4 digits (<= ceiling 4). The meter raises the upper width.
-      // Width >= 3 lets the host addend carry two interior code cells, so >=1
-      // blank is an ADDEND digit — inverse reasoning, as the curriculum intends.
       var hi4 = (d <= 2) ? 3 : 4;
       return {
-        mode: 'inverse',
-        choices: [{ mode: 'inverse', kind: 'pair', nAdd: 2, widthMin: 3, widthMax: hi4 }],
+        choices: [{ kind: 'pair', nAdd: 2, widthMin: 3, widthMax: hi4 }],
         ceil: ceil
       };
     }
@@ -146,16 +162,14 @@
       var lo5 = d <= 2 ? 4 : 5;
       var hi5 = d <= 1 ? 5 : 6;
       return {
-        mode: 'inverse',
-        choices: [{ mode: 'inverse', kind: 'pair', nAdd: 2, widthMin: lo5, widthMax: Math.max(lo5, hi5) }],
+        choices: [{ kind: 'pair', nAdd: 2, widthMin: lo5, widthMax: Math.max(lo5, hi5) }],
         ceil: ceil
       };
     }
     // year 6: 2-3 numbers, 4-6 digits, mixed sizes; ONLY year that mixes three.
     var nAdd6 = d >= 3 ? 3 : 2;
     return {
-      mode: 'inverse',
-      choices: [{ mode: 'inverse', kind: 'mixed', nAdd: nAdd6, widthMin: 4, widthMax: 6 }],
+      choices: [{ kind: 'mixed', nAdd: nAdd6, widthMin: 4, widthMax: 6 }],
       ceil: ceil
     };
   }
@@ -267,34 +281,21 @@
   }
 
   // ---- core builder: one card ----------------------------------------------
-  // Build a complete valid addition for the year, then realize the code (t,o)
-  // as two uniqueness-safe blanks in DISTINCT columns, t-blank strictly LEFT of
-  // o-blank. Returns { qtn, ans } or null on failure (caller retries).
+  // FIX 4: build a complete valid addition for the year whose TOTAL's last two
+  // digits are exactly the code (total % 100 === code), then blank the total's
+  // adjacent TENS and ONES columns. Every puzzle is forward: read the total, the
+  // two answer blanks ARE the code. Uniqueness is trivial (both blanks in the
+  // total, all addends known) but still asserted. Returns { qtn, ans } or null.
   //
   //   code: integer 0-25 for this card's message letter.
   //   form: a chosen form object from yearForms().
   function buildCard(rng, year, d, form, code) {
-    var cd = codeToDigits(code); // [tens, ones]
+    var cd = codeToDigits(code); // [tens, ones]; tens is 0/1/2, ones 0-9
     var t = cd[0], o = cd[1];
-
-    if (form.mode === 'forward') {
-      return buildForward(rng, year, d, form, code, t, o);
-    }
-    return buildInverse(rng, year, d, form, code, t, o);
-  }
-
-  // ---- FORWARD (Y3): both blanks in the ANSWER (total) row -----------------
-  // Build addends, compute the total, then find two total columns: a LEFT column
-  // holding digit t and a strictly-LOWER column holding digit o. Blank both.
-  // Every addend digit stays visible -> each total blank is forced by the
-  // addends + carry-in. At most one blank per column is automatic (both blanks
-  // are in the total, distinct columns).
-  function buildForward(rng, year, d, form, code, t, o) {
     var ceil = ceilingDigits(year);
 
-    // ---- SMALL form: several single-digit addends, both blanks in the 2-digit
-    // total (tens=t at col 0, ones=o at col 1). Target the total directly so the
-    // form actually occurs. Only valid when t>=1 (a 2-digit total can't have a
+    // ---- SMALL form (Y3): several single-digit addends summing to a 2-digit
+    // total whose tens=t and ones=o. Needs t>=1 (a 2-digit total can't have a
     // zero tens digit); codes 0-9 (t==0) fall back to the pair form.
     if (form.kind === 'small') {
       if (t < 1) { return null; }                 // need a real 2-digit total
@@ -317,204 +318,83 @@
       return null;
     }
 
-    // ---- PAIR form: two numbers up to 3 digits, both blanks in the total.
-    for (var attempt = 0; attempt < 240; attempt++) {
-      var width = ri(rng, 2, 3);
-      var lo = Math.pow(10, width - 1), hi = Math.pow(10, width) - 1;
-      var addNums = [ri(rng, lo, hi), ri(rng, lo, hi)];
-      var sum = addNums[0] + addNums[1];
-      if (sum < 10) { continue; }                 // need >=2 total digits for two blanks
-      if (String(sum).length > ceil) { continue; } // total within year ceiling
+    // ---- PAIR / MIXED form: nAdd numbers in the year's width band, whose sum's
+    // last two digits are t (tens) and o (ones). We build the first nAdd-1
+    // addends freely, then choose the LAST addend so the running total lands on
+    // ...to. The last addend's low two digits are derived; its high digits are
+    // free (so it still reads as a real year-magnitude number).
+    var nAdd = form.nAdd;
+    var code100 = t * 10 + o;                     // 0..25
+    for (var attempt = 0; attempt < 400; attempt++) {
+      // per-number widths within the band
+      var widths = [];
+      var maxW = 0;
+      for (var i = 0; i < nAdd; i++) {
+        var wi = ri(rng, form.widthMin, form.widthMax);
+        widths.push(wi);
+        if (wi > maxW) { maxW = wi; }
+      }
+      var gridW = maxW;
 
-      var gridW = String(sum).length;
-      var totalArr = digitsOf(sum, gridW);
-      var found = chooseTwoTotalCols(rng, totalArr, gridW, t, o);
-      if (!found) { continue; }
+      // build the first nAdd-1 addends as random valid numbers in their width.
+      var nums = [];
+      var partial = 0, ok = true;
+      for (i = 0; i < nAdd - 1; i++) {
+        var loA = Math.pow(10, widths[i] - 1), hiA = Math.pow(10, widths[i]) - 1;
+        if (widths[i] === 1) { loA = 1; hiA = 9; }
+        var v = ri(rng, loA, hiA);
+        nums.push(v); partial += v;
+      }
 
+      // The last addend `last` must make (partial + last) % 100 === code100, and
+      // must itself be a valid number in widths[last] with no leading zero, and
+      // the total must stay within the ceiling. last % 100 is fixed mod 100; we
+      // pick the high part freely. lastLow = (code100 - partial) mod 100.
+      var lastW = widths[nAdd - 1];
+      var lastLow = ((code100 - partial) % 100 + 100) % 100;   // 0..99, the low 2 digits
+      // choose the high part so `last` has lastW digits and no leading zero.
+      var last = null;
+      for (var hattempt = 0; hattempt < 40; hattempt++) {
+        var highDigits = lastW - 2;
+        var hi, lo;
+        if (highDigits <= 0) {
+          // 1- or 2-digit last addend: value IS lastLow (must be valid for width)
+          if (lastW === 1) { if (lastLow < 1 || lastLow > 9) { break; } last = lastLow; }
+          else { if (lastLow < 10) { break; } last = lastLow; } // 2-digit needs >=10
+          break;
+        } else {
+          var hLo = Math.pow(10, highDigits - 1), hHi = Math.pow(10, highDigits) - 1;
+          hi = ri(rng, hLo, hHi);
+          lo = lastLow;
+          last = hi * 100 + lo;
+          if (last >= Math.pow(10, lastW - 1)) { break; } // valid lastW-digit number
+        }
+      }
+      if (last == null) { continue; }
+      nums.push(last);
+
+      var sum = partial + last;
+      if (sum % 100 !== code100) { continue; }      // safety (carries don't change %100)
+      var sumStr = String(sum);
+      if (sumStr.length < 2) { continue; }          // need >=2 total digits for two blanks
+      if (sumStr.length > ceil) { continue; }       // total within year ceiling
+
+      gridW = Math.max(gridW, sumStr.length);
       var addends = [];
-      for (var k = 0; k < addNums.length; k++) { addends.push(digitsOf(addNums[k], gridW)); }
+      for (i = 0; i < nAdd; i++) { addends.push(digitsOf(nums[i], gridW)); }
+      var totalArr = digitsOf(sum, gridW);
 
+      // the two blanks are the total's TENS (col gridW-2) and ONES (col gridW-1).
       var qa = assembleCard({
-        addends: addends, total: totalArr, width: gridW, nAdd: addNums.length
+        addends: addends, total: totalArr, width: gridW, nAdd: nAdd
       }, [
-        { kind: 'total', row: 0, col: found.leftCol, place: 'tens' },
-        { kind: 'total', row: 0, col: found.rightCol, place: 'ones' }
+        { kind: 'total', row: 0, col: gridW - 2, place: 'tens' },
+        { kind: 'total', row: 0, col: gridW - 1, place: 'ones' }
       ], code, t, o);
 
       if (assertUniqueSolution(qa.qtn).unique) { return qa; }
     }
     return null;
-  }
-
-  // Pick two total columns: left col with digit t, a strictly-greater col with
-  // digit o. Returns {leftCol,rightCol} or null.
-  //
-  // A blanked TOTAL cell is always forced by addends+carry (the solver runs the
-  // algorithm forwards), so blanking the total's LEADING column is safe: its true
-  // digit is nonzero (it's a real number's leading digit) and the uniqueness
-  // oracle's no-leading-zero rule simply prunes the 0 candidate. Allowing col 0
-  // here is what lets a 2-digit total (Y3 small-addend form) host two blanks
-  // (tens + ones). We DO skip col 0 only when the tens digit is 0-valued, which
-  // can't happen for a genuine leading digit.
-  function chooseTwoTotalCols(rng, totalArr, w, t, o) {
-    var tCols = [], oCols = [], c;
-    for (c = 0; c < w; c++) {            // total cells incl. leading (always forced)
-      if (totalArr[c] === t) { tCols.push(c); }
-      if (totalArr[c] === o) { oCols.push(c); }
-    }
-    tCols = shuffle(rng, tCols);
-    for (var i = 0; i < tCols.length; i++) {
-      var lc = tCols[i];
-      var rights = oCols.filter(function (rc) { return rc > lc; });
-      if (rights.length) { return { leftCol: lc, rightCol: pick(rng, rights) }; }
-    }
-    return null;
-  }
-
-  // ---- INVERSE (Y4-6): place code digits on ADDEND cells -------------------
-  // We CONTROL the addends, so set two interior (non-leading) addend cells in
-  // two distinct columns to t (left) and o (right), fill the rest, compute the
-  // total, and blank those two addend cells. Optionally swap the ONES blank to
-  // an answer cell (one addend-blank + one answer-blank) at higher difficulty.
-  // At most one blank per column is enforced by choosing distinct columns AND,
-  // for the answer-blank variant, a total column that holds no addend blank.
-  function buildInverse(rng, year, d, form, code, t, o) {
-    var ceil = ceilingDigits(year);
-    for (var attempt = 0; attempt < 300; attempt++) {
-      var nAdd = form.nAdd;
-      // choose per-number widths
-      var widths = [];
-      var maxW = 0;
-      for (var i = 0; i < nAdd; i++) {
-        var wi;
-        if (form.kind === 'mixed') {
-          wi = ri(rng, form.widthMin, form.widthMax); // mixed sizes
-        } else {
-          wi = ri(rng, form.widthMin, form.widthMax);
-        }
-        widths.push(wi);
-        if (wi > maxW) { maxW = wi; }
-      }
-      // grid width is at least the widest addend; the total may need +1 column.
-      var gridW = maxW;
-
-      // We need two DISTINCT interior columns in the widest addend(s) to host the
-      // tens (left) and ones (right) code digits. Use the widest addend as host.
-      var hostRow = 0;
-      for (i = 1; i < nAdd; i++) { if (widths[i] > widths[hostRow]) { hostRow = i; } }
-      var hostW = widths[hostRow];
-      if (hostW < 3) { continue; } // need col 0 (leading, kept) + two interior cols
-
-      // pick two interior columns of the host addend, in grid coordinates.
-      // host addend occupies grid columns [gridW-hostW .. gridW-1]; its leading
-      // grid column is gridW-hostW (kept visible). Interior host cols are the rest.
-      var hostLeadCol = gridW - hostW;
-      var interior = [];
-      for (var c = hostLeadCol + 1; c < gridW; c++) { interior.push(c); }
-      if (interior.length < 2) { continue; }
-      // left col (tens) strictly less than right col (ones).
-      var pair = pickTwoOrdered(rng, interior);
-      if (!pair) { continue; }
-      var leftCol = pair[0], rightCol = pair[1];
-
-      // Build addend numbers with the host digits forced: host[leftCol]=t,
-      // host[rightCol]=o, host leading digit 1-9, other host digits random;
-      // other addends fully random within their widths.
-      var addendArrs = buildInverseAddends(rng, nAdd, widths, gridW, hostRow, leftCol, rightCol, t, o);
-      if (!addendArrs) { continue; }
-
-      var sum = 0;
-      for (i = 0; i < nAdd; i++) { sum += numOf(addendArrs[i]); }
-      var sumStr = String(sum);
-      if (sumStr.length > Math.max(gridW, 0) ) {
-        // total overflowed the grid width — widen the grid and re-pad.
-        gridW = sumStr.length;
-        if (gridW > ceil) { continue; }
-        // re-pad addends to the new width; recompute host columns shift.
-        var shift = gridW - maxW;
-        leftCol += shift; rightCol += shift;
-        var repadded = [];
-        for (i = 0; i < nAdd; i++) { repadded.push(digitsOf(numOf(addendArrs[i]), gridW)); }
-        addendArrs = repadded;
-      }
-      if (sumStr.length > ceil) { continue; }
-      var totalArr = digitsOf(sum, gridW);
-
-      // Decide blank placement. Default: both blanks on the host addend cells.
-      // Higher difficulty (d>=4) sometimes swaps the ONES blank to an answer cell.
-      var blanks;
-      var swapOnesToAnswer = (d >= 4) && (rng() < 0.5);
-      if (swapOnesToAnswer) {
-        // find a total column == o that is NOT leftCol (avoid two blanks/col) and
-        // is not the total's leading col.
-        var altCols = [];
-        for (c = 1; c < gridW; c++) {
-          if (c !== leftCol && totalArr[c] === o) { altCols.push(c); }
-        }
-        if (altCols.length) {
-          var ac = pick(rng, altCols);
-          // ensure ordering: tens blank (host) left of ones blank (total).
-          if (leftCol < ac) {
-            blanks = [
-              { kind: 'addend', row: hostRow, col: leftCol, place: 'tens' },
-              { kind: 'total', row: 0, col: ac, place: 'ones' }
-            ];
-          } else {
-            swapOnesToAnswer = false;
-          }
-        } else {
-          swapOnesToAnswer = false;
-        }
-      }
-      if (!swapOnesToAnswer) {
-        blanks = [
-          { kind: 'addend', row: hostRow, col: leftCol, place: 'tens' },
-          { kind: 'addend', row: hostRow, col: rightCol, place: 'ones' }
-        ];
-      }
-
-      var qa = assembleCard({
-        addends: addendArrs, total: totalArr, width: gridW, nAdd: nAdd
-      }, blanks, code, t, o);
-
-      // verify the visible digits force exactly these blanks (uniqueness rule 1
-      // is structural — distinct columns, one blank each, others known — but we
-      // still assert to be safe).
-      if (assertUniqueSolution(qa.qtn).unique) { return qa; }
-    }
-    return null;
-  }
-
-  // Build addend digit-arrays (all length gridW) with the host addend's leftCol
-  // and rightCol forced to t and o, host leading digit nonzero, other addends
-  // random valid numbers. Returns array of digit-arrays or null.
-  function buildInverseAddends(rng, nAdd, widths, gridW, hostRow, leftCol, rightCol, t, o) {
-    var arrs = [], i, c;
-    for (i = 0; i < nAdd; i++) {
-      var w = widths[i];
-      var leadGrid = gridW - w; // this addend's leading grid column
-      var arr = new Array(gridW);
-      for (c = 0; c < gridW; c++) { arr[c] = (c < leadGrid) ? 0 : -1; } // -1 = to fill
-      // leading digit 1-9
-      arr[leadGrid] = ri(rng, 1, 9);
-      if (i === hostRow) {
-        // host: force the two code cells; but they must be within this addend.
-        if (leftCol < leadGrid || rightCol < leadGrid) { return null; }
-        arr[leftCol] = t;
-        arr[rightCol] = o;
-      }
-      for (c = leadGrid + 1; c < gridW; c++) { if (arr[c] === -1) { arr[c] = ri(rng, 0, 9); } }
-      arrs.push(arr);
-    }
-    return arrs;
-  }
-
-  // pick two distinct columns from a list, returned in ascending (left,right).
-  function pickTwoOrdered(rng, cols) {
-    if (cols.length < 2) { return null; }
-    var s = shuffle(rng, cols).slice(0, 2);
-    s.sort(function (a, b) { return a - b; });
-    return s;
   }
 
   // ---- assemble a card from a full sum + the two blank cells ----------------
@@ -587,28 +467,55 @@
       ? window.TP_effDifficulty(year, meter)
       : meter;
 
-    // ---- resolve the reveal message -> exactly `count` letters --------------
+    // ---- resolve the reveal message -> EXACTLY `count` letters (FIX 1) ------
+    // The revealed message must show one letter per puzzle and never more letters
+    // than puzzles. For built-in reveals we only OFFER bank entries whose letter
+    // count === count. For a custom message we SNAP the puzzle count to the
+    // message's letter length (clamped to a sane 4-14), so message.length===count.
     var source = opts.source || 'joke';
     var prompt = '';
     var rawMsg = '';
 
     if (source === 'custom' && cleanMessage(opts.message)) {
       rawMsg = cleanMessage(opts.message);
-    } else if (source === 'word') {
-      rawMsg = pick(rng, PRAISE);
-      source = 'word';
+      // SNAP count to the custom message's letter length (clamp 4-14).
+      var customLen = letterCount(rawMsg);
+      count = Math.max(4, Math.min(14, customLen));
+      // If the typed message is longer/shorter than the clamp, trim/pad later to
+      // `count` so we never display more letters than puzzles.
     } else {
-      // joke: print the question at the top; spell the punchline.
-      var joke = pick(rng, JOKES);
-      rawMsg = cleanMessage(joke.a);
-      prompt = joke.q;
-      source = 'joke';
+      // Built-in: choose a reveal whose letter count EXACTLY equals `count`.
+      var pool = revealsForCount(count);
+      if (source === 'word') {
+        pool = pool.filter(function (r) { return r.kind === 'word'; });
+        if (!pool.length) { pool = revealsForCount(count); }
+      } else {
+        // joke preferred; fall back to whatever fits the count.
+        var jokes = pool.filter(function (r) { return r.kind === 'joke'; });
+        if (jokes.length) { pool = jokes; } // keep joke if one fits this count
+        source = 'joke';
+      }
+      if (!pool.length) {
+        // No bank entry of exactly this length: fall back to ALL reveals for the
+        // count; if STILL none, build a generic word of the right length.
+        pool = revealsForCount(count);
+      }
+      if (pool.length) {
+        var chosen = pick(rng, pool);
+        rawMsg = chosen.msg;
+        prompt = chosen.prompt;
+        source = chosen.kind;
+      } else {
+        // last resort: repeat a praise word's letters to the count (rare; only if
+        // a non-standard count is requested with no matching bank entry).
+        rawMsg = cleanMessage(PRAISE[0]);
+        source = 'word';
+      }
     }
 
-    // letters that drive puzzles (spaces removed), padded/trimmed to `count`.
+    // letters that drive puzzles (spaces removed), trimmed/padded to `count`.
     var letters = messageLetters(rawMsg);
-    if (!letters.length) { letters = messageLetters(pick(rng, PRAISE)); }
-    // trim or pad (repeat-cycle) to exactly count letters.
+    if (!letters.length) { letters = messageLetters(PRAISE[0]); }
     var seq = [];
     for (var i = 0; i < count; i++) { seq.push(letters[i % letters.length]); }
 
@@ -620,10 +527,15 @@
       items.push(item);
     }
 
+    // fullMessage is what the page DISPLAYS as the answer; it must contain no more
+    // letters than puzzles. When the source message's letters exactly fill the
+    // count we keep its spacing; otherwise show the spelled sequence (FIX 1).
+    var displayMessage = (letterCount(rawMsg) === count) ? rawMsg : seq.join('');
+
     return {
       items: items,
       message: seq.join(''),       // exactly what the sheet spells (count letters)
-      fullMessage: rawMsg,         // the human-readable message (with spaces)
+      fullMessage: displayMessage, // human-readable; letters === count
       prompt: prompt,
       source: source,
       year: year, difficulty: meter, count: count, seed: seed
@@ -746,10 +658,14 @@
   }
 
   // ---- one card ------------------------------------------------------------
-  function cardHTML(item, idx, revealed) {
+  // `revealed` = answer-key tab (all cards solved). `isExample` = the worked
+  // example card (FIX 3): pre-solved even on the worksheet tab, with an "Example"
+  // tag. `solved` = this card shows its filled digits + completed strip.
+  function cardHTML(item, idx, revealed, isExample) {
     var p = item.qtn, w = p.width, nAdd = p.nAdd;
+    var solved = revealed || isExample;
     var carries = new Array(w + 1).fill(0);
-    if (revealed) {
+    if (solved) {
       var carry = 0;
       for (var col = w - 1; col >= 0; col--) {
         var s = carry;
@@ -767,14 +683,17 @@
       return null;
     }
 
+    // FIX 2: blanks inside the sum are PLAIN missing-digit boxes — no in-sum
+    // "tens"/"ones" word-tags (they read as column headers and confuse). The
+    // only labelled decode area is the bottom strip. On the worked Example card
+    // (or the answer key) the digit is filled in.
     function cellSpan(val, blank, isPad) {
       if (isPad) { return '<span class="dd-cell"></span>'; } // structural padding: blank
       if (val === null && blank) {
-        var labTxt = blank.place === 'tens' ? 'tens' : 'ones';
-        if (revealed) {
-          return '<span class="dd-cell dd-blank dd-solved"><span class="dd-bl-lab">' + labTxt + '</span>' + blank.digit + '</span>';
+        if (solved) {
+          return '<span class="dd-cell dd-blank dd-solved">' + blank.digit + '</span>';
         }
-        return '<span class="dd-cell dd-blank"><span class="dd-bl-lab">' + labTxt + '</span></span>';
+        return '<span class="dd-cell dd-blank"></span>';
       }
       return '<span class="dd-cell">' + val + '</span>';
     }
@@ -782,7 +701,7 @@
     var gridStyle = 'grid-template-columns: 16px repeat(' + w + ', 1fr);';
     var html = '<div class="dd-sum" style="' + gridStyle + '">';
 
-    if (revealed) {
+    if (solved) {
       html += '<span class="dd-op"></span>';
       for (var c = 0; c < w; c++) {
         var cin = c < w - 1 ? carries[c + 1] : 0;
@@ -806,15 +725,22 @@
     }
     html += '</div>';
 
-    // per-card answer strip: [tens][ones] -> letter
-    var strip = '<div class="dd-strip">' +
-      '<span class="dd-strip-box">' + (revealed ? item.ans.tens : '') + '</span>' +
-      '<span class="dd-strip-box">' + (revealed ? item.ans.ones : '') + '</span>' +
-      '<span class="dd-strip-arrow">→</span>' +
-      '<span class="dd-strip-ltr">' + (revealed ? item.ans.letter : '') + '</span>' +
+    // FIX 2: the ONE labelled decode strip — [tens][ones] -> [letter], with the
+    // words printed UNDER each box. Filled on the worked example / answer key.
+    var strip = '<div class="dd-strip-wrap">' +
+      '<div class="dd-strip">' +
+        '<span class="dd-strip-cell"><span class="dd-strip-box">' + (solved ? item.ans.tens : '') + '</span><span class="dd-strip-lab">tens</span></span>' +
+        '<span class="dd-strip-cell"><span class="dd-strip-box">' + (solved ? item.ans.ones : '') + '</span><span class="dd-strip-lab">ones</span></span>' +
+        '<span class="dd-strip-arrow">→</span>' +
+        '<span class="dd-strip-cell"><span class="dd-strip-box dd-strip-ltr">' + (solved ? item.ans.letter : '') + '</span><span class="dd-strip-lab">letter</span></span>' +
+      '</div>' +
+      '<div class="dd-strip-cue">Write the two digits you found, then use the codebook to find the letter.</div>' +
       '</div>';
 
-    return '<figure class="dd-card"><div class="dd-card-no">' + (idx + 1) + '</div>' + html + strip + '</figure>';
+    // FIX 3: puzzle 1 is a worked Example on every sheet (worksheet + answer key).
+    var tag = isExample ? '<div class="dd-card-tag">Example</div>' : '';
+    var cls = 'dd-card' + (isExample ? ' dd-card-example' : '');
+    return '<figure class="' + cls + '"><div class="dd-card-no">' + (idx + 1) + '</div>' + tag + html + strip + '</figure>';
   }
 
   // ---- reveal footer: the assembled message --------------------------------
@@ -842,23 +768,36 @@
 
   function render() {
     if (els.eyebrowDiff && window.TP_diffDots) { els.eyebrowDiff.textContent = window.TP_diffDots(state.difficulty); }
+    // FIX 5: key-stage label tracks the selected year (Y3-6 are all KS2).
+    var ks = state.year <= 2 ? 'KS1' : 'KS2';
+    if (els.eyebrowKs) { els.eyebrowKs.textContent = ks + ' · Year ' + state.year; }
+    if (els.context) { els.context.textContent = ks + ' · Numeracy'; }
     var revealed = state.tab === 'answers';
 
     if (els.codebook) { els.codebook.innerHTML = codebookHTML(); }
 
     var sheet = state.sheet;
-    var cols = state.count >= 6 ? 3 : 2;
+    // Use the sheet's ACTUAL puzzle count for layout, not the requested count: a
+    // custom message snaps the count to its letter length (FIX 1), so the grid
+    // must size to what was generated (slots === puzzles always).
+    var actualCount = sheet.items.length;
+    var cols = actualCount >= 6 ? 3 : 2;
     els.grid.style.setProperty('--dd-cols', cols);
-    var rows = Math.ceil(state.count / cols);
+    var rows = Math.ceil(actualCount / cols);
     // Card height shrinks as rows grow so the codebook + grid + reveal footer all
     // fit one A4 (gotcha 4). 4-row (12-up) sheets need the most compact cards.
-    var cardH = rows <= 2 ? 230 : (rows === 3 ? 160 : 116);
+    var cardH = rows <= 2 ? 220 : (rows === 3 ? 150 : 100);
     els.grid.style.setProperty('--dd-cardh', cardH + 'px');
     // tighten grid for the densest sheet
     els.grid.style.setProperty('--dd-gap', rows >= 4 ? '8px' : '12px');
 
+    // On the densest (4-row / 12-up) sheets the per-card cue is dropped to keep
+    // ONE A4 page; the cue still shows on the worked Example card and in the
+    // intro line, so the instruction is never lost.
+    els.grid.classList.toggle('dd-dense', rows >= 4);
+
     var html = '';
-    sheet.items.forEach(function (it, i) { html += cardHTML(it, i, revealed); });
+    sheet.items.forEach(function (it, i) { html += cardHTML(it, i, revealed, i === 0); });
     els.grid.innerHTML = html;
 
     if (els.reveal) { els.reveal.innerHTML = revealHTML(revealed); }
@@ -941,6 +880,8 @@
     els.diffThumb = $('dd-difficulty') ? $('dd-difficulty').querySelector('.diff-thumb') : null;
     els.diffLabel = $('dd-diff-label');
     els.eyebrowDiff = $('dd-eyebrow-diff');
+    els.eyebrowKs = $('dd-eyebrow-ks');
+    els.context = $('dd-context');
     els.tabThumb = $('dd-tabs') ? $('dd-tabs').querySelector('.seg-thumb') : null;
     els.spin = $('dd-regen-icon');
     if (els.spin) { els.spin.style.transition = 'transform .5s ease'; }

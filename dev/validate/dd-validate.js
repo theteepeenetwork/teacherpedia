@@ -10,9 +10,11 @@
  *      (count > 1); and NO generated puzzle ever has two blanks in one column.
  *  (b) YEAR MAGNITUDE — Y3 numbers <= 3 digits, 3-digit numbers NEVER appear
  *      with 3+ addends, and single-digit-addend puzzles DO occur at Y3 with
- *      answer-only blanks; Y4 <= 4 digits; only Y6 mixes 3 large numbers;
- *      Y3 is FORWARD only (both blanks in the answer row); Y4+ allows an addend
- *      blank (inverse).
+ *      answer-only blanks; Y4 <= 4 digits; only Y6 mixes 3 large numbers.
+ *  (FIX 4) ALL FORWARD — every puzzle blanks EXACTLY the total's adjacent tens
+ *      and ones columns (both kind 'total'); total % 100 === decoded code.
+ *  (FIX 1) REVEAL LENGTH — sheet.message, fullMessage (letters) and the decoded
+ *      letters each have EXACTLY one letter per puzzle.
  *  (c) DECODE ROUND-TRIP — for a known custom message, the recovered blanks ->
  *      digits -> letters spell exactly the input (trimmed/padded to count).
  *  (d) SELF-CHECK — mutating ANY single blank to a wrong value changes the
@@ -92,8 +94,7 @@ var COUNT = 9;
 
 var sigSet = {}, msgSet = {}, totalPuzzles = 0;
 var y3SmallAnswerOnly = false;  // (b) Y3 single-digit-addend with answer-only blanks occurs
-var y3Forward = true;           // (b) Y3 must be forward only
-var y4PlusInverse = false;      // (b) Y4+ allows an addend blank
+var allForward = true;          // (FIX 4) EVERY puzzle is forward (both blanks total)
 var y6ThreeBig = false;         // (b) only Y6 mixes 3 large numbers
 var nonY6ThreeBig = false;      // must stay false
 
@@ -107,6 +108,16 @@ YEARS.forEach(function (year) {
 
       check(sheet && sheet.items && sheet.items.length === COUNT, 'Y' + year + ' d' + d + ': wrong item count');
       if (!sheet || !sheet.items) { continue; }
+
+      // ---- (FIX 1) reveal length === puzzle count. The spelled message, the
+      // displayed message (fullMessage, spaces ignored) and the decoded letters
+      // must each have EXACTLY one letter per puzzle — never more.
+      var nItems = sheet.items.length;
+      check(sheet.message.length === nItems, 'Y' + year + ' d' + d + ': sheet.message length ' + sheet.message.length + ' != count ' + nItems);
+      check(DD.messageLetters(sheet.fullMessage).length === nItems, 'Y' + year + ' d' + d + ': fullMessage letters ' + DD.messageLetters(sheet.fullMessage).length + ' != count ' + nItems);
+      var decodedSheet = sheet.items.map(function (it) { return it.ans.letter; }).join('');
+      check(decodedSheet.length === nItems, 'Y' + year + ' d' + d + ': decoded letters ' + decodedSheet.length + ' != count ' + nItems);
+      check(decodedSheet === sheet.message, 'Y' + year + ' d' + d + ': decoded "' + decodedSheet + '" != message "' + sheet.message + '"');
 
       sheet.items.forEach(function (it, idx) {
         totalPuzzles++;
@@ -124,6 +135,18 @@ YEARS.forEach(function (year) {
         var twoInCol = false;
         q.blanks.forEach(function (b) { if (colSeen[b.col]) { twoInCol = true; } colSeen[b.col] = 1; });
         check(!twoInCol, 'Y' + year + ' d' + d + ' #' + idx + ': two blanks share a column');
+
+        // ---- (FIX 4) the two blanks are EXACTLY the total's ones + tens columns,
+        // adjacent, both kind 'total'; and total % 100 === decoded code.
+        var bk = q.blanks.slice().sort(function (x, y) { return x.col - y.col; });
+        check(bk[0].kind === 'total' && bk[1].kind === 'total',
+          'Y' + year + ' d' + d + ' #' + idx + ': a blank is not in the total row');
+        check(bk[1].col === w - 1 && bk[0].col === w - 2,
+          'Y' + year + ' d' + d + ' #' + idx + ': blanks are not the total ones+tens columns (cols ' + bk[0].col + ',' + bk[1].col + ' of ' + w + ')');
+        var totVal = numOf(a.fullTotal);
+        var decodedCode = DD.digitsToCode(a.tens, a.ones);
+        check(totVal % 100 === decodedCode,
+          'Y' + year + ' d' + d + ' #' + idx + ': total%100 ' + (totVal % 100) + ' != code ' + decodedCode);
 
         // ---- arithmetic correctness on the full solved grid
         var sum = 0;
@@ -162,22 +185,20 @@ YEARS.forEach(function (year) {
         check(code >= 0 && code <= 25, 'Y' + year + ' d' + d + ' #' + idx + ': code ' + code + ' out of A-Z range');
         check(a.letter === DD.codeToLetter(code), 'Y' + year + ' d' + d + ' #' + idx + ': cipher mismatch ' + code + ' -> ' + a.letter);
 
+        // ---- (FIX 4) every puzzle is forward (both blanks in the total row).
+        var allTotal = q.blanks.every(function (b) { return b.kind === 'total'; });
+        if (!allTotal) { allForward = false; }
+
         // ---- (b) year-shape facts
         if (year === 3) {
-          var allTotal = q.blanks.every(function (b) { return b.kind === 'total'; });
-          if (!allTotal) { y3Forward = false; }
           // single-digit-addend (nAdd>=3, every addend 1 digit) with answer-only blanks
           if (nAdd >= 3) {
             var allSingle = a.fullAddends.every(function (arr) { return String(numOf(arr)).length === 1; });
             if (allSingle && allTotal) { y3SmallAnswerOnly = true; }
-            // 3-digit ADDENDS must NEVER appear with 3+ addends (a 3-digit TOTAL
-            // is fine — e.g. several single digits summing into the hundreds is
-            // not produced here, but the rule guards the addends specifically).
+            // 3-digit ADDENDS must NEVER appear with 3+ addends.
             var anyThreeDigitAddend = a.fullAddends.some(function (arr) { return String(numOf(arr)).length >= 3; });
             check(!anyThreeDigitAddend, 'Y3 #' + idx + ': a 3-digit ADDEND appears with ' + nAdd + ' addends');
           }
-        } else {
-          if (q.blanks.some(function (b) { return b.kind === 'addend'; })) { y4PlusInverse = true; }
         }
         // three large numbers (3 addends, all >= 4 digits)
         if (nAdd >= 3) {
@@ -197,17 +218,20 @@ YEARS.forEach(function (year) {
 
 // ---------------------------------------------------------------------------
 // (c) DECODE ROUND-TRIP for a known custom message, every year x difficulty.
+// FIX 1: a custom message SNAPS the puzzle count to its letter length, so the
+// sheet spells the message EXACTLY (one letter per puzzle, no padding cycle).
 (function decodeRoundTrip() {
-  var MSG = 'WELL DONE';
+  var MSG = 'WELL DONE';                       // 8 letters -> count snaps to 8
+  var expected = DD.messageLetters(MSG);        // letters, spaces stripped
+  var want = expected.join('');                 // 'WELLDONE'
   YEARS.forEach(function (year) {
     DIFFS.forEach(function (d) {
+      // request count 12 — the custom snap overrides it down to the message length.
       var sheet = DD.generateSheet({ year: year, difficulty: d, count: 12, source: 'custom', message: MSG, seed: 4242 });
-      var expected = DD.messageLetters(MSG);              // letters, spaces stripped
-      var seq = [];
-      for (var i = 0; i < 12; i++) { seq.push(expected[i % expected.length]); }
+      check(sheet.items.length === expected.length, 'custom snap Y' + year + ' d' + d + ': item count ' + sheet.items.length + ' != letter length ' + expected.length);
       var decoded = sheet.items.map(function (it) { return it.ans.letter; }).join('');
-      check(decoded === seq.join(''), 'decode round-trip Y' + year + ' d' + d + ': "' + decoded + '" != "' + seq.join('') + '"');
-      check(sheet.message === seq.join(''), 'sheet.message mismatch Y' + year + ' d' + d);
+      check(decoded === want, 'decode round-trip Y' + year + ' d' + d + ': "' + decoded + '" != "' + want + '"');
+      check(sheet.message === want, 'sheet.message mismatch Y' + year + ' d' + d + ': "' + sheet.message + '"');
     });
   });
 })();
@@ -246,9 +270,8 @@ YEARS.forEach(function (year) {
 
 // ---------------------------------------------------------------------------
 // (a/b) aggregate assertions
-check(y3Forward, 'Y3 produced a non-forward puzzle (a blank outside the answer row)');
+check(allForward, 'a puzzle was NOT forward (a blank outside the total row) — FIX 4 requires all forward');
 check(y3SmallAnswerOnly, 'Y3 never produced a single-digit-addend puzzle with answer-only blanks');
-check(y4PlusInverse, 'Y4+ never produced an inverse puzzle (an addend blank)');
 check(y6ThreeBig, 'Y6 never mixed three large (>=4-digit) numbers');
 check(!nonY6ThreeBig, 'a year other than Y6 mixed three large numbers');
 
@@ -270,9 +293,8 @@ check(distinctMsgs >= 5, 'low reveal variety: only ' + distinctMsgs + ' distinct
 console.log('puzzles generated: ' + totalPuzzles);
 console.log('distinct signatures: ' + distinctSigs);
 console.log('distinct reveal messages: ' + distinctMsgs);
-console.log('Y3 forward-only: ' + y3Forward);
+console.log('all puzzles forward (both blanks = total tens+ones): ' + allForward);
 console.log('Y3 single-digit-addend answer-only puzzles occur: ' + y3SmallAnswerOnly);
-console.log('Y4+ inverse (addend-blank) puzzles occur: ' + y4PlusInverse);
 console.log('only Y6 mixes three large numbers: ' + (y6ThreeBig && !nonY6ThreeBig));
 console.log('ambiguous fixture caught (count>1) + generator always count===1: ' + (fails.length === 0 || 'see failures'));
 
