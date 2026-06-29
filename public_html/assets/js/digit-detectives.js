@@ -20,8 +20,8 @@
  * meter scales ADDEND magnitude WITHIN the year ceiling — NEVER the ceiling, and
  * NEVER the blank placement (always the total's last two digits, every year).
  *
- *   Y3 : single-digit addends (3-5) OR two numbers <=3 digits; total <=3 digits;
- *        3-digit numbers never appear with 3+ addends.
+ *   Y3 : two addends — TO+TO or HTO+TO (one 2-digit, the other 2- or 3-digit);
+ *        total <=3 digits. Never HTO+HTO, never single-digit addends.
  *   Y4 : two numbers up to 4 digits; total <=4 digits.
  *   Y5 : two numbers 5-6 digits; total <=6 digits.
  *   Y6 : 2-3 numbers, 4-6 digits, mixed sizes; total <=6 digits; the ONLY year
@@ -137,14 +137,15 @@
     var ceil = ceilingDigits(year);
 
     if (year === 3) {
-      // Two forms (magnitude <= 3 digits):
-      //  - several SINGLE-DIGIT addends (3-5), total <= 3 digits;
-      //  - TWO numbers up to 3 digits, total <= 3 digits.
-      // 3-digit numbers NEVER appear with 3+ addends (small-addend form is 1-digit).
+      // Year 3 is TWO addends only, in one of two formal-column shapes (total
+      // <= 3 digits): TO + TO (two 2-digit numbers) or HTO + TO (a 3-digit plus
+      // a 2-digit number). No single-digit-addend form, and never HTO + HTO.
+      // The explicit per-addend widths are shuffled in buildCard so the larger
+      // number may sit on top or bottom.
       return {
         choices: [
-          { kind: 'small', nAdd: 'small', widthMin: 1, widthMax: 1 },
-          { kind: 'pair', nAdd: 2, widthMin: 2, widthMax: 3 }
+          { kind: 'pair', nAdd: 2, widths: [2, 2] },   // TO + TO
+          { kind: 'pair', nAdd: 2, widths: [3, 2] }     // HTO + TO
         ],
         ceil: ceil
       };
@@ -260,26 +261,6 @@
     return { count: count, unique: count === 1 };
   }
 
-  // Partition `total` into exactly `n` single-digit addends (each 1-9). Returns
-  // an array or null if impossible (total outside [n, 9n]).
-  function partitionSingleDigits(rng, total, n) {
-    if (total < n || total > 9 * n) { return null; }
-    for (var attempt = 0; attempt < 60; attempt++) {
-      var parts = [], remaining = total, ok = true;
-      for (var i = 0; i < n; i++) {
-        var slotsLeft = n - i - 1;
-        // each remaining slot must hold 1..9, so bound this pick accordingly.
-        var lo = Math.max(1, remaining - 9 * slotsLeft);
-        var hi = Math.min(9, remaining - 1 * slotsLeft);
-        if (lo > hi) { ok = false; break; }
-        var v = ri(rng, lo, hi);
-        parts.push(v); remaining -= v;
-      }
-      if (ok && remaining === 0) { return shuffle(rng, parts); }
-    }
-    return null;
-  }
-
   // ---- core builder: one card ----------------------------------------------
   // FIX 4: build a complete valid addition for the year whose TOTAL's last two
   // digits are exactly the code (total % 100 === code), then blank the total's
@@ -294,30 +275,6 @@
     var t = cd[0], o = cd[1];
     var ceil = ceilingDigits(year);
 
-    // ---- SMALL form (Y3): several single-digit addends summing to a 2-digit
-    // total whose tens=t and ones=o. Needs t>=1 (a 2-digit total can't have a
-    // zero tens digit); codes 0-9 (t==0) fall back to the pair form.
-    if (form.kind === 'small') {
-      if (t < 1) { return null; }                 // need a real 2-digit total
-      var targetTotal = t * 10 + o;               // 10..25 for valid letters
-      for (var sa = 0; sa < 200; sa++) {
-        var nA = ri(rng, 3, 5);
-        var parts = partitionSingleDigits(rng, targetTotal, nA);
-        if (!parts) { continue; }
-        var gridS = 2;
-        var addsS = [];
-        for (var p = 0; p < parts.length; p++) { addsS.push(digitsOf(parts[p], gridS)); }
-        var qaS = assembleCard({
-          addends: addsS, total: digitsOf(targetTotal, gridS), width: gridS, nAdd: parts.length
-        }, [
-          { kind: 'total', row: 0, col: 0, place: 'tens' },
-          { kind: 'total', row: 0, col: 1, place: 'ones' }
-        ], code, t, o);
-        if (assertUniqueSolution(qaS.qtn).unique) { return qaS; }
-      }
-      return null;
-    }
-
     // ---- PAIR / MIXED form: nAdd numbers in the year's width band, whose sum's
     // last two digits are t (tens) and o (ones). We build the first nAdd-1
     // addends freely, then choose the LAST addend so the running total lands on
@@ -326,14 +283,19 @@
     var nAdd = form.nAdd;
     var code100 = t * 10 + o;                     // 0..25
     for (var attempt = 0; attempt < 400; attempt++) {
-      // per-number widths within the band
-      var widths = [];
-      var maxW = 0;
-      for (var i = 0; i < nAdd; i++) {
-        var wi = ri(rng, form.widthMin, form.widthMax);
-        widths.push(wi);
-        if (wi > maxW) { maxW = wi; }
+      // per-number widths: an explicit, shuffled combo (form.widths, e.g. Y3
+      // [3,2] = HTO+TO so the 3-digit number may sit top or bottom) or a random
+      // band [widthMin, widthMax].
+      var widths, i;
+      if (form.widths) {
+        widths = form.widths.slice();
+        for (var sI = widths.length - 1; sI > 0; sI--) { var sJ = ri(rng, 0, sI); var sT = widths[sI]; widths[sI] = widths[sJ]; widths[sJ] = sT; }
+      } else {
+        widths = [];
+        for (i = 0; i < nAdd; i++) { widths.push(ri(rng, form.widthMin, form.widthMax)); }
       }
+      var maxW = 0;
+      for (i = 0; i < widths.length; i++) { if (widths[i] > maxW) { maxW = widths[i]; } }
       var gridW = maxW;
 
       // build the first nAdd-1 addends as random valid numbers in their width.
@@ -460,7 +422,9 @@
     opts = opts || {};
     var year = Math.max(3, Math.min(6, (opts.year || 4) | 0));
     var meter = Math.max(1, Math.min(5, (opts.difficulty || 3) | 0));
-    var count = Math.max(1, (opts.count || 6) | 0);
+    // Puzzle counts are 6 or 9 (12 was dropped — a 12-up answer key spills to a
+    // second A4). Clamp any incoming/restored count to the 1-9 range.
+    var count = Math.max(1, Math.min(9, (opts.count || 6) | 0));
     var seed = (opts.seed != null) ? (opts.seed >>> 0) : (Math.floor(Math.random() * 0xffffffff) >>> 0);
     var rng = makeRng(seed);
     var d = (typeof window !== 'undefined' && window.TP_effDifficulty)
@@ -478,9 +442,10 @@
 
     if (source === 'custom' && cleanMessage(opts.message)) {
       rawMsg = cleanMessage(opts.message);
-      // SNAP count to the custom message's letter length (clamp 4-14).
+      // SNAP count to the custom message's letter length (clamp 4-9, so the
+      // sheet stays on one A4 — both worksheet and answer key).
       var customLen = letterCount(rawMsg);
-      count = Math.max(4, Math.min(14, customLen));
+      count = Math.max(4, Math.min(9, customLen));
       // If the typed message is longer/shorter than the clamp, trim/pad later to
       // `count` so we never display more letters than puzzles.
     } else {
@@ -734,7 +699,10 @@
         '<span class="dd-strip-arrow">→</span>' +
         '<span class="dd-strip-cell"><span class="dd-strip-box dd-strip-ltr">' + (solved ? item.ans.letter : '') + '</span><span class="dd-strip-lab">letter</span></span>' +
       '</div>' +
-      '<div class="dd-strip-cue">Write the two digits you found, then use the codebook to find the letter.</div>' +
+      // The cue is for pupils filling the sheet in; on the answer-key tab every
+      // box is already filled, so drop it there (also keeps the densest Y6 9-up
+      // key on a single A4).
+      (revealed ? '' : '<div class="dd-strip-cue">Write the two digits you found, then use the codebook to find the letter.</div>') +
       '</div>';
 
     // FIX 3: puzzle 1 is a worked Example on every sheet (worksheet + answer key).

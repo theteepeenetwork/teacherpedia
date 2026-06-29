@@ -8,9 +8,9 @@
  *  (a) UNIQUENESS — assertUniqueSolution(qtn).count === 1 for every generated
  *      puzzle; the ambiguous FIXTURE (two blanks in the SAME column) is caught
  *      (count > 1); and NO generated puzzle ever has two blanks in one column.
- *  (b) YEAR MAGNITUDE — Y3 numbers <= 3 digits, 3-digit numbers NEVER appear
- *      with 3+ addends, and single-digit-addend puzzles DO occur at Y3 with
- *      answer-only blanks; Y4 <= 4 digits; only Y6 mixes 3 large numbers.
+ *  (b) YEAR MAGNITUDE — Y3 is exactly two addends, TO+TO or HTO+TO (never
+ *      HTO+HTO or single-digit), <= 3 digits; Y4 <= 4 digits; only Y6 mixes 3
+ *      large numbers. Puzzle count is 6 or 9 (12 dropped); count clamps to <= 9.
  *  (FIX 4) ALL FORWARD — every puzzle blanks EXACTLY the total's adjacent tens
  *      and ones columns (both kind 'total'); total % 100 === decoded code.
  *  (FIX 1) REVEAL LENGTH — sheet.message, fullMessage (letters) and the decoded
@@ -93,7 +93,7 @@ var SEEDS = 40;                 // sheets per (year, difficulty)
 var COUNT = 9;
 
 var sigSet = {}, msgSet = {}, totalPuzzles = 0;
-var y3SmallAnswerOnly = false;  // (b) Y3 single-digit-addend with answer-only blanks occurs
+var y3_to_to = false, y3_hto_to = false;  // (b) Y3 produces both TO+TO and HTO+TO
 var allForward = true;          // (FIX 4) EVERY puzzle is forward (both blanks total)
 var y6ThreeBig = false;         // (b) only Y6 mixes 3 large numbers
 var nonY6ThreeBig = false;      // must stay false
@@ -191,14 +191,14 @@ YEARS.forEach(function (year) {
 
         // ---- (b) year-shape facts
         if (year === 3) {
-          // single-digit-addend (nAdd>=3, every addend 1 digit) with answer-only blanks
-          if (nAdd >= 3) {
-            var allSingle = a.fullAddends.every(function (arr) { return String(numOf(arr)).length === 1; });
-            if (allSingle && allTotal) { y3SmallAnswerOnly = true; }
-            // 3-digit ADDENDS must NEVER appear with 3+ addends.
-            var anyThreeDigitAddend = a.fullAddends.some(function (arr) { return String(numOf(arr)).length >= 3; });
-            check(!anyThreeDigitAddend, 'Y3 #' + idx + ': a 3-digit ADDEND appears with ' + nAdd + ' addends');
-          }
+          // Year 3 is exactly TWO addends: TO+TO (2+2 digits) or HTO+TO (3+2),
+          // never HTO+HTO and never a single-digit addend.
+          check(nAdd === 2, 'Y3 #' + idx + ': must be exactly 2 addends, got ' + nAdd);
+          var lensY3 = a.fullAddends.map(function (arr) { return String(numOf(arr)).length; }).sort();
+          check(lensY3.every(function (L) { return L === 2 || L === 3; }), 'Y3 #' + idx + ': addend lengths ' + lensY3.join(',') + ' not all 2/3 digits');
+          check(!(lensY3[0] === 3 && lensY3[1] === 3), 'Y3 #' + idx + ': HTO+HTO not allowed');
+          if (lensY3[0] === 2 && lensY3[1] === 2) { y3_to_to = true; }
+          if (lensY3[0] === 2 && lensY3[1] === 3) { y3_hto_to = true; }
         }
         // three large numbers (3 addends, all >= 4 digits)
         if (nAdd >= 3) {
@@ -271,7 +271,8 @@ YEARS.forEach(function (year) {
 // ---------------------------------------------------------------------------
 // (a/b) aggregate assertions
 check(allForward, 'a puzzle was NOT forward (a blank outside the total row) — FIX 4 requires all forward');
-check(y3SmallAnswerOnly, 'Y3 never produced a single-digit-addend puzzle with answer-only blanks');
+check(y3_to_to, 'Y3 never produced a TO+TO puzzle');
+check(y3_hto_to, 'Y3 never produced an HTO+TO puzzle');
 check(y6ThreeBig, 'Y6 never mixed three large (>=4-digit) numbers');
 check(!nonY6ThreeBig, 'a year other than Y6 mixed three large numbers');
 
@@ -289,12 +290,19 @@ check(distinctMsgs >= 5, 'low reveal variety: only ' + distinctMsgs + ' distinct
   check(JSON.stringify(a) === JSON.stringify(b), 'determinism: same seed produced different sheets');
 })();
 
+// ---- count options: 6 and 9 only; anything higher clamps to 9 -------------
+(function () {
+  check(DD.generateSheet({ year: 4, difficulty: 3, count: 6, source: 'joke', seed: 1 }).items.length === 6, 'count 6 did not yield 6 puzzles');
+  check(DD.generateSheet({ year: 4, difficulty: 3, count: 9, source: 'joke', seed: 1 }).items.length === 9, 'count 9 did not yield 9 puzzles');
+  check(DD.generateSheet({ year: 4, difficulty: 3, count: 12, source: 'joke', seed: 1 }).items.length === 9, 'count 12 did not clamp to 9');
+})();
+
 // ---- report ---------------------------------------------------------------
 console.log('puzzles generated: ' + totalPuzzles);
 console.log('distinct signatures: ' + distinctSigs);
 console.log('distinct reveal messages: ' + distinctMsgs);
 console.log('all puzzles forward (both blanks = total tens+ones): ' + allForward);
-console.log('Y3 single-digit-addend answer-only puzzles occur: ' + y3SmallAnswerOnly);
+console.log('Y3 produces TO+TO and HTO+TO (and never HTO+HTO/single-digit): ' + (y3_to_to && y3_hto_to));
 console.log('only Y6 mixes three large numbers: ' + (y6ThreeBig && !nonY6ThreeBig));
 console.log('ambiguous fixture caught (count>1) + generator always count===1: ' + (fails.length === 0 || 'see failures'));
 

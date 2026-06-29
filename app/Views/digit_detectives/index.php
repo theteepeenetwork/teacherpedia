@@ -209,7 +209,6 @@
     <div id="dd-count" style="display:flex; gap:7px;">
       <button type="button" class="chip" data-count="6">6</button>
       <button type="button" class="chip" data-count="9">9</button>
-      <button type="button" class="chip" data-count="12">12</button>
     </div>
     <div class="app-divider"></div>
     <span class="build-eyebrow-lbl">Reveal</span>
