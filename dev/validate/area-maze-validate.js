@@ -22,7 +22,7 @@
  *  (g) CHAIN SANITY — the final chain line names the target piece/edge and its
  *      result equals the answer; every step result is a positive integer.
  *  (h) DETERMINISM — same seed reproduces the identical sheet.
- *  (i) EXAMPLE — item 0 is always example:true; counts 2/3/4 honoured & clamped.
+ *  (i) NO EXAMPLE — every card is a real problem; counts 2/3/4 honoured & clamped.
  *  (j) VARIETY — many distinct figures across the sweep.
  *
  * Exits non-zero on the first batch of failures. Prints a PASS summary.
@@ -87,7 +87,9 @@ YEARS.forEach(function (year) {
       check(sheet && sheet.items && sheet.items.length === count, 'Y' + year + ' m' + meter + ': wrong item count');
       if (!sheet || !sheet.items) { continue; }
 
-      check(sheet.items[0].example === true, 'Y' + year + ' m' + meter + ': item 0 is not the example');
+      // No worked example any more — every card is a real problem (so the
+      // area-reasoning / visible-clue / anti-degeneracy checks below apply to ALL).
+      check(sheet.items.every(function (p) { return !p.example; }), 'Y' + year + ' m' + meter + ': a card is still flagged as an example');
 
       sheet.items.forEach(function (p, idx) {
         totalPuzzles++;

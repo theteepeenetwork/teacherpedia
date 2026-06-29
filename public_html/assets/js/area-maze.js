@@ -660,7 +660,7 @@
     opts = opts || {};
     var year = Math.max(4, Math.min(6, (opts.year || 4) | 0));
     var meter = Math.max(1, Math.min(5, (opts.difficulty || 3) | 0));
-    var count = Math.max(2, Math.min(4, (opts.count || 3) | 0));
+    var count = Math.max(2, Math.min(4, (opts.count || 4) | 0));
     var seed = (opts.seed != null) ? (opts.seed >>> 0) : (Math.floor(Math.random() * 0xffffffff) >>> 0);
     var rng = makeRng(seed);
     // The YEAR already fixes the curriculum envelope (leaf/chain/magnitude bounds),
@@ -672,8 +672,9 @@
 
     var items = [];
     for (var idx = 0; idx < count; idx++) {
-      var isExample = idx === 0;
-      var p = buildOne(rng, year, eff, isExample);
+      // No worked example — every card is a real problem (kept compact so 4 fit
+      // one A4). The how-it-works on the info page covers the method.
+      var p = buildOne(rng, year, eff, false);
       items.push(p);
     }
 
@@ -807,7 +808,7 @@
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
   var state = {
-    year: 4, difficulty: 3, count: 3, tab: 'puzzle',
+    year: 4, difficulty: 3, count: 4, tab: 'puzzle',
     seed: (Math.floor(Math.random() * 0xffffffff) >>> 0),
     sheet: null
   };
