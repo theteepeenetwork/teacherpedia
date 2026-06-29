@@ -28,5 +28,11 @@
         "route": "/area-maze",
         "accent": "#a23b5e",
         "wait": "#am-grid .am-card"
+    },
+    "spot-the-impostor": {
+        "view": "spot_the_impostor/index",
+        "route": "/spot-the-impostor",
+        "accent": "#1f6f78",
+        "wait": "#si-grid .si-card"
     }
 }

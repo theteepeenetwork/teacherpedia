@@ -49,6 +49,8 @@ $routes->get('digit-detectives', 'DigitDetectives::index');
 $routes->get('digit-detectives/(:num)', 'DigitDetectives::index/$1');  // open a saved sheet
 $routes->get('area-maze', 'AreaMaze::index');
 $routes->get('area-maze/(:num)', 'AreaMaze::index/$1');  // open a saved sheet
+$routes->get('spot-the-impostor', 'SpotTheImpostor::index');
+$routes->get('spot-the-impostor/(:num)', 'SpotTheImpostor::index/$1');  // open a saved sheet
 $routes->get('resource/(:segment)', 'ResourceInfo::show/$1');  // info page: browse -> /resource/{slug} -> tool
 
 // ---- Account (logged-in teachers) ----
