@@ -64,7 +64,7 @@ for (var year = 1; year <= 6; year++) {
     for (var k = 0; k < caps.ops.length; k++) { sets.push([caps.ops[k]]); }
     for (var si = 0; si < sets.length; si++) {
       for (var grid = 0; grid < 3; grid++) {
-        var gridSize = [6, 9, 12][grid];
+        var gridSize = [4, 9, 16][grid];
         var seed = (year * 7919 + meter * 131 + si * 17 + grid * 3 + 1) >>> 0;
         var sheet = SI.build({ year: year, operations: sets[si], gridSize: gridSize,
           impostorCount: [2, 3, 4][grid], showWorking: true, pupilNames: true, seed: seed, difficulty: meter });
@@ -163,7 +163,7 @@ var base = { year: 4, operations: ['+', '-', '×', '÷'], gridSize: 9, impostorC
 check(sig(base) !== sig(Object.assign({}, base, { year: 5 })), 'year control had no effect');
 check(sig(base) !== sig(Object.assign({}, base, { difficulty: 5 })), 'difficulty control had no effect');
 check(sig(base) !== sig(Object.assign({}, base, { operations: ['+'] })), 'operations control had no effect');
-check(sig(base) !== sig(Object.assign({}, base, { gridSize: 12 })), 'grid control had no effect');
+check(sig(base) !== sig(Object.assign({}, base, { gridSize: 16 })), 'grid control had no effect');
 check(sig(base) !== sig(Object.assign({}, base, { impostorCount: 4, seed: 4242 })) || true, 'impostorCount checked below');
 // impostor count: count impostors in the board
 function impCount(cfg) { var s = SI.build(cfg); var n = 0; s.cells.forEach(function (c) { if (c.isImpostor) { n++; } }); return n; }

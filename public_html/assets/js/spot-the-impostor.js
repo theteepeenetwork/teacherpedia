@@ -440,7 +440,7 @@
       .filter(function (op) { return caps.ops.indexOf(op) !== -1; });
     if (!ops.length) { ops = [caps.ops[0]]; }
 
-    var gridSize = Math.max(4, Math.min(12, config.gridSize || 9));
+    var gridSize = Math.max(4, Math.min(16, config.gridSize || 9));
     var impostorCount = Math.max(1, Math.min(gridSize - 1, config.impostorCount || 3));
 
     // BOARD-LEVEL SELF-CHECK GUARD: each impostor is individually wrong, but a
@@ -489,30 +489,28 @@
   function $(id) { return document.getElementById(id); }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
+  // PRINT-FIRST: no pupil-side state, no localStorage, no live total. The page
+  // renders TWO static sheets — a pupil WORKSHEET (hand-marked on paper) and a
+  // matching teacher ANSWER KEY — from one seeded build(). The tab toggle only
+  // chooses which sheet is on screen; BOTH always print (the key on its own page).
   var state = {
     year: 1, difficulty: 3, ops: ['+', '-'], gridSize: 9, impostorCount: 3,
     showWorking: true, pupilNames: false, tab: 'worksheet',
     seed: (Math.floor(Math.random() * 0xffffffff) >>> 0),
-    sheet: null, marks: {}
+    sheet: null
   };
   var els = {};
-  var GRID_COLS = { 6: 2, 9: 3, 12: 3 };
-
-  // ---- localStorage (live pupil state survives a refresh) ------------------
-  function lsKey() { return 'tp_si_marks_' + (window.TP_SAVED && window.TP_SAVED.id ? window.TP_SAVED.id + '_' : '') + state.seed; }
-  function saveMarks() { try { localStorage.setItem(lsKey(), JSON.stringify(state.marks)); } catch (e) {} }
-  function loadMarks() { try { var raw = localStorage.getItem(lsKey()); state.marks = raw ? JSON.parse(raw) : {}; } catch (e) { state.marks = {}; } }
-  function clearMarks() { try { localStorage.removeItem(lsKey()); } catch (e) {} state.marks = {}; }
+  // 4 -> 2 cols (2×2), 9 -> 3 cols (3×3), 16 -> 4 cols (4×4).
+  var GRID_COLS = { 4: 2, 9: 3, 16: 4 };
 
   function rebuild(opts) {
     opts = opts || {};
-    if (opts.newSeed) { state.seed = (Math.floor(Math.random() * 0xffffffff) >>> 0); clearMarks(); }
+    if (opts.newSeed) { state.seed = (Math.floor(Math.random() * 0xffffffff) >>> 0); syncSeedInput(); }
     state.sheet = build({
       year: state.year, operations: state.ops, gridSize: state.gridSize,
       impostorCount: state.impostorCount, showWorking: state.showWorking,
       pupilNames: state.pupilNames, seed: state.seed, difficulty: state.difficulty
     });
-    if (!opts.newSeed) { loadMarks(); }
     render();
   }
 
@@ -521,139 +519,96 @@
   // remainder — every displayed/true answer is a single addable number, keeping
   // the footer's additive self-check coherent on paper.
   // displayedAnswer always lives in the cell's own scale (the same numeric space as
-  // trueAnswer and pupilTotal), so the wrong decimal the pupil would write renders
-  // straight from fmtScaled at the cell scale.
+  // trueAnswer), so the wrong answer the pupil would see renders straight from
+  // fmtScaled at the cell scale.
   function dispAnswerText(cell) { return fmtScaled(cell.displayedAnswer, cell.scale); }
   function trueAnswerText(cell) { return answerText(cell, cell.trueAnswer); }
 
-  function cardHTML(cell, i, revealed) {
-    var mark = state.marks[i] || {};
-    var nameEyebrow = cell.name ? '<div class="si-name">' + esc(cell.name) + '’s working</div>' : '';
-    // The working line only adds value for the multi-step methods (×, ÷, round,
-    // decimals); for +/- it would merely echo the calculation, so it is omitted
-    // even when the toggle is on (keeps the simplest sheets uncluttered).
+  // The working line only adds value for the multi-step methods (×, ÷, round,
+  // decimals); for +/- it would merely echo the calculation, so it is omitted
+  // even when the toggle is on (keeps the simplest sheets uncluttered).
+  function workingHTML(cell) {
     var showW = cell.showWorking && (cell.op === '×' || cell.op === '÷' || cell.op === 'round' || cell.op === 'dec');
-    var working = showW ? '<div class="si-working">' + esc(cell.working) + '</div>' : '';
-    var calc = '<div class="si-calc"><span class="si-q">' + esc(cell.display) + '</span> '
+    return showW ? '<div class="si-working">' + esc(cell.working) + '</div>' : '';
+  }
+  function nameEyebrowHTML(cell) {
+    return cell.name ? '<div class="si-name">' + esc(cell.name) + ':</div>' : '';
+  }
+  function calcHTML(cell) {
+    return '<div class="si-calc"><span class="si-q">' + esc(cell.display) + '</span> '
       + '<span class="si-eq">=</span> <span class="si-ans">' + esc(dispAnswerText(cell)) + '</span></div>';
+  }
 
-    if (revealed) {
-      var verdict = cell.isImpostor
-        ? '<div class="si-verdict si-imp"><span class="si-ic">✗</span> <span class="si-vtxt">Impostor</span></div>'
-          + '<div class="si-bug">' + esc(cell.label) + '</div>'
-          + '<div class="si-correct">Correct answer: <strong>' + esc(trueAnswerText(cell)) + '</strong></div>'
-        : '<div class="si-verdict si-ok"><span class="si-ic">✓</span> <span class="si-vtxt">Correct</span></div>';
-      return '<div class="si-card' + (cell.isImpostor ? ' si-card-imp' : ' si-card-ok') + '" role="group" aria-label="Cell ' + (i + 1) + '">'
-        + '<div class="si-card-head"><span class="si-no">' + (i + 1) + '</span>' + nameEyebrow + '</div>'
-        + calc + working + verdict + '</div>';
-    }
-
-    var who = cell.name ? esc(cell.name) + '’s' : 'this';
-    var corr = (mark.v === 'x')
-      ? '<div class="si-corr"><label class="si-corr-lbl" for="si-corr-' + i + '">Correct answer</label>'
-        + '<input class="si-corr-in" id="si-corr-' + i + '" type="text" inputmode="numeric" '
-        + 'value="' + (mark.c != null ? esc(mark.c) : '') + '" data-i="' + i + '" '
-        + 'aria-label="Correct answer for cell ' + (i + 1) + '"></div>'
-      : '';
+  // WORKSHEET card: the calc + displayed answer, optional working / pupil name,
+  // then PRINTED (non-interactive) ✓ / ✗ boxes to tick or circle by hand and a
+  // ruled correction line. Nothing distinguishes impostors. No JS state.
+  function worksheetCardHTML(cell, i) {
     return '<div class="si-card" role="group" aria-label="Cell ' + (i + 1) + '">'
-      + '<div class="si-card-head"><span class="si-no">' + (i + 1) + '</span>' + nameEyebrow + '</div>'
-      + calc + working
-      + '<div class="si-judge" role="group" aria-label="Is ' + who + ' answer correct?">'
-      + '<button type="button" class="si-btn si-tick' + (mark.v === 'v' ? ' on' : '') + '" data-i="' + i + '" data-v="v" '
-      + 'aria-pressed="' + (mark.v === 'v' ? 'true' : 'false') + '" aria-label="Mark ' + who + ' answer correct">✓</button>'
-      + '<button type="button" class="si-btn si-cross' + (mark.v === 'x' ? ' on' : '') + '" data-i="' + i + '" data-v="x" '
-      + 'aria-pressed="' + (mark.v === 'x' ? 'true' : 'false') + '" aria-label="Mark ' + who + ' answer an impostor">✗</button>'
-      + '</div>' + corr
+      + '<div class="si-card-head"><span class="si-no">' + (i + 1) + '</span>' + nameEyebrowHTML(cell) + '</div>'
+      + calcHTML(cell) + workingHTML(cell)
+      + '<div class="si-judge" aria-hidden="true">'
+      + '<span class="si-jbox si-tick">&#10003;</span>'
+      + '<span class="si-jbox si-cross">&#10007;</span>'
+      + '<span class="si-judge-hint">tick or cross</span>'
+      + '</div>'
+      + '<div class="si-corr"><span class="si-corr-lbl">Correction:</span><span class="si-corr-line"></span></div>'
       + '</div>';
   }
 
-  function parseCorrection(str, scale) {
-    str = String(str).replace(/\s*r.*$/i, '').replace(/[^0-9.\-]/g, '');
-    if (str === '' || str === '-' || str === '.') { return null; }
-    var f = parseFloat(str); if (isNaN(f)) { return null; }
-    return scale === 1 ? Math.round(f) : Math.round(f * scale);
-  }
-  function pupilTotal() {
-    if (!state.sheet) { return null; }
-    var cells = state.sheet.cells, commonScale = state.sheet.honestScale, sum = 0, allJudged = true;
-    for (var i = 0; i < cells.length; i++) {
-      var cell = cells[i], mark = state.marks[i] || {}, contribute;
-      if (mark.v === 'x') {
-        if (mark.c == null || mark.c === '') { allJudged = false; contribute = 0; }
-        else { contribute = parseCorrection(mark.c, cell.scale); if (contribute == null) { allJudged = false; contribute = 0; } }
-      } else if (mark.v === 'v') { contribute = cell.displayedAnswer; }
-      else { allJudged = false; contribute = 0; }
-      sum += contribute * (commonScale / cell.scale);
-    }
-    return { sum: sum, scale: commonScale, allJudged: allJudged };
+  // ANSWER KEY card: every cell flagged correct / impostor by ICON + TEXT (never
+  // colour alone), the correct answer, and the misconception LABEL for impostors.
+  function keyCardHTML(cell, i) {
+    var verdict = cell.isImpostor
+      ? '<div class="si-verdict si-imp"><span class="si-ic">&#10007;</span> <span class="si-vtxt">Impostor</span></div>'
+        + '<div class="si-bug">' + esc(cell.label) + '</div>'
+        + '<div class="si-correct">Correct answer: <strong>' + esc(trueAnswerText(cell)) + '</strong></div>'
+      : '<div class="si-verdict si-ok"><span class="si-ic">&#10003;</span> <span class="si-vtxt">Correct</span></div>';
+    return '<div class="si-card' + (cell.isImpostor ? ' si-card-imp' : ' si-card-ok') + '" role="group" aria-label="Cell ' + (i + 1) + '">'
+      + '<div class="si-card-head"><span class="si-no">' + (i + 1) + '</span>' + nameEyebrowHTML(cell) + '</div>'
+      + calcHTML(cell) + workingHTML(cell) + verdict + '</div>';
   }
 
   function render() {
     if (!state.sheet) { return; }
-    if (els.eyebrowDiff && window.TP_diffDots) { els.eyebrowDiff.textContent = window.TP_diffDots(state.difficulty); }
-    if (els.eyebrowKs) { els.eyebrowKs.textContent = (state.year <= 2 ? 'KS1' : 'KS2') + ' · Year ' + state.year; }
-    var revealed = state.tab === 'answerkey';
     var sheet = state.sheet;
+    var ksYear = (state.year <= 2 ? 'KS1' : 'KS2') + ' · Year ' + state.year;
+    if (els.eyebrowDiff && window.TP_diffDots) { els.eyebrowDiff.textContent = window.TP_diffDots(state.difficulty); }
+    if (els.eyebrowKs) { els.eyebrowKs.textContent = ksYear; }
+    if (els.keyKs) { els.keyKs.textContent = ksYear; }
 
-    els.grid.style.setProperty('--si-cols', GRID_COLS[state.gridSize] || 3);
+    var cols = GRID_COLS[state.gridSize] || 3;
+
+    // ---- worksheet grid (hand-mark target per cell) ----
+    var wsHtml = '';
+    for (var i = 0; i < sheet.cells.length; i++) { wsHtml += worksheetCardHTML(sheet.cells[i], i); }
+    els.grid.style.setProperty('--si-cols', cols);
     els.grid.setAttribute('data-grid', state.gridSize);
-    els.grid.setAttribute('data-rev', revealed ? '1' : '0');
+    els.grid.innerHTML = wsHtml;
 
-    // Page-fill is handled entirely in CSS (grid-auto-rows:1fr + align-self:center
-    // on 6/9-up; content-sized rows on 12-up). No per-board sparse heuristic needed.
+    // ---- answer-key grid (status + correct answer + misconception) ----
+    var keyHtml = '';
+    for (var k = 0; k < sheet.cells.length; k++) { keyHtml += keyCardHTML(sheet.cells[k], k); }
+    els.keyGrid.style.setProperty('--si-cols', cols);
+    els.keyGrid.setAttribute('data-grid', state.gridSize);
+    els.keyGrid.innerHTML = keyHtml;
 
-    var html = '';
-    for (var i = 0; i < sheet.cells.length; i++) { html += cardHTML(sheet.cells[i], i, revealed); }
-    els.grid.innerHTML = html;
+    // larger body for the youngest pupils
+    if (els.wsSheet) { els.wsSheet.setAttribute('data-yng', state.year <= 2 ? '1' : '0'); }
 
     if (els.honest) { els.honest.textContent = sheet.honestTotalText; }
-    if (els.intro) {
-      els.intro.textContent = revealed
-        ? 'Answer key — each impostor is named with the mistake behind it.'
-        : 'Some answers are wrong. Tick the right ones, cross the impostors and write the correction.';
-    }
+    if (els.keyHonest) { els.keyHonest.textContent = sheet.honestTotalText; }
     if (els.footTask) {
       els.footTask.innerHTML = 'Fix the impostors, then add up all the correct answers — you should land on the honest total: <strong>' + esc(sheet.honestTotalText) + '</strong>.';
     }
-    if (els.pupilWrap) { els.pupilWrap.style.display = revealed ? 'none' : ''; }
 
-    bindCardEvents();
-    updatePupilTotal();
+    applyTab();
   }
 
-  function updatePupilTotal() {
-    if (!els.pupilTotal) { return; }
-    var pt = pupilTotal(); if (!pt) { return; }
-    els.pupilTotal.textContent = fmtScaled(pt.sum, pt.scale);
-    var match = pt.allJudged && (pt.sum === state.sheet.honestTotal);
-    if (els.pupilWrap) {
-      els.pupilWrap.classList.toggle('si-match', match);
-      els.pupilWrap.classList.toggle('si-pending', !pt.allJudged);
-    }
-    if (els.pupilNote) {
-      els.pupilNote.textContent = !pt.allJudged
-        ? 'Judge every cell to compare.'
-        : (match ? 'Matches the honest total — likely correct (a strong check, not proof).'
-                 : 'Not a match yet — check your judgements and corrections.');
-    }
-  }
-
-  function bindCardEvents() {
-    Array.prototype.forEach.call(els.grid.querySelectorAll('.si-btn'), function (b) {
-      b.addEventListener('click', function () {
-        var i = b.getAttribute('data-i'), v = b.getAttribute('data-v');
-        var mark = state.marks[i] || {};
-        mark.v = (mark.v === v) ? null : v;
-        state.marks[i] = mark; saveMarks(); render();
-      });
-    });
-    Array.prototype.forEach.call(els.grid.querySelectorAll('.si-corr-in'), function (inp) {
-      inp.addEventListener('input', function () {
-        var i = inp.getAttribute('data-i');
-        var mark = state.marks[i] || {}; mark.c = inp.value; state.marks[i] = mark;
-        saveMarks(); updatePupilTotal();
-      });
-    });
+  // The tab toggle only chooses which sheet is on screen; print shows both.
+  function applyTab() {
+    var revealed = state.tab === 'answerkey';
+    if (els.wsSheet) { els.wsSheet.hidden = revealed; }
+    if (els.keySheet) { els.keySheet.hidden = !revealed; }
   }
 
   // ---- toolbar wiring ------------------------------------------------------
@@ -677,11 +632,17 @@
   function setTab(tab) {
     state.tab = tab;
     moveThumb(els.tabThumb, $('si-tabs'), '[data-tab]', tab === 'answerkey' ? 1 : 0);
-    render();
+    applyTab();
   }
   function regen() {
     if (els.spin) { els.spin.style.transform = 'rotate(360deg)'; setTimeout(function () { els.spin.style.transform = 'rotate(0deg)'; }, 500); }
     rebuild({ newSeed: true });
+  }
+
+  // The visible SEED input: blank = random (a fresh seed each Generate); a fixed
+  // value reproduces an identical worksheet + key. Reflect state -> input.
+  function syncSeedInput() {
+    if (els.seed && document.activeElement !== els.seed) { els.seed.value = String(state.seed >>> 0); }
   }
 
   function syncOpChips() {
@@ -743,8 +704,8 @@
     if (cfg.year) { state.year = clampYear(cfg.year); }
     if (cfg.difficulty) { state.difficulty = Math.max(1, Math.min(5, cfg.difficulty | 0)); }
     if (cfg.operations && cfg.operations.length) { state.ops = cfg.operations.slice(); }
-    if (cfg.gridSize) { state.gridSize = Math.max(4, Math.min(12, cfg.gridSize | 0)); }
-    if (cfg.impostorCount) { state.impostorCount = Math.max(1, cfg.impostorCount | 0); }
+    if (cfg.gridSize) { state.gridSize = Math.max(4, Math.min(16, cfg.gridSize | 0)); }
+    if (cfg.impostorCount) { state.impostorCount = Math.max(1, Math.min(state.gridSize - 1, cfg.impostorCount | 0)); }
     if (cfg.showWorking != null) { state.showWorking = !!cfg.showWorking; }
     if (cfg.pupilNames != null) { state.pupilNames = !!cfg.pupilNames; }
     if (cfg.seed != null) { state.seed = cfg.seed >>> 0; }
@@ -767,23 +728,26 @@
 
   function init() {
     els.grid = $('si-grid');
+    els.keyGrid = $('si-key-grid');
+    els.wsSheet = $('si-ws-sheet');
+    els.keySheet = $('si-key-sheet');
     els.diffThumb = $('si-difficulty') ? $('si-difficulty').querySelector('.diff-thumb') : null;
     els.diffLabel = $('si-diff-label');
     els.eyebrowDiff = $('si-eyebrow-diff');
     els.eyebrowKs = $('si-eyebrow-ks');
+    els.keyKs = $('si-key-ks');
     els.tabThumb = $('si-tabs') ? $('si-tabs').querySelector('.seg-thumb') : null;
-    els.intro = $('si-intro');
     els.spin = $('si-regen-icon');
     if (els.spin) { els.spin.style.transition = 'transform .5s ease'; }
     els.toast = $('si-toast');
     els.honest = $('si-honest');
+    els.keyHonest = $('si-key-honest');
     els.footTask = $('si-foot-task');
-    els.pupilTotal = $('si-pupil-total');
-    els.pupilWrap = $('si-pupil-wrap');
-    els.pupilNote = $('si-pupil-note');
+    els.seed = $('si-seed');
 
-    var yearEl = $('si-year');
-    if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+    var nowYear = new Date().getFullYear();
+    var yearEl = $('si-year'); if (yearEl) { yearEl.textContent = nowYear; }
+    var keyYearEl = $('si-key-year'); if (keyYearEl) { keyYearEl.textContent = nowYear; }
 
     var restored = restoreFromSaved();
     if (!restored) { state.ops = defaultOpsFor(state.year); }
@@ -819,6 +783,8 @@
         b.addEventListener('click', function () {
           state.gridSize = Number(b.getAttribute('data-grid'));
           setOnState(gridWrap, 'data-grid', state.gridSize);
+          // default the impostor count to ~1/3 of the new grid (min 1, max cells-1).
+          state.impostorCount = Math.max(1, Math.min(state.gridSize - 1, Math.round(state.gridSize / 3)));
           syncImpostorChips(); rebuild();
         });
       });
@@ -860,6 +826,18 @@
       nameTog.setAttribute('aria-pressed', state.pupilNames ? 'true' : 'false');
     }
 
+    // Visible SEED input. Blank = pick a fresh random seed; a numeric value
+    // reproduces an identical worksheet + key. Re-builds on change.
+    if (els.seed) {
+      var applySeed = function () {
+        var raw = els.seed.value.replace(/[^0-9]/g, '');
+        state.seed = raw === '' ? (Math.floor(Math.random() * 0xffffffff) >>> 0) : (parseInt(raw, 10) >>> 0) || 1;
+        rebuild();
+      };
+      els.seed.addEventListener('change', applySeed);
+      els.seed.addEventListener('keydown', function (e) { if (e.key === 'Enter') { applySeed(); els.seed.blur(); } });
+    }
+
     Array.prototype.forEach.call($('si-difficulty').querySelectorAll('[data-diff]'), function (b) {
       b.addEventListener('click', function () { setDiff(parseInt(b.getAttribute('data-diff'), 10)); });
     });
@@ -878,6 +856,7 @@
     if (els.diffLabel && window.TP_diffDots) { els.diffLabel.textContent = window.TP_diffDots(state.difficulty); }
 
     setTab('worksheet');
+    syncSeedInput();
     rebuild();
   }
 
