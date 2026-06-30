@@ -24,37 +24,52 @@ class Database extends \CodeIgniter\Database\Config
 	 *
 	 * @var string
 	 */
-	public $defaultGroup = 'production';
+	public $defaultGroup = 'default';
 
 	/**
 	 * The default database connection.
 	 *
+	 * For LOCAL DEVELOPMENT this group is driven entirely by .env
+	 * (database.default.*), which points at a SQLite file under
+	 * writable/db/. The literals below are harmless fallbacks; .env
+	 * overrides them at runtime.
+	 *
 	 * @var array
 	 */
-	public $development = [
-		'hostname' => 'localhost:8889',
-		'username' => 'root',
-		'password' => 'root',
-		'database' => 'teacherpedia',
-		'DBDriver' => 'MySQLi',
+	public $default = [
+		'DSN'      => '',
+		'hostname' => 'localhost',
+		'username' => '',
+		'password' => '',
+		'database' => WRITEPATH . 'db/teacherpedia.db',
+		'DBDriver' => 'SQLite3',
 		'DBPrefix' => '',
-		'pConnect' => TRUE,
+		'pConnect' => FALSE,
 		'DBDebug'  => TRUE,
-		'cacheOn'  => FALSE,
-		'cacheDir' => '',
 		'charset'  => 'utf8',
 		'DBCollat' => 'utf8_general_ci',
 		'swapPre'  => '',
 		'encrypt'  => FALSE,
 		'compress' => FALSE,
-		'strictOn' => FALSE
+		'strictOn' => FALSE,
+		'failover' => [],
+		'port'     => 3306,
+		'foreignKeys' => TRUE,
 	];
 
+	/**
+	 * Automated test connection.
+	 *
+	 * Real credentials are supplied via .env (database.tests.*) and are
+	 * intentionally NOT committed here.
+	 *
+	 * @var array
+	 */
 	public $tests = [
-		'hostname' => 'shareddb1d.hosting.stackcp.net',
-		'username' => 'testuser-d583',
-		'password' => 'pianodawG1',
-		'database' => 'development-testing-36353d1f',
+		'hostname' => '',
+		'username' => '',
+		'password' => '',
+		'database' => '',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => TRUE,
@@ -62,22 +77,31 @@ class Database extends \CodeIgniter\Database\Config
 		'cacheOn' => FALSE,
 		'cacheDir' => '',
 		'charset' => 'utf8',
-		'DBcollat' => 'utf8_general_ci',
-		'swap_pre' => '',
+		'DBCollat' => 'utf8_general_ci',
+		'swapPre' => '',
 		'encrypt' => FALSE,
 		'compress' => FALSE,
 		'strictOn' => FALSE
 	];
 
+	/**
+	 * Production connection.
+	 *
+	 * Real credentials are supplied via .env (database.production.*) and
+	 * are intentionally NOT committed here. Setting any literal value
+	 * here would leak secrets into source control.
+	 *
+	 * @var array
+	 */
 	public $production = [
-		'hostname' => 'shareddb-f.hosting.stackcp.net',
-		'username' => 'higher',
-		'password' => 'pianodawG1',
-		'database' => 'teacherpedia-36393d77',
+		'hostname' => '',
+		'username' => '',
+		'password' => '',
+		'database' => '',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => TRUE,
-		'DBDebug'  => TRUE,
+		'DBDebug'  => FALSE,
 		'cacheOn'  => FALSE,
 		'cacheDir' => '',
 		'charset'  => 'utf8',
@@ -128,6 +152,13 @@ class Database extends \CodeIgniter\Database\Config
 		// Ensure that we always set the database group to 'tests' if
 		// we are currently running an automated test suite, so that
 		// we don't overwrite live data on accident.
+		// During automated tests always use the 'tests' group so we never
+		// touch live data. Otherwise the 'default' group is used, which is
+		// SQLite locally (via .env) and can be pointed at MySQL in
+		// production by overriding database.default.* in the server .env.
+		// Real credentials for the 'production' / 'tests' groups come from
+		// .env (database.production.* / database.tests.*), never from this
+		// committed file.
 		if (ENVIRONMENT === 'testing') {
 			$this->defaultGroup = 'tests';
 
@@ -142,10 +173,6 @@ class Database extends \CodeIgniter\Database\Config
 					}
 				}
 			}
-		} elseif (ENVIRONMENT == 'development') {
-			$this->defaultGroup = 'development';
-		} else {
-			$this->defaultGroup = 'production';
 		}
 	}
 

@@ -1,0 +1,78 @@
+/* =============================================================================
+   tp-print.css — print styles for worksheet / answer-key output
+   -----------------------------------------------------------------------------
+   Load this ON TOP of teacherpedia.css on any page that renders a `.sheet`
+   (the worksheet builder, code breaker, generated-resource view, etc.).
+
+   When the user prints (Ctrl/Cmd+P or the in-app "Print / PDF" button) this
+   hides ALL site/tool chrome and shows only the `.sheet` element, laid out on a
+   clean A4 page. Mirrors the @media print rules in the original mockups.
+   ========================================================================== */
+
+@media print {
+
+  /* A4 page with sensible margins; the .sheet supplies its own inner padding */
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+
+  /* Strip the cream/gradient backgrounds so nothing prints behind the sheet */
+  html, body {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide everything, then reveal only the sheet and its contents.
+     Using visibility (not display) preserves the sheet's in-flow geometry
+     until we re-position it to the top-left of the page. */
+  body * { visibility: hidden; }
+  .sheet, .sheet * { visibility: visible; }
+
+  /* The sheet becomes the whole printable page: full width, no chrome.
+     Keep colour-adjust:exact so every OTHER coloured element inside the sheet
+     (code-key tint, accent text, etc.) still prints — we only drop the sheet's
+     own backing fill so no full-page background colour prints. */
+  .sheet {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    /* Drop ONLY the sheet's own backing fill — children keep their colours. */
+    background: transparent !important;
+    background-image: none !important;
+  }
+
+  /* Sheet footer flows naturally at the end rather than absolutely pinned */
+  .sheet-foot {
+    position: static !important;
+    left: auto; right: auto; bottom: auto;
+    margin-top: 28px;
+  }
+
+  /* Explicitly hide site/tool chrome even if author markup nests it oddly */
+  .site-header,
+  .site-footer,
+  .app-header,
+  .app-toolbar,
+  .app-panel,
+  .toast,
+  nav {
+    display: none !important;
+  }
+
+  /* Avoid splitting a question across pages */
+  .sheet-qlist li { break-inside: avoid; }
+
+  /* Force two-column worksheets to honour the column layout in print */
+  .sheet-qlist.two-col { column-count: 2; column-gap: 44px; }
+}

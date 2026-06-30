@@ -1,0 +1,42 @@
+# Sample nginx server block for Teacherpedia (CodeIgniter 4).
+#
+# nginx does NOT read .htaccess, so the rewrite-to-index.php rule must live here.
+# Without the `try_files ... /index.php` line below, every path except "/" (e.g.
+# /browse, /pricing, /build) returns 404 — the classic "homepage works, sub-pages
+# 404" symptom.
+#
+# Adjust `root`, `server_name`, and the fastcgi_pass socket to your environment,
+# then reload nginx.
+
+server {
+    listen 8888;
+    server_name localhost;
+
+    # IMPORTANT: document root is public_html/ (this project does not use public/)
+    root /home/user/teacherpedia/public_html;
+    index index.php;
+
+    # Send everything that isn't a real file/dir to the CI4 front controller.
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        # Match this to your PHP-FPM setup (socket or 127.0.0.1:9000):
+        fastcgi_pass unix:/run/php/php-fpm.sock;
+    }
+
+    # Let static assets be served directly.
+    location ~* \.(css|js|png|jpe?g|gif|svg|ico|woff2?)$ {
+        try_files $uri =404;
+        expires 7d;
+        access_log off;
+    }
+
+    # Deny access to dotfiles (e.g. .env, .htaccess).
+    location ~ /\. {
+        deny all;
+    }
+}
